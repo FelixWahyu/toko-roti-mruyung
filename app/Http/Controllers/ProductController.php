@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        $products = Product::latest()->paginate(6); // Ambil produk terbaru, 12 per halaman
+        return view('produks.produk-page', compact('products'));
+    }
+}
