@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toko Roti Mruyung</title>
+    <title>{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -33,11 +33,7 @@
     </main>
 
     {{-- Footer Sederhana --}}
-    <footer class="bg-white border-t border-gray-200">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-            <p>&copy; {{ date('Y') }} Toko Roti Mruyung. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <x-footer></x-footer>
 
 </body>
 

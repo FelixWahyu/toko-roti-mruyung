@@ -84,7 +84,7 @@
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
                                 <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                                 @error('name')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -94,14 +94,15 @@
                                     Telepon</label>
                                 <input type="text" name="phone_number" id="phone_number"
                                     value="{{ old('phone_number', $user->phone_number) }}"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                                 @error('phone_number')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div>
                                 <label for="address" class="block text-sm font-medium text-gray-700">Alamat</label>
-                                <textarea name="address" id="address" rows="3" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">{{ old('address', $user->address) }}</textarea>
+                                <textarea name="address" id="address" rows="3"
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">{{ old('address', $user->address) }}</textarea>
                                 @error('address')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -123,7 +124,7 @@
                                 <label for="current_password" class="block text-sm font-medium text-gray-700">Password Saat
                                     Ini</label>
                                 <input type="password" name="current_password" id="current_password"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                                 @error('current_password')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -131,7 +132,7 @@
                             <div>
                                 <label for="password" class="block text-sm font-medium text-gray-700">Password Baru</label>
                                 <input type="password" name="password" id="password"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                                 @error('password')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -140,7 +141,7 @@
                                 <label for="password_confirmation"
                                     class="block text-sm font-medium text-gray-700">Konfirmasi Password Baru</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
-                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                             </div>
                             <button type="submit"
                                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">

@@ -24,6 +24,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
+Route::get('/tentang-kami', function () {
+    return view('about-page');
+})->name('about');
+Route::get('/kontak', function () {
+    return view('kontak-page');
+})->name('contact');
 
 // Grup route untuk tamu (yang belum login)
 Route::middleware('guest')->group(function () {
@@ -65,34 +71,59 @@ Route::middleware('auth')->group(function () {
 
     // Grup Route untuk Admin & Owner
     Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('admin.')->group(function () {
+
+        // == FITUR YANG BISA DIAKSES ADMIN & OWNER ==
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
-        Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
-        Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
-        Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
-
-        Route::get('products', [ProduksController::class, 'index'])->name('products.index');
-        Route::get('users', [UserController::class, 'index'])->name('users.index');
-
         Route::get('profile', [AdminProfileController::class, 'index'])->name('profile.index');
         Route::patch('profile', [AdminProfileController::class, 'update'])->name('profile.update');
 
-        Route::middleware('role:superadmin')->group(function () {
-            Route::resource('categories', CategoryController::class);
-            Route::resource('units', UnitController::class);
-            Route::resource('products', ProduksController::class)->except('index');
+        // Master Data
+        Route::resource('categories', CategoryController::class);
+        Route::resource('units', UnitController::class);
+        Route::resource('products', ProduksController::class);
 
-            Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
-            Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-            Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+        // Manajemen Pesanan
+        Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+        Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
-            Route::resource('users', UserController::class)->except('index');
+        // Pengaturan Website
+        Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
 
+
+        // == FITUR YANG HANYA BISA DIAKSES OWNER ==
+        Route::middleware('role:owner')->group(function () {
+            // Laporan
+            Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+            Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
+            Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
+
+            // Manajemen Pengguna & Rekening
+            Route::resource('users', UserController::class);
             Route::resource('store-accounts', BankAccountController::class);
-
-            Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
-            Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
         });
+
+
+        // Route::get('products', [ProduksController::class, 'index'])->name('products.index');
+        // Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+        // Route::middleware('role:superadmin')->group(function () {
+        //     Route::resource('categories', CategoryController::class);
+        //     Route::resource('units', UnitController::class);
+        //     Route::resource('products', ProduksController::class)->except('index');
+
+        //     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+        //     Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+        //     Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+
+        //     Route::resource('users', UserController::class)->except('index');
+
+        //     Route::resource('store-accounts', BankAccountController::class);
+
+        //     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+        //     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+        // });
     });
 });
 

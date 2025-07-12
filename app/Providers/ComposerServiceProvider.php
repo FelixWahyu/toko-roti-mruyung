@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,11 @@ class ComposerServiceProvider extends ServiceProvider
             }
             // Kirim data 'cartItemCount' ke view
             $view->with('cartItemCount', $cartItemCount);
+        });
+
+        View::composer(['layouts.app', 'layouts.superadmin-app', 'components.footer', 'components.navbar', 'kontak-page'], function ($view) {
+            $settings = Setting::all()->keyBy('key');
+            $view->with('globalSettings', $settings);
         });
     }
 }

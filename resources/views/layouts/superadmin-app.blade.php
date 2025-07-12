@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super Admin Panel - Toko Roti Mruyung</title>
+    <title>Super Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- Kita akan tambahkan script Chart.js di sini nanti --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

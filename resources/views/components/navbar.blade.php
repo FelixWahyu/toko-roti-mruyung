@@ -5,12 +5,18 @@
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2">
                     {{-- Ganti dengan logo Anda jika ada --}}
-                    <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
-                    </svg>
-                    <span class="font-bold text-xl text-gray-800">Toko Roti Mruyung</span>
+                    @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
+                        <img class="h-10 w-auto" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
+                            alt="Logo Toko">
+                    @else
+                        <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
+                        </svg>
+                    @endif
+                    <span
+                        class="font-bold text-xl text-gray-800">{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</span>
                 </a>
             </div>
 
@@ -18,13 +24,13 @@
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <a href="{{ route('home') }}"
                     class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Beranda</a>
-                <a href="#"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-indigo-600">Tentang
+                <a href="{{ route('about') }}"
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Tentang
                     Kami</a>
                 <a href="{{ route('products.index') }}"
                     class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('products.index') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Produk</a>
-                <a href="#"
-                    class="px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-indigo-600">Kontak</a>
+                <a href="{{ route('contact') }}"
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Kontak</a>
             </div>
 
             <!-- Tombol Auth & User (Desktop) -->
@@ -46,7 +52,8 @@
                 </a>
                 <div class="h-6 border-l border-gray-300"></div>
                 @guest
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600">Login</a>
+                    <a href="{{ route('login') }}"
+                        class="text-sm font-medium text-gray-600 hover:text-indigo-600">Login</a>
                     <a href="{{ route('register') }}"
                         class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700">
                         Daftar

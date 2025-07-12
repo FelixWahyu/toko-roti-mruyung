@@ -1,6 +1,6 @@
 @extends('layouts.superadmin-app')
 @section('content')
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Pengaturan Website</h1>
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Profile Toko</h1>
     <div class="bg-white p-6 rounded-lg shadow-md">
         <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -9,21 +9,45 @@
                     <label for="store_name" class="block text-sm font-medium text-gray-700">Nama Toko</label>
                     <input type="text" name="store_name" id="store_name"
                         value="{{ old('store_name', $settings['store_name']->value ?? '') }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm" required>
                 </div>
                 <div>
                     <label for="store_address" class="block text-sm font-medium text-gray-700">Alamat Toko</label>
                     <textarea name="store_address" id="store_address" rows="3"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">{{ old('store_address', $settings['store_address']->value ?? '') }}</textarea>
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">{{ old('store_address', $settings['store_address']->value ?? '') }}</textarea>
                 </div>
                 <div>
                     <label for="store_contact" class="block text-sm font-medium text-gray-700">Kontak Toko
                         (Telepon/WA)</label>
                     <input type="text" name="store_contact" id="store_contact"
                         value="{{ old('store_contact', $settings['store_contact']->value ?? '') }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div>
+                    <label for="store_email" class="block text-sm font-medium text-gray-700">Email Toko</label>
+                    <input type="email" name="store_email" id="store_email"
+                        value="{{ old('store_email', $settings['store_email']->value ?? '') }}"
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 {{-- Form untuk upload logo bisa ditambahkan di sini --}}
+                <div>
+                    <label for="store_logo" class="block text-sm font-medium text-gray-700">Logo Toko</label>
+                    <input type="file" name="store_logo" id="store_logo"
+                        class="mt-1 block w-full p-1 border text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                    <p class="mt-1 text-xs text-gray-500">Kosongkan jika tidak ingin mengubah logo. Format: PNG, JPG, JPEG.
+                        Maks: 2MB.</p>
+                    @error('store_logo')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+
+                    @if (isset($settings['store_logo']) && $settings['store_logo']->value)
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-500">Logo saat ini:</p>
+                            <img src="{{ Storage::url($settings['store_logo']->value) }}" alt="Logo Toko"
+                                class="h-16 w-auto bg-gray-100 p-2 rounded-md mt-2">
+                        </div>
+                    @endif
+                </div>
             </div>
             <div class="flex justify-end mt-6">
                 <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
