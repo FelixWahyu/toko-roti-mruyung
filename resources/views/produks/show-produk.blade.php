@@ -1,0 +1,70 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="bg-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row -mx-4">
+                <!-- Kolom Gambar Produk -->
+                <div class="md:flex-1 px-4">
+                    <div class="h-[460px] rounded-lg bg-gray-200 mb-4">
+                        <img class="w-full h-full object-cover" src="{{ Storage::url($product->image) }}"
+                            alt="[Gambar {{ $product->name }}]">
+                    </div>
+                </div>
+
+                <!-- Kolom Detail Produk -->
+                <div class="md:flex-1 px-4">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Kategori: <a href="#"
+                            class="text-indigo-600 hover:underline">{{ $product->category->name }}</a>
+                    </p>
+
+                    <div class="flex mb-4">
+                        <div class="mr-4">
+                            <span class="font-bold text-gray-700">Harga:</span>
+                            <span
+                                class="text-gray-900 font-bold text-2xl">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
+                            <span class="text-gray-500 text-sm">/ {{ $product->unit->name }}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="font-bold text-gray-700">Ketersediaan Stok:</span>
+                        @if ($product->stock > 0)
+                            <span class="text-green-600 font-semibold">{{ $product->stock }} item tersedia</span>
+                        @else
+                            <span class="text-red-600 font-semibold">Stok Habis</span>
+                        @endif
+                    </div>
+
+                    <div class="prose max-w-none text-gray-600 mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Deskripsi Produk</h3>
+                        <p class="mt-4">{{ $product->description }}</p>
+                    </div>
+
+                    @if ($product->stock > 0)
+                        <form action="{{ route('cart.store', $product) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                                Tambah ke Keranjang
+                            </button>
+                        </form>
+                    @else
+                        <div
+                            class="w-full bg-gray-400 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white cursor-not-allowed">
+                            Stok Habis
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

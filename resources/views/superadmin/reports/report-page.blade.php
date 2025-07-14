@@ -9,12 +9,12 @@
                 <div>
                     <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
                     <input type="date" name="start_date" id="start_date" value="{{ $startDate }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 <div>
                     <label for="end_date" class="block text-sm font-medium text-gray-700">Tanggal Selesai</label>
                     <input type="date" name="end_date" id="end_date" value="{{ $endDate }}"
-                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 <div class="md:col-span-1 lg:col-span-2 flex space-x-2">
                     <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">

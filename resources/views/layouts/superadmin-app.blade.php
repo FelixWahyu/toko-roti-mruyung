@@ -5,39 +5,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Super Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Kita akan tambahkan script Chart.js di sini nanti --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-gray-100 font-sans">
-    <div x-data="{ sidebarOpen: true }" class="flex h-screen bg-gray-200">
+    <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex h-screen">
+
         <!-- Sidebar -->
         <x-superadmin.sidebar />
 
+        <!-- Overlay untuk mobile saat sidebar terbuka -->
+        <div x-show="sidebarOpen" class="fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity md:hidden"
+            @click="sidebarOpen = false"></div>
+
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
+            {{-- Kita lewatkan state sidebarOpen ke header --}}
             <x-superadmin.header />
 
             <!-- Konten Utama -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
                 <div class="container mx-auto px-6 py-8">
-                    @if (session('success'))
-                        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-
                     @yield('content')
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Terjadi Kesalahan',
+                text: '{{ session('error') }}',
+            });
+        @endif
+    </script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 <div class="mb-4">
     <label for="name" class="block text-sm font-medium text-gray-700">Nama Unit</label>
     <input type="text" name="name" id="name" value="{{ old('name', $unit->name ?? '') }}"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm" required>
     @error('name')
         <span class="text-sm text-red-600">{{ $message }}</span>
     @enderror

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -106,6 +107,9 @@ class CheckoutController extends Controller
             abort(404);
         }
 
-        return view('checkout.success-page', compact('order'));
+        $storeAccounts = BankAccount::all();
+
+
+        return view('checkout.success-page', compact('order', 'storeAccounts'));
     }
 }

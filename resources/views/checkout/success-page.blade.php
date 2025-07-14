@@ -19,9 +19,27 @@
                     Silakan lakukan pembayaran ke salah satu rekening kami dan konfirmasi pembayaran Anda.
                 </p>
             </div>
+            <div class="mt-6 text-left">
+                <p class="font-semibold text-gray-700">Silakan transfer ke salah satu rekening berikut:</p>
+                <div class="mt-4 space-y-4">
+                    @forelse($storeAccounts as $account)
+                        <div class="p-4 border rounded-lg bg-gray-50">
+                            <p class="font-bold text-lg">{{ $account->bank_name }}</p>
+                            <p class="text-gray-800 text-xl font-mono tracking-wider">{{ $account->account_number }}</p>
+                            <p class="text-gray-600">Nama Pemilik {{ $account->account_holder_name }}</p>
+                        </div>
+                    @empty
+                        <p class="text-sm text-gray-500">Informasi rekening belum tersedia. Silakan hubungi admin.</p>
+                    @endforelse
+                </div>
+            </div>
+
             <div class="mt-8">
-                <a href="{{ route('home') }}"
+                <a href="{{ route('order.payment', $order) }}"
                     class="text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md px-6 py-3">
+                    Upload Bukti Pembayaran
+                </a>
+                <a href="{{ route('home') }}" class="mt-4 ms-4 inline-block text-sm text-gray-600 hover:text-indigo-600">
                     Kembali ke Beranda
                 </a>
             </div>

@@ -24,6 +24,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
+Route::get('/produk/{product:slug}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/tentang-kami', function () {
     return view('about-page');
 })->name('about');
@@ -61,6 +62,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
     // Route untuk halaman sukses setelah order
     Route::get('/order/success/{order}', [CheckoutController::class, 'success'])->name('order.success');
+
+    Route::get('/order/{order}/payment', [ProfileController::class, 'showPaymentForm'])->name('order.payment');
+    Route::post('/order/{order}/payment', [ProfileController::class, 'storePayment'])->name('order.payment.store');
+    Route::get('/order/{order}/detail', [ProfileController::class, 'showOrderDetail'])->name('order.detail');
+    Route::post('/order/{order}/cancel', [ProfileController::class, 'cancelOrder'])->name('order.cancel');
 
     // Grup route untuk Profil Pelanggan
     Route::prefix('profil')->name('profile.')->group(function () {

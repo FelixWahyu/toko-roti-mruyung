@@ -8,6 +8,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Scripts & Styles (Vite) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,21 +21,31 @@
 
     {{-- Konten utama halaman --}}
     <main>
-        @if (session('success'))
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
-                <p>{{ session('success') }}</p>
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
-                <p>{{ session('error') }}</p>
-            </div>
-        @endif
         @yield('content')
     </main>
 
     {{-- Footer Sederhana --}}
     <x-footer></x-footer>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{ session('error') }}',
+            });
+        @endif
+    </script>
 
 </body>
 

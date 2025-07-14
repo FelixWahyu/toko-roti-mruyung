@@ -62,6 +62,17 @@
                     <!-- Dropdown Pengguna -->
                     <div x-data="{ dropdownOpen: false }" class="relative">
                         <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
+                            <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
+                                @if (Auth::user()->profile_picture)
+                                    <img class="h-full w-full object-cover"
+                                        src="{{ Storage::url(Auth::user()->profile_picture) }}" alt="Foto Profil">
+                                @else
+                                    <svg class="h-full w-full text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    </svg>
+                                @endif
+                            </div>
                             <span>{{ Auth::user()->name }}</span>
                             <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -109,13 +120,13 @@
         <div class="pt-2 pb-3 space-y-1">
             <a href="{{ route('home') }}"
                 class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Beranda</a>
-            <a href="#"
-                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300">Tentang
+            <a href="{{ route('about') }}"
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Tentang
                 Kami</a>
             <a href="{{ route('products.index') }}"
                 class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('products.index') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Produk</a>
-            <a href="#"
-                class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300">Kontak</a>
+            <a href="{{ route('contact') }}"
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Kontak</a>
         </div>
         <!-- Opsi Auth Mobile -->
         <div class="pt-4 pb-3 border-t border-gray-200">

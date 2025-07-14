@@ -5,17 +5,6 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Keranjang Belanja Anda</h1>
 
-            @if (session('success'))
-                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if (session('error'))
-                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
-                    {{ session('error') }}
-                </div>
-            @endif
-
             @if ($cartItems->count() > 0)
                 <div class="bg-white shadow-md rounded-lg overflow-hidden">
                     <ul role="list" class="divide-y divide-gray-200">

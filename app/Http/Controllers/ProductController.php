@@ -12,4 +12,12 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(6); // Ambil produk terbaru, 12 per halaman
         return view('produks.produk-page', compact('products'));
     }
+
+    public function show(Product $product)
+    {
+        // Eager load relasi kategori dan unit
+        $product->load(['category', 'unit']);
+
+        return view('produks.show-produk', compact('product'));
+    }
 }

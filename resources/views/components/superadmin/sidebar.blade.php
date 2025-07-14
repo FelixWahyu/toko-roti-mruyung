@@ -1,5 +1,6 @@
 <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
-    class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0">
+    class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white transform transition-transform duration-300 ease-in-out z-30 
+              md:relative md:translate-x-0">
     <div class="px-4 py-6 text-center">
         <h2 class="text-2xl font-bold">Panel {{ ucfirst(auth()->user()->role) }}</h2>
     </div>

@@ -55,6 +55,21 @@
                     <p><strong class="w-24 inline-block">Email:</strong> {{ $order->user->email }}</p>
                     <p><strong class="w-24 inline-block">Telepon:</strong> {{ $order->user->phone_number }}</p>
                 </div>
+                @if ($order->payment_proof)
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold border-b pb-2">Bukti Pembayaran</h3>
+                        <div class="mt-4">
+                            <a href="{{ Storage::url($order->payment_proof) }}" target="_blank">
+                                <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
+                                    class="w-full rounded-md shadow-md hover:opacity-80 transition-opacity">
+                            </a>
+                            <a href="{{ Storage::url($order->payment_proof) }}" target="_blank"
+                                class="mt-2 inline-block text-sm text-indigo-600 hover:underline">
+                                Lihat ukuran penuh
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-lg font-semibold border-b pb-2">Update Status Pesanan</h3>
@@ -63,7 +78,7 @@
                     @method('PATCH')
                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                     <select id="status" name="status"
-                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                         <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
                         <option value="paid" {{ $order->status == 'paid' ? 'selected' : '' }}>Paid</option>
                         <option value="processing" {{ $order->status == 'processing' ? 'selected' : '' }}>Processing
