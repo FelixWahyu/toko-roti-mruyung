@@ -34,7 +34,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with('cartItemCount', $cartItemCount);
         });
 
-        View::composer(['layouts.app', 'layouts.superadmin-app', 'components.footer', 'components.navbar', 'kontak-page'], function ($view) {
+        View::composer(['layouts.app', 'layouts.superadmin-app', 'components.footer', 'components.navbar', 'components.superadmin.sidebar', 'kontak-page'], function ($view) {
             $settings = Setting::all()->keyBy('key');
             $view->with('globalSettings', $settings);
         });

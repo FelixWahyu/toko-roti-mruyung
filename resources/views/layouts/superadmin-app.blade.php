@@ -14,8 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="bg-gray-100 font-sans">
-    <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex h-screen">
+<body class="bg-gray-100 antialiased font-sans">
+    <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex">
 
         <!-- Sidebar -->
         <x-superadmin.sidebar />
@@ -24,7 +24,7 @@
         <div x-show="sidebarOpen" class="fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity md:hidden"
             @click="sidebarOpen = false"></div>
 
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden h-screen">
             <!-- Header -->
             {{-- Kita lewatkan state sidebarOpen ke header --}}
             <x-superadmin.header />
@@ -56,6 +56,33 @@
                 text: '{{ session('error') }}',
             });
         @endif
+    </script>
+
+    <script>
+        function showDeleteConfirmation(event) {
+            // Hentikan borang daripada dihantar serta-merta
+            event.preventDefault();
+
+            // Dapatkan elemen borang yang mencetuskan acara ini
+            let form = event.target;
+
+            Swal.fire({
+                title: 'Anda yakin?',
+                text: "Data yang telah dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                // Jika pengguna mengklik "Ya, hapus!"
+                if (result.isConfirmed) {
+                    // Hantar borang secara manual
+                    form.submit();
+                }
+            });
+        }
     </script>
 </body>
 

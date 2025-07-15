@@ -21,13 +21,14 @@ class AdminProfileController extends Controller
         $user = Auth::user();
         $request->validate([
             'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
             'password' => ['nullable', 'confirmed', Password::defaults()],
             'phone_number' => 'required|string|max:20',
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ]);
 
-        $data = $request->only('name', 'email', 'phone_number');
+        $data = $request->only('name', 'username', 'email', 'phone_number');
 
         if ($request->hasFile('profile_picture')) {
             // Hapus foto lama jika ada

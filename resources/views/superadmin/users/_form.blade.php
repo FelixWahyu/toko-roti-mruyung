@@ -28,12 +28,12 @@
         <label for="role" class="block text-sm font-medium text-gray-700">Role (Hak Akses)</label>
         <select name="role" id="role" class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm"
             required>
-            <option value="pelanggan" {{ old('role', $user->role ?? '') == 'Pelanggan' ? 'selected' : '' }}>Pelanggan
+            <option value="pelanggan" {{ old('role', $user->role ?? '') == 'pelanggan' ? 'selected' : '' }}>Pelanggan
             </option>
-            <option value="superadmin" {{ old('role', $user->role ?? '') == 'Super Admin' ? 'selected' : '' }}>Super
+            <option value="superadmin" {{ old('role', $user->role ?? '') == 'superadmin' ? 'selected' : '' }}>Super
                 Admin
             </option>
-            <option value="owner" {{ old('role', $user->role ?? '') == 'Owner' ? 'selected' : '' }}>Owner</option>
+            <option value="owner" {{ old('role', $user->role ?? '') == 'owner' ? 'selected' : '' }}>Owner</option>
         </select>
         @error('role')
             <span class="text-sm text-red-600">{{ $message }}</span>

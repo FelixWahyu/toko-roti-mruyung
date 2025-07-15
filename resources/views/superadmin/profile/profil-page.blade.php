@@ -36,6 +36,15 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" id="username"
+                        value="{{ old('username', auth()->user()->username) }}"
+                        class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
+                    @error('username')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email', auth()->user()->email) }}"
                         class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">

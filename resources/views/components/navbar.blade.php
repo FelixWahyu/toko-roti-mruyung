@@ -53,9 +53,9 @@
                 <div class="h-6 border-l border-gray-300"></div>
                 @guest
                     <a href="{{ route('login') }}"
-                        class="text-sm font-medium text-gray-600 hover:text-indigo-600">Login</a>
+                        class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
                     <a href="{{ route('register') }}"
-                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700">
+                        class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
                         Daftar
                     </a>
                 @else
@@ -133,11 +133,11 @@
             @guest
                 <div class="flex items-center px-4">
                     <a href="{{ route('login') }}"
-                        class="w-full text-center px-4 py-2 text-sm font-medium text-gray-600 hover:text-indigo-600">Login</a>
+                        class="w-full text-center px-4 py-2 text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-indigo-600 rounded-md mx-4 hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
                 </div>
                 <div class="mt-3 space-y-1">
                     <a href="{{ route('register') }}"
-                        class="block px-4 py-2 text-base font-medium text-center text-white bg-indigo-600 rounded-md mx-4 hover:bg-indigo-700">
+                        class="block px-4 py-2 text-base font-medium text-center {{ request()->routeIs('register') ? 'text-white bg-indigo-600 rounded-md mx-4 hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
                         Daftar
                     </a>
                 </div>

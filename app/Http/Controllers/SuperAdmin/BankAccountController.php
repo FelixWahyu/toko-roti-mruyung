@@ -32,7 +32,7 @@ class BankAccountController extends Controller
 
     public function edit(BankAccount $storeAccount)
     {
-        return view('pages.admin.bankaccounts.edit', compact('storeAccount'));
+        return view('superadmin.bank-accounts.edit', compact('storeAccount'));
     }
 
     public function update(Request $request, BankAccount $storeAccount)
