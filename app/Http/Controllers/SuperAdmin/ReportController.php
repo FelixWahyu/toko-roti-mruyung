@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Http\Controllers\Controller;
-use App\Exports\SalesReportExport;
 use App\Models\Order;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\SalesReportExport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
@@ -40,7 +41,12 @@ class ReportController extends Controller
 
         $totalRevenue = $orders->sum('grand_total');
 
-        $pdf = Pdf::loadView('superadmin.reports.report_pdf_page', compact('orders', 'startDate', 'endDate', 'totalRevenue'));
+        $settings = Setting::all()->keyBy('key');
+        $storeName = $settings['store_name']->value ?? 'Toko Roti Mruyung';
+        $storeAddress = $settings['store_address']->value ?? '';
+        $logoPath = $settings['store_logo']->value ?? null;
+
+        $pdf = Pdf::loadView('superadmin.reports.report_pdf_page', compact('orders', 'startDate', 'endDate', 'totalRevenue', 'storeName', 'storeAddress', 'logoPath'));
         return $pdf->stream('laporan-penjualan-' . $startDate . '-' . $endDate . '.pdf');
     }
 
@@ -49,6 +55,11 @@ class ReportController extends Controller
         $startDate = $request->input('start_date', now()->startOfMonth()->toDateString());
         $endDate = $request->input('end_date', now()->endOfMonth()->toDateString());
 
-        return Excel::download(new SalesReportExport($startDate, $endDate), 'laporan-penjualan.xlsx');
+        // Ambil data tetapan
+        $settings = Setting::all()->keyBy('key');
+        $storeName = $settings['store_name']->value ?? 'Toko Roti Mruyung';
+        $storeAddress = $settings['store_address']->value ?? '';
+
+        return Excel::download(new SalesReportExport($startDate, $endDate, $storeName, $storeAddress), 'laporan-penjualan-' . $startDate . '-' . $endDate . '.xlsx');
     }
 }

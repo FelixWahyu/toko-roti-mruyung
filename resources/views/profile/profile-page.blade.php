@@ -54,14 +54,16 @@
                                             <span
                                                 class="px-2 py-1 text-xs font-semibold rounded-full capitalize
                                             @if ($order->status == 'pending') bg-yellow-200 text-yellow-800 @endif
-                                            @if ($order->status == 'paid' || $order->status == 'processing') bg-blue-200 text-blue-800 @endif
+                                            @if ($order->status == 'paid' || $order->status == 'processing') bg-indigo-200 text-indigo-800 @endif
                                             @if ($order->status == 'shipped' || $order->status == 'completed') bg-green-200 text-green-800 @endif
                                             @if ($order->status == 'cancelled') bg-red-200 text-red-800 @endif
                                         ">{{ $order->status }}</span>
                                         </div>
                                     </div>
+                                </a>
+                                <div class="flex items-center gap-2">
                                     @if ($order->status == 'pending' && !$order->payment_proof)
-                                        <div class="mt-4 border-t pt-4">
+                                        <div class="bg-indigo-100 px-4 py-2 rounded-lg">
                                             <a href="{{ route('order.payment', $order) }}"
                                                 class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                                                 Upload Bukti Bayar &rarr;
@@ -71,7 +73,7 @@
                                     @if (in_array($order->status, ['pending', 'paid']))
                                         <form action="{{ route('order.cancel', $order) }}" method="POST"
                                             onsubmit="return confirm('Anda yakin ingin membatalkan pesanan ini?');"
-                                            class="mt-4">
+                                            class="bg-red-100 px-4 py-2 rounded-lg">
                                             @csrf
                                             <button type="submit"
                                                 class="text-sm font-medium text-red-600 hover:text-red-500">
@@ -79,7 +81,7 @@
                                             </button>
                                         </form>
                                     @endif
-                                </a>
+                                </div>
                             @empty
                                 <p class="text-gray-500">Anda belum memiliki riwayat pesanan.</p>
                             @endforelse

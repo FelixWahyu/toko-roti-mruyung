@@ -25,8 +25,8 @@
                 <h3 class="text-sm font-medium text-slate-500">Total Pesanan</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">{{ $totalOrders }}</p>
             </div>
-            <div class="bg-orange-100 p-3 rounded-full">
-                <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-emerald-100 p-3 rounded-full">
+                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
@@ -46,11 +46,11 @@
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
             <div>
-                <h3 class="text-sm font-medium text-slate-500">Pesanan Hari Ini</h3>
-                <p class="mt-2 text-3xl font-bold text-slate-900">{{ $newOrders }}</p>
+                <h3 class="text-sm font-medium text-slate-500">Stok Roti Limit</h3>
+                <p class="mt-2 text-3xl font-bold text-slate-900">{{ $limitStok }}</p>
             </div>
-            <div class="bg-emerald-100 p-3 rounded-full">
-                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-red-100 p-3 rounded-full">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -61,13 +61,68 @@
     <!-- Grafik & Pesanan Terbaru -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
         <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-            <h3 class="text-xl font-semibold text-slate-800">Grafik Penjualan Tahun Ini</h3>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                <h3 class="text-xl font-semibold text-slate-800">{{ $chartTitle }}</h3>
+                <!-- Butang Penapis -->
+                <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg mt-2 sm:mt-0">
+                    <a href="{{ route('admin.dashboard.index', ['filter' => 'daily']) }}"
+                        class="px-3 py-1 text-sm font-semibold rounded-md transition-colors {{ $filter == 'daily' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700' }}">
+                        Harian
+                    </a>
+                    <a href="{{ route('admin.dashboard.index', ['filter' => 'weekly']) }}"
+                        class="px-3 py-1 text-sm font-semibold rounded-md transition-colors {{ $filter == 'weekly' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700' }}">
+                        Mingguan
+                    </a>
+                    <a href="{{ route('admin.dashboard.index', ['filter' => 'monthly']) }}"
+                        class="px-3 py-1 text-sm font-semibold rounded-md transition-colors {{ $filter == 'monthly' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700' }}">
+                        Bulanan
+                    </a>
+                    <a href="{{ route('admin.dashboard.index', ['filter' => 'yearly']) }}"
+                        class="px-3 py-1 text-sm font-semibold rounded-md transition-colors {{ $filter == 'yearly' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700' }}">
+                        Tahunan
+                    </a>
+                </div>
+            </div>
             <canvas id="salesChart" class="mt-4"></canvas>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm">
             <h3 class="text-xl font-semibold text-slate-800">Aktivitas Terbaru</h3>
-            {{-- Di sini Anda bisa menampilkan daftar pesanan terbaru --}}
-            <p class="mt-4 text-slate-500">Segera hadir...</p>
+            <div class="space-y-4">
+                @forelse($recentOrders as $order)
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="w-10 h-10 rounded-full flex items-center justify-center
+                                @if ($order->status == 'pending') bg-yellow-100 text-yellow-600 @endif
+                                @if ($order->status == 'paid') bg-cyan-100 text-cyan-600 @endif
+                                @if ($order->status == 'processing') bg-yellow-100 text-yellow-600 @endif
+                                @if ($order->status == 'completed') bg-green-100 text-green-600 @endif
+                                @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif
+                            ">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold text-slate-700">
+                                Pesanan baru dari <span class="font-bold">{{ $order->user->name }}</span>
+                            </p>
+                            <p class="text-xs text-slate-500">
+                                {{ $order->created_at->diffForHumans() }}
+                            </p>
+                        </div>
+                        <a href="{{ route('admin.orders.show', $order) }}"
+                            class="text-xs font-semibold text-indigo-600 hover:underline">
+                            Lihat
+                        </a>
+                    </div>
+                @empty
+                    <p class="text-sm text-center text-slate-500 py-8">Belum ada aktivitas terbaru.</p>
+                @endforelse
+            </div>
         </div>
     </div>
 

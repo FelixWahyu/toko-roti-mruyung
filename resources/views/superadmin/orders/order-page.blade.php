@@ -25,7 +25,7 @@
                                 class="px-2 py-1 text-xs font-semibold rounded-full capitalize
                                 @if ($order->status == 'pending') bg-yellow-200 text-yellow-800 @endif
                                 @if ($order->status == 'paid') bg-cyan-200 text-cyan-800 @endif
-                                @if ($order->status == 'processing') bg-blue-200 text-blue-800 @endif
+                                @if ($order->status == 'processing') bg-yellow-200 text-yellow-800 @endif
                                 @if ($order->status == 'shipped') bg-purple-200 text-purple-800 @endif
                                 @if ($order->status == 'completed') bg-green-200 text-green-800 @endif
                                 @if ($order->status == 'cancelled') bg-red-200 text-red-800 @endif

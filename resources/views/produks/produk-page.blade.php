@@ -2,60 +2,127 @@
 
 @section('content')
     <div class="bg-white">
-        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">Katalog Produk Kami</h2>
-            <p class="mt-4 text-base text-gray-500">Temukan roti dan kue favorit Anda di sini. Dibuat dengan cinta setiap
-                hari.</p>
-
-            {{-- Nanti di sini kita tambahkan filter & search --}}
-
-            <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                @forelse ($products as $product)
-                    <div class="group relative flex flex-col">
-                        <a href="{{ route('products.show', $product->slug) }}"
-                            class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                            <img src="{{ Storage::url($product->image) }}" alt="[Gambar {{ $product->name }}]"
-                                class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-                        </a>
-                        <div class="mt-4 flex justify-between">
-                            <div>
-                                <h3 class="text-md text-gray-700">
-                                    <a href="{{ route('products.show', $product->slug) }}"> {{-- Nanti ini ke halaman detail produk --}}
-                                        {{ $product->name }}
-                                    </a>
-                                </h3>
-                                <p class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</p>
-                            </div>
-                            <p class="text-sm font-medium text-gray-900">Rp{{ number_format($product->price, 0, ',', '.') }}
-                            </p>
-                        </div>
-                        <div class="mt-4">
-                            <form action="{{ route('cart.store', $product) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="w-full bg-indigo-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                                        </path>
-                                    </svg>
-                                    Tambah ke Keranjang
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col-span-full text-center py-12">
-                        <p class="text-gray-500 text-lg">Oops! Belum ada produk yang tersedia saat ini.</p>
-                    </div>
-                @endforelse
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="pb-12 text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">Katalog Produk Kami</h2>
+                <p class="mt-4 text-base text-gray-500">Temukan roti dan kue favorit Anda di sini. Dibuat dengan cinta setiap
+                    hari.</p>
             </div>
 
-            {{-- Navigasi Paginasi --}}
-            <div class="mt-10">
-                {{ $products->links() }}
+            <!-- Alpine.js Component Wrapper -->
+            <div x-data="productFilter()">
+                <!-- Borang Carian dan Penapis -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <!-- Carian -->
+                        <div class="md:col-span-2">
+                            <label for="search" class="block text-sm font-medium text-gray-700">Cari Produk</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input type="text" id="search" x-model.debounce.500ms="search"
+                                    class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 py-2 border sm:text-sm border-gray-300 rounded-md"
+                                    placeholder="Search here...">
+                            </div>
+                        </div>
+                        <!-- Penapis Kategori -->
+                        <div>
+                            <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
+                            <select id="category" x-model="category"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="">Semua Kategori</option>
+                                @foreach ($categories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- Penapis Harga -->
+                        <div>
+                            <label for="sort_by" class="block text-sm font-medium text-gray-700">Urutkan</label>
+                            <select id="sort_by" x-model="sort"
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                <option value="">Default</option>
+                                <option value="price_asc">Harga: Terendah ke Tertinggi</option>
+                                <option value="price_desc">Harga: Tertinggi ke Terendah</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Container untuk Senarai Produk dengan Penunjuk Memuat -->
+                <div class="relative min-h-[300px]">
+                    <!-- Penunjuk Memuat (Loading Spinner) -->
+                    <div x-show="loading" x-transition
+                        class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
+                        <svg class="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                    </div>
+                    <!-- Senarai Produk Sebenar -->
+                    <div id="product-list-container">
+                        @include('produks._produk-list', ['products' => $products])
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function productFilter() {
+            return {
+                search: '{{ $searchTerm ?? '' }}',
+                category: '{{ $selectedCategory ?? '' }}',
+                sort: '{{ $selectedSort ?? '' }}',
+                loading: false, // State untuk penunjuk memuat
+
+                init() {
+                    this.$watch('search', () => this.fetchProducts());
+                    this.$watch('category', () => this.fetchProducts());
+                    this.$watch('sort', () => this.fetchProducts());
+                },
+
+                fetchProducts() {
+                    this.loading = true; // Tunjukkan spinner
+
+                    const params = new URLSearchParams({
+                        search: this.search,
+                        category: this.category,
+                        sort_by: this.sort,
+                    });
+
+                    const url = `{{ route('products.filter') }}?${params.toString()}`;
+
+                    history.pushState(null, '', `{{ route('products.index') }}?${params.toString()}`);
+
+                    fetch(url, {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest', // Header untuk permintaan AJAX
+                            },
+                        })
+                        .then(response => response.text())
+                        .then(html => {
+                            document.getElementById('product-list-container').innerHTML = html;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching products:', error);
+                            // Anda boleh menambah mesej ralat kepada pengguna di sini
+                        })
+                        .finally(() => {
+                            this.loading = false; // Sembunyikan spinner
+                        });
+                }
+            }
+        }
+    </script>
 @endsection
