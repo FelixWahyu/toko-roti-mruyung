@@ -81,7 +81,7 @@
 
                             @if (in_array($order->status, ['pending', 'paid']))
                                 <form action="{{ route('order.cancel', $order) }}" method="POST" class="w-full"
-                                    onsubmit="return confirm('Anda yakin ingin membatalkan pesanan ini?');">
+                                    onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan!')">
                                     @csrf
                                     <button type="submit"
                                         class="w-full text-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm font-medium">

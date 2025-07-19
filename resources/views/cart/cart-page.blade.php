@@ -41,17 +41,26 @@
                                                     class="mr-2 text-gray-500">Qty:</label>
                                                 <input type="number" id="quantity-{{ $item->id }}" name="quantity"
                                                     value="{{ $item->quantity }}" min="1"
-                                                    class="w-16 border-gray-300 rounded-md text-center">
+                                                    class="w-16 p-1 border border-gray-300 rounded-md text-center">
                                                 <button type="submit"
                                                     class="ml-2 text-indigo-600 hover:text-indigo-500 font-medium">Update</button>
                                             </form>
 
                                             <!-- Tombol Hapus -->
-                                            <form action="{{ route('cart.destroy', $item) }}" method="POST">
+                                            <form action="{{ route('cart.destroy', $item) }}" method="POST"
+                                                onsubmit="showConfirmation(event, 'Hapus Item?', 'Anda yakin ingin menghapus item ini dari keranjang?', 'Ya, Hapus!')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="font-medium text-red-600 hover:text-red-500">Hapus</button>
+                                                    class="flex items-center p-1 rounded-md font-medium bg-red-100 text-red-600 hover:bg-red-200"><svg
+                                                        class="w-4 h-4" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                        </path>
+                                                    </svg>
+                                                    Hapus</button>
                                             </form>
                                         </div>
                                     </div>

@@ -47,6 +47,34 @@
         @endif
     </script>
 
+    <script>
+        function showConfirmation(event, title, text, confirmButtonText) {
+            // Hentikan borang daripada dihantar serta-merta
+            event.preventDefault();
+
+            // Dapatkan elemen borang yang mencetuskan acara ini
+            let form = event.target;
+
+            Swal.fire({
+                title: title,
+                text: text,
+                icon: 'warning',
+                width: '380px', // Saiz pop-up yang lebih kecil
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: confirmButtonText,
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                // Jika pengguna mengklik butang pengesahan
+                if (result.isConfirmed) {
+                    // Hantar borang secara manual
+                    form.submit();
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>

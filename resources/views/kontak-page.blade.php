@@ -98,10 +98,9 @@
                         <div class="space-y-3 text-gray-600">
                             <div class="flex justify-between"><span>Senin - Jumat</span> <span class="font-semibold">09:00 -
                                     21:00</span></div>
-                            <div class="flex justify-between"><span>Sabtu</span> <span class="font-semibold">09:00 -
+                            <div class="flex justify-between"><span>Sabtu - Minggu</span> <span class="font-semibold">09:00
+                                    -
                                     22:00</span></div>
-                            <div class="flex justify-between"><span>Minggu</span> <span class="font-semibold">09:00 -
-                                    20:00</span></div>
                             <p class="text-sm text-gray-500 pt-2">*Guesthouse buka 24 jam untuk tamu yang menginap.</p>
                         </div>
                     </div>

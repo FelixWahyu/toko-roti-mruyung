@@ -33,10 +33,10 @@
                     class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Kontak</a>
             </div>
 
-            <!-- Tombol Auth & User (Desktop) -->
-            <div class="hidden md:flex items-center space-x-4">
-                <!-- Ikon Keranjang -->
-                <a href="{{ route('cart.index') }}" class="relative p-2 text-gray-500 hover:text-gray-700">
+            <div class="flex items-center space-x-5">
+                <!-- Ikon Keranjang (Kelihatan pada semua saiz) -->
+                <a href="{{ route('cart.index') }}"
+                    class="relative p-2 hover:text-indigo-600 {{ request()->routeIs('cart.index') ? 'text-indigo-600 font-bold' : 'text-gray-600' }}">
                     <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path
@@ -45,72 +45,74 @@
                     </svg>
                     @if (isset($cartItemCount) && $cartItemCount > 0)
                         <span
-                            class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                            {{ $cartItemCount }}
-                        </span>
+                            class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{ $cartItemCount }}</span>
                     @endif
                 </a>
-                <div class="h-6 border-l border-gray-300"></div>
-                @guest
-                    <a href="{{ route('login') }}"
-                        class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
-                    <a href="{{ route('register') }}"
-                        class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
-                        Daftar
-                    </a>
-                @else
-                    <!-- Dropdown Pengguna -->
-                    <div x-data="{ dropdownOpen: false }" class="relative">
-                        <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
-                            <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
-                                @if (Auth::user()->profile_picture)
-                                    <img class="h-full w-full object-cover"
-                                        src="{{ Storage::url(Auth::user()->profile_picture) }}" alt="Foto Profil">
-                                @else
-                                    <svg class="h-full w-full text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                    </svg>
-                                @endif
+                <!-- Tombol Auth & User (Desktop) -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="h-6 border-l border-gray-300"></div>
+                    @guest
+                        <a href="{{ route('login') }}"
+                            class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
+                        <a href="{{ route('register') }}"
+                            class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
+                            Daftar
+                        </a>
+                    @else
+                        <!-- Dropdown Pengguna -->
+                        <div x-data="{ dropdownOpen: false }" class="relative">
+                            <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
+                                <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
+                                    @if (Auth::user()->profile_picture)
+                                        <img class="h-full w-full object-cover"
+                                            src="{{ Storage::url(Auth::user()->profile_picture) }}" alt="Foto Profil">
+                                    @else
+                                        <svg class="h-full w-full text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M24 20.993V24H0v-2.997A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                    @endif
+                                </div>
+                                <span>{{ Auth::user()->name }}</span>
+                                <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div x-show="dropdownOpen" @click.away="dropdownOpen = false"
+                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
+                                <a href="{{ route('profile.index') }}"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil Saya</a>
+                                <a href="{{ route('profile.index') }}"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pesanan Saya</a>
+                                <form method="POST" action="{{ route('logout') }}"
+                                    onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout!')">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Logout
+                                    </button>
+                                </form>
                             </div>
-                            <span>{{ Auth::user()->name }}</span>
-                            <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="dropdownOpen" @click.away="dropdownOpen = false"
-                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
-                            <a href="{{ route('profile.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil Saya</a>
-                            <a href="{{ route('profile.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pesanan Saya</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit"
-                                    class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                    Logout
-                                </button>
-                            </form>
                         </div>
-                    </div>
-                @endguest
-            </div>
+                    @endguest
+                </div>
 
-            <!-- Tombol Hamburger (Mobile) -->
-            <div class="md:hidden flex items-center">
-                <button @click="open = !open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                <!-- Tombol Hamburger (Mobile) -->
+                <div class="md:hidden flex items-center">
+                    <button @click="open = !open"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            <path :class="{ 'hidden': !open, 'inline-flex': open }" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -155,7 +157,8 @@
                     <a href="{{ route('profile.index') }}"
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Pesanan
                         Saya</a>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logout') }}"
+                        onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout!')">
                         @csrf
                         <button type="submit"
                             class="w-full text-left block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
