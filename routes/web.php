@@ -17,6 +17,7 @@ use App\Http\Controllers\SuperAdmin\CategoryController;
 use App\Http\Controllers\SuperAdmin\DashboardController;
 use App\Http\Controllers\SuperAdmin\BankAccountController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
+use App\Http\Controllers\SuperAdmin\ShippingZoneController;
 
 Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/', function () {
@@ -106,5 +107,6 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
         // Manajemen Pengguna & Rekening
         Route::resource('users', UserController::class);
         Route::resource('store-accounts', BankAccountController::class);
+        Route::resource('shipping-zones', ShippingZoneController::class);
     });
 });

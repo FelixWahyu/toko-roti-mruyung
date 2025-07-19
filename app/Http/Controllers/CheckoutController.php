@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BankAccount;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\OrderItem;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Models\BankAccount;
 use Illuminate\Support\Str;
+use App\Models\ShippingZone;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -25,7 +27,10 @@ class CheckoutController extends Controller
             return redirect()->route('products.index')->with('info', 'Keranjang Anda kosong, silakan berbelanja terlebih dahulu.');
         }
 
-        return view('checkout.checkout-page', compact('cartItems'));
+        $shippingZones = ShippingZone::all();
+        $settings = Setting::all()->keyBy('key');
+
+        return view('checkout.checkout-page', compact('cartItems', 'shippingZones', 'settings'));
     }
 
     /**
@@ -37,7 +42,9 @@ class CheckoutController extends Controller
             'name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
             'shipping_address' => 'required|string',
+            'shipping_zone_id' => 'required|exists:shipping_zones,id',
         ]);
+        // $request->validate(['shipping_zone_id' => 'required|exists:shipping_zones,id']);
 
         $cartItems = Cart::where('user_id', Auth::id())->get();
 
@@ -58,7 +65,16 @@ class CheckoutController extends Controller
                 $subtotal += $item->product->price * $item->quantity;
             }
 
-            $shipping_cost = 10000; // Contoh ongkir statis
+            $zone = ShippingZone::find($request->shipping_zone_id);
+            $settings = Setting::all()->keyBy('key');
+            $minPurchase = $settings['min_purchase_free_shipping']->value ?? 0;
+            $freeDistricts = explode(',', $settings['free_shipping_districts']->value ?? '');
+
+            $shipping_cost = $zone->cost;
+            if ($minPurchase > 0 && $subtotal >= $minPurchase && in_array($zone->district, $freeDistricts)) {
+                $shipping_cost = 0;
+            }
+
             $grand_total = $subtotal + $shipping_cost;
 
             // 1. Buat pesanan baru (Order)

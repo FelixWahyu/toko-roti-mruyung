@@ -23,6 +23,8 @@ class SettingController extends Controller
             'store_contact' => 'nullable|string|max:50',
             'store_email' => 'nullable|string|email|max:255',
             'store_logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
+            'min_purchase_free_shipping' => 'nullable|numeric|min:0',
+            'free_shipping_districts' => 'nullable|string',
         ]);
 
         $settingsData = $request->except('_token', 'store_logo');

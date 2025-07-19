@@ -29,7 +29,23 @@
                         value="{{ old('store_email', $settings['store_email']->value ?? '') }}"
                         class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
-                {{-- Form untuk upload logo bisa ditambahkan di sini --}}
+                <div>
+                    <label for="min_purchase_free_shipping" class="block text-sm font-medium text-slate-700">Minimal Belanja
+                        Gratis Ongkir</label>
+                    <input type="number" name="min_purchase_free_shipping" id="min_purchase_free_shipping"
+                        value="{{ old('min_purchase_free_shipping', $settings['min_purchase_free_shipping']->value ?? 0) }}"
+                        class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm">
+                    <p class="mt-1 text-xs text-gray-500">Isi 0 jika tidak ada promo gratis ongkir.</p>
+                </div>
+                <div>
+                    <label for="free_shipping_districts" class="block text-sm font-medium text-slate-700">Wilayah Gratis
+                        Ongkir</label>
+                    <input type="text" name="free_shipping_districts" id="free_shipping_districts"
+                        value="{{ old('free_shipping_districts', $settings['free_shipping_districts']->value ?? '') }}"
+                        class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm">
+                    <p class="mt-1 text-xs text-gray-500">Pisahkan nama kecamatan dengan koma. Contoh: Purwokerto
+                        Timur,Sokaraja</p>
+                </div>
                 <div>
                     <label for="store_logo" class="block text-sm font-medium text-gray-700">Logo Toko</label>
                     <input type="file" name="store_logo" id="store_logo"
