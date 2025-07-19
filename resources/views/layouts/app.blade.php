@@ -59,10 +59,10 @@
                 title: title,
                 text: text,
                 icon: 'warning',
-                width: '380px', // Saiz pop-up yang lebih kecil
+                width: '400px', // Saiz pop-up yang lebih kecil
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
+                cancelButtonColor: '#64748b',
                 confirmButtonText: confirmButtonText,
                 cancelButtonText: 'Batal'
             }).then((result) => {

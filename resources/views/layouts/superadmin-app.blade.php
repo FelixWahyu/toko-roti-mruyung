@@ -59,26 +59,22 @@
     </script>
 
     <script>
-        function showDeleteConfirmation(event) {
-            // Hentikan borang daripada dihantar serta-merta
+        function showConfirmation(event, title, text, confirmButtonText) {
             event.preventDefault();
-
-            // Dapatkan elemen borang yang mencetuskan acara ini
             let form = event.target;
 
             Swal.fire({
-                title: 'Anda yakin?',
-                text: "Data yang telah dihapus tidak dapat dikembalikan!",
+                title: title,
+                text: text,
                 icon: 'warning',
+                width: '400px',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Ya, hapus!',
+                cancelButtonColor: '#64748b',
+                confirmButtonText: confirmButtonText,
                 cancelButtonText: 'Batal'
             }).then((result) => {
-                // Jika pengguna mengklik "Ya, hapus!"
                 if (result.isConfirmed) {
-                    // Hantar borang secara manual
                     form.submit();
                 }
             });

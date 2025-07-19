@@ -54,7 +54,8 @@
                                 </a>
                                 @if (auth()->user()->role == 'owner')
                                     <form action="{{ route('admin.products.destroy', $product) }}" method="POST"
-                                        class="inline-block" onsubmit="showDeleteConfirmation(event)">
+                                        class="inline-block"
+                                        onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $product->name }}?', 'Ya, Hapus!')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"

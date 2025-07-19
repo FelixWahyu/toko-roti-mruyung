@@ -37,7 +37,7 @@
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.units.destroy', $unit) }}" method="POST" class="inline-block"
-                                    onsubmit="showDeleteConfirmation(event)">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $unit->name }}?', 'Ya, Hapus!')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

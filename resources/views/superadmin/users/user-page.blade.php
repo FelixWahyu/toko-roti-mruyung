@@ -56,7 +56,8 @@
                                     </a>
                                     @if (auth()->id() !== $user->id)
                                         <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
-                                            class="inline-block" onsubmit="showDeleteConfirmation(event)">
+                                            class="inline-block"
+                                            onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $user->name }}?', 'Ya, Hapus!')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
