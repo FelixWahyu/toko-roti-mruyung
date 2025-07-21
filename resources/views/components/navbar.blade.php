@@ -9,7 +9,7 @@
                         <img class="h-10 w-auto" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
                             alt="Logo Toko">
                     @else
-                        <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        <svg class="h-8 w-8 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
@@ -23,20 +23,20 @@
             <!-- Navigasi Utama (Desktop) -->
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <a href="{{ route('home') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Beranda</a>
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Beranda</a>
                 <a href="{{ route('about') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Tentang
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Tentang
                     Kami</a>
                 <a href="{{ route('products.index') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('products.index') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Produk</a>
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('products.index') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Produk</a>
                 <a href="{{ route('contact') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-indigo-600 font-bold' : 'text-gray-600' }} hover:text-indigo-600">Kontak</a>
+                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Kontak</a>
             </div>
 
             <div class="flex items-center space-x-5">
                 <!-- Ikon Keranjang (Kelihatan pada semua saiz) -->
                 <a href="{{ route('cart.index') }}"
-                    class="relative p-2 hover:text-indigo-600 {{ request()->routeIs('cart.index') ? 'text-indigo-600 font-bold' : 'text-gray-600' }}">
+                    class="relative p-2 hover:text-brown-500 {{ request()->routeIs('cart.index') ? 'text-brown-500 font-bold' : 'text-gray-600' }}">
                     <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path
@@ -53,9 +53,9 @@
                     <div class="h-6 border-l border-gray-300"></div>
                     @guest
                         <a href="{{ route('login') }}"
-                            class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
+                            class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
                         <a href="{{ route('register') }}"
-                            class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
+                            class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">
                             Daftar
                         </a>
                     @else
@@ -103,7 +103,7 @@
                 <!-- Tombol Hamburger (Mobile) -->
                 <div class="md:hidden flex items-center">
                     <button @click="open = !open"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-400">
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path :class="{ 'hidden': open, 'inline-flex': !open }" stroke-linecap="round"
@@ -121,25 +121,25 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <a href="{{ route('home') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Beranda</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Beranda</a>
             <a href="{{ route('about') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Tentang
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Tentang
                 Kami</a>
             <a href="{{ route('products.index') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('products.index') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Produk</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('products.index') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Produk</a>
             <a href="{{ route('contact') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Kontak</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Kontak</a>
         </div>
         <!-- Opsi Auth Mobile -->
         <div class="pt-4 pb-3 border-t border-gray-200">
             @guest
                 <div class="flex items-center px-4">
                     <a href="{{ route('login') }}"
-                        class="w-full text-center px-4 py-2 text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-indigo-600 rounded-md mx-4 hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">Login</a>
+                        class="w-full text-center px-4 py-2 text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
                 </div>
                 <div class="mt-3 space-y-1">
                     <a href="{{ route('register') }}"
-                        class="block px-4 py-2 text-base font-medium text-center {{ request()->routeIs('register') ? 'text-white bg-indigo-600 rounded-md mx-4 hover:bg-indigo-700' : 'text-gray-600 hover:text-indigo-600' }}">
+                        class="block px-4 py-2 text-base font-medium text-center {{ request()->routeIs('register') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">
                         Daftar
                     </a>
                 </div>

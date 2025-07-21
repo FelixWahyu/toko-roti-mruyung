@@ -4,7 +4,7 @@
     <div class="bg-white">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-base font-semibold text-indigo-600 tracking-wider uppercase">Hubungi Kami</h2>
+                <h2 class="text-base font-semibold text-brown-500 tracking-wider uppercase">Hubungi Kami</h2>
                 <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                     Kami Senang Mendengar dari Anda
                 </p>
@@ -30,7 +30,7 @@
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
                                 <input type="text" name="name" id="name" required value="{{ old('name') }}"
-                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                                 @error('name')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -38,7 +38,7 @@
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
                                 <input type="email" name="email" id="email" required value="{{ old('email') }}"
-                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                                 @error('email')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -47,7 +47,7 @@
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700">Subjek</label>
                             <input type="text" name="subject" id="subject" required value="{{ old('subject') }}"
-                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                             @error('subject')
                                 <span class="text-sm text-red-600">{{ $message }}</span>
                             @enderror
@@ -55,14 +55,14 @@
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700">Pesan Anda</label>
                             <textarea id="message" name="message" rows="5" required
-                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('message') }}</textarea>
+                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">{{ old('message') }}</textarea>
                             @error('message')
                                 <span class="text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brown-500 hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
                                 Kirim Pesan
                             </button>
                         </div>
@@ -75,7 +75,7 @@
                         <h3 class="text-xl font-bold text-gray-900 mb-4">Detail Kontak</h3>
                         <div class="space-y-4 text-gray-600">
                             <div class="flex items-start">
-                                <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="flex-shrink-0 h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -87,7 +87,7 @@
                                 </p>
                             </div>
                             <div class="flex items-center">
-                                <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="flex-shrink-0 h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
@@ -96,7 +96,7 @@
                                     +{{ $globalSettings['store_contact']->value ?? 'Toko Roti Mruyung' }}</p>
                             </div>
                             <div class="flex items-center">
-                                <svg class="flex-shrink-0 h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg"
+                                <svg class="flex-shrink-0 h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />

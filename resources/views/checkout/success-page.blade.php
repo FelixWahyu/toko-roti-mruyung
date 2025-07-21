@@ -36,10 +36,10 @@
 
             <div class="mt-8">
                 <a href="{{ route('order.payment', $order) }}"
-                    class="text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md px-6 py-3">
+                    class="text-base font-medium text-white bg-brown-500 hover:bg-brown-600 rounded-md px-6 py-3">
                     Upload Bukti Pembayaran
                 </a>
-                <a href="{{ route('home') }}" class="mt-4 ms-4 inline-block text-sm text-gray-600 hover:text-indigo-600">
+                <a href="{{ route('home') }}" class="mt-4 ms-4 inline-block text-sm text-gray-600 hover:text-brown-500">
                     Kembali ke Beranda
                 </a>
             </div>

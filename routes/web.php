@@ -90,13 +90,17 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
     Route::resource('products', ProduksController::class);
 
     // Manajemen Pesanan
-    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-    Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+    Route::middleware('role:superadmin')->group(function () {
+        Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+        Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+    });
 
     // Pengaturan Website
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::resource('store-accounts', BankAccountController::class);
+    Route::resource('shipping-zones', ShippingZoneController::class);
 
 
     // == FITUR YANG HANYA BISA DIAKSES OWNER ==
@@ -106,9 +110,7 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
         Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
         Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
 
-        // Manajemen Pengguna & Rekening
+        // Manajemen Pengguna
         Route::resource('users', UserController::class);
-        Route::resource('store-accounts', BankAccountController::class);
-        Route::resource('shipping-zones', ShippingZoneController::class);
     });
 });

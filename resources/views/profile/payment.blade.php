@@ -5,7 +5,7 @@
         <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white p-8 rounded-lg shadow-lg">
                 <a href="{{ route('profile.index') }}"
-                    class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-indigo-600">
+                    class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-brown-500">
                     &larr; Kembali ke Profil
                 </a>
                 <h1 class="text-2xl font-bold text-gray-900">Upload Bukti Pembayaran</h1>

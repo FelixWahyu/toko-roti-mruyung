@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
                 <div>
-                    <h2 class="text-base font-semibold text-indigo-600 tracking-wider uppercase">Tentang Kami</h2>
+                    <h2 class="text-base font-semibold text-brown-500 tracking-wider uppercase">Tentang Kami</h2>
                     <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
                         Toko Roti Mruyung Guest House & Cafe Banyumas
                     </p>
@@ -44,8 +44,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                 <!-- Pilar 1 -->
                 <div>
-                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-indigo-100 rounded-full">
-                        <svg class="h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
+                        <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -57,8 +57,8 @@
                 </div>
                 <!-- Pilar 2 -->
                 <div>
-                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-indigo-100 rounded-full">
-                        <svg class="h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
+                        <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -70,8 +70,8 @@
                 </div>
                 <!-- Pilar 3 -->
                 <div>
-                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-indigo-100 rounded-full">
-                        <svg class="h-6 w-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
+                        <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.5M5.25 7.136l-1.5 1.636M16.5 15.75l-1.5-1.636" />

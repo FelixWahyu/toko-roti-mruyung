@@ -4,7 +4,7 @@
     <div class="bg-gray-100 py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href="{{ route('profile.index') }}"
-                class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-indigo-600">
+                class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-brown-500">
                 &larr; Kembali ke Riwayat Pesanan
             </a>
             <h1 class="text-3xl font-extrabold text-gray-900">Detail Pesanan</h1>

@@ -71,7 +71,7 @@
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Penerima</label>
                                 <input type="text" id="name" name="name" value="{{ auth()->user()->name }}"
                                     required
-                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                                 @error('name')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -81,7 +81,7 @@
                                     Telepon</label>
                                 <input type="text" id="phone_number" name="phone_number"
                                     value="{{ auth()->user()->phone_number }}" required
-                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                                 @error('phone_number')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -101,7 +101,7 @@
                                 <label for="shipping_address" class="block text-sm font-medium text-gray-700">Alamat Lengkap
                                     Pengiriman</label>
                                 <textarea id="shipping_address" name="shipping_address" rows="4" required
-                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ auth()->user()->address }}</textarea>
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">{{ auth()->user()->address }}</textarea>
                                 @error('shipping_address')
                                     <span class="text-sm text-red-600">{{ $message }}</span>
                                 @enderror
@@ -109,7 +109,7 @@
 
                             <div class="pt-6">
                                 <button type="submit"
-                                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brown-500 hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
                                     Buat Pesanan
                                 </button>
                             </div>

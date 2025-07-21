@@ -27,7 +27,7 @@
                                     </svg>
                                 </div>
                                 <input type="text" id="search" x-model.debounce.500ms="search"
-                                    class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 py-2 border sm:text-sm border-gray-300 rounded-md"
+                                    class="focus:ring-brown-400 focus:border-brown-400 block w-full pl-10 py-2 border sm:text-sm border-gray-300 rounded-md"
                                     placeholder="Search here...">
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
                             <select id="category" x-model="category"
-                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-brown-400 focus:border-brown-400 sm:text-sm rounded-md">
                                 <option value="">Semua Kategori</option>
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -46,7 +46,7 @@
                         <div>
                             <label for="sort_by" class="block text-sm font-medium text-gray-700">Urutkan</label>
                             <select id="sort_by" x-model="sort"
-                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-brown-400 focus:border-brown-400 sm:text-sm rounded-md">
                                 <option value="">Default</option>
                                 <option value="price_asc">Harga: Terendah ke Tertinggi</option>
                                 <option value="price_desc">Harga: Tertinggi ke Terendah</option>
@@ -60,7 +60,7 @@
                     <!-- Penunjuk Memuat (Loading Spinner) -->
                     <div x-show="loading" x-transition
                         class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
-                        <svg class="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        <svg class="animate-spin h-8 w-8 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                                 stroke-width="4"></circle>

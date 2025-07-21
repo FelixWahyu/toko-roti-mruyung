@@ -24,7 +24,7 @@ class DashboardController extends Controller
         // Data untuk Grafik Penjualan Bulanan
         $filter = $request->input('filter');
         if (!$filter) {
-            $filter = auth()->user()->role === 'superadmin' ? 'daily' : 'yearly';
+            $filter = auth()->user()->role === 'superadmin' ? 'daily' : 'monthly';
         }
 
         $query = Order::query()->where('status', 'completed');

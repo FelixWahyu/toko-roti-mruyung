@@ -13,21 +13,21 @@
                             <li>
                                 <a @click.prevent="tab = 'history'" href="#"
                                     class="flex items-center px-4 py-2 text-gray-700 rounded-md"
-                                    :class="{ 'bg-indigo-100 text-indigo-700': tab === 'history' }">
+                                    :class="{ 'bg-brown-100 text-brown-600': tab === 'history' }">
                                     Riwayat Pesanan
                                 </a>
                             </li>
                             <li>
                                 <a @click.prevent="tab = 'profile'" href="#"
                                     class="flex items-center px-4 py-2 text-gray-700 rounded-md"
-                                    :class="{ 'bg-indigo-100 text-indigo-700': tab === 'profile' }">
+                                    :class="{ 'bg-brown-100 text-brown-600': tab === 'profile' }">
                                     Edit Profil
                                 </a>
                             </li>
                             <li>
                                 <a @click.prevent="tab = 'password'" href="#"
                                     class="flex items-center px-4 py-2 text-gray-700 rounded-md"
-                                    :class="{ 'bg-indigo-100 text-indigo-700': tab === 'password' }">
+                                    :class="{ 'bg-brown-100 text-brown-600': tab === 'password' }">
                                     Ganti Password
                                 </a>
                             </li>

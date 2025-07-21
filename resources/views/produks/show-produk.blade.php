@@ -17,7 +17,7 @@
                     <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h2>
                     <p class="text-gray-600 text-sm mb-4">
                         Kategori: <a href="#"
-                            class="text-indigo-600 hover:underline">{{ $product->category->name }}</a>
+                            class="text-brown-500 hover:underline">{{ $product->category->name }}</a>
                     </p>
 
                     <div class="flex mb-4">
@@ -47,14 +47,13 @@
                         <form action="{{ route('cart.store', $product) }}" method="POST">
                             @csrf
                             <button type="submit"
-                                class="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                class="w-full bg-brown-500 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6">
                                     </path>
-                                </svg>
-                                Tambah ke Keranjang
+                                </svg><span> ke Keranjang</span>
                             </button>
                         </form>
                     @else

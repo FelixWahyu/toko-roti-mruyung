@@ -78,13 +78,13 @@
                         <p class="mt-1 text-sm text-gray-500">Ongkos kirim akan dihitung saat checkout.</p>
                         <div class="mt-6">
                             <a href="{{ route('checkout.index') }}"
-                                class="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                                class="w-full flex items-center justify-center rounded-md border border-transparent bg-brown-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-brown-600">
                                 Lanjut ke Checkout
                             </a>
                         </div>
                         <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                             <p>atau <a href="{{ route('products.index') }}"
-                                    class="font-medium text-indigo-600 hover:text-indigo-500"> Lanjut Belanja<span
+                                    class="font-medium text-brown-500 hover:text-brown-400"> Lanjut Belanja<span
                                         aria-hidden="true"> &rarr;</span></a></p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <p class="mt-2 text-gray-500">Yuk, cari produk favoritmu!</p>
                     <div class="mt-6">
                         <a href="{{ route('products.index') }}"
-                            class="text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md px-6 py-3">
+                            class="text-base font-medium text-white bg-brown-500 hover:bg-brown-600 rounded-md px-6 py-3">
                             Mulai Belanja
                         </a>
                     </div>
