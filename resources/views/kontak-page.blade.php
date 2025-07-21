@@ -9,7 +9,7 @@
                     Kami Senang Mendengar dari Anda
                 </p>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
-                    Punya pertanyaan, kritik, saran, atau ingin melakukan reservasi? Jangan ragu untuk menghubungi kami
+                    Punya pertanyaan, kritik atau saran, Jangan ragu untuk menghubungi kami
                     melalui detail di bawah atau isi formulir kontak.
                 </p>
             </div>
@@ -24,28 +24,41 @@
                 <!-- Kolom Kiri: Form Kontak -->
                 <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
+                        @csrf
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                                <input type="text" name="name" id="name" required
-                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-1 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" name="name" id="name" required value="{{ old('name') }}"
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                @error('name')
+                                    <span class="text-sm text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700">Alamat Email</label>
-                                <input type="email" name="email" id="email" required
-                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-1 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="email" name="email" id="email" required value="{{ old('email') }}"
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                @error('email')
+                                    <span class="text-sm text-red-600">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div>
                             <label for="subject" class="block text-sm font-medium text-gray-700">Subjek</label>
-                            <input type="text" name="subject" id="subject" required
-                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-1 focus:ring-indigo-500 focus:border-indigo-500">
+                            <input type="text" name="subject" id="subject" required value="{{ old('subject') }}"
+                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                            @error('subject')
+                                <span class="text-sm text-red-600">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700">Pesan Anda</label>
                             <textarea id="message" name="message" rows="5" required
-                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-1 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                                class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">{{ old('message') }}</textarea>
+                            @error('message')
+                                <span class="text-sm text-red-600">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <button type="submit"

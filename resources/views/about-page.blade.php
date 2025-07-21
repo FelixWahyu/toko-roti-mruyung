@@ -6,13 +6,16 @@
                 <div>
                     <h2 class="text-base font-semibold text-indigo-600 tracking-wider uppercase">Tentang Kami</h2>
                     <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                        Dari Dapur Sederhana Menjadi Rumah Kedua Anda.
+                        Toko Roti Mruyung Guest House & Cafe Banyumas
                     </p>
                     <div class="mt-6 text-lg text-gray-500 space-y-4">
                         <p>
-                            Berawal dari sebuah dapur sederhana di jantung Banyumas pada tahun 1998, Toko Roti Mruyung
-                            didirikan oleh Ibu Siti dengan satu resep warisan keluarga dan mimpi besar: menyajikan
-                            kebahagiaan dalam setiap gigitan.
+                            Didirikan di jantung Banyumas pada tahun 2022, Roti Mruyung Guesthouse & Cafe, adalah Bangunan
+                            jaman belanda yang di alih fungsikan sebagai restaurant yang di lengkapi dengan bakery, cafe &
+                            Guesthouse yang memiliki 10 kamar dengan nuansa China-Belanda. Kami berada di Komplek Kota Lama
+                            Banyumas. Yang juga menyediakan oleh-oleh khas banyumas dengan menjual produk-produk UMKM spt
+                            makanan-makanan ringan
+                            & batik.
                         </p>
                         <p>
                             Apa yang dimulai sebagai toko roti kecil kini telah berkembang menjadi sebuah ruang hangat yang
@@ -94,27 +97,27 @@
                 <div class="grid gap-4">
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2787&auto=format&fit=crop"
+                            src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
                             alt="[Gambar secangkir kopi latte art]"></div>
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=2850&auto=format&fit=crop"
-                            alt="[Gambar aneka kue warna-warni]"></div>
+                            src="{{ asset('images/galery/guesthouse-mruyung.webp') }}" alt="[Gambar aneka kue warna-warni]">
+                    </div>
                 </div>
                 <div class="grid gap-4">
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=2787&auto=format&fit=crop"
+                            src="{{ asset('images/galery/foto-kue-mruyung.webp') }}"
                             alt="[Gambar kamar guesthouse yang rapi dan nyaman]"></div>
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2787&auto=format&fit=crop"
+                            src="{{ asset('images/galery/depan-toko-mruyung.webp') }}"
                             alt="[Gambar suasana kafe yang hangat dan ramai]"></div>
                 </div>
                 <div class="grid gap-4">
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="https://images.unsplash.com/photo-1568051243851-f9b136146e97?q=80&w=2787&auto=format&fit=crop"
+                            src="{{ asset('images/galery/roti-tawar-coklat.webp') }}"
                             alt="[Gambar roti croissant segar di atas nampan]"></div>
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
@@ -134,4 +137,80 @@
             </div>
         </div>
     </div>
+
+    {{-- section menu --}}
+    <section class="bg-white w-full pt-3 pb-16">
+        <div class="relative w-full max-w-2xl lg:mx-auto overflow-hidden rounded-lg">
+            <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+                <img src="/images/image-sliding/foto10.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
+                    alt="Slide 1">
+                <img src="/images/image-sliding/foto11.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
+                    alt="Slide 2">
+                <img src="/images/image-sliding/foto12.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
+                    alt="Slide 3">
+                <img src="/images/image-sliding/foto13.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
+                    alt="Slide 4">
+                <img src="/images/image-sliding/foto14.jpg"
+                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 5">
+                <img src="/images/image-sliding/foto15.jpg"
+                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 6">
+                <img src="/images/image-sliding/foto16.jpg"
+                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 7">
+            </div>
+
+            <!-- Tombol navigasi -->
+            <button onclick="prevSlide()"
+                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+                &#10094;
+            </button>
+            <button onclick="nextSlide()"
+                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
+                &#10095;
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // Pertama, cari elemen slider di halaman
+        const slider = document.getElementById("slider");
+
+        // Bungkus semua logika di dalam 'if (slider)'
+        // Ini memastikan kode hanya berjalan jika elemen dengan id="slider" ditemukan
+        if (slider) {
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                // Kita tidak perlu mencari elemen slider lagi di sini karena sudah ada di atas
+                const maxIndex = slider.children.length - 1;
+
+                if (index < 0) {
+                    currentIndex = maxIndex;
+                } else if (index > maxIndex) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = index;
+                }
+
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentIndex - 1);
+            }
+
+            // Set interval untuk auto-slide hanya jika slider ada
+            setInterval(() => {
+                nextSlide();
+            }, 10000);
+
+            // Pasang fungsi ke window agar bisa diakses dari HTML (untuk tombol panah)
+            // hanya jika slider ada
+            window.nextSlide = nextSlide;
+            window.prevSlide = prevSlide;
+        }
+    </script>
 @endsection

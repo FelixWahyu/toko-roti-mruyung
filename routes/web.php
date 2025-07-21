@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
@@ -32,6 +33,7 @@ Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/kontak', function () {
         return view('kontak-page');
     })->name('contact');
+    Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
 
     Route::middleware('auth')->group(function () {
         Route::prefix('keranjang')->name('cart.')->group(function () {
