@@ -11,13 +11,12 @@
                 <h3 class="text-sm font-medium text-slate-500">Total Pendapatan</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
             </div>
-            <div class="bg-indigo-100 p-3 ms-1 rounded-full">
+            <div class="bg-yellow-100 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6 text-indigo-600">
+                    stroke="currentColor" class="size-6 text-yellow-600">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-
             </div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
@@ -48,16 +47,15 @@
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
             <div>
-                <h3 class="text-sm font-medium text-slate-500">Stok Roti Limit</h3>
-                <p class="mt-2 text-3xl font-bold text-slate-900">{{ $limitStok }}</p>
+                <h3 class="text-sm font-medium text-slate-500">Total Produks</h3>
+                <p class="mt-2 text-3xl font-bold text-slate-900">{{ $totalProduct }}</p>
             </div>
-            <div class="bg-red-100 p-3 rounded-full">
+            <div class="bg-purple-100 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" class="size-6 text-red-600">
+                    stroke="currentColor" class="size-6 text-purple-600">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 4.306 6.43l.776 2.898m0 0 3.182-5.511m-3.182 5.51-5.511-3.181" />
+                        d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
                 </svg>
-
             </div>
         </div>
     </div>
@@ -129,6 +127,42 @@
             </div>
         </div>
     </div>
+
+    @if ($limitStok->isNotEmpty())
+        <div class="mt-6 bg-white p-6 rounded-xl shadow-sm">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="bg-red-100 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                        </path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-800">Peringatan Stok Rendah</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Produk</th>
+                            <th class="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase">Sisa Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-slate-200">
+                        @foreach ($limitStok as $product)
+                            <tr>
+                                <td class="px-4 py-2 whitespace-nowrap font-semibold text-slate-700">{{ $product->name }}
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap text-right font-bold text-red-600">
+                                    {{ $product->stock }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

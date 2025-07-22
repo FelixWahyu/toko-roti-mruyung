@@ -4,7 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
+    <title>
+        @if (auth()->user()->role == 'owner')
+            Owner Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}
+        @else
+            Super Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}
+        @endif
+    </title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
 

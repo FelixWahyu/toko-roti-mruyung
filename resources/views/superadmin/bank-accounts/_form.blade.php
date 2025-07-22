@@ -31,8 +31,9 @@
 </div>
 <div class="flex justify-end mt-6">
     <a href="{{ route('admin.store-accounts.index') }}"
-        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">Batal</a>
-    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg shadow-sm mr-2">Batal</a>
+    <button type="submit"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
         {{ $submitButtonText ?? 'Simpan' }}
     </button>
 </div>
