@@ -41,6 +41,8 @@ Route::middleware('prevent.admin.access')->group(function () {
             Route::post('/add/{product}', [CartController::class, 'store'])->name('store');
             Route::patch('/update/{cart}', [CartController::class, 'update'])->name('update');
             Route::delete('/remove/{cart}', [CartController::class, 'destroy'])->name('destroy');
+
+            Route::post('/update-quantity/{item}', [CartController::class, 'updateQuantity'])->name('update.quantity');
         });
 
         // Route untuk Checkout

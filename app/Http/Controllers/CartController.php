@@ -46,23 +46,28 @@ class CartController extends Controller
     /**
      * Memperbarui jumlah item di keranjang.
      */
-    public function update(Request $request, Cart $cart)
+    public function updateQuantity(Request $request, Cart $item)
     {
-        // Pastikan user hanya bisa mengupdate keranjangnya sendiri
-        if ($cart->user_id !== Auth::id()) {
-            return back()->with('error', 'Aksi tidak diizinkan.');
+        if ($item->user_id !== auth()->id()) {
+            return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
         }
 
-        $request->validate(['quantity' => 'required|integer|min:1']);
+        $request->validate(['quantity' => 'required|integer']);
+        $newQuantity = $request->input('quantity');
 
-        // Cek ketersediaan stok
-        if ($cart->product->stock < $request->quantity) {
-            return back()->with('error', 'Stok tidak mencukupi untuk jumlah yang diminta.');
+        if ($newQuantity <= 0) {
+            $item->delete();
+            return response()->json(['success' => true, 'message' => 'Item dihapus.']);
+        } else {
+            $item->update(['quantity' => $newQuantity]);
+            // Sertakan data yang diperbarui untuk memudahkan frontend
+            return response()->json([
+                'success' => true,
+                'message' => 'Kuantitas diperbarui.',
+                'newQuantity' => $item->quantity,
+                'newSubtotal' => $item->product->price * $item->quantity
+            ]);
         }
-
-        $cart->update(['quantity' => $request->quantity]);
-
-        return back()->with('success', 'Jumlah produk berhasil diperbarui.');
     }
 
     /**

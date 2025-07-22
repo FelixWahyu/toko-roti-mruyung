@@ -66,7 +66,7 @@
                                         <div class="bg-indigo-100 px-4 py-2 rounded-lg">
                                             <a href="{{ route('order.payment', $order) }}"
                                                 class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                                                Upload Bukti Bayar &rarr;
+                                                Upload Bukti Bayar
                                             </a>
                                         </div>
                                     @endif

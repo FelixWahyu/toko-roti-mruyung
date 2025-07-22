@@ -37,7 +37,7 @@
             <a href="{{ route('admin.profile.index') }}"
                 class="block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-600 hover:text-white">Profil</a>
             <form action="{{ route('logout') }}" method="POST"
-                onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari akun ini?', 'Ya, Logout!')">
+                onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari akun ini?', 'Ya, Logout')">
                 @csrf
                 <button type="submit"
                     class="w-full text-left block px-4 py-2 text-sm text-slate-700 hover:bg-indigo-600 hover:text-white">Logout</button>

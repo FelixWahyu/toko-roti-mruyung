@@ -53,7 +53,7 @@
                                 <span
                                     class="px-2 py-1 text-xs font-semibold rounded-full capitalize
                                 @if ($order->status == 'pending') bg-yellow-200 text-yellow-800 @endif
-                                @if ($order->status == 'paid' || $order->status == 'processing') bg-yellow-200 text-yellow-800 @endif
+                                @if ($order->status == 'paid' || $order->status == 'processing') bg-indigo-200 text-indigo-800 @endif
                                 @if ($order->status == 'shipped' || $order->status == 'completed') bg-green-200 text-green-800 @endif
                                 @if ($order->status == 'cancelled') bg-red-200 text-red-800 @endif
                             ">{{ $order->status }}</span>

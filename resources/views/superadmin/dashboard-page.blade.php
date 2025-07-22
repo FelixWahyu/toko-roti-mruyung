@@ -98,6 +98,7 @@
                                 @if ($order->status == 'pending') bg-yellow-100 text-yellow-600 @endif
                                 @if ($order->status == 'paid') bg-cyan-100 text-cyan-600 @endif
                                 @if ($order->status == 'processing') bg-yellow-100 text-yellow-600 @endif
+                                @if ($order->status == 'shipped') bg-purple-100 text-purple-600 @endif
                                 @if ($order->status == 'completed') bg-green-100 text-green-600 @endif
                                 @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif
                             ">

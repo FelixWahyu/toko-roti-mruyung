@@ -88,7 +88,7 @@
                                 <a href="{{ route('profile.index') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pesanan Saya</a>
                                 <form method="POST" action="{{ route('logout') }}"
-                                    onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout!')">
+                                    onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout')">
                                     @csrf
                                     <button type="submit"
                                         class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -158,7 +158,7 @@
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Pesanan
                         Saya</a>
                     <form method="POST" action="{{ route('logout') }}"
-                        onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout!')">
+                        onsubmit="showConfirmation(event, 'Logout?', 'Anda yakin ingin keluar dari sesi ini?', 'Ya, Logout')">
                         @csrf
                         <button type="submit"
                             class="w-full text-left block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">

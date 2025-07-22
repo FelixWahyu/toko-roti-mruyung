@@ -48,7 +48,7 @@
                     </div>
                     <div class="mt-6">
                         <button type="submit"
-                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brown-500 hover:bg-brown-600">
                             Konfirmasi Pembayaran
                         </button>
                     </div>
