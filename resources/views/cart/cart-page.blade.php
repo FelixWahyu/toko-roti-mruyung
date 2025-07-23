@@ -29,13 +29,14 @@
                                                     </p>
                                                 </div>
                                                 <p class="mt-1 text-sm text-gray-500">
-                                                    Rp{{ number_format($item->product->price, 0, ',', '.') }} / item
+                                                    Rp{{ number_format($item->product->price, 0, ',', '.') }} /
+                                                    {{ $item->product->unit->name }}
                                                 </p>
                                             </div>
                                             <div class="flex-1 flex items-end justify-between text-sm mt-4">
                                                 <div class="flex items-center">
                                                     <button onclick="updateQuantity('{{ $item->id }}', -1)"
-                                                        class="p-1 border rounded-full text-gray-600 hover:bg-gray-100 disabled:opacity-50"
+                                                        class="p-1 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100 disabled:opacity-50"
                                                         {{ $item->quantity <= 1 ? '' : '' }}>
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                             viewBox="0 0 20 20" fill="currentColor">
@@ -45,9 +46,9 @@
                                                         </svg>
                                                     </button>
                                                     <span id="quantity-{{ $item->id }}"
-                                                        class="px-4 text-center font-medium w-10">{{ $item->quantity }}</span>
+                                                        class="px-4 text-center font-medium w-10 py-1 border border-gray-300">{{ $item->quantity }}</span>
                                                     <button onclick="updateQuantity('{{ $item->id }}', 1)"
-                                                        class="p-1 border rounded-full text-gray-600 hover:bg-gray-100">
+                                                        class="p-1 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                             viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd"

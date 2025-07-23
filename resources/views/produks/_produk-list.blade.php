@@ -1,8 +1,8 @@
 <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
     @forelse ($products as $product)
-        <div class="group relative flex flex-col">
+        <div class="group relative flex flex-col rounded-md p-1 border border-gray-300 hover:shadow-md">
             <a href="{{ route('products.show', $product->slug) }}"
-                class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                class="w-full min-h-64 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-64 lg:aspect-none">
                 <img src="{{ Storage::url($product->image) }}" alt="[Gambar {{ $product->name }}]"
                     class="w-full h-full object-center object-cover lg:w-full lg:h-full">
             </a>

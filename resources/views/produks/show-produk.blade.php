@@ -2,18 +2,24 @@
 
 @section('content')
     <div class="bg-white py-8">
+        <div class="mb-6 ml-6 md:ml-12">
+            <a href="{{ route('products.index') }}"
+                class="font-medium bg-gray-100 text-gray-600 hover:text-gray-500 hover:bg-gray-50 px-4 py-1 rounded-md"><span
+                    aria-hidden="true">
+                    &larr;</span> Kembali</a>
+        </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row -mx-4">
+            <div class="flex flex-col md:flex-row py-3 md:py-3 shadow-md rounded-md border border-gray-200">
                 <!-- Kolom Gambar Produk -->
                 <div class="md:flex-1 px-4">
-                    <div class="h-[460px] rounded-lg bg-gray-200 mb-4">
-                        <img class="w-full h-full object-cover" src="{{ Storage::url($product->image) }}"
+                    <div class="h-[460px] rounded-lg bg-gray-200">
+                        <img class="w-full rounded-lg h-full object-cover" src="{{ Storage::url($product->image) }}"
                             alt="[Gambar {{ $product->name }}]">
                     </div>
                 </div>
 
                 <!-- Kolom Detail Produk -->
-                <div class="md:flex-1 px-4">
+                <div class="md:flex-1 mt-4 px-4">
                     <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h2>
                     <p class="text-gray-600 text-sm mb-4">
                         Kategori: <a href="#"
@@ -32,7 +38,7 @@
                     <div class="mb-4">
                         <span class="font-bold text-gray-700">Ketersediaan Stok:</span>
                         @if ($product->stock > 0)
-                            <span class="text-green-600 font-semibold">{{ $product->stock }} item tersedia</span>
+                            <span class="text-green-600 font-semibold">{{ $product->stock }}</span>
                         @else
                             <span class="text-red-600 font-semibold">Stok Habis</span>
                         @endif
@@ -47,7 +53,7 @@
                         <form action="{{ route('cart.store', $product) }}" method="POST">
                             @csrf
                             <button type="submit"
-                                class="w-full bg-brown-500 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
+                                class="w-[80%] mx-auto bg-brown-500 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

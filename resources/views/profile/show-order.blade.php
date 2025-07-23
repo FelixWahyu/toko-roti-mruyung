@@ -4,7 +4,7 @@
     <div class="bg-gray-100 py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href="{{ route('profile.index') }}"
-                class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-brown-500">
+                class="inline-flex items-center mb-6 text-sm py-1 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700">
                 &larr; Kembali ke Riwayat Pesanan
             </a>
             <h1 class="text-3xl font-extrabold text-gray-900">Detail Pesanan</h1>
@@ -81,7 +81,7 @@
 
                             @if (in_array($order->status, ['pending', 'paid']))
                                 <form action="{{ route('order.cancel', $order) }}" method="POST" class="w-full"
-                                    onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan!')">
+                                    onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan')">
                                     @csrf
                                     <button type="submit"
                                         class="w-full text-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm font-medium">

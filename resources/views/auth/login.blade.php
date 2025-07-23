@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex items-center justify-center min-h-screen">
-        <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+        <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md border border-gray-200">
             <h1 class="text-3xl font-bold text-center text-gray-800">
                 {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</h1>
             <h2 class="text-xl font-bold text-center text-gray-800">Login</h2>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="bg-gray-100 py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-extrabold text-gray-900 mb-8 px-4 sm:px-0">Akun Saya</h1>
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-8 px-4 sm:px-0">Profil Saya</h1>
 
             <div x-data="{ tab: 'history' }" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Navigasi Tab -->
@@ -29,6 +29,12 @@
                                     class="flex items-center px-4 py-2 text-gray-700 rounded-md"
                                     :class="{ 'bg-brown-100 text-brown-600': tab === 'password' }">
                                     Ganti Password
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('home') }}"
+                                    class="inline-flex items-center mb-2 mt-8 text-sm py-1 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+                                    &larr; Kembali
                                 </a>
                             </li>
                         </ul>
@@ -72,7 +78,7 @@
                                     @endif
                                     @if (in_array($order->status, ['pending', 'paid']))
                                         <form action="{{ route('order.cancel', $order) }}" method="POST"
-                                            onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan!')"
+                                            onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan')"
                                             class="bg-red-100 px-4 py-2 rounded-lg">
                                             @csrf
                                             <button type="submit"
