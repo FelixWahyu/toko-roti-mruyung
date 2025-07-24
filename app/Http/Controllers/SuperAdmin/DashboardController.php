@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $totalOrders = Order::count();
         $totalUsers = User::where('role', 'pelanggan')->count();
         $totalProduct = Product::count();
-        $limitStok = Product::where('stock', '<=', 5)->orderBy('stock', 'asc')->get();
+        $limitStok = Product::where('stock', '<=', 10)->orderBy('stock', 'asc')->get();
         $recentOrders = Order::with('user')->latest()->take(5)->get();
         // $newOrders = Order::whereDate('created_at', Carbon::today())->count();
 

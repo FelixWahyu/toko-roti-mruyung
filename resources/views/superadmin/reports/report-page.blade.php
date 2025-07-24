@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Laporan Penjualan</h1>
 
     <!-- Form Filter -->
-    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
         <form action="{{ route('admin.reports.index') }}" method="GET">
             <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
                 <div>
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Tabel Hasil Laporan -->
-    <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+    <div class="bg-white shadow-md rounded-lg overflow-x-auto border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>

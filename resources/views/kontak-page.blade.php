@@ -22,7 +22,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
                 <!-- Kolom Kiri: Form Kontak -->
-                <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg">
+                <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
                     <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                         @csrf
@@ -62,7 +62,7 @@
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brown-500 hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
+                                class="w-full sm:w-auto shadow-md inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brown-500 hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
                                 Kirim Pesan
                             </button>
                         </div>
@@ -71,7 +71,7 @@
 
                 <!-- Kolom Kanan: Info Kontak & Jam Buka -->
                 <div class="space-y-8">
-                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 mb-4">Detail Kontak</h3>
                         <div class="space-y-4 text-gray-600">
                             <div class="flex items-start">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                         <h3 class="text-xl font-bold text-gray-900 mb-4">Jam Buka</h3>
                         <div class="space-y-3 text-gray-600">
                             <div class="flex justify-between"><span>Senin - Jumat</span> <span class="font-semibold">09:00 -

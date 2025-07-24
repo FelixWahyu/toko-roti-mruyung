@@ -48,7 +48,7 @@ Route::middleware('prevent.admin.access')->group(function () {
         // Route untuk Checkout
         Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
         Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
-        Route::get('/order/success/{order}', [CheckoutController::class, 'success'])->name('order.success');
+        Route::get('/order/{order}/payment-instruction', [CheckoutController::class, 'paymentInstruction'])->name('order.payment.instruction');
 
         // Grup route untuk Profil Pelanggan
         Route::prefix('profil')->name('profile.')->group(function () {

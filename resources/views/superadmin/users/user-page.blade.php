@@ -16,7 +16,7 @@
         <h1 class="text-2xl font-bold text-gray-800 mb-6">Daftar Pengguna</h1>
     @endif
 
-    <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+    <div class="bg-white shadow-md rounded-lg overflow-x-auto border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>

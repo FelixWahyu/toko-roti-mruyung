@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\BankAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,14 +39,6 @@ class ProfileController extends Controller
             'address' => 'nullable|string',
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ]);
-
-        // $user->update([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'phone_number' => $request->phone_number,
-        //     'address' => $request->address,
-        //     'profile_picture' => $request->profile_picture,
-        // ]);
 
         $data = $request->only('name', 'username', 'email', 'phone_number', 'address');
 
@@ -104,8 +97,10 @@ class ProfileController extends Controller
 
         // BARU: Ambil semua data rekening toko
         $storeAccounts = BankAccount::all();
+        $settings = Setting::all()->keyBy('key');
+        $qrisImage = $settings['store_qris_image']->value ?? null;
 
-        return view('profile.payment', compact('order', 'storeAccounts'));
+        return view('profile.payment', compact('order', 'storeAccounts', 'qrisImage'));
     }
 
     public function storePayment(Request $request, Order $order)

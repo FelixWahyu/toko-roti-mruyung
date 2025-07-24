@@ -10,7 +10,7 @@
             <span>Tambah Zona</span>
         </a>
     </div>
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-slate-200">
                 <thead class="bg-slate-50">

@@ -6,7 +6,7 @@
 
     <!-- Kartu Statistik -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-slate-500">Total Pendapatan</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
@@ -19,7 +19,7 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-slate-500">Total Pesanan</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">{{ $totalOrders }}</p>
@@ -31,7 +31,7 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
+        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-slate-500">Total Pelanggan</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">{{ $totalUsers }}</p>
@@ -45,7 +45,7 @@
 
             </div>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between">
+        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-slate-500">Total Produks</h3>
                 <p class="mt-2 text-3xl font-bold text-slate-900">{{ $totalProduct }}</p>
@@ -62,7 +62,7 @@
 
     <!-- Grafik & Pesanan Terbaru -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
+        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                 <h3 class="text-xl font-semibold text-slate-800">{{ $chartTitle }}</h3>
                 <!-- Butang Penapis -->
@@ -87,7 +87,7 @@
             </div>
             <canvas id="salesChart" class="mt-4"></canvas>
         </div>
-        <div class="bg-white p-6 rounded-xl shadow-sm">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <h3 class="text-xl font-semibold text-slate-800">Aktivitas Terbaru</h3>
             <div class="space-y-4">
                 @forelse($recentOrders as $order)
@@ -130,7 +130,7 @@
     </div>
 
     @if ($limitStok->isNotEmpty())
-        <div class="mt-6 bg-white p-6 rounded-xl shadow-sm">
+        <div class="mt-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div class="flex items-center space-x-3 mb-4">
                 <div class="bg-red-100 p-2 rounded-full">
                     <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"

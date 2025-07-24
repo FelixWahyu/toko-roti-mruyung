@@ -1,7 +1,7 @@
 @extends('layouts.superadmin-app')
 @section('content')
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Profil Saya</h1>
-    <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl">
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl border border-gray-200">
         <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -21,7 +21,7 @@
                             </span>
                         @endif
                         <input type="file" name="profile_picture" id="profile_picture"
-                            class="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                            class="text-sm p-1 border rounded-lg text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                     </div>
                     @error('profile_picture')
                         <span class="text-sm text-red-600">{{ $message }}</span>

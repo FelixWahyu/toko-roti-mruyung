@@ -25,30 +25,35 @@ class SettingController extends Controller
             'store_logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'min_purchase_free_shipping' => 'nullable|numeric|min:0',
             'free_shipping_districts' => 'nullable|string',
+            'store_qris_image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
-        $settingsData = $request->except('_token', 'store_logo');
+        $settingsData = $request->except('_token', 'store_logo', 'store_qris_image');
 
-        // Simpan atau perbarui pengaturan berbasis teks
         foreach ($settingsData as $key => $value) {
-            Setting::updateOrCreate(['key' => $key], ['value' => $value]);
+            Setting::updateOrCreate(['key' => $key], ['value' => $value ?? '']);
         }
 
-        // Tangani upload logo jika ada file baru
+        // Kendalikan muat naik logo
         if ($request->hasFile('store_logo')) {
-            // Hapus logo lama jika ada
             $oldLogoPath = Setting::where('key', 'store_logo')->first()->value ?? null;
             if ($oldLogoPath) {
                 Storage::disk('public')->delete($oldLogoPath);
             }
-
-            // Simpan logo baru dan dapatkan path-nya
             $path = $request->file('store_logo')->store('settings', 'public');
-
-            // Simpan path logo baru ke database
             Setting::updateOrCreate(['key' => 'store_logo'], ['value' => $path]);
         }
 
-        return back()->with('success', 'Pengaturan website berhasil diperbarui.');
+        // BARU: Kendalikan muat naik imej QRIS
+        if ($request->hasFile('store_qris_image')) {
+            $oldQrisPath = Setting::where('key', 'store_qris_image')->first()->value ?? null;
+            if ($oldQrisPath) {
+                Storage::disk('public')->delete($oldQrisPath);
+            }
+            $path = $request->file('store_qris_image')->store('settings', 'public');
+            Setting::updateOrCreate(['key' => 'store_qris_image'], ['value' => $path]);
+        }
+
+        return back()->with('success', 'Pengaturan toko berhasil diperbarui.');
     }
 }

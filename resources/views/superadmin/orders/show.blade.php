@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
         <!-- Kolom Kiri: Detail Pesanan & Item -->
         <div class="lg:col-span-2 space-y-6">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Item Pesanan</h3>
                 <table class="min-w-full mt-4">
                     <tbody>
@@ -48,7 +48,7 @@
 
         <!-- Kolom Kanan: Info Pelanggan & Update Status -->
         <div class="space-y-6">
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Informasi Pelanggan</h3>
                 <div class="mt-4 space-y-2 text-sm">
                     <p><strong class="w-24 inline-block">Nama:</strong> {{ $order->user->name }}</p>
@@ -71,7 +71,7 @@
                     </div>
                 @endif
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Update Status Pesanan</h3>
                 <form action="{{ route('admin.orders.updateStatus', $order) }}" method="POST" class="mt-4">
                     @csrf

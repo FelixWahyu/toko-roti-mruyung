@@ -1,7 +1,7 @@
 @extends('layouts.superadmin-app')
 @section('content')
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Profile Toko</h1>
-    <div class="bg-white p-6 rounded-lg shadow-md">
+    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
         <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-6">
@@ -49,7 +49,7 @@
                 <div>
                     <label for="store_logo" class="block text-sm font-medium text-gray-700">Logo Toko</label>
                     <input type="file" name="store_logo" id="store_logo"
-                        class="mt-1 block w-full p-1 border text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                        class="mt-1 block w-full p-1 border text-sm text-gray-500 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                     <p class="mt-1 text-xs text-gray-500">Kosongkan jika tidak ingin mengubah logo. Format: PNG, JPG, JPEG.
                         Maks: 2MB.</p>
                     @error('store_logo')
@@ -61,6 +61,23 @@
                             <p class="text-sm text-gray-500">Logo saat ini:</p>
                             <img src="{{ Storage::url($settings['store_logo']->value) }}" alt="Logo Toko"
                                 class="h-16 w-auto bg-gray-100 p-2 rounded-md mt-2">
+                        </div>
+                    @endif
+                </div>
+                <div class="border-t pt-6 mt-6">
+                    <label for="store_qris_image" class="block text-sm font-medium text-slate-700">Gambar Kode QRIS</label>
+                    <input type="file" name="store_qris_image" id="store_qris_image"
+                        class="mt-1 block w-full text-sm p-1 border rounded-lg text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                    <p class="mt-1 text-xs text-gray-500">Kosongkan jika tidak ingin mengubah gambar. Format: PNG, JPG.</p>
+                    @error('store_qris_image')
+                        <span class="text-sm text-red-600">{{ $message }}</span>
+                    @enderror
+
+                    @if (isset($settings['store_qris_image']) && $settings['store_qris_image']->value)
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-500">Gambar QRIS saat ini:</p>
+                            <img src="{{ Storage::url($settings['store_qris_image']->value) }}" alt="Kode QRIS"
+                                class="h-40 w-40 object-cover rounded-lg mt-2">
                         </div>
                     @endif
                 </div>

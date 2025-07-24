@@ -13,7 +13,8 @@
                             Didirikan di jantung Banyumas pada tahun 2022, Roti Mruyung Guesthouse & Cafe, adalah Bangunan
                             jaman belanda yang di alih fungsikan sebagai restaurant yang di lengkapi dengan bakery, cafe &
                             Guesthouse yang memiliki 10 kamar dengan nuansa China-Belanda. Kami berada di Komplek Kota Lama
-                            Banyumas. Yang juga menyediakan oleh-oleh khas banyumas dengan menjual produk-produk UMKM spt
+                            Banyumas. Yang juga menyediakan oleh-oleh khas banyumas dengan menjual produk-produk UMKM
+                            seperti
                             makanan-makanan ringan
                             & batik.
                         </p>

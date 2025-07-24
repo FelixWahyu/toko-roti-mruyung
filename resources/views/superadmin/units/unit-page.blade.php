@@ -10,7 +10,7 @@
             <span>Tambah</span>
         </a>
     </div>
-    <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+    <div class="bg-white shadow-md rounded-lg overflow-x-auto border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
