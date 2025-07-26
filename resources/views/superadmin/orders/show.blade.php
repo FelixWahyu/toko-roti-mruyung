@@ -6,7 +6,7 @@
     </a>
     <h1 class="text-2xl font-bold text-gray-800">Detail Pesanan: {{ $order->order_code }}</h1>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
         <!-- Kolom Kiri: Detail Pesanan & Item -->
         <div class="lg:col-span-2 space-y-6">
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
@@ -51,9 +51,10 @@
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Informasi Pelanggan</h3>
                 <div class="mt-4 space-y-2 text-sm">
-                    <p><strong class="w-24 inline-block">Nama:</strong> {{ $order->user->name }}</p>
-                    <p><strong class="w-24 inline-block">Email:</strong> {{ $order->user->email }}</p>
-                    <p><strong class="w-24 inline-block">Telepon:</strong> {{ $order->user->phone_number }}</p>
+                    <p class="flex justify-between"><strong>Nama:</strong> {{ $order->user->name }}</p>
+                    <p class="flex justify-between"><strong>Email:</strong> {{ $order->user->email }}</p>
+                    <p class="flex justify-between"><strong>Telepon:</strong> {{ $order->user->phone_number }}</p>
+                    <p class="flex justify-between"><strong>Metode Pembayaran:</strong> {{ $order->payment_method }}</p>
                 </div>
                 @if ($order->payment_proof)
                     <div class="bg-white p-6 rounded-lg shadow-md">

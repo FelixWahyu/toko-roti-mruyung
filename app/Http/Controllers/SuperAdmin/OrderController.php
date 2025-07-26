@@ -11,9 +11,26 @@ class OrderController extends Controller
     /**
      * Menampilkan daftar semua pesanan.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user')->latest()->paginate(15);
+        $query = Order::query()->with('user');
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('order_code', 'like', "%{$search}%")
+                    ->orWhereHas('user', function ($userQuery) use ($search) {
+                        $userQuery->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        $orders = $query->latest()->paginate(10)->withQueryString();
+
+        if ($request->ajax()) {
+            return view('superadmin.orders._table-orders', compact('orders'))->render();
+        }
+
         return view('superadmin.orders.order-page', compact('orders'));
     }
 

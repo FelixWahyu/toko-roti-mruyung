@@ -12,9 +12,26 @@ use Illuminate\Support\Str;
 
 class ProduksController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with(['category', 'unit'])->latest()->paginate(8);
+        $query = Product::query()->with(['category', 'unit']);
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")->orWhereHas('category', function ($queryCategory) use ($search) {
+                    $queryCategory->where('name', 'like', "%{$search}%");
+                });
+            });
+        }
+
+        $products = $query->latest()->paginate(8)->withQueryString();
+
+        if ($request->ajax()) {
+            // Jika ya, kembalikan hanya partial view tabel
+            return view('superadmin.products._table-produks', compact('products'))->render();
+        }
+
         return view('superadmin.products.product-page', compact('products'));
     }
 

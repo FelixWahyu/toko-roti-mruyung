@@ -2,16 +2,16 @@
 
 @section('content')
     <div class="bg-gray-100 py-12">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href="{{ route('profile.index') }}"
                 class="inline-flex items-center mb-6 text-sm py-1 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700">
                 &larr; Kembali ke Riwayat Pesanan
             </a>
             <h1 class="text-3xl font-extrabold text-gray-900">Detail Pesanan</h1>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-6">
                 <!-- Kolom Kiri: Detail Item -->
-                <div class="lg:col-span-2 space-y-6">
+                <div class="lg:col-span-3 space-y-6">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Item yang Dipesan</h3>
                         <table class="min-w-full mt-4">
@@ -40,7 +40,7 @@
                 </div>
 
                 <!-- Kolom Kanan: Ringkasan & Alamat -->
-                <div class="space-y-6">
+                <div class="space-y-6 lg:col-span-2">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Ringkasan Pesanan</h3>
                         <div class="mt-4 space-y-2 text-sm">
@@ -48,6 +48,9 @@
                                     class="font-mono text-indigo-600">{{ $order->order_code }}</span></p>
                             <p class="flex justify-between"><strong>Tanggal:</strong>
                                 <span>{{ $order->created_at->format('d F Y') }}</span>
+                            </p>
+                            <p class="flex justify-between"><strong>Metode Pembayaran:</strong>
+                                <span>{{ $order->payment_method }}</span>
                             </p>
                             <p class="flex justify-between items-center"><strong>Status:</strong>
                                 <span

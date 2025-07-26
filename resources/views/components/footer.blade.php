@@ -43,7 +43,7 @@
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
                     </li>
                     <li><a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-white">Kontak</a></li>
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Karir</a></li>
+                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Cara Pesan</a></li>
                 </ul>
             </div>
 
@@ -51,7 +51,6 @@
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bantuan</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Cara Pesan</a></li>
                     <li><a href="#" class="text-sm text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
                     <li><a href="#" class="text-sm text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
                 </ul>

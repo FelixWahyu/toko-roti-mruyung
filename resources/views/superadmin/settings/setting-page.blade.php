@@ -75,7 +75,7 @@
 
                     @if (isset($settings['store_qris_image']) && $settings['store_qris_image']->value)
                         <div class="mt-4">
-                            <p class="text-sm text-gray-500">Gambar QRIS saat ini:</p>
+                            <p class="text-sm text-gray-500">Kode QRIS saat ini:</p>
                             <img src="{{ Storage::url($settings['store_qris_image']->value) }}" alt="Kode QRIS"
                                 class="h-40 w-40 object-cover rounded-lg mt-2">
                         </div>

@@ -17,6 +17,7 @@ use App\Http\Controllers\SuperAdmin\SettingController;
 use App\Http\Controllers\SuperAdmin\CategoryController;
 use App\Http\Controllers\SuperAdmin\DashboardController;
 use App\Http\Controllers\SuperAdmin\BankAccountController;
+use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
 
@@ -111,6 +112,8 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
         Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
         Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
         Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
+
+        Route::get('stock-reports', [StockReportController::class, 'index'])->name('stock-reports.index');
 
         // Manajemen Pengguna
         Route::resource('users', UserController::class);

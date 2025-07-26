@@ -11,9 +11,24 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::latest()->paginate(10);
+        $query = User::query();
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->latest()->paginate(10)->withQueryString();
+
+        if ($request->ajax()) {
+            return view('superadmin.users._table-users', compact('users'))->render();
+        }
+
         return view('superadmin.users.user-page', compact('users'));
     }
 
