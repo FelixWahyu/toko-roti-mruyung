@@ -22,7 +22,6 @@ class DashboardController extends Controller
         $recentOrders = Order::with('user')->latest()->take(5)->get();
         // $newOrders = Order::whereDate('created_at', Carbon::today())->count();
 
-        // Data untuk Grafik Penjualan Bulanan
         $filter = $request->input('filter');
         if (!$filter) {
             $filter = auth()->user()->role === 'superadmin' ? 'daily' : 'monthly';
@@ -109,6 +108,25 @@ class DashboardController extends Controller
                 break;
         }
 
+        $topProductsLabels = [];
+        $topProductsData = [];
+
+        if (auth()->user()->role === 'owner') {
+            $topProducts = Product::select('products.name', DB::raw('SUM(order_items.quantity) as total_sold'))
+                ->join('order_items', 'products.id', '=', 'order_items.product_id')
+                ->join('orders', 'order_items.order_id', '=', 'orders.id')
+                ->where('orders.status', 'completed')
+                ->groupBy('products.id', 'products.name')
+                ->orderBy('total_sold', 'desc')
+                ->take(5)
+                ->get();
+
+            foreach ($topProducts as $product) {
+                $topProductsLabels[] = $product->name;
+                $topProductsData[] = $product->total_sold;
+            }
+        }
+
         return view('superadmin.dashboard-page', compact(
             'totalRevenue',
             'totalOrders',
@@ -119,7 +137,9 @@ class DashboardController extends Controller
             'chartData',
             'chartTitle',
             'recentOrders',
-            'filter'
+            'filter',
+            'topProductsLabels',
+            'topProductsData'
         ));
     }
 }

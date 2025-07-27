@@ -5,11 +5,11 @@
     <p class="text-slate-500 mt-1">Selamat datang kembali, {{ Auth::user()->name }}!</p>
 
     <!-- Kartu Statistik -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
             <div>
                 <h3 class="text-sm font-medium text-slate-500">Total Pendapatan</h3>
-                <p class="mt-2 text-3xl font-bold text-slate-900">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
+                <p class="mt-2 text-2xl font-bold text-slate-900">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</p>
             </div>
             <div class="bg-yellow-100 p-3 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -42,7 +42,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                 </svg>
-
             </div>
         </div>
         <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between">
@@ -61,11 +60,10 @@
     </div>
 
     <!-- Grafik & Pesanan Terbaru -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-4">
         <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                 <h3 class="text-xl font-semibold text-slate-800">{{ $chartTitle }}</h3>
-                <!-- Butang Penapis -->
                 <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg mt-2 sm:mt-0">
                     <a href="{{ route('admin.dashboard.index', ['filter' => 'daily']) }}"
                         class="px-3 py-1 text-sm font-semibold rounded-md transition-colors {{ $filter == 'daily' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700' }}">
@@ -88,49 +86,60 @@
             <canvas id="salesChart" class="mt-4"></canvas>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-            <h3 class="text-xl font-semibold text-slate-800">Aktivitas Terbaru</h3>
-            <div class="space-y-4">
-                @forelse($recentOrders as $order)
-                    <div class="flex items-start space-x-3">
-                        <div class="flex-shrink-0">
-                            <div
-                                class="w-10 h-10 rounded-full flex items-center justify-center
-                                @if ($order->status == 'pending') bg-yellow-100 text-yellow-600 @endif
-                                @if ($order->status == 'paid') bg-cyan-100 text-cyan-600 @endif
-                                @if ($order->status == 'processing') bg-yellow-100 text-yellow-600 @endif
-                                @if ($order->status == 'shipped') bg-purple-100 text-purple-600 @endif
-                                @if ($order->status == 'completed') bg-green-100 text-green-600 @endif
-                                @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif
-                            ">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
-                                    </path>
-                                </svg>
+            @if (auth()->user()->role == 'owner')
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">5 Produk Terlaris</h3>
+                @if (!empty($topProductsLabels))
+                    <canvas id="topProductsChart"></canvas>
+                @else
+                    <p class="text-sm text-center text-slate-500 py-8">Belum ada data penjualan yang cukup.</p>
+                @endif
+
+                {{-- JIKA SUPERADMIN, PAPARKAN AKTIVITI TERKINI --}}
+            @elseif(auth()->user()->role == 'superadmin')
+                <h3 class="text-xl font-semibold text-slate-800 mb-4">Aktivitas Terbaru</h3>
+                <div class="space-y-4">
+                    @forelse($recentOrders as $order)
+                        <div class="flex items-start space-x-3">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 rounded-full flex items-center justify-center
+                            @if ($order->status == 'pending') bg-yellow-100 text-yellow-600 @endif
+                            @if ($order->status == 'paid') bg-cyan-100 text-cyan-600 @endif
+                            @if ($order->status == 'processing') bg-yellow-100 text-yellow-600 @endif
+                            @if ($order->status == 'shipped') bg-purple-100 text-purple-600 @endif
+                            @if ($order->status == 'completed') bg-green-100 text-green-600 @endif
+                            @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif
+                        ">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                        </path>
+                                    </svg>
+                                </div>
                             </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold text-slate-700">
+                                    Pesanan baru dari <span class="font-bold">{{ $order->user->name }}</span>
+                                </p>
+                                <p class="text-xs text-slate-500">
+                                    {{ $order->created_at->diffForHumans() }}
+                                </p>
+                            </div>
+                            <a href="{{ route('admin.orders.show', $order) }}"
+                                class="text-xs font-semibold text-indigo-600 hover:underline">
+                                Lihat
+                            </a>
                         </div>
-                        <div class="flex-1">
-                            <p class="text-sm font-semibold text-slate-700">
-                                Pesanan baru dari <span class="font-bold">{{ $order->user->name }}</span>
-                            </p>
-                            <p class="text-xs text-slate-500">
-                                {{ $order->created_at->diffForHumans() }}
-                            </p>
-                        </div>
-                        <a href="{{ route('admin.orders.show', $order) }}"
-                            class="text-xs font-semibold text-indigo-600 hover:underline">
-                            Lihat
-                        </a>
-                    </div>
-                @empty
-                    <p class="text-sm text-center text-slate-500 py-8">Belum ada aktivitas terbaru.</p>
-                @endforelse
-            </div>
+                    @empty
+                        <p class="text-sm text-center text-slate-500 py-8">Belum ada aktivitas terbaru.</p>
+                    @endforelse
+                </div>
+            @endif
         </div>
     </div>
 
     @if ($limitStok->isNotEmpty())
-        <div class="mt-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+        <div class="mt-4 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div class="flex items-center space-x-3 mb-4">
                 <div class="bg-red-100 p-2 rounded-full">
                     <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -146,6 +155,7 @@
                 <table class="min-w-full divide-y divide-slate-200">
                     <thead class="bg-slate-50">
                         <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Gambar</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Produk</th>
                             <th class="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase">Sisa Stok</th>
                         </tr>
@@ -153,6 +163,10 @@
                     <tbody class="bg-white divide-y divide-slate-200">
                         @foreach ($limitStok as $product)
                             <tr>
+                                <td class="px-6 py-4">
+                                    <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
+                                        class="h-12 w-12 object-cover rounded-md">
+                                </td>
                                 <td class="px-4 py-2 whitespace-nowrap font-semibold text-slate-700">{{ $product->name }}
                                 </td>
                                 <td class="px-4 py-2 whitespace-nowrap text-right font-bold text-red-600">
@@ -165,6 +179,7 @@
         </div>
     @endif
 
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const ctx = document.getElementById('salesChart').getContext('2d');
@@ -199,6 +214,67 @@
                     }
                 }
             });
+
+            const topProductsCtx = document.getElementById('topProductsChart');
+            if (topProductsCtx) {
+                const topProductsChart = new Chart(topProductsCtx.getContext('2d'), {
+                    type: 'pie',
+                    data: {
+                        labels: @json($topProductsLabels),
+                        datasets: [{
+                            label: 'Jumlah Terjual',
+                            data: @json($topProductsData),
+                            backgroundColor: [
+                                'rgba(79, 70, 229, 0.8)',
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(239, 68, 68, 0.8)',
+                                'rgba(107, 114, 128, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 255, 255, 1)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    plugins: [ChartDataLabels],
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 12,
+                                    boxWidth: 12,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            title: {
+                                display: false,
+                            },
+                            datalabels: {
+                                formatter: (value, ctx) => {
+                                    const dataPoints = ctx.chart.data.datasets[0].data;
+                                    const total = dataPoints.reduce((acc, data) => acc + Number(data),
+                                        0);
+                                    if (total === 0) {
+                                        return '0%';
+                                    }
+                                    const percentage = (value / total * 100);
+                                    return percentage > 1 ? percentage.toFixed(1) + "%" : '';
+                                },
+                                color: '#fff',
+                                font: {
+                                    weight: 'bold',
+                                    size: 14,
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         });
     </script>
 @endsection
