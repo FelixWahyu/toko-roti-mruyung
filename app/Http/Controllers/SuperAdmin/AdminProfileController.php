@@ -46,4 +46,20 @@ class AdminProfileController extends Controller
 
         return back()->with('success', 'Profil berhasil diperbarui.');
     }
+
+    public function destroyPhoto(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user->profile_picture) {
+            // Hapus fail dari storan
+            Storage::disk('public')->delete($user->profile_picture);
+
+            // Kemas kini pangkalan data untuk menetapkan laluan kepada null
+            $user->profile_picture = null;
+            $user->save();
+        }
+
+        return back()->with('success', 'Foto profil berhasil dihapus.');
+    }
 }

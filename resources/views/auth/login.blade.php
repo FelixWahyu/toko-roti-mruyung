@@ -8,11 +8,11 @@
             <h2 class="text-xl font-bold text-center text-gray-800">Login</h2>
 
             {{-- Menampilkan pesan error jika login gagal --}}
-            @if (session('error'))
+            {{-- @if (session('error'))
                 <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
                     {{ session('error') }}
                 </div>
-            @endif
+            @endif --}}
 
             <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf

@@ -154,4 +154,17 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Pesanan Anda berhasil dibatalkan.');
     }
+
+    public function destroyPhoto(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user->profile_picture) {
+            Storage::disk('public')->delete($user->profile_picture);
+            $user->profile_picture = null;
+            $user->save();
+        }
+
+        return back()->with('success', 'Foto profil berhasil dihapus.');
+    }
 }

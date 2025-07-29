@@ -56,6 +56,7 @@ Route::middleware('prevent.admin.access')->group(function () {
             Route::get('/', [ProfileController::class, 'index'])->name('index');
             Route::patch('/update', [ProfileController::class, 'updateDetails'])->name('update.details');
             Route::patch('/update-password', [ProfileController::class, 'updatePassword'])->name('update.password');
+            Route::delete('/photo', [ProfileController::class, 'destroyPhoto'])->name('photo.destroy');
         });
 
         Route::get('/order/{order}/payment', [ProfileController::class, 'showPaymentForm'])->name('order.payment');
@@ -84,8 +85,10 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
 
     // == FITUR YANG BISA DIAKSES ADMIN & OWNER ==
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
     Route::get('profile', [AdminProfileController::class, 'index'])->name('profile.index');
     Route::patch('profile', [AdminProfileController::class, 'update'])->name('profile.update');
+    Route::delete('profile/photo', [AdminProfileController::class, 'destroyPhoto'])->name('profile.photo.destroy');
 
     // Master Data
     Route::resource('categories', CategoryController::class);

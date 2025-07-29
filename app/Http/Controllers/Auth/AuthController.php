@@ -43,10 +43,10 @@ class AuthController extends Controller
         ]);
 
         // Login user yang baru dibuat
-        Auth::login($user);
+        // Auth::login($user);
 
         // Redirect ke halaman utama
-        return redirect()->route('home');
+        return redirect()->route('login')->with('success', 'Pendaftaran berhasil! Silakan login dengan akun Anda.');
     }
 
     /**
@@ -77,12 +77,12 @@ class AuthController extends Controller
             // Redirect berdasarkan role
             if ($user->role === 'superadmin') {
                 // return redirect()->route('admin.dashboard'); // Nanti akan kita buat
-                return redirect()->route('admin.dashboard.index');
+                return redirect()->route('admin.dashboard.index')->with('success', 'Login Berhasil, selamat datang!');
             } elseif ($user->role === 'owner') {
                 // return redirect()->route('owner.dashboard'); // Nanti akan kita buat
-                return redirect()->route('admin.dashboard.index');
+                return redirect()->route('admin.dashboard.index')->with('success', 'Login Berhasil, selamat datang!');
             } else {
-                return redirect()->intended('/'); // Redirect ke halaman yang dituju sebelumnya atau ke home
+                return redirect()->intended('/')->with('success', 'Login Berhasil, selamat datang!'); // Redirect ke halaman yang dituju sebelumnya atau ke home
             }
         }
 
