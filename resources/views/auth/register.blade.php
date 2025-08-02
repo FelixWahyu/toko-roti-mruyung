@@ -38,7 +38,7 @@
                         <input id="password" name="password" :type="showPassword ? 'text' : 'password'" required
                             class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:ring-brown-400 focus:border-brown-400">
                         <button type="button" @click="showPassword = !showPassword"
-                            class="absolute inset-y-0 right-0 px-3 border-l border-gray-300 flex items-center text-gray-500">
+                            class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500">
                             <svg x-show="!showPassword" class="h-5 w-5" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
