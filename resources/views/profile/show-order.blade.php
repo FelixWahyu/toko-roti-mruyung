@@ -81,7 +81,16 @@
                                     Upload Bukti Bayar
                                 </a>
                             @endif
-
+                            @if ($order->status == 'shipped')
+                                <form action="{{ route('order.confirm_receipt', $order) }}" method="POST" class="w-full"
+                                    onsubmit="showConfirmation(event, 'Konfirmasi Pesanan?', 'Apakah Anda yakin sudah menerima pesanan ini?', 'Sudah Diterima')">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full text-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm font-medium">
+                                        Pesanan Diterima
+                                    </button>
+                                </form>
+                            @endif
                             @if (in_array($order->status, ['pending', 'paid']))
                                 <form action="{{ route('order.cancel', $order) }}" method="POST" class="w-full"
                                     onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan')">

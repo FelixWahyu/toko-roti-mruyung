@@ -63,6 +63,8 @@ Route::middleware('prevent.admin.access')->group(function () {
         Route::post('/order/{order}/payment', [ProfileController::class, 'storePayment'])->name('order.payment.store');
         Route::get('/order/{order}/detail', [ProfileController::class, 'showOrderDetail'])->name('order.detail');
         Route::post('/order/{order}/cancel', [ProfileController::class, 'cancelOrder'])->name('order.cancel');
+
+        Route::post('/order/{order}/confirm-receipt', [ProfileController::class, 'confirmReceipt'])->name('order.confirm_receipt');
     });
 });
 

@@ -69,17 +69,28 @@
                                 </a>
                                 <div class="flex items-center gap-2">
                                     @if ($order->status == 'pending' && !$order->payment_proof)
-                                        <div class="bg-indigo-100 px-4 py-2 rounded-lg">
+                                        <div class="bg-indigo-100 px-3 py-1 rounded-lg">
                                             <a href="{{ route('order.payment', $order) }}"
                                                 class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                                                 Upload Bukti Bayar
                                             </a>
                                         </div>
                                     @endif
+                                    @if ($order->status == 'shipped')
+                                        <form action="{{ route('order.confirm_receipt', $order) }}" method="POST"
+                                            onsubmit="showConfirmation(event, 'Konfirmasi Pesanan?', 'Apakah Anda yakin sudah menerima pesanan ini?', 'Sudah Diterima')"
+                                            class="bg-green-200 px-3 py-1 rounded-lg hover:bg-green-300">
+                                            @csrf
+                                            <button type="submit"
+                                                class="text-sm font-medium text-green-600 hover:text-green-700 rounded-md px-4 py-2">
+                                                Pesanan Diterima
+                                            </button>
+                                        </form>
+                                    @endif
                                     @if (in_array($order->status, ['pending', 'paid']))
                                         <form action="{{ route('order.cancel', $order) }}" method="POST"
                                             onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan')"
-                                            class="bg-red-100 px-4 py-2 rounded-lg">
+                                            class="bg-red-100 px-3 py-1 rounded-lg">
                                             @csrf
                                             <button type="submit"
                                                 class="text-sm font-medium text-red-600 hover:text-red-500">
@@ -177,8 +188,8 @@
                                 @enderror
                             </div>
                             <div>
-                                <label for="shipping_zone_id" class="block text-sm font-medium text-gray-700">Kecamatan
-                                    Default</label>
+                                <label for="shipping_zone_id"
+                                    class="block text-sm font-medium text-gray-700">Kecamatan</label>
                                 <select name="shipping_zone_id" id="shipping_zone_id"
                                     class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                                     <option value="">-- Pilih Kecamatan --</option>

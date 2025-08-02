@@ -135,6 +135,24 @@ class ProfileController extends Controller
         return redirect()->route('profile.index')->with('success', 'Bukti pembayaran berhasil diunggah. Pesanan Anda akan segera kami proses.');
     }
 
+    public function confirmReceipt(Order $order)
+    {
+        // Keselamatan: Pastikan pengguna hanya boleh mengesahkan pesanannya sendiri
+        if ($order->user_id !== Auth::id()) {
+            abort(403, 'Aksi tidak diizinkan.');
+        }
+
+        // Logik: Pastikan hanya pesanan yang berstatus 'shipped' yang boleh disahkan
+        if ($order->status !== 'shipped') {
+            return back()->with('error', 'Hanya pesanan yang telah dikirim yang dapat dikonfirmasi.');
+        }
+
+        // Kemas kini status pesanan kepada 'completed'
+        $order->update(['status' => 'completed']);
+
+        return back()->with('success', 'Terima kasih telah mengonfirmasi pesanan Anda!');
+    }
+
     public function cancelOrder(Order $order)
     {
         // Pastikan user hanya bisa membatalkan pesanannya sendiri
