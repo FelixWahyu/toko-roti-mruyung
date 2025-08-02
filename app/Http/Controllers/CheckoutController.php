@@ -71,6 +71,7 @@ class CheckoutController extends Controller
                 'shipping_address' => $request->shipping_address,
                 'shipping_method' => $request->shipping_method,
                 'payment_method' => $request->payment_method,
+                'shipping_zone_id' => $request->shipping_zone_id,
                 'status' => 'pending',
             ]);
 
@@ -82,6 +83,12 @@ class CheckoutController extends Controller
                     'price' => $item->product->price,
                 ]);
                 $item->product->decrement('stock', $item->quantity);
+            }
+
+            $user = Auth::user();
+            if ($user->shipping_zone_id !== $request->shipping_zone_id) {
+                $user->shipping_zone_id = $request->shipping_zone_id;
+                $user->save();
             }
 
             Cart::where('user_id', Auth::id())->delete();

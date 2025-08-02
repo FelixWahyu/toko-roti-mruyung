@@ -177,7 +177,22 @@
                                 @enderror
                             </div>
                             <div>
-                                <label for="address" class="block text-sm font-medium text-gray-700">Alamat</label>
+                                <label for="shipping_zone_id" class="block text-sm font-medium text-gray-700">Kecamatan
+                                    Default</label>
+                                <select name="shipping_zone_id" id="shipping_zone_id"
+                                    class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
+                                    <option value="">-- Pilih Kecamatan --</option>
+                                    @foreach ($shippingZones as $zone)
+                                        <option value="{{ $zone->id }}"
+                                            {{ old('shipping_zone_id', $user->shipping_zone_id) == $zone->id ? 'selected' : '' }}>
+                                            {{ $zone->district }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="address" class="block text-sm font-medium text-gray-700">Alamat
+                                    Lengkap</label>
                                 <textarea name="address" id="address" rows="3"
                                     class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">{{ old('address', $user->address) }}</textarea>
                                 @error('address')

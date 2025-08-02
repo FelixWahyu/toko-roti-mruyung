@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Setting;
 use App\Models\BankAccount;
+use App\Models\ShippingZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,8 +21,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $orders = Order::where('user_id', $user->id)->latest()->paginate(5); // Ambil 5 pesanan terakhir
+        $shippingZones = ShippingZone::all();
 
-        return view('profile.profile-page', compact('user', 'orders'));
+        return view('profile.profile-page', compact('user', 'orders', 'shippingZones'));
     }
 
     /**
@@ -38,9 +40,10 @@ class ProfileController extends Controller
             'phone_number' => 'required|string|max:20',
             'address' => 'nullable|string',
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'shipping_zone_id' => 'nullable|exists:shipping_zones,id',
         ]);
 
-        $data = $request->only('name', 'username', 'email', 'phone_number', 'address');
+        $data = $request->only('name', 'username', 'email', 'phone_number', 'address', 'shipping_zone_id');
 
         if ($request->hasFile('profile_picture')) {
             // Hapus foto lama jika ada

@@ -96,7 +96,10 @@
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Alamat Pengiriman</h3>
-                        <p class="mt-4 text-gray-600 text-sm">{{ $order->shipping_address }}</p>
+                        @if ($order->shippingZone)
+                            <p class="mt-4 text-gray-800">Kecamatan: {{ $order->shippingZone->district }}</p>
+                        @endif
+                        <p class="mt-4 text-gray-800">Alamat Lengkap: {{ $order->shipping_address }}</p>
                     </div>
                 </div>
             </div>

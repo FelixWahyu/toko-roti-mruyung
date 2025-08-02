@@ -7,7 +7,7 @@
 
             <div id="cart-container">
                 @if ($cartItems->count() > 0)
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="bg-white shadow-md border border-gray-200 rounded-lg overflow-hidden">
                         <ul role="list" class="divide-y divide-gray-200" id="cart-list">
                             @php $total = 0; @endphp
                             @foreach ($cartItems as $item)

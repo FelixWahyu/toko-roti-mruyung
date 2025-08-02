@@ -57,7 +57,7 @@
 
                     <div class="mt-8">
                         <a href="{{ route('order.payment', $order) }}"
-                            class="w-full block text-center text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md px-6 py-3">
+                            class="w-full block text-center text-base font-medium text-white bg-brown-500 hover:bg-brown-600 rounded-md px-6 py-3">
                             Saya Sudah Bayar, Upload Bukti
                         </a>
                     </div>

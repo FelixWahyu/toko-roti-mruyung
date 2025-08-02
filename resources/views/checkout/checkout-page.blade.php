@@ -10,15 +10,16 @@
                 freeShippingDistricts: '{{ $settings['free_shipping_districts']->value ?? '' }}'.split(',').map(d => d
                     .trim()),
 
-                selectedZoneId: '',
+                selectedZoneId: '{{ auth()->user()->shipping_zone_id ?? '' }}',
                 shippingMethod: 'Kurir Toko',
                 paymentMethod: 'Transfer Bank',
                 shippingCost: 0,
                 grandTotal: 0,
-                isShippingSet: false,
+                // isShippingSet: false,
 
                 init() {
                     this.grandTotal = this.subtotal;
+                    this.calculateShipping();
                     this.$watch('selectedZoneId', () => this.calculateShipping());
                     this.$watch('shippingMethod', () => this.calculateShipping());
                 },
@@ -65,7 +66,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-6 gap-8">
                     <!-- Kolom Kiri: Detail & Pilihan -->
                     <div class="lg:col-span-3 space-y-6">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Alamat Pengiriman</h3>
                             <div class="mb-3">
                                 <label for="name" class="block text-sm font-medium text-gray-700">Nama Penerima</label>
@@ -107,7 +108,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Metode Pengiriman</h3>
                             <div class="space-y-3">
                                 <label class="flex items-center p-4 border rounded-lg cursor-pointer"
@@ -124,7 +125,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Metode Pembayaran</h3>
                             <div class="space-y-3">
                                 <label class="flex items-center p-4 border rounded-lg cursor-pointer"
@@ -144,7 +145,7 @@
                     </div>
                     <!-- Kolom Kanan: Ringkasan Pesanan -->
                     <div class="lg:col-span-3">
-                        <div class="bg-white p-6 rounded-lg shadow-md sticky top-28">
+                        <div class="bg-white p-6 rounded-lg shadow-md sticky top-28 border border-gray-200">
                             <h3 class="text-xl font-semibold text-gray-800 mb-4">Ringkasan Pesanan</h3>
                             <ul class="divide-y divide-gray-200">
                                 @foreach ($cartItems as $item)

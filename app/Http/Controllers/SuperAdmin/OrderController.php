@@ -40,7 +40,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         // Eager load relasi yang dibutuhkan
-        $order->load('user', 'items.product');
+        $order->load('user', 'items.product', 'shippingZone');
         return view('superadmin.orders.show', compact('order'));
     }
 
