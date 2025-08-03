@@ -105,11 +105,10 @@
                                     class="w-10 h-10 rounded-full flex items-center justify-center
                             @if ($order->status == 'pending') bg-yellow-100 text-yellow-600 @endif
                             @if ($order->status == 'paid') bg-cyan-100 text-cyan-600 @endif
-                            @if ($order->status == 'processing') bg-yellow-100 text-yellow-600 @endif
+                            @if ($order->status == 'processing') bg-indigo-100 text-indigo-600 @endif
                             @if ($order->status == 'shipped') bg-purple-100 text-purple-600 @endif
                             @if ($order->status == 'completed') bg-green-100 text-green-600 @endif
-                            @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif
-                        ">
+                            @if ($order->status == 'cancelled') bg-red-100 text-red-600 @endif ">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">

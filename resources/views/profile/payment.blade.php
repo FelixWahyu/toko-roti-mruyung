@@ -19,7 +19,6 @@
 
                 <!-- Paparan Dinamik Berdasarkan Kaedah Pembayaran -->
                 <div class="mt-6 text-left">
-
                     {{-- JIKA TRANSFER BANK --}}
                     @if ($order->payment_method === 'Transfer Bank')
                         <p class="font-semibold text-gray-700">Silakan transfer ke salah satu rekening berikut:</p>
@@ -39,7 +38,7 @@
 
                         {{-- JIKA QRIS --}}
                     @elseif($order->payment_method === 'QRIS')
-                        <p class="font-semibold text-gray-700 text-center">Silakan pindai atau muat turun kode QRIS di bawah
+                        <p class="font-semibold text-gray-700 text-center">Silakan pindai atau download kode QRIS di bawah
                             ini:</p>
                         @if ($qrisImage)
                             <img src="{{ Storage::url($qrisImage) }}" alt="[Kode QRIS]"
@@ -50,7 +49,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                 </svg>
-                                Muat Turun Kode QRIS
+                                Download Kode QRIS
                             </a>
                         @else
                             <p class="text-center text-sm text-red-600 mt-4">Kode QRIS belum tersedia. Silakan hubungi
@@ -68,7 +67,7 @@
                             <label for="payment_proof" class="block text-sm font-medium text-gray-700">File Bukti
                                 Pembayaran</label>
                             <input type="file" name="payment_proof" id="payment_proof" required
-                                class="mt-1 block w-full text-sm p-1 border text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                                class="mt-1 block w-full text-sm p-1 border text-gray-500 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                             <p class="mt-1 text-xs text-gray-500">Format: JPG, PNG. Ukuran Maks: 2MB.</p>
                             @error('payment_proof')
                                 <span class="text-sm text-red-600">{{ $message }}</span>

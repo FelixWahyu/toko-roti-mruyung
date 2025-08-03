@@ -1,7 +1,7 @@
 @extends('layouts.superadmin-app')
 @section('content')
     <a href="{{ route('admin.orders.index') }}"
-        class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-indigo-600">
+        class="inline-flex items-center mb-6 text-sm px-3 py-1 rounded-md text-gray-600 bg-indigo-100 hover:text-indigo-600">
         &larr; Kembali ke Daftar Pesanan
     </a>
     <h1 class="text-2xl font-bold text-gray-800">Detail Pesanan: {{ $order->order_code }}</h1>
