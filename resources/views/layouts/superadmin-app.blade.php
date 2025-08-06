@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
+        <link rel="icon" href="{{ Storage::url($globalSettings['store_logo']->value) }}" type="image/png">
+    @endif
     <title>
         @if (auth()->user()->role == 'owner')
             Owner Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}

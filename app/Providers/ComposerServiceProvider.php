@@ -24,28 +24,19 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.navbar', function ($view) {
+        View::composer('*', function ($view) {
+            // Gunakan cache untuk mengelakkan query berulang pada setiap paparan
+            $settings = \Illuminate\Support\Facades\Cache::remember('global_settings', 60, function () {
+                return Setting::all()->keyBy('key');
+            });
+
             $cartItemCount = 0;
             if (Auth::check()) {
-                // Hitung jumlah item unik di keranjang pengguna yang sedang login
                 $cartItemCount = Cart::where('user_id', Auth::id())->count();
             }
-            // Kirim data 'cartItemCount' ke view
-            $view->with('cartItemCount', $cartItemCount);
-        });
 
-        View::composer([
-            'layouts.app',
-            'layouts.superadmin-app',
-            'components.footer',
-            'components.navbar',
-            'components.superadmin.sidebar',
-            'kontak-page',
-            'auth.login',
-            'auth.register'
-        ], function ($view) {
-            $settings = Setting::all()->keyBy('key');
-            $view->with('globalSettings', $settings);
+            $view->with('globalSettings', $settings)
+                ->with('cartItemCount', $cartItemCount);
         });
     }
 }
