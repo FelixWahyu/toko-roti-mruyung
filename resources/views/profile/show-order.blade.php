@@ -52,6 +52,9 @@
                             <p class="flex justify-between"><strong>Metode Pembayaran:</strong>
                                 <span>{{ $order->payment_method }}</span>
                             </p>
+                            <p class="flex justify-between"><strong>Metode Pengiriman:</strong>
+                                <span>{{ $order->shipping_method }}</span>
+                            </p>
                             <p class="flex justify-between items-center"><strong>Status:</strong>
                                 <span
                                     class="inline-flex items-center space-x-2 px-2 py-1 text-xs font-semibold rounded-md capitalize

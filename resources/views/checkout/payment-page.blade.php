@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="bg-gray-100 min-h-screen flex items-center justify-center py-12">
-        <div class="max-w-lg w-full bg-white p-8 rounded-lg shadow-lg text-center">
+    <div class="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-3">
+        <div class="max-w-2xl w-full bg-white p-8 rounded-lg shadow-lg text-center">
             <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
                 <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -12,7 +12,31 @@
             <div class="mt-6 border-t border-gray-200 pt-6">
                 <p class="text-sm text-gray-500">Nomor Pesanan Anda:</p>
                 <p class="text-lg font-semibold text-indigo-600">{{ $order->order_code }}</p>
-                <p class="mt-4 text-sm text-gray-500">Total yang harus dibayar:</p>
+                <p class="text-sm mt-4 pt-4 border-t text-gray-500">Rincian Pesanan:</p>
+                <p class="flex justify-between"><strong>Tanggal:</strong>
+                    <span>{{ $order->created_at->format('d F Y') }}</span>
+                </p>
+                <ul class="divide-y divide-gray-200">
+                    @foreach ($order->items as $item)
+                        <li class="py-1 flex justify-between items-center">
+                            <div class="text-left">
+                                @if ($item->product)
+                                    <p class="font-medium text-gray-800">{{ $item->product->name }}</p>
+                                @endif
+                                <p class="text-sm text-gray-500">Qty: {{ $item->quantity }}</p>
+                            </div>
+                            <p class="font-medium text-gray-900">
+                                Rp{{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+                <p class="flex font-medium justify-between text-gray-900">Subtotal:
+                    <span>Rp{{ number_format($order->total_amount, 0, ',', '.') }}</span>
+                </p>
+                <p class="flex font-medium justify-between text-gray-900">Ongkos Kirim:
+                    <span>Rp{{ number_format($order->shipping_cost, 0, ',', '.') }}</span>
+                </p>
+                <p class="mt-4 pt-4 border-t text-sm text-gray-500">Total yang harus dibayar:</p>
                 <p class="text-2xl font-bold text-gray-900">Rp{{ number_format($order->grand_total, 0, ',', '.') }}</p>
             </div>
 

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Services\WhatsAppService;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
@@ -60,6 +62,8 @@ class OrderController extends Controller
             return back()->with('info', 'Status pesanan tidak berubah.');
         }
 
+        $order->load('items.product');
+
         if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
             foreach ($order->items as $item) {
                 // Kembalikan stok produk
@@ -73,6 +77,45 @@ class OrderController extends Controller
         }
 
         $order->update(['status' => $newStatus]);
+
+        $customerNumber = preg_replace('/\D/', '', $order->user->phone_number);
+        if ($customerNumber) {
+            $whatsappService = new WhatsAppService();
+            $message = '';
+            $customerName = $order->user->name;
+
+            if ($newStatus === 'processing' && $oldStatus !== 'processing') {
+                $itemDetails = "";
+                foreach ($order->items as $item) {
+                    $itemSubtotal = number_format($item->price * $item->quantity, 0, ',', '.');
+                    $itemDetails .= "- {$item->product->name} (x{$item->quantity}) : *Rp{$itemSubtotal}*\n";
+                }
+
+                // Format nombor untuk jumlah
+                $subtotalFormatted = number_format($order->total_amount, 0, ',', '.');
+                $shippingCostFormatted = number_format($order->shipping_cost, 0, ',', '.');
+                $grandTotalFormatted = number_format($order->grand_total, 0, ',', '.');
+
+                // Bina mesej lengkap
+                $message  = "Halo *{$customerName}*!\n\n";
+                $message .= "Pesanan Anda dengan kode *{$order->order_code}* telah kami konfirmasi dan sedang diproses.\n\n";
+                $message .= "*RINCIAN PESANAN:*\n";
+                $message .= "----------------------------------\n";
+                $message .= $itemDetails;
+                $message .= "----------------------------------\n";
+                $message .= "_Subtotal: Rp{$subtotalFormatted}_\n";
+                $message .= "_Ongkos Kirim: Rp{$shippingCostFormatted}_\n";
+                $message .= "*Grand Total: Rp{$grandTotalFormatted}*\n\n";
+                $message .= "Pesanan Anda sedang kami proses dan akan segera diantar. Terima kasih telah menunggu!";
+            } elseif ($newStatus === 'shipped' && $oldStatus !== 'shipped') {
+                $message = "Pesanan Anda *{$order->order_code}* sedang dalam pengiriman!\n\nMohon konfirmasi penerimaan di halaman 'Riwayat Pesanan' di website setelah pesanan tiba. Terima kasih!";
+            }
+
+            if ($message) {
+                $result = $whatsappService->sendMessage($customerNumber, $message);
+                Log::info("WhatsApp sent to {$customerNumber} with status {$newStatus}: " . ($result ? 'SUCCESS' : 'FAILED'));
+            }
+        }
 
         return back()->with('success', 'Status pesanan berhasil diperbarui.');
     }

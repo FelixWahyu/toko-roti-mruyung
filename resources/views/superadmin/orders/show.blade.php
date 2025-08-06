@@ -58,6 +58,7 @@
                     <p class="flex justify-between"><strong>Email:</strong> {{ $order->user->email }}</p>
                     <p class="flex justify-between"><strong>Telepon:</strong> {{ $order->user->phone_number }}</p>
                     <p class="flex justify-between"><strong>Metode Pembayaran:</strong> {{ $order->payment_method }}</p>
+                    <p class="flex justify-between"><strong>Metode Pengiriman:</strong> {{ $order->shipping_method }}</p>
                 </div>
                 @if ($order->payment_proof)
                     <div class="bg-white p-6 rounded-lg shadow-md">

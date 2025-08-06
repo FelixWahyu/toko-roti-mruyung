@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Services\WhatsAppService;
 
 class CheckoutController extends Controller
 {
@@ -93,6 +94,21 @@ class CheckoutController extends Controller
 
             Cart::where('user_id', Auth::id())->delete();
             DB::commit();
+
+            $adminNumber = env('ADMIN_WHATSAPP_NUMBER');
+            if ($adminNumber) {
+                $customerName = $order->user->name;
+                $message = "*Pesanan Baru Masuk!*\n\n"
+                    . "*Nama:* {$customerName}\n"
+                    . "*Kode Pesanan:* {$order->order_code}\n"
+                    . "*Total:* Rp " . number_format($order->grand_total, 0, ',', '.') . "\n"
+                    . "*Metode Pengiriman:* {$order->shipping_method}\n"
+                    . "*Metode Pembayaran:* {$order->payment_method}\n\n"
+                    . "Periksa dashboard super admin untuk memproses.";
+
+                $whatsappService = new WhatsAppService();
+                $whatsappService->sendMessage($adminNumber, $message);
+            }
 
             // Arahkan ke halaman arahan pembayaran yang baru
             return redirect()->route('order.payment.instruction', $order);
