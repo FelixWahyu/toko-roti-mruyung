@@ -9,14 +9,17 @@
     @endif
 
     <div class="items-center justify-between mb-4 lg:flex">
-        <a href="{{ route('admin.users.create') }}"
-            class="inline-flex items-center space-x-2 bg-indigo-600 mb-4 lg:mb-0 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                </path>
-            </svg>
-            <span>Tambah</span>
-        </a>
+        @if (auth()->user()->role == 'superadmin')
+            <a href="{{ route('admin.users.create') }}"
+                class="inline-flex items-center space-x-2 bg-indigo-600 mb-4 lg:mb-0 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                </svg>
+                <span>Tambah</span>
+            </a>
+        @endif
         <form action="{{ route('admin.users.index') }}" method="GET" id="search-form">
             <div class="relative">
                 <input type="text" name="search" id="search-input" placeholder="Cari pengguna..."

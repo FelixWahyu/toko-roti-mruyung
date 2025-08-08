@@ -92,35 +92,35 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
     Route::patch('profile', [AdminProfileController::class, 'update'])->name('profile.update');
     Route::delete('profile/photo', [AdminProfileController::class, 'destroyPhoto'])->name('profile.photo.destroy');
 
-    // Master Data
-    Route::resource('categories', CategoryController::class);
-    Route::resource('units', UnitController::class);
-    Route::resource('products', ProduksController::class);
 
-    // Manajemen Pesanan
     Route::middleware('role:superadmin')->group(function () {
+        // Master Data
+        Route::resource('categories', CategoryController::class);
+        Route::resource('units', UnitController::class);
+        Route::resource('products', ProduksController::class);
+
+        // Manajemen Pesanan
         Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
         Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
+
+        // Pengaturan Website
+        Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+        Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+        Route::resource('store-accounts', BankAccountController::class);
+        Route::resource('shipping-zones', ShippingZoneController::class);
     });
 
-    // Pengaturan Website
-    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
-    Route::resource('store-accounts', BankAccountController::class);
-    Route::resource('shipping-zones', ShippingZoneController::class);
+    // Manajemen Pengguna
+    Route::resource('users', UserController::class);
 
+    // Laporan
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
+    Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
 
     // == FITUR YANG HANYA BISA DIAKSES OWNER ==
     Route::middleware('role:owner')->group(function () {
-        // Laporan
-        Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
-        Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
-        Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
-
         Route::get('stock-reports', [StockReportController::class, 'index'])->name('stock-reports.index');
-
-        // Manajemen Pengguna
-        Route::resource('users', UserController::class);
     });
 });

@@ -5,7 +5,7 @@
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-                @if (auth()->user()->role == 'owner')
+                @if (auth()->user()->role == 'superadmin')
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Aksi</th>
                 @endif
             </tr>
@@ -23,7 +23,7 @@
                                 @if ($user->role == 'pelanggan') bg-green-200 text-green-800 @endif
                             ">{{ $user->role }}</span>
                     </td>
-                    @if (auth()->user()->role == 'owner')
+                    @if (auth()->user()->role == 'superadmin')
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-end space-x-2">
                                 <a href="{{ route('admin.users.edit', $user) }}"
