@@ -144,6 +144,7 @@
                 <th>Tanggal</th>
                 <th>Kode Pesanan</th>
                 <th>Pelanggan</th>
+                <th>Metode Pembayaran</th>
                 <th class="total">Total</th>
             </tr>
         </thead>
@@ -153,6 +154,7 @@
                     <td>{{ $order->created_at->format('d-m-Y') }}</td>
                     <td>{{ $order->order_code }}</td>
                     <td>{{ $order->user->name }}</td>
+                    <td>{{ $order->payment_method }}</td>
                     <td class="total">Rp{{ number_format($order->grand_total, 0, ',', '.') }}</td>
                 </tr>
             @empty
@@ -163,7 +165,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3" class="total">Total Pendapatan</td>
+                <td colspan="4" class="total">Total Pendapatan</td>
                 <td class="total">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</td>
             </tr>
         </tfoot>
