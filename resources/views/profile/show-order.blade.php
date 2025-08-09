@@ -121,7 +121,7 @@
                         </div>
                         <div
                             class="mt-4 pt-4 border-t flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                            @if ($order->status == 'pending' && !$order->payment_proof)
+                            @if ($order->status == 'pending' && !$order->payment_proof && !in_array($order->payment_method, ['COD', 'Debit']))
                                 <a href="{{ route('order.payment', $order) }}"
                                     class="w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm font-medium">
                                     Upload Bukti Bayar

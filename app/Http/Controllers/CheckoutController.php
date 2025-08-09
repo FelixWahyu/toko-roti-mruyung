@@ -35,7 +35,7 @@ class CheckoutController extends Controller
             'shipping_address' => 'required|string',
             'shipping_zone_id' => 'required|exists:shipping_zones,id',
             'shipping_method' => 'required|string',
-            'payment_method' => 'required|string',
+            'payment_method' => 'required|in:Transfer Bank,QRIS,COD',
         ]);
 
         $cartItems = Cart::where('user_id', Auth::id())->get();

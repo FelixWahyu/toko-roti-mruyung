@@ -140,6 +140,12 @@
                                         class="h-4 w-4 text-indigo-600 border-gray-300">
                                     <span class="ml-3 text-sm font-medium text-gray-800">QRIS</span>
                                 </label>
+                                <label class="flex items-center p-4 border rounded-lg cursor-pointer"
+                                    :class="{ 'border-indigo-600 bg-indigo-50': paymentMethod === 'COD' }">
+                                    <input type="radio" name="payment_method" value="COD" x-model="paymentMethod"
+                                        class="h-4 w-4 text-indigo-600 border-gray-300">
+                                    <span class="ml-3 text-sm font-medium text-gray-800">Bayar Tunai di Tempat (COD)</span>
+                                </label>
                             </div>
                         </div>
                     </div>

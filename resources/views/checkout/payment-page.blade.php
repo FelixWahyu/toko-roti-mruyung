@@ -53,9 +53,6 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="mt-8"><a href="{{ route('order.payment', $order) }}"
-                            class="w-full block text-center text-base font-medium text-white bg-brown-500 hover:bg-brown-600 rounded-md px-6 py-3">Upload
-                            Bukti Pembayaran</a></div>
                 @elseif($order->payment_method === 'QRIS')
                     <p class="font-semibold text-gray-700 text-center">Silakan pindai atau Download kode QRIS di bawah
                         ini:</p>
@@ -75,16 +72,26 @@
                         <p class="text-center text-sm text-red-600 mt-4">Kode QRIS belum tersedia. Silakan hubungi admin.
                         </p>
                     @endif
-                    <div class="mt-8">
-                        <a href="{{ route('order.payment', $order) }}"
-                            class="w-full block text-center text-base font-medium text-white bg-brown-500 hover:bg-brown-600 rounded-md px-6 py-3">
-                            Saya Sudah Bayar, Upload Bukti
-                        </a>
+                @elseif($order->payment_method === 'COD')
+                    <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p class="font-semibold text-blue-800">Anda memilih Bayar di Tempat (COD).</p>
+                        <p class="text-sm text-blue-700 mt-1">Silakan siapkan uang pas saat kurir kami tiba. Pesanan Anda
+                            akan segera kami proses.</p>
                     </div>
                 @endif
             </div>
-            <div class="mt-8"><a href="{{ route('profile.index') }}"
-                    class="text-sm text-gray-600 hover:text-brown-500">Lihat Riwayat Pesanan</a></div>
+            @if (in_array($order->payment_method, ['Transfer Bank', 'QRIS']))
+                <div class="mt-8">
+                    <a href="{{ route('order.payment', $order) }}"
+                        class="w-full block text-center text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md px-6 py-3">
+                        Upload Bukti Pembayaran
+                    </a>
+                </div>
+            @endif
+            <div class="mt-8">
+                <a href="{{ route('profile.index') }}" class="text-sm text-gray-600 hover:text-brown-500">Lihat Riwayat
+                    Pesanan</a>
+            </div>
         </div>
     </div>
 @endsection

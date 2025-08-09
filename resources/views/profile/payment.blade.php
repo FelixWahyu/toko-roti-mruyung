@@ -83,6 +83,12 @@
                             <p class="text-center text-sm text-red-600 mt-4">Kode QRIS belum tersedia. Silakan hubungi
                                 admin.</p>
                         @endif
+                    @elseif($order->payment_method === 'COD')
+                        <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <p class="font-semibold text-blue-800">Anda memilih Bayar di Tempat (COD).</p>
+                            <p class="text-sm text-blue-700 mt-1">Silakan siapkan uang pas saat kurir kami tiba. Pesanan
+                                Anda akan segera kami proses.</p>
+                        </div>
                     @endif
                 </div>
 

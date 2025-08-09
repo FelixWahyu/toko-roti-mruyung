@@ -121,18 +121,16 @@
                                     </div>
                                 </a>
                                 <div class="flex items-center gap-4">
-                                    @if ($order->status == 'pending' && !$order->payment_proof)
-                                        <div class="bg-indigo-200 hover:bg-indigo-300 px-3 py-1 rounded-lg">
-                                            <a href="{{ route('order.payment', $order) }}"
-                                                class="text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                                Upload Bukti Bayar
-                                            </a>
-                                        </div>
+                                    @if ($order->status == 'pending' && !$order->payment_proof && !in_array($order->payment_method, ['COD', 'Debit']))
+                                        <a href="{{ route('order.payment', $order) }}"
+                                            class="text-sm font-medium py-2 px-4 bg-indigo-200 text-indigo-600 rounded-lg hover:text-indigo-700 hover:bg-indigo-300">
+                                            Upload Bukti Bayar
+                                        </a>
                                     @endif
                                     @if ($order->status == 'shipped')
                                         <form action="{{ route('order.confirm_receipt', $order) }}" method="POST"
                                             onsubmit="showConfirmation(event, 'Konfirmasi Pesanan?', 'Apakah Anda yakin sudah menerima pesanan ini?', 'Sudah Diterima')"
-                                            class="bg-green-200 px-3 py-1 rounded-lg hover:bg-green-300">
+                                            class="bg-green-200 px-4 py-2 rounded-lg hover:bg-green-300">
                                             @csrf
                                             <button type="submit"
                                                 class="text-sm font-medium text-green-600 hover:text-green-700">
@@ -143,7 +141,7 @@
                                     @if (in_array($order->status, ['pending', 'paid']))
                                         <form action="{{ route('order.cancel', $order) }}" method="POST"
                                             onsubmit="showConfirmation(event, 'Batalkan Pesanan?', 'Pesanan yang telah dibatalkan tidak dapat dikembalikan.', 'Ya, Batalkan')"
-                                            class="bg-red-200 hover:bg-red-300 px-3 py-1 rounded-lg">
+                                            class="bg-red-200 hover:bg-red-300 px-4 py-1 rounded-lg">
                                             @csrf
                                             <button type="submit"
                                                 class="text-sm font-medium text-red-600 hover:text-red-700">
