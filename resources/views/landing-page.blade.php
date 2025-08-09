@@ -84,7 +84,7 @@
                     </div>
                     <h3 class="mt-5 text-lg font-semibold text-gray-900">2. Lakukan Pembayaran</h3>
                     <p class="mt-2 text-base text-gray-500">Pilih metode pengiriman dan pembayaran yang paling sesuai untuk
-                        Anda, lalu selesaikan transaksi.</p>
+                        Anda, lalu selesaikan transaksi serta upload bukti pembayaran.</p>
                 </div>
 
                 <!-- Anak Panah 2 (hanya kelihatan di desktop/tablet) -->
