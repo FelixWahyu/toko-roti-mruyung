@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CartController;
@@ -28,9 +29,7 @@ Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
     Route::get('/produk/filter', [ProductController::class, 'filterProducts'])->name('products.filter');
     Route::get('/produk/{product:slug}', [ProductController::class, 'show'])->name('products.show');
-    Route::get('/tentang-kami', function () {
-        return view('about-page');
-    })->name('about');
+    Route::get('/tentang-kami', [AboutController::class, 'index'])->name('about');
     Route::get('/kontak', function () {
         return view('kontak-page');
     })->name('contact');

@@ -101,8 +101,8 @@
                 </a>
             </div>
             <p class="mt-8 text-center text-sm text-gray-400 md:mt-0 md:order-1">
-                &copy; {{ date('Y') }} {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}. Hak Cipta
-                Dilindungi.
+                Created by Felix Wahyu S. &copy; {{ date('Y') }}
+                {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}. Hak Cipta Dilindungi.
             </p>
         </div>
     </div>

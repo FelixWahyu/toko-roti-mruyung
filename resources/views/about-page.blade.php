@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="bg-white">
-        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
                 <div>
                     <h2 class="text-base font-semibold text-brown-500 tracking-wider uppercase">Tentang Kami</h2>
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Section Filosofi Kami -->
-    <div class="bg-gray-50 py-16 sm:py-24">
+    <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Filosofi Kami</h2>
@@ -86,8 +86,65 @@
         </div>
     </div>
 
+    <div class="bg-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Terbaru Kami</h2>
+                <p class="mt-4 text-lg text-gray-500">Jangan lewatkan produk roti terbaru yang kami buat.
+                </p>
+            </div>
+
+            <!-- Slider Container -->
+            <div class="relative mt-12">
+                <div class="swiper promo-slider overflow-hidden">
+                    <div class="swiper-wrapper">
+                        <!-- Slide Item -->
+                        @foreach ($newProducts as $product)
+                            <div class="swiper-slide p-2">
+                                <div
+                                    class="group relative flex flex-col border border-gray-200 bg-white rounded-lg shadow-md overflow-hidden h-full">
+                                    <div class="aspect-w-4 aspect-h-3 bg-gray-200 overflow-hidden">
+                                        <img src="{{ Storage::url($product->image_url ?? $product->image) }}"
+                                            alt="{{ $product->name }}"
+                                            class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
+                                    </div>
+                                    <div class="p-4 flex flex-col flex-1">
+                                        <h3 class="text-base font-semibold text-gray-800">
+                                            <a href="{{ route('products.show', $product->slug) }}">
+                                                <span aria-hidden="true" class="absolute inset-0"></span>
+                                                {{ $product->name }}
+                                            </a>
+                                        </h3>
+                                        <p class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</p>
+                                        <div class="flex-1 flex items-end mt-2">
+                                            <p class="text-lg font-bold text-indigo-600">
+                                                Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <!-- Butang Navigasi Slider -->
+                <div
+                    class="promo-prev absolute top-1/2 left-2 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                <div
+                    class="promo-next absolute top-1/2 right-2 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Section Galeri -->
-    <div class="bg-white py-16 sm:py-24">
+    <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Intip Suasana Kami</h2>
@@ -102,7 +159,8 @@
                             alt="[Gambar secangkir kopi latte art]"></div>
                     <div><img
                             class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/guesthouse-mruyung.webp') }}" alt="[Gambar aneka kue warna-warni]">
+                            src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
+                            alt="[Gambar aneka kue warna-warni]">
                     </div>
                 </div>
                 <div class="grid gap-4">
@@ -139,79 +197,34 @@
         </div>
     </div>
 
-    {{-- section menu --}}
-    <section class="bg-white w-full pt-3 pb-16">
-        <div class="relative w-full max-w-2xl lg:mx-auto overflow-hidden rounded-lg">
-            <div id="slider" class="flex transition-transform duration-500 ease-in-out">
-                <img src="/images/image-sliding/foto10.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
-                    alt="Slide 1">
-                <img src="/images/image-sliding/foto11.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
-                    alt="Slide 2">
-                <img src="/images/image-sliding/foto12.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
-                    alt="Slide 3">
-                <img src="/images/image-sliding/foto13.jpg" class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]"
-                    alt="Slide 4">
-                <img src="/images/image-sliding/foto14.jpg"
-                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 5">
-                <img src="/images/image-sliding/foto15.jpg"
-                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 6">
-                <img src="/images/image-sliding/foto16.jpg"
-                    class="w-full flex-shrink-0 object-cover h-[300px] sm:h-[400px]" alt="Slide 7">
-            </div>
-
-            <!-- Tombol navigasi -->
-            <button onclick="prevSlide()"
-                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
-                &#10094;
-            </button>
-            <button onclick="nextSlide()"
-                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10">
-                &#10095;
-            </button>
-        </div>
-    </section>
-
     <script>
-        // Pertama, cari elemen slider di halaman
-        const slider = document.getElementById("slider");
-
-        // Bungkus semua logika di dalam 'if (slider)'
-        // Ini memastikan kode hanya berjalan jika elemen dengan id="slider" ditemukan
-        if (slider) {
-            let currentIndex = 0;
-
-            function showSlide(index) {
-                // Kita tidak perlu mencari elemen slider lagi di sini karena sudah ada di atas
-                const maxIndex = slider.children.length - 1;
-
-                if (index < 0) {
-                    currentIndex = maxIndex;
-                } else if (index > maxIndex) {
-                    currentIndex = 0;
-                } else {
-                    currentIndex = index;
-                }
-
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            function nextSlide() {
-                showSlide(currentIndex + 1);
-            }
-
-            function prevSlide() {
-                showSlide(currentIndex - 1);
-            }
-
-            // Set interval untuk auto-slide hanya jika slider ada
-            setInterval(() => {
-                nextSlide();
-            }, 10000);
-
-            // Pasang fungsi ke window agar bisa diakses dari HTML (untuk tombol panah)
-            // hanya jika slider ada
-            window.nextSlide = nextSlide;
-            window.prevSlide = prevSlide;
-        }
+        // Inisialisasi Swiper.js untuk slider promo
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.promo-slider', {
+                // Konfigurasi
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 16,
+                autoplay: {
+                    delay: 10000, // 10 detik
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.promo-next',
+                    prevEl: '.promo-prev',
+                },
+                // Breakpoints untuk tampilan responsif
+                breakpoints: {
+                    640: { // sm
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: { // lg
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                },
+            });
+        });
     </script>
 @endsection
