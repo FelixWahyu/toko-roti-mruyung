@@ -95,10 +95,11 @@ class CheckoutController extends Controller
             Cart::where('user_id', Auth::id())->delete();
             DB::commit();
 
-            $adminNumber = env('ADMIN_WHATSAPP_NUMBER');
+            $adminNumber = config('services.admin.whatsapp_number');
             if ($adminNumber) {
                 $customerName = $order->user->name;
-                $message = "*Pesanan Baru Masuk!*\n\n"
+                $message = "*Tanggal:* {$order->created_at->format('d F Y')}\n\n"
+                    . "*Pesanan Baru Masuk!*\n"
                     . "*Nama:* {$customerName}\n"
                     . "*Kode Pesanan:* {$order->order_code}\n"
                     . "*Total:* Rp " . number_format($order->grand_total, 0, ',', '.') . "\n"

@@ -95,11 +95,17 @@ class OrderController extends Controller
                 $subtotalFormatted = number_format($order->total_amount, 0, ',', '.');
                 $shippingCostFormatted = number_format($order->shipping_cost, 0, ',', '.');
                 $grandTotalFormatted = number_format($order->grand_total, 0, ',', '.');
+                $paymentMethod = $order->payment_method;
+                $shippingMethod = $order->shipping_method;
+                $orderDate = $order->created_at->format('d F Y');
 
                 // Bina mesej lengkap
-                $message  = "Halo *{$customerName}*!\n\n";
+                $message .= "Tanggal: {$orderDate}\n\n";
+                $message  = "Halo *{$customerName}*!\n";
                 $message .= "Pesanan Anda dengan kode *{$order->order_code}* telah kami konfirmasi dan sedang diproses.\n\n";
                 $message .= "*RINCIAN PESANAN:*\n";
+                $message .= "Metode Pembayaran: {$paymentMethod}\n";
+                $message .= "Metode Pengiriman: {$shippingMethod}\n";
                 $message .= "----------------------------------\n";
                 $message .= $itemDetails;
                 $message .= "----------------------------------\n";

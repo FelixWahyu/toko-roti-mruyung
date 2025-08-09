@@ -11,7 +11,7 @@ class WhatsAppService
 
     public function __construct()
     {
-        $this->token = env('FONNTE_API_TOKEN');
+        $this->token = config('services.fonnte.token');
     }
 
     public function sendMessage($to, $message)
