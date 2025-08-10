@@ -100,8 +100,8 @@ class OrderController extends Controller
                 $orderDate = $order->created_at->format('d F Y');
 
                 // Bina mesej lengkap
-                $message .= "Tanggal: {$orderDate}\n\n";
-                $message  = "Halo *{$customerName}*!\n";
+                $message  = "Tanggal: {$orderDate}\n\n";
+                $message .= "Halo *{$customerName}*!\n";
                 $message .= "Pesanan Anda dengan kode *{$order->order_code}* telah kami konfirmasi dan sedang diproses.\n\n";
                 $message .= "*RINCIAN PESANAN:*\n";
                 $message .= "Metode Pembayaran: {$paymentMethod}\n";
@@ -112,9 +112,9 @@ class OrderController extends Controller
                 $message .= "_Subtotal: Rp{$subtotalFormatted}_\n";
                 $message .= "_Ongkos Kirim: Rp{$shippingCostFormatted}_\n";
                 $message .= "*Grand Total: Rp{$grandTotalFormatted}*\n\n";
-                $message .= "Pesanan Anda sedang kami proses dan akan segera diantar. Terima kasih telah menunggu!";
+                $message .= "Pesanan Anda sedang kami proses. Terima kasih telah menunggu!";
             } elseif ($newStatus === 'shipped' && $oldStatus !== 'shipped') {
-                $message = "Pesanan Anda *{$order->order_code}* sedang dalam pengiriman!\n\nMohon konfirmasi penerimaan di halaman 'Riwayat Pesanan' di website setelah pesanan tiba. Terima kasih!";
+                $message = "Pesanan Anda *{$order->order_code}* sudah selesai diproses dan sedang dalam pengiriman!\n\nMohon konfirmasi penerimaan di halaman 'Riwayat Pesanan' di website setelah pesanan tiba. Terima kasih!";
             }
 
             if ($message) {

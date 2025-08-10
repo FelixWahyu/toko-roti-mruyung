@@ -107,6 +107,12 @@
                                 <span class="text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
+                        @if (isset($order) && $order->payment_proof)
+                            <div class="mt-4">
+                                <img src="{{ Storage::url($order->payment_proof) }}" alt="{{ $order->user->name }}"
+                                    class="h-auto w-32 object-cover rounded-lg">
+                            </div>
+                        @endif
                         <div class="mt-6">
                             <button type="submit"
                                 class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brown-500 hover:bg-brown-600">

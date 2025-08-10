@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'superadmin',
-            'email' => 'admin@tokoroti.com',
+            'email' => 'superadmin@tokoroti.com',
             'password' => Hash::make('password'), // Ganti dengan password yang aman
             'role' => 'superadmin',
             'phone_number' => '081234567890',

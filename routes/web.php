@@ -21,6 +21,7 @@ use App\Http\Controllers\SuperAdmin\BankAccountController;
 use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
+use League\Uri\Contracts\UserInfoInterface;
 
 Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/', function () {
@@ -108,10 +109,12 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
         Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
         Route::resource('store-accounts', BankAccountController::class);
         Route::resource('shipping-zones', ShippingZoneController::class);
+        // Manajemen Pengguna
+        Route::resource('users', UserController::class)->except('index');
     });
 
-    // Manajemen Pengguna
-    Route::resource('users', UserController::class);
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+
 
     // Laporan
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
@@ -120,6 +123,6 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
 
     // == FITUR YANG HANYA BISA DIAKSES OWNER ==
     Route::middleware('role:owner')->group(function () {
-        Route::get('stock-reports', [StockReportController::class, 'index'])->name('stock-reports.index');
+        // Route::get('stock-reports', [StockReportController::class, 'index'])->name('stock-reports.index');
     });
 });
