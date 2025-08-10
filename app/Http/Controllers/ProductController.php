@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,13 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        $products = $this->getFilteredProducts($request);
+        if (!$request->hasAny(['search', 'category', 'sort_by', 'page'])) {
+            $products = Cache::remember('products_page_1', 600, function () {
+                return $this->getFilteredProducts(new Request());
+            });
+        } else {
+            $products = $this->getFilteredProducts($request);
+        }
 
         return view('produks.produk-page', [
             'products' => $products,
