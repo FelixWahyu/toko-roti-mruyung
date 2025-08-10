@@ -22,7 +22,6 @@
             border: none;
         }
 
-        /* <-- PERUBAHAN DI SINI: Menghilangkan border khusus untuk sel header */
         .logo-cell {
             width: 130px;
             vertical-align: top;
@@ -117,7 +116,6 @@
 </head>
 
 <body>
-    {{-- Menggunakan jadual untuk menyusun logo dan teks --}}
     <table class="header-table">
         <tr>
             <td class="logo-cell">

@@ -41,7 +41,6 @@
     @endforelse
 </div>
 
-{{-- Navigasi Paginasi --}}
 <div class="mt-10">
     {{ $products->links() }}
 </div>

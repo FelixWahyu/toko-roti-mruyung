@@ -15,7 +15,6 @@
                 paymentMethod: 'Transfer Bank',
                 shippingCost: 0,
                 grandTotal: 0,
-                // isShippingSet: false,
 
                 init() {
                     this.grandTotal = this.subtotal;
@@ -64,7 +63,6 @@
             <form action="{{ route('checkout.store') }}" method="POST">
                 @csrf
                 <div class="grid grid-cols-1 lg:grid-cols-6 gap-8">
-                    <!-- Kolom Kiri: Detail & Pilihan -->
                     <div class="lg:col-span-3 space-y-6">
                         <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Alamat Pengiriman</h3>
@@ -149,7 +147,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Kolom Kanan: Ringkasan Pesanan -->
                     <div class="lg:col-span-3">
                         <div class="bg-white p-6 rounded-lg shadow-md sticky top-28 border border-gray-200">
                             <h3 class="text-xl font-semibold text-gray-800 mb-4">Ringkasan Pesanan</h3>

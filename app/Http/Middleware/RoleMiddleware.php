@@ -17,7 +17,6 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (!Auth::check() || !in_array(Auth::user()->role, $roles)) {
-            // Jika pengguna tidak login atau rolenya tidak sesuai, kembalikan ke halaman utama
             return redirect('/');
         }
 

@@ -3,7 +3,6 @@
     <h1 class="text-2xl font-bold text-slate-800 mb-6">Laporan Stok</h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Produk Terlaris -->
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="p-4 border-b">
                 <h2 class="text-lg font-semibold text-slate-800">10 Produk Terlaris</h2>
@@ -35,7 +34,6 @@
             </div>
         </div>
 
-        <!-- Produk Paling Lambat Terjual -->
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="p-4 border-b">
                 <h2 class="text-lg font-semibold text-slate-800">10 Produk Paling Lambat Terjual</h2>

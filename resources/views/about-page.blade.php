@@ -34,7 +34,6 @@
         </div>
     </div>
 
-    <!-- Section Filosofi Kami -->
     <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -43,7 +42,6 @@
                     lakukan.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                <!-- Pilar 1 -->
                 <div>
                     <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
                         <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -56,7 +54,6 @@
                     <p class="mt-2 text-base text-gray-500">Kami hanya menggunakan bahan-bahan pilihan, dari tepung lokal
                         hingga biji kopi premium, untuk memastikan setiap gigitan dan seruputan adalah yang terbaik.</p>
                 </div>
-                <!-- Pilar 2 -->
                 <div>
                     <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
                         <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -69,7 +66,6 @@
                     <p class="mt-2 text-base text-gray-500">Setiap senyuman tulus dan sapaan hangat adalah bagian dari
                         pelayanan kami. Kami ingin Anda merasa diterima dan dihargai.</p>
                 </div>
-                <!-- Pilar 3 -->
                 <div>
                     <div class="mx-auto h-12 w-12 flex items-center justify-center bg-brown-100 rounded-full">
                         <svg class="h-6 w-6 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -94,11 +90,9 @@
                 </p>
             </div>
 
-            <!-- Slider Container -->
             <div class="relative mt-12">
                 <div class="swiper promo-slider overflow-hidden">
                     <div class="swiper-wrapper">
-                        <!-- Slide Item -->
                         @foreach ($newProducts as $product)
                             <div class="swiper-slide p-2">
                                 <div
@@ -126,7 +120,6 @@
                         @endforeach
                     </div>
                 </div>
-                <!-- Butang Navigasi Slider -->
                 <div
                     class="promo-prev absolute top-1/2 left-2 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
                     <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +136,6 @@
         </div>
     </div>
 
-    <!-- Section Galeri -->
     <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -198,28 +190,25 @@
     </div>
 
     <script>
-        // Inisialisasi Swiper.js untuk slider promo
         document.addEventListener('DOMContentLoaded', function() {
             const swiper = new Swiper('.promo-slider', {
-                // Konfigurasi
                 loop: true,
                 slidesPerView: 1,
                 spaceBetween: 16,
                 autoplay: {
-                    delay: 10000, // 10 detik
+                    delay: 10000,
                     disableOnInteraction: false,
                 },
                 navigation: {
                     nextEl: '.promo-next',
                     prevEl: '.promo-prev',
                 },
-                // Breakpoints untuk tampilan responsif
                 breakpoints: {
-                    640: { // sm
+                    640: {
                         slidesPerView: 2,
                         spaceBetween: 20,
                     },
-                    1024: { // lg
+                    1024: {
                         slidesPerView: 3,
                         spaceBetween: 30,
                     },

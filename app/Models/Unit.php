@@ -12,9 +12,6 @@ class Unit extends Model
 
     protected $guarded = ['id'];
 
-    /**
-     * Relasi ke tabel Products: Satu Unit bisa digunakan oleh banyak produk.
-     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

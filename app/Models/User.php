@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,17 +41,11 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Relasi ke tabel Carts: Satu User bisa punya banyak item di keranjang.
-     */
     public function carts(): HasMany
     {
         return $this->hasMany(Cart::class);
     }
 
-    /**
-     * Relasi ke tabel Orders: Satu User bisa punya banyak pesanan.
-     */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

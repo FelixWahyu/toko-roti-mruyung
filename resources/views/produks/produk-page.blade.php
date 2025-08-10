@@ -9,12 +9,9 @@
                     hari.</p>
             </div>
 
-            <!-- Alpine.js Component Wrapper -->
             <div x-data="productFilter()">
-                <!-- Borang Carian dan Penapis -->
                 <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-12">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <!-- Carian -->
                         <div class="md:col-span-2">
                             <label for="search" class="block text-sm font-medium text-gray-700">Cari Produk</label>
                             <div class="mt-1 relative rounded-md shadow-sm">
@@ -31,7 +28,6 @@
                                     placeholder="Search here...">
                             </div>
                         </div>
-                        <!-- Penapis Kategori -->
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
                             <select id="category" x-model="category"
@@ -42,7 +38,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <!-- Penapis Harga -->
                         <div>
                             <label for="sort_by" class="block text-sm font-medium text-gray-700">Urutkan</label>
                             <select id="sort_by" x-model="sort"
@@ -55,9 +50,7 @@
                     </div>
                 </div>
 
-                <!-- Container untuk Senarai Produk dengan Penunjuk Memuat -->
                 <div class="relative min-h-[300px]">
-                    <!-- Penunjuk Memuat (Loading Spinner) -->
                     <div x-show="loading" x-transition
                         class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
                         <svg class="animate-spin h-8 w-8 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -69,7 +62,6 @@
                             </path>
                         </svg>
                     </div>
-                    <!-- Senarai Produk Sebenar -->
                     <div id="product-list-container">
                         @include('produks._produk-list', ['products' => $products])
                     </div>
@@ -84,7 +76,7 @@
                 search: '{{ $searchTerm ?? '' }}',
                 category: '{{ $selectedCategory ?? '' }}',
                 sort: '{{ $selectedSort ?? '' }}',
-                loading: false, // State untuk penunjuk memuat
+                loading: false,
 
                 init() {
                     this.$watch('search', () => this.fetchProducts());
@@ -93,7 +85,7 @@
                 },
 
                 fetchProducts() {
-                    this.loading = true; // Tunjukkan spinner
+                    this.loading = true;
 
                     const params = new URLSearchParams({
                         search: this.search,
@@ -107,7 +99,7 @@
 
                     fetch(url, {
                             headers: {
-                                'X-Requested-With': 'XMLHttpRequest', // Header untuk permintaan AJAX
+                                'X-Requested-With': 'XMLHttpRequest',
                             },
                         })
                         .then(response => response.text())
@@ -116,10 +108,9 @@
                         })
                         .catch(error => {
                             console.error('Error fetching products:', error);
-                            // Anda boleh menambah mesej ralat kepada pengguna di sini
                         })
                         .finally(() => {
-                            this.loading = false; // Sembunyikan spinner
+                            this.loading = false;
                         });
                 }
             }

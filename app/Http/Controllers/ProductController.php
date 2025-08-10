@@ -12,7 +12,6 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        // Logik penapis yang sama dipindahkan ke kaedah persendirian
         $products = $this->getFilteredProducts($request);
 
         return view('produks.produk-page', [
@@ -28,16 +27,12 @@ class ProductController extends Controller
     {
         $products = $this->getFilteredProducts($request);
 
-        // FIX: Tetapkan path paginasi secara eksplisit untuk permintaan AJAX
-        // Ini memastikan pautan paginasi sentiasa betul.
         $products->withPath(route('products.index'));
 
-        // Kembalikan hanya partial view
         return view('produks._produk-list', compact('products'))->render();
     }
 
 
-    // BARU: Kaedah persendirian untuk logik penapis yang boleh diguna semula
     private function getFilteredProducts(Request $request)
     {
         $query = Product::query();
@@ -64,7 +59,6 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        // Eager load relasi kategori dan unit
         $product->load(['category', 'unit']);
 
         return view('produks.show-produk', compact('product'));

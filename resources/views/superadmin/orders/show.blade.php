@@ -7,7 +7,6 @@
     <h1 class="text-2xl font-bold text-gray-800">Detail Pesanan: {{ $order->order_code }}</h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
-        <!-- Kolom Kiri: Detail Pesanan & Item -->
         <div class="lg:col-span-2 space-y-6">
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Item Pesanan</h3>
@@ -49,7 +48,6 @@
             </div>
         </div>
 
-        <!-- Kolom Kanan: Info Pelanggan & Update Status -->
         <div class="space-y-6">
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Informasi Pelanggan</h3>

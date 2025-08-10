@@ -17,18 +17,12 @@ class ContactFormMail extends Mailable
     public $contactData;
     public $settings;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct(array $data, $settings)
     {
         $this->contactData = $data;
         $this->settings = $settings;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -40,9 +34,6 @@ class ContactFormMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(

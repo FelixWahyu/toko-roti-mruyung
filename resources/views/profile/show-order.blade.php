@@ -10,7 +10,6 @@
             <h1 class="text-3xl font-extrabold text-gray-900">Detail Pesanan</h1>
 
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-6">
-                <!-- Kolom Kiri: Detail Item -->
                 <div class="lg:col-span-3 space-y-6">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Item yang Dipesan</h3>
@@ -46,7 +45,6 @@
                     </div>
                 </div>
 
-                <!-- Kolom Kanan: Ringkasan & Alamat -->
                 <div class="space-y-6 lg:col-span-2">
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Ringkasan Pesanan</h3>
@@ -134,7 +132,6 @@
                                         class="w-full rounded-md hover:opacity-80 transition-opacity">
                                 </a>
 
-                                {{-- Butang untuk edit bukti bayar, hanya muncul jika status 'paid' --}}
                                 @if ($order->status == 'paid')
                                     <a href="{{ route('order.payment', $order) }}"
                                         class="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">

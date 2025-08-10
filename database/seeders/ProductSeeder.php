@@ -11,8 +11,8 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::create([
-            'category_id' => 1, // Roti Tawar
-            'unit_id' => 1, // Bungkus
+            'category_id' => 1,
+            'unit_id' => 1,
             'name' => 'Roti Tawar Klasik',
             'slug' => 'roti-tawar-klasik',
             'description' => 'Roti tawar lembut dengan tekstur klasik, cocok untuk sarapan.',
@@ -22,8 +22,8 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'category_id' => 2, // Roti Manis
-            'unit_id' => 2, // Pcs
+            'category_id' => 2,
+            'unit_id' => 2,
             'name' => 'Roti Coklat Keju',
             'slug' => 'roti-coklat-keju',
             'description' => 'Perpaduan sempurna antara coklat manis dan keju gurih.',
@@ -33,8 +33,8 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::create([
-            'category_id' => 3, // Kue Kering
-            'unit_id' => 4, // Box
+            'category_id' => 3,
+            'unit_id' => 4,
             'name' => 'Nastar Premium',
             'slug' => 'nastar-premium',
             'description' => 'Kue nastar dengan isian selai nanas asli dan mentega wisman.',

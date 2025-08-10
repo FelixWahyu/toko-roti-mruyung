@@ -6,7 +6,6 @@
             <h1 class="text-3xl font-extrabold text-gray-900 mb-8 px-4 sm:px-0">Profil Saya</h1>
 
             <div x-data="{ tab: 'history' }" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Navigasi Tab -->
                 <div class="md:col-span-1">
                     <div class="bg-white p-4 rounded-lg shadow">
                         <ul>
@@ -41,9 +40,7 @@
                     </div>
                 </div>
 
-                <!-- Konten Tab -->
                 <div class="md:col-span-2">
-                    <!-- Tab Riwayat Pesanan -->
                     <div x-show="tab === 'history'" class="bg-white p-6 rounded-lg shadow">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">Riwayat Pesanan Anda</h2>
                         <div class="space-y-4">
@@ -159,7 +156,6 @@
                         </div>
                     </div>
 
-                    <!-- Tab Edit Profil -->
                     <div x-show="tab === 'profile'" class="bg-white p-6 rounded-lg shadow" style="display: none;">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">Edit Informasi Profil</h2>
                         @if (auth()->user()->profile_picture)
@@ -269,7 +265,6 @@
                         </form>
                     </div>
 
-                    <!-- Tab Ganti Password -->
                     <div x-show="tab === 'password'" class="bg-white p-6 rounded-lg shadow" style="display: none;">
                         <h2 class="text-xl font-bold text-gray-800 mb-4">Ubah Password Anda</h2>
                         <form action="{{ route('profile.update.password') }}" method="POST" class="space-y-4">

@@ -4,7 +4,6 @@
     <div class="bg-gray-100 py-12">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-3xl font-extrabold text-gray-900 mb-8">Keranjang Belanja Anda</h1>
-
             <div id="cart-container">
                 @if ($cartItems->count() > 0)
                     <div class="bg-white shadow-md border border-gray-200 rounded-lg overflow-hidden">
@@ -120,10 +119,8 @@
             const currentQuantity = parseInt(quantityElement.innerText);
             const newQuantity = currentQuantity + change;
 
-            // Dapatkan token CSRF dari meta tag
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            // Kirim request AJAX ke server dengan URL yang sudah diperbaiki
             fetch(`/keranjang/update-quantity/${itemId}`, {
                     method: 'POST',
                     headers: {
@@ -144,19 +141,15 @@
                 .then(data => {
                     if (data.success) {
                         if (newQuantity <= 0) {
-                            // Jika kuantitas 0 atau kurang, hapus elemen dari DOM
                             document.getElementById(`cart-item-${itemId}`).remove();
                         } else {
-                            // Jika berhasil, perbarui tampilan kuantitas dan subtotal item
                             quantityElement.innerText = data.newQuantity;
                             const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
                             itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
                         }
 
-                        // Perbarui total keseluruhan
                         updateCartTotal();
 
-                        // Jika keranjang kosong setelah update, reload halaman untuk menampilkan pesan "keranjang kosong"
                         if (document.querySelectorAll('#cart-list li').length === 0) {
                             window.location.reload();
                         }
@@ -178,7 +171,6 @@
                 total += quantity * price;
             });
 
-            // Update total keseluruhan
             document.getElementById('cart-total').innerText = 'Rp' + total.toLocaleString('id-ID');
         }
     </script>

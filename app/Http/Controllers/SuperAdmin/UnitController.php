@@ -48,7 +48,6 @@ class UnitController extends Controller
     public function destroy(Unit $unit)
     {
         if ($unit->products()->count() > 0) {
-            // Jika ada, kembalikan dengan mesej ralat dan jangan hapus.
             return back()->with('error', 'Unit ini tidak dapat dihapus karena masih digunakan oleh beberapa produk.');
         }
 

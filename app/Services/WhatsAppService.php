@@ -21,7 +21,6 @@ class WhatsAppService
             return false;
         }
 
-        // Membersihkan nombor telefon daripada sebarang aksara bukan digit
         $targetNumber = preg_replace('/\D/', '', $to);
 
         try {
@@ -30,7 +29,6 @@ class WhatsAppService
             ])->post('https://api.fonnte.com/send', [
                 'target' => $targetNumber,
                 'message' => $message,
-                // 'countryCode' => '62',
             ]);
 
             Log::info('Fonnte API Response:', $response->json());

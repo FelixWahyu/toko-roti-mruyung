@@ -16,12 +16,10 @@
         </div>
     </div>
 
-    <!-- Section Form dan Info Kontak -->
     <div class="bg-gray-50 py-16 sm:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-                <!-- Kolom Kiri: Form Kontak -->
                 <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg border border-gray-200">
                     <h3 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h3>
                     <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
@@ -69,7 +67,6 @@
                     </form>
                 </div>
 
-                <!-- Kolom Kanan: Info Kontak & Jam Buka -->
                 <div class="space-y-8">
                     <div class="bg-white border border-gray-200 p-8 rounded-lg shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 mb-4">Detail Kontak</h3>
@@ -123,7 +120,6 @@
         </div>
     </div>
 
-    <!-- Section Peta -->
     <div class="w-full">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.5693799913684!2d109.2937846!3d-7.512695700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655be837ac6d85%3A0x60a6bc885567f28!2sRoti%20Mruyung%20Guest%20House%20%26%20Cafe!5e0!3m2!1sid!2sid!4v1752346494051!5m2!1sid!2sid"

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- Hero Section --}}
     <div class="relative bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
@@ -47,9 +46,7 @@
                 <p class="mt-4 text-lg text-gray-500">Hanya dengan beberapa langkah mudah, pesanan Anda siap diantar.</p>
             </div>
 
-            {{-- Menggunakan flexbox untuk menyusun langkah dan anak panah --}}
             <div class="mt-16 flex flex-col md:flex-row items-center justify-center gap-y-12 gap-x-8">
-                <!-- Langkah 1 -->
                 <div class="text-center max-w-xs">
                     <div
                         class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">
@@ -63,7 +60,6 @@
                         lanjutkan ke halaman checkout.</p>
                 </div>
 
-                <!-- Anak Panah 1 (hanya kelihatan di desktop/tablet) -->
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +68,6 @@
                     </svg>
                 </div>
 
-                <!-- Langkah 2 -->
                 <div class="text-center max-w-xs">
                     <div
                         class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">
@@ -87,7 +82,6 @@
                         Anda, lalu selesaikan transaksi serta upload bukti pembayaran.</p>
                 </div>
 
-                <!-- Anak Panah 2 (hanya kelihatan di desktop/tablet) -->
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +90,6 @@
                     </svg>
                 </div>
 
-                <!-- Langkah 3 -->
                 <div class="text-center max-w-xs">
                     <div
                         class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">

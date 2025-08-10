@@ -14,13 +14,11 @@ use Carbon\Carbon;
 
 class ForgotPasswordController extends Controller
 {
-    // Memaparkan borang permintaan pautan
     public function showLinkRequestForm()
     {
         return view('auth.forgot-password');
     }
 
-    // Menghantar pautan set semula ke e-mel pengguna
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email|exists:users,email']);
@@ -42,13 +40,11 @@ class ForgotPasswordController extends Controller
         return back()->with('success', 'Kami telah mengirimkan link reset ulang password ke alamat gmail anda');
     }
 
-    // Memaparkan borang set semula kata laluan
     public function showResetForm(Request $request, $token)
     {
         return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
     }
 
-    // Mengendalikan proses set semula kata laluan
     public function reset(Request $request)
     {
         $request->validate([

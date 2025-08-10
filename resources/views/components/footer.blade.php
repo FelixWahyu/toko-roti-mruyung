@@ -2,7 +2,6 @@
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
 
-            <!-- Kolom 1: Logo dan Deskripsi -->
             <div class="col-span-2 lg:col-span-2">
                 <div class="flex items-center space-x-2">
                     @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
@@ -25,7 +24,6 @@
                 </p>
             </div>
 
-            <!-- Kolom 2: Produk -->
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk</h3>
                 <ul class="mt-4 space-y-2">
@@ -36,7 +34,6 @@
                 </ul>
             </div>
 
-            <!-- Kolom 3: Perusahaan -->
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Perusahaan</h3>
                 <ul class="mt-4 space-y-2">
@@ -47,7 +44,6 @@
                 </ul>
             </div>
 
-            <!-- Kolom 4: Bantuan -->
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bantuan</h3>
                 <ul class="mt-4 space-y-2">
@@ -57,10 +53,8 @@
             </div>
         </div>
 
-        <!-- Bagian Bawah Footer: Copyright dan Media Sosial -->
         <div class="mt-8 pt-8 border-t border-gray-700 md:flex md:items-center md:justify-between">
             <div class="flex justify-center space-x-6 md:order-2">
-                <!-- Ikon Instagram -->
                 <a href="https://instagram.com/rotimruyungbanyumas" target="_blank" rel="noopener noreferrer"
                     class="text-gray-400 hover:text-white">
                     <span class="sr-only">Instagram</span>
@@ -70,7 +64,6 @@
                             clip-rule="evenodd" />
                     </svg>
                 </a>
-                <!-- Ikon Facebook -->
                 <a href="https://facebook.com/roti.mruyung.banyumas" target="_blank" rel="noopener noreferrer"
                     class="text-gray-400 hover:text-white">
                     <span class="sr-only">Facebook</span>
@@ -80,7 +73,6 @@
                             clip-rule="evenodd" />
                     </svg>
                 </a>
-                <!-- Ikon TikTok Baru -->
                 <a href="https://tiktok.com/@roti_mruyung_banyumas" target="_blank" rel="noopener noreferrer"
                     class="text-gray-400 hover:text-white">
                     <span class="sr-only">TikTok</span>
@@ -89,7 +81,6 @@
                             d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.25V349.4a162.6 162.6 0 1 1 -185-188.3v89.9A74.6 74.6 0 1 0 224 427.5V0h88a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z" />
                     </svg>
                 </a>
-                <!-- Ikon WhatsApp Baru -->
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}" target="_blank"
                     rel="noopener noreferrer" class="text-gray-400 hover:text-white">
                     <span class="sr-only">WhatsApp</span>

@@ -12,17 +12,11 @@ class OrderItem extends Model
 
     protected $guarded = ['id'];
 
-    /**
-     * Relasi ke tabel Orders: Satu item pesanan dimiliki oleh satu Pesanan.
-     */
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
 
-    /**
-     * Relasi ke tabel Products: Satu item pesanan merujuk ke satu Produk.
-     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

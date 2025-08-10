@@ -12,9 +12,6 @@ class Category extends Model
 
     protected $guarded = ['id'];
 
-    /**
-     * Relasi ke tabel Products: Satu Kategori bisa punya banyak produk.
-     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

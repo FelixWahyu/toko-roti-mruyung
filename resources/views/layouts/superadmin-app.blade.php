@@ -19,26 +19,20 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- Kita akan tambahkan script Chart.js di sini nanti --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-gray-100 antialiased font-sans">
     <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex">
 
-        <!-- Sidebar -->
         <x-superadmin.sidebar />
 
-        <!-- Overlay untuk mobile saat sidebar terbuka -->
         <div x-show="sidebarOpen" class="fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity md:hidden"
             @click="sidebarOpen = false"></div>
 
         <div class="flex-1 flex flex-col overflow-hidden h-screen">
-            <!-- Header -->
-            {{-- Kita lewatkan state sidebarOpen ke header --}}
             <x-superadmin.header />
 
-            <!-- Konten Utama -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
                 <div class="mx-auto px-4 py-6">
                     @yield('content')

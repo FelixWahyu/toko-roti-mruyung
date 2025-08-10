@@ -12,17 +12,11 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
-    /**
-     * Relasi ke tabel Categories: Satu Produk dimiliki oleh satu Kategori.
-     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * Relasi ke tabel Units: Satu Produk dimiliki oleh satu Unit.
-     */
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);

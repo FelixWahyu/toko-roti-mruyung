@@ -12,17 +12,11 @@ class Cart extends Model
 
     protected $guarded = ['id'];
 
-    /**
-     * Relasi ke tabel Users: Satu item keranjang dimiliki oleh satu User.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Relasi ke tabel Products: Satu item keranjang merujuk ke satu Produk.
-     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

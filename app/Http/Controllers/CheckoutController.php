@@ -48,7 +48,6 @@ class CheckoutController extends Controller
 
             $subtotal = $cartItems->sum(fn($item) => $item->product->price * $item->quantity);
 
-            // Logik pengiraan kos penghantaran di backend
             $zone = ShippingZone::find($request->shipping_zone_id);
             $settings = Setting::all()->keyBy('key');
             $minPurchase = (float)($settings['min_purchase_free_shipping']->value ?? 0);
@@ -111,7 +110,6 @@ class CheckoutController extends Controller
                 $whatsappService->sendMessage($adminNumber, $message);
             }
 
-            // Arahkan ke halaman arahan pembayaran yang baru
             return redirect()->route('order.payment.instruction', $order);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -119,7 +117,6 @@ class CheckoutController extends Controller
         }
     }
 
-    // Kaedah baru untuk halaman arahan pembayaran
     public function paymentInstruction(Order $order)
     {
         if ($order->user_id !== Auth::id()) {

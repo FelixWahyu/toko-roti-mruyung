@@ -28,7 +28,6 @@ class ProduksController extends Controller
         $products = $query->latest()->paginate(8)->withQueryString();
 
         if ($request->ajax()) {
-            // Jika ya, kembalikan hanya partial view tabel
             return view('superadmin.products._table-produks', compact('products'))->render();
         }
 
@@ -92,11 +91,9 @@ class ProduksController extends Controller
         $data = $request->except('image');
 
         if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
             if ($product->image) {
                 Storage::disk('public')->delete($product->image);
             }
-            // Simpan gambar baru
             $imagePath = $request->file('image')->store('products-image', 'public');
             $data['image'] = $imagePath;
         }
@@ -109,7 +106,6 @@ class ProduksController extends Controller
 
     public function destroy(Product $product)
     {
-        // Hapus gambar dari storage
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }

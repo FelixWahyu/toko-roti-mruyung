@@ -2,7 +2,6 @@
     class="fixed inset-y-0 left-0 w-64 bg-white text-gray-800 transform transition-transform duration-300 ease-in-out z-30 border-r border-slate-200
               md:relative md:translate-x-0">
 
-    <!-- Logo -->
     <div class="flex items-center justify-center px-4 pt-2 pb-4">
         <a href="{{ route('admin.dashboard.index') }}" class="text-center space-x-2">
             @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
@@ -20,7 +19,6 @@
         </a>
     </div>
 
-    <!-- Navigasi -->
     <nav class="px-4 py-4 flex-1">
         <ul class="space-y-2">
             <li>

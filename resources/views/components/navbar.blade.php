@@ -1,10 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-            <!-- Logo & Nama Toko -->
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2">
-                    {{-- Ganti dengan logo Anda jika ada --}}
                     @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
                         <img class="h-10 w-auto" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
                             alt="Logo Toko">
@@ -20,7 +18,6 @@
                 </a>
             </div>
 
-            <!-- Navigasi Utama (Desktop) -->
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <a href="{{ route('home') }}"
                     class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Beranda</a>
@@ -34,7 +31,6 @@
             </div>
 
             <div class="flex items-center space-x-5">
-                <!-- Ikon Keranjang (Kelihatan pada semua saiz) -->
                 <a href="{{ route('cart.index') }}"
                     class="relative p-2 hover:text-brown-500 {{ request()->routeIs('cart.index') ? 'text-brown-500 font-bold' : 'text-gray-600' }}">
                     <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,7 +44,6 @@
                             class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{ $cartItemCount }}</span>
                     @endif
                 </a>
-                <!-- Tombol Auth & User (Desktop) -->
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="h-6 border-l border-gray-300"></div>
                     @guest
@@ -59,7 +54,6 @@
                             Daftar
                         </a>
                     @else
-                        <!-- Dropdown Pengguna -->
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
                                 <div class="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
@@ -100,7 +94,6 @@
                     @endguest
                 </div>
 
-                <!-- Tombol Hamburger (Mobile) -->
                 <div class="md:hidden flex items-center">
                     <button @click="open = !open"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-400">
@@ -117,7 +110,6 @@
         </div>
     </div>
 
-    <!-- Menu Mobile -->
     <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <a href="{{ route('home') }}"
@@ -130,7 +122,6 @@
             <a href="{{ route('contact') }}"
                 class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Kontak</a>
         </div>
-        <!-- Opsi Auth Mobile -->
         <div class="pt-4 pb-3 border-t border-gray-200">
             @guest
                 <div class="flex items-center px-4">

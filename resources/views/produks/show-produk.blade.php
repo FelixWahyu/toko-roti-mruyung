@@ -10,7 +10,6 @@
         </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row py-3 md:py-3 shadow-md rounded-md border border-gray-200">
-                <!-- Kolom Gambar Produk -->
                 <div class="md:flex-1 px-4">
                     <div class="h-[460px] rounded-lg bg-gray-200">
                         <img class="w-full rounded-lg h-full object-cover" src="{{ Storage::url($product->image) }}"
@@ -18,7 +17,6 @@
                     </div>
                 </div>
 
-                <!-- Kolom Detail Produk -->
                 <div class="md:flex-1 mt-4 px-4">
                     <h2 class="text-3xl font-bold text-gray-800 mb-2">{{ $product->name }}</h2>
                     <p class="text-gray-600 text-sm mb-4">

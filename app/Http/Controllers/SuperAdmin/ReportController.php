@@ -49,7 +49,6 @@ class ReportController extends Controller
         $startDate = $filteredData['startDate'];
         $endDate = $filteredData['endDate'];
 
-        // Ambil data tetapan
         $settings = Setting::all()->keyBy('key');
         $storeName = $settings['store_name']->value ?? 'Toko Roti Mruyung';
         $storeAddress = $settings['store_address']->value ?? '';

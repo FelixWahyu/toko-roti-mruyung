@@ -10,7 +10,6 @@
         </div>
     </div>
 
-    <!-- Kartu Statistik -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex items-center justify-between">
             <div>
@@ -65,7 +64,6 @@
         </div>
     </div>
 
-    <!-- Grafik & Pesanan Terbaru -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 mt-4">
         <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
@@ -99,8 +97,6 @@
                 @else
                     <p class="text-sm text-center text-slate-500 py-8">Belum ada data penjualan yang cukup.</p>
                 @endif
-
-                {{-- JIKA SUPERADMIN, PAPARKAN AKTIVITI TERKINI --}}
             @elseif(auth()->user()->role == 'superadmin')
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Aktivitas Terbaru</h3>
                 <div class="space-y-4">

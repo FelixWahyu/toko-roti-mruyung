@@ -10,9 +10,6 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
-    /**
-     * Menampilkan daftar semua pesanan.
-     */
     public function index(Request $request)
     {
         $query = Order::query()->with('user');
@@ -36,19 +33,12 @@ class OrderController extends Controller
         return view('superadmin.orders.order-page', compact('orders'));
     }
 
-    /**
-     * Menampilkan detail satu pesanan.
-     */
     public function show(Order $order)
     {
-        // Eager load relasi yang dibutuhkan
         $order->load('user', 'items.product', 'shippingZone');
         return view('superadmin.orders.show', compact('order'));
     }
 
-    /**
-     * Memperbarui status pesanan.
-     */
     public function updateStatus(Request $request, Order $order)
     {
         $request->validate([
@@ -66,12 +56,10 @@ class OrderController extends Controller
 
         if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
             foreach ($order->items as $item) {
-                // Kembalikan stok produk
                 $item->product->increment('stock', $item->quantity);
             }
         } elseif ($oldStatus === 'cancelled' && $newStatus !== 'cancelled') {
             foreach ($order->items as $item) {
-                // Kurangi lagi stoknya
                 $item->product->decrement('stock', $item->quantity);
             }
         }
@@ -91,7 +79,6 @@ class OrderController extends Controller
                     $itemDetails .= "- {$item->product->name} (x{$item->quantity}) : *Rp{$itemSubtotal}*\n";
                 }
 
-                // Format nombor untuk jumlah
                 $subtotalFormatted = number_format($order->total_amount, 0, ',', '.');
                 $shippingCostFormatted = number_format($order->shipping_cost, 0, ',', '.');
                 $grandTotalFormatted = number_format($order->grand_total, 0, ',', '.');
@@ -99,7 +86,6 @@ class OrderController extends Controller
                 $shippingMethod = $order->shipping_method;
                 $orderDate = $order->created_at->format('d F Y');
 
-                // Bina mesej lengkap
                 $message  = "Tanggal: {$orderDate}\n\n";
                 $message .= "Halo *{$customerName}*!\n";
                 $message .= "Pesanan Anda dengan kode *{$order->order_code}* telah kami konfirmasi dan sedang diproses.\n\n";

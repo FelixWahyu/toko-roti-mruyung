@@ -16,9 +16,7 @@ class RedirectSuperadminOwnerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Periksa jika pengguna telah log masuk dan mempunyai peranan 'admin' atau 'owner'
         if (Auth::check() && in_array(Auth::user()->role, ['superadmin', 'owner'])) {
-            // Jika ya, arahkan mereka ke dashboard admin
             return redirect()->route('admin.dashboard.index');
         }
 

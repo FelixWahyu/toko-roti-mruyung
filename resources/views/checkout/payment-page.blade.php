@@ -40,7 +40,6 @@
                 <p class="text-2xl font-bold text-gray-900">Rp{{ number_format($order->grand_total, 0, ',', '.') }}</p>
             </div>
 
-            {{-- Paparan Dinamik Berdasarkan Kaedah Pembayaran --}}
             <div class="mt-6 text-left">
                 @if ($order->payment_method === 'Transfer Bank')
                     <p class="font-semibold text-gray-700">Silakan transfer ke salah satu rekening berikut:</p>

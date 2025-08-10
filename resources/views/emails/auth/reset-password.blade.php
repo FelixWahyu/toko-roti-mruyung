@@ -1,5 +1,4 @@
 @component('mail::layout')
-    {{-- Header --}}
     @slot('header')
         <table align="center" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 20px 0;">
             <tr>
@@ -11,7 +10,6 @@
         </table>
     @endslot
 
-    {{-- Body --}}
     <table width="100%" cellpadding="0" cellspacing="0"
         style="font-family: Arial, sans-serif; background: #ffffff; padding: 20px; border-radius: 8px;">
         <tr>
@@ -42,7 +40,6 @@
         </tr>
     </table>
 
-    {{-- Footer --}}
     @slot('footer')
         <table align="center" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; padding: 15px;">
             <tr>

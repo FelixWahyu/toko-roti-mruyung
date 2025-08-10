@@ -34,7 +34,6 @@ class SettingController extends Controller
             Setting::updateOrCreate(['key' => $key], ['value' => $value ?? '']);
         }
 
-        // Kendalikan muat naik logo
         if ($request->hasFile('store_logo')) {
             $oldLogoPath = Setting::where('key', 'store_logo')->first()->value ?? null;
             if ($oldLogoPath) {
@@ -44,7 +43,6 @@ class SettingController extends Controller
             Setting::updateOrCreate(['key' => 'store_logo'], ['value' => $path]);
         }
 
-        // BARU: Kendalikan muat naik imej QRIS
         if ($request->hasFile('store_qris_image')) {
             $oldQrisPath = Setting::where('key', 'store_qris_image')->first()->value ?? null;
             if ($oldQrisPath) {

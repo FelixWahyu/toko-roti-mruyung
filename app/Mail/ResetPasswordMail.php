@@ -16,18 +16,13 @@ class ResetPasswordMail extends Mailable
 
     public $resetLink;
     public $user;
-    /**
-     * Create a new message instance.
-     */
+
     public function __construct(string $token, User $user)
     {
         $this->resetLink = route('password.reset', ['token' => $token]);
         $this->user = $user;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -35,9 +30,6 @@ class ResetPasswordMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(

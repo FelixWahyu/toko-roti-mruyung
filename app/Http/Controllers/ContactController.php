@@ -20,7 +20,6 @@ class ContactController extends Controller
 
         $settings = Setting::all()->keyBy('key');
 
-        // Hantar e-mel ke alamat admin yang ditetapkan dalam .env
         Mail::to(config('mail.admin_email'))->send(new ContactFormMail($data, $settings));
 
         return back()->with('success', 'Terima kasih! Pesan Anda telah berhasil dikirim.');

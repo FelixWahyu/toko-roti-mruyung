@@ -44,9 +44,7 @@
                     <p class="text-3xl font-bold text-gray-900">Rp{{ number_format($order->grand_total, 0, ',', '.') }}</p>
                 </div>
 
-                <!-- Paparan Dinamik Berdasarkan Kaedah Pembayaran -->
                 <div class="mt-6 text-left">
-                    {{-- JIKA TRANSFER BANK --}}
                     @if ($order->payment_method === 'Transfer Bank')
                         <p class="font-semibold text-gray-700">Silakan transfer ke salah satu rekening berikut:</p>
                         <div class="mt-4 space-y-4">
@@ -63,8 +61,6 @@
                                 </p>
                             @endforelse
                         </div>
-
-                        {{-- JIKA QRIS --}}
                     @elseif($order->payment_method === 'QRIS')
                         <p class="font-semibold text-gray-700 text-center">Silakan pindai atau download kode QRIS di bawah
                             ini:</p>
@@ -92,7 +88,6 @@
                     @endif
                 </div>
 
-                {{-- Borang Upload hanya muncul jika perlu --}}
                 @if (in_array($order->payment_method, ['Transfer Bank', 'QRIS']))
                     <form action="{{ route('order.payment.store', $order) }}" method="POST" enctype="multipart/form-data"
                         class="mt-8 border-t pt-8">
