@@ -62,7 +62,6 @@ class SalesReportExport implements FromCollection, WithHeadings, WithMapping, Wi
 
     public function styles(Worksheet $sheet)
     {
-        // Menetapkan gaya untuk baris kepala jadual (sekarang di baris 6)
         return [
             6 => ['font' => ['bold' => true]],
         ];

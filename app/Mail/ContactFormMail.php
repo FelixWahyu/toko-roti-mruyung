@@ -46,7 +46,7 @@ class ContactFormMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.contact.form', // Tunjuk ke fail paparan HTML baru
+            view: 'emails.contact.form',
             with: [
                 'storeName' => $this->settings['store_name']->value ?? 'Toko Roti Mruyung',
                 'logoPath' => $this->settings['store_logo']->value ?? null,

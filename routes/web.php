@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\CartController;
+
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use League\Uri\Contracts\UserInfoInterface;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\SuperAdmin\UnitController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\OrderController;
@@ -21,7 +23,6 @@ use App\Http\Controllers\SuperAdmin\BankAccountController;
 use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
-use League\Uri\Contracts\UserInfoInterface;
 
 Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/', function () {
@@ -46,12 +47,10 @@ Route::middleware('prevent.admin.access')->group(function () {
             Route::post('/update-quantity/{item}', [CartController::class, 'updateQuantity'])->name('update.quantity');
         });
 
-        // Route untuk Checkout
         Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
         Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
         Route::get('/order/{order}/payment-instruction', [CheckoutController::class, 'paymentInstruction'])->name('order.payment.instruction');
 
-        // Grup route untuk Profil Pelanggan
         Route::prefix('profil')->name('profile.')->group(function () {
             Route::get('/', [ProfileController::class, 'index'])->name('index');
             Route::patch('/update', [ProfileController::class, 'updateDetails'])->name('update.details');
@@ -68,24 +67,17 @@ Route::middleware('prevent.admin.access')->group(function () {
     });
 });
 
-// Grup route untuk tamu (yang belum login)
 Route::middleware('guest')->group(function () {
-    // Rute untuk menampilkan form registrasi
     Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-    // Rute untuk memproses data registrasi
     Route::post('register', [AuthController::class, 'register']);
 
-    // Rute untuk menampilkan form login
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-    // Rute untuk memproses data login
     Route::post('login', [AuthController::class, 'login']);
 });
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-// Grup Route untuk Admin & Owner
 Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('admin.')->group(function () {
 
-    // == FITUR YANG BISA DIAKSES ADMIN & OWNER ==
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::get('profile', [AdminProfileController::class, 'index'])->name('profile.index');
@@ -94,35 +86,34 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
 
 
     Route::middleware('role:superadmin')->group(function () {
-        // Master Data
         Route::resource('categories', CategoryController::class);
         Route::resource('units', UnitController::class);
         Route::resource('products', ProduksController::class);
 
-        // Manajemen Pesanan
         Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
         Route::get('orders/{order}', [OrderController::class, 'show'])->name('orders.show');
         Route::patch('orders/{order}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
-        // Pengaturan Website
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
         Route::resource('store-accounts', BankAccountController::class);
         Route::resource('shipping-zones', ShippingZoneController::class);
-        // Manajemen Pengguna
+
         Route::resource('users', UserController::class)->except('index');
     });
 
     Route::get('users', [UserController::class, 'index'])->name('users.index');
 
-
-    // Laporan
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');
     Route::get('reports/excel', [ReportController::class, 'exportExcel'])->name('reports.excel');
 
-    // == FITUR YANG HANYA BISA DIAKSES OWNER ==
     Route::middleware('role:owner')->group(function () {
         // Route::get('stock-reports', [StockReportController::class, 'index'])->name('stock-reports.index');
     });
 });
+
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');

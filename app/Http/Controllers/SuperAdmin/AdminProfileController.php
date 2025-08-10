@@ -31,11 +31,9 @@ class AdminProfileController extends Controller
         $data = $request->only('name', 'username', 'email', 'phone_number');
 
         if ($request->hasFile('profile_picture')) {
-            // Hapus foto lama jika ada
             if ($user->profile_picture) {
                 Storage::disk('public')->delete($user->profile_picture);
             }
-            // Simpan foto baru dan simpan path-nya
             $data['profile_picture'] = $request->file('profile_picture')->store('profile-picture', 'public');
         }
 
@@ -52,10 +50,8 @@ class AdminProfileController extends Controller
         $user = Auth::user();
 
         if ($user->profile_picture) {
-            // Hapus fail dari storan
             Storage::disk('public')->delete($user->profile_picture);
 
-            // Kemas kini pangkalan data untuk menetapkan laluan kepada null
             $user->profile_picture = null;
             $user->save();
         }
