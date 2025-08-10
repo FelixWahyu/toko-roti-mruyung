@@ -20,6 +20,7 @@ class DashboardController extends Controller
         $totalProduct = Product::count();
         $limitStok = Product::where('stock', '<=', 10)->orderBy('stock', 'asc')->get();
         $recentOrders = Order::with('user')->latest()->take(5)->get();
+        $dateNow = Carbon::now();
         // $newOrders = Order::whereDate('created_at', Carbon::today())->count();
 
         $filter = $request->input('filter');
@@ -139,7 +140,8 @@ class DashboardController extends Controller
             'recentOrders',
             'filter',
             'topProductsLabels',
-            'topProductsData'
+            'topProductsData',
+            'dateNow'
         ));
     }
 }

@@ -69,7 +69,7 @@ class AuthController extends Controller
         ]);
 
         // Coba untuk otentikasi user
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             $user = Auth::user();

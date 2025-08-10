@@ -48,15 +48,14 @@
                 </div>
             </div>
         </form>
-        @if ($startDate && $endDate)
-            <div class="mt-4 flex space-x-2">
-                <a href="{{ route('admin.reports.pdf', request()->query()) }}" target="_blank"
-                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-sm">Export PDF</a>
-                <a href="{{ route('admin.reports.excel', request()->query()) }}"
-                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg text-sm">Export
-                    Excel</a>
-            </div>
-        @endif
+
+        <div class="mt-4 flex space-x-2">
+            <a href="{{ route('admin.reports.pdf', request()->query()) }}" target="_blank"
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg text-sm">Export PDF</a>
+            <a href="{{ route('admin.reports.excel', request()->query()) }}"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg text-sm">Export
+                Excel</a>
+        </div>
     </div>
 
     <!-- Tabel Hasil Laporan -->

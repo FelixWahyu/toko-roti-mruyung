@@ -2,7 +2,13 @@
 
 @section('content')
     <h1 class="text-3xl font-bold text-slate-800">Dashboard</h1>
-    <p class="text-slate-500 mt-1">Selamat datang kembali, {{ Auth::user()->name }}!</p>
+    <div class="block md:flex justify-between items-center mt-1">
+        <p class="text-slate-500">Selamat datang kembali, {{ Auth::user()->name }}!</p>
+        <div class="mt-1 md:mt-0">
+            <p class="text-slate-500">{{ $dateNow->format('D') }}, {{ $dateNow->format('d F Y') }}</p>
+            <p class="text-slate-500">{{ $dateNow->format('H:i A') }}</p>
+        </div>
+    </div>
 
     <!-- Kartu Statistik -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
