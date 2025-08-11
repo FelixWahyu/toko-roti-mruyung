@@ -5,8 +5,10 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Services\WhatsAppService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendWhatsAppNotification;
 
 class OrderController extends Controller
 {
@@ -54,17 +56,19 @@ class OrderController extends Controller
 
         $order->load('items.product');
 
-        if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
-            foreach ($order->items as $item) {
-                $item->product->increment('stock', $item->quantity);
+        DB::transaction(function () use ($oldStatus, $newStatus, $order) {
+            if ($newStatus === 'cancelled' && $oldStatus !== 'cancelled') {
+                foreach ($order->items as $item) {
+                    $item->product->increment('stock', $item->quantity);
+                }
+            } elseif ($oldStatus === 'cancelled' && $newStatus !== 'cancelled') {
+                foreach ($order->items as $item) {
+                    $item->product->decrement('stock', $item->quantity);
+                }
             }
-        } elseif ($oldStatus === 'cancelled' && $newStatus !== 'cancelled') {
-            foreach ($order->items as $item) {
-                $item->product->decrement('stock', $item->quantity);
-            }
-        }
 
-        $order->update(['status' => $newStatus]);
+            $order->update(['status' => $newStatus]);
+        });
 
         $customerNumber = preg_replace('/\D/', '', $order->user->phone_number);
         if ($customerNumber) {

@@ -30,12 +30,6 @@
                                     Ganti Password
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('home') }}"
-                                    class="inline-flex items-center mb-2 mt-8 text-sm py-1 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700">
-                                    &larr; Kembali
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </div>

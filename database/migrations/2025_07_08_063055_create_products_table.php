@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->foreignId('unit_id')->constrained('units')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->index();
+            $table->foreignId('unit_id')->constrained('units')->onDelete('cascade')->index();
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->integer('stock');
             $table->string('image', 2048)->nullable();
-            $table->timestamps();
+            $table->timestamps()->index();
         });
     }
 

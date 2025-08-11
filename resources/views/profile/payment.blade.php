@@ -4,10 +4,6 @@
     <div class="bg-gray-100 py-12">
         <div class="max-w-2xl mx-auto px-3 sm:px-6 lg:px-8">
             <div class="bg-white p-8 rounded-lg shadow-lg">
-                <a href="{{ route('profile.index') }}"
-                    class="inline-flex items-center mb-6 text-sm text-gray-600 hover:text-brown-500">
-                    &larr; Kembali ke Profil
-                </a>
                 <h1 class="text-2xl font-bold text-gray-900 text-center">Selesaikan Pembayaran</h1>
                 <p class="text-gray-600 mt-2 text-center">Untuk pesanan dengan kode: <strong
                         class="text-indigo-600">{{ $order->order_code }}</strong></p>

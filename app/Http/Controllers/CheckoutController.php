@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BankAccount;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Setting;
+use App\Models\OrderItem;
+use App\Models\BankAccount;
+use Illuminate\Support\Str;
 use App\Models\ShippingZone;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use App\Services\WhatsAppService;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Jobs\SendWhatsAppNotification;
 
 class CheckoutController extends Controller
 {

@@ -3,10 +3,6 @@
 @section('content')
     <div class="bg-gray-100 py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href="{{ route('profile.index') }}"
-                class="inline-flex items-center mb-6 text-sm py-1 px-4 bg-gray-600 text-white rounded-md hover:bg-gray-700">
-                &larr; Kembali ke Riwayat Pesanan
-            </a>
             <h1 class="text-3xl font-extrabold text-gray-900">Detail Pesanan</h1>
 
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-6">
@@ -154,8 +150,7 @@
                                 </a>
                             @endif
                             @if ($order->status == 'shipped')
-                                <form action="{{ route('order.confirm_receipt', $order) }}" method="POST"
-                                    class="w-full"
+                                <form action="{{ route('order.confirm_receipt', $order) }}" method="POST" class="w-full"
                                     onsubmit="showConfirmation(event, 'Konfirmasi Pesanan?', 'Apakah Anda yakin sudah menerima pesanan ini?', 'Sudah Diterima')">
                                     @csrf
                                     <button type="submit"

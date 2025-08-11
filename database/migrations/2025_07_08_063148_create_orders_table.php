@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('order_code')->unique();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->index();
+            $table->string('order_code')->unique()->index();
             $table->decimal('total_amount', 10, 2);
             $table->decimal('shipping_cost', 10, 2)->default(0);
             $table->decimal('grand_total', 10, 2);
             $table->text('shipping_address');
-            $table->enum('status', ['pending', 'paid', 'processing', 'shipped', 'completed', 'cancelled'])->default('pending');
+            $table->enum('status', ['pending', 'paid', 'processing', 'shipped', 'completed', 'cancelled'])->default('pending')->index();
             $table->string('payment_proof', 2048)->nullable();
-            $table->timestamps();
+            $table->timestamps()->index();
         });
     }
 
