@@ -4,7 +4,7 @@
 
     <div class="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
         <form action="{{ route('admin.reports.index') }}" method="GET">
-            <div class="flex flex-wrap items-center gap-2 mb-4">
+            {{-- <div class="flex flex-wrap items-center gap-2 mb-4">
                 <span class="text-sm font-medium text-gray-700 mr-2">Filter Cepat:</span>
                 <a href="{{ route('admin.reports.index', ['period' => 'today']) }}"
                     class="px-3 py-1 text-sm rounded-full {{ $period == 'today' ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700' }}">Hari
@@ -17,16 +17,16 @@
                     Ini</a>
             </div>
 
-            <hr class="my-4">
+            <hr class="my-4"> --}}
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                 <div>
                     <label for="start_date" class="block text-sm font-medium text-gray-700">Tanggal Mulai</label>
-                    <input type="date" name="start_date" id="start_date" value="{{ $startDate }}"
+                    <input type="date" name="start_date" id="start_date" value="{{ $startDate }} ?? ''"
                         class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 <div>
                     <label for="end_date" class="block text-sm font-medium text-gray-700">Tanggal Selesai</label>
-                    <input type="date" name="end_date" id="end_date" value="{{ $endDate }}"
+                    <input type="date" name="end_date" id="end_date" value="{{ $endDate }}?? ''"
                         class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 <div>
@@ -98,4 +98,16 @@
     <div class="mt-4">
         {{ $orders->links() }}
     </div>
+
+    @if ($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '{{ $errors->first() }}',
+                });
+            });
+        </script>
+    @endif
 @endsection

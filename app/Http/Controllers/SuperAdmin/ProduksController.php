@@ -9,6 +9,7 @@ use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 class ProduksController extends Controller
 {
@@ -66,6 +67,8 @@ class ProduksController extends Controller
             'image' => $imagePath,
         ]);
 
+        Cache::forget('products_page_1');
+
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
@@ -101,6 +104,8 @@ class ProduksController extends Controller
         $data['slug'] = Str::slug($request->name);
         $product->update($data);
 
+        Cache::forget('products_page_1');
+
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
@@ -110,6 +115,9 @@ class ProduksController extends Controller
             Storage::disk('public')->delete($product->image);
         }
         $product->delete();
+
+        Cache::forget('products_page_1');
+
         return back()->with('success', 'Produk berhasil dihapus.');
     }
 }

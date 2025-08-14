@@ -2,28 +2,34 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\SalesReportExport;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
-use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 
 class ReportController extends Controller
 {
     public function index(Request $request)
     {
-        $filteredData = $this->getFilteredOrders($request, true);
+        try {
+            $filteredData = $this->getFilteredOrders($request, true);
 
-        return view('superadmin.reports.report-page', [
-            'orders' => $filteredData['orders'],
-            'startDate' => $filteredData['startDate'],
-            'endDate' => $filteredData['endDate'],
-            'paymentMethod' => $request->input('payment_method'),
-            'period' => $request->input('period'),
-        ]);
+            return view('superadmin.reports.report-page', [
+                'orders' => $filteredData['orders'],
+                'startDate' => $filteredData['startDate'],
+                'endDate' => $filteredData['endDate'],
+                'paymentMethod' => $request->input('payment_method'),
+                // 'period' => $request->input('period'),
+            ]);
+        } catch (ValidationException $e) {
+            return back()->withErrors($e->errors())->withInput();
+        }
     }
 
     public function exportPDF(Request $request)
@@ -39,7 +45,9 @@ class ReportController extends Controller
         $storeAddress = $settings['store_address']->value ?? '';
         $logoPath = $settings['store_logo']->value ?? null;
 
-        $pdf = Pdf::loadView('superadmin.reports.report_pdf_page', compact('orders', 'startDate', 'endDate', 'totalRevenue', 'storeName', 'storeAddress', 'logoPath'));
+        $user = Auth::user();
+
+        $pdf = Pdf::loadView('superadmin.reports.report_pdf_page', compact('orders', 'startDate', 'endDate', 'totalRevenue', 'storeName', 'storeAddress', 'logoPath', 'user'));
         return $pdf->stream('laporan-penjualan-' . $startDate . '-' . $endDate . '.pdf');
     }
 
@@ -61,29 +69,39 @@ class ReportController extends Controller
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
         $paymentMethod = $request->input('payment_method');
-        $period = $request->input('period');
+        // $period = $request->input('period');
 
-        if ($period) {
-            switch ($period) {
-                case 'today':
-                    $startDate = Carbon::today()->toDateString();
-                    $endDate = Carbon::today()->toDateString();
-                    break;
-                case 'this_week':
-                    $startDate = Carbon::now()->startOfWeek()->toDateString();
-                    $endDate = Carbon::now()->endOfWeek()->toDateString();
-                    break;
-                case 'this_month':
-                    $startDate = Carbon::now()->startOfMonth()->toDateString();
-                    $endDate = Carbon::now()->endOfMonth()->toDateString();
-                    break;
-            }
+        if (($startDate && !$endDate) || (!$startDate && $endDate)) {
+            throw ValidationException::withMessages([
+                'start_date' => 'Tanggal awal dan akhir harus diisi!',
+            ]);
         }
+
+        // if ($period) {
+        //     switch ($period) {
+        //         case 'today':
+        //             $startDate = Carbon::today()->toDateString();
+        //             $endDate = Carbon::today()->toDateString();
+        //             break;
+        //         case 'this_week':
+        //             $startDate = Carbon::now()->startOfWeek()->toDateString();
+        //             $endDate = Carbon::now()->endOfWeek()->toDateString();
+        //             break;
+        //         case 'this_month':
+        //             $startDate = Carbon::now()->startOfMonth()->toDateString();
+        //             $endDate = Carbon::now()->endOfMonth()->toDateString();
+        //             break;
+        //     }
+        // }
 
         $query = Order::query()->with('user')->where('status', 'completed');
 
         if ($startDate && $endDate) {
             $query->whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59']);
+        } else {
+            $firstOrderDate = Order::orderBy('created_at', 'asc')->first()->created_at ?? Carbon::now();
+            $startDate = Carbon::parse($firstOrderDate)->toDateString();
+            $endDate = Carbon::now()->toDateString();
         }
 
         if ($paymentMethod) {

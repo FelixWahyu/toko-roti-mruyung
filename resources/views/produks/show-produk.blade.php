@@ -42,8 +42,8 @@
                         @endif
                     </div>
 
-                    <div class="prose max-w-none text-gray-600 mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Deskripsi Produk</h3>
+                    <div class="prose max-w-none text-gray-600 mb-6 p-2 border border-gray-300 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-800 pb-2">Deskripsi Produk</h3>
                         <p class="mt-4">{{ $product->description }}</p>
                     </div>
 

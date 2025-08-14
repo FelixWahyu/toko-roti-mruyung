@@ -158,7 +158,9 @@
                         <tr>
                             <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Gambar</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Produk</th>
-                            <th class="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase">Sisa Stok</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Kategori</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-slate-500 uppercase">Sisa Stok</th>
+                            <th class="px-4 py-2 text-right text-xs font-medium text-slate-500 uppercase">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-slate-200">
@@ -170,8 +172,17 @@
                                 </td>
                                 <td class="px-4 py-2 whitespace-nowrap font-semibold text-slate-700">{{ $product->name }}
                                 </td>
-                                <td class="px-4 py-2 whitespace-nowrap text-right font-bold text-red-600">
+                                <td class="px-4 py-2 whitespace-nowrap font-semibold text-slate-700">
+                                    {{ $product->category->name }}
+                                </td>
+                                <td class="px-4 py-2 whitespace-nowrap font-bold text-red-600">
                                     {{ $product->stock }}</td>
+                                <td class="px-4 py-2 whitespace-nowrap text-right font-semibold text-slate-700">
+                                    <a href="{{ route('admin.products.edit', $product) }}"
+                                        class="text-xs font-semibold text-indigo-600 hover:underline">
+                                        Update
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

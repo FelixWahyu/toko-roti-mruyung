@@ -8,28 +8,48 @@
             </a>
             <div class="mt-4 flex justify-between">
                 <div>
-                    <h3 class="text-sm text-gray-700">
+                    <h3 class="text-md text-gray-800">
                         <a href="{{ route('products.show', $product->slug) }}">
                             {{ $product->name }}
                         </a>
                     </h3>
                     <a class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</a>
+                    <div class="mt-3">
+                        @if ($product->stock > 0)
+                            <span class="font-medium text-md">Stok: {{ $product->stock }}</span>
+                        @else
+                            <span class="font-medium text-md">Stok Habis</span>
+                        @endif
+                    </div>
                 </div>
-                <p class="text-sm font-medium text-gray-900">Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                <div class="flex mb-4">
+                    <div class="mr-4">
+                        <span
+                            class="text-gray-900 font-medium text-sm">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
+                            class="text-gray-500 text-sm">/{{ $product->unit->name }}</span>
+                    </div>
+                </div>
             </div>
             <div class="mt-4">
-                <form action="{{ route('cart.store', $product) }}" method="POST">
-                    @csrf
-                    <button type="submit"
-                        class="w-full bg-brown-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                            </path>
-                        </svg> <span> ke Keranjang</span>
-                    </button>
-                </form>
+                @if ($product->stock > 0)
+                    <form action="{{ route('cart.store', $product) }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="w-full bg-brown-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                                </path>
+                            </svg> <span> ke Keranjang</span>
+                        </button>
+                    </form>
+                @else
+                    <div
+                        class="w-full bg-gray-400 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white cursor-not-allowed">
+                        Stok Habis
+                    </div>
+                @endif
             </div>
         </div>
     @empty

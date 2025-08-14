@@ -52,6 +52,7 @@
             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                 <h3 class="text-lg font-semibold border-b pb-2">Informasi Pelanggan</h3>
                 <div class="mt-4 space-y-2 text-sm">
+                    <p class="flex justify-between"><strong>Tanggal:</strong> {{ $order->created_at->format('d F Y') }}</p>
                     <p class="flex justify-between"><strong>Nama:</strong> {{ $order->user->name }}</p>
                     <p class="flex justify-between"><strong>Email:</strong> {{ $order->user->email }}</p>
                     <p class="flex justify-between"><strong>Telepon:</strong> {{ $order->user->phone_number }}</p>
