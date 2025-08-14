@@ -15,7 +15,6 @@
         .header-table {
             width: 100%;
             border: none;
-            margin-bottom: 20px;
         }
 
         .header-table td {
@@ -24,23 +23,26 @@
         }
 
         .logo-cell {
-            width: 130px;
+            width: 100px;
             vertical-align: top;
+            padding-right: 0;
         }
 
         .logo-cell img {
-            max-width: 120px;
-            max-height: 120px;
+            max-width: 90px;
+            max-height: 90px;
         }
 
         .info-cell {
             vertical-align: middle;
-            text-align: left;
-            padding-left: 20px;
+            text-align: center;
+            margin: 0;
+            padding-left: 0;
         }
 
         .info-cell h1 {
             margin: 0;
+            padding-left: 0;
             font-size: 24px;
         }
 
@@ -56,7 +58,7 @@
 
         .content-header h2 {
             text-align: center;
-            margin: 0;
+            margin: 10px 0 0 0;
             font-size: 18px;
             text-decoration: underline;
         }
@@ -140,7 +142,8 @@
                 <th>Kode Pesanan</th>
                 <th>Pelanggan</th>
                 <th>Metode Pembayaran</th>
-                <th class="total">Total</th>
+                <th>Status</th>
+                <th class="total">Jumlah</th>
             </tr>
         </thead>
         <tbody>
@@ -150,17 +153,18 @@
                     <td>{{ $order->order_code }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->payment_method }}</td>
+                    <td>{{ ucfirst($order->status) }}</td>
                     <td class="total">Rp{{ number_format($order->grand_total, 0, ',', '.') }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" style="text-align: center;">Tidak ada data penjualan untuk periode ini.</td>
+                    <td colspan="6" style="text-align: center;">Tidak ada data penjualan untuk periode ini.</td>
                 </tr>
             @endforelse
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4" class="total">Total Pendapatan</td>
+                <td colspan="5" class="total">Total</td>
                 <td class="total">Rp{{ number_format($totalRevenue, 0, ',', '.') }}</td>
             </tr>
         </tfoot>

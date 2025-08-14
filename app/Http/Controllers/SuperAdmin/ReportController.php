@@ -25,6 +25,7 @@ class ReportController extends Controller
                 'startDate' => $filteredData['startDate'],
                 'endDate' => $filteredData['endDate'],
                 'paymentMethod' => $request->input('payment_method'),
+                'status' => $filteredData['status'],
                 // 'period' => $request->input('period'),
             ]);
         } catch (ValidationException $e) {
@@ -51,24 +52,25 @@ class ReportController extends Controller
         return $pdf->stream('laporan-penjualan-' . $startDate . '-' . $endDate . '.pdf');
     }
 
-    public function exportExcel(Request $request)
-    {
-        $filteredData = $this->getFilteredOrders($request, false);
-        $startDate = $filteredData['startDate'];
-        $endDate = $filteredData['endDate'];
+    // public function exportExcel(Request $request)
+    // {
+    //     $filteredData = $this->getFilteredOrders($request, false);
+    //     $startDate = $filteredData['startDate'];
+    //     $endDate = $filteredData['endDate'];
 
-        $settings = Setting::all()->keyBy('key');
-        $storeName = $settings['store_name']->value ?? 'Toko Roti Mruyung';
-        $storeAddress = $settings['store_address']->value ?? '';
+    //     $settings = Setting::all()->keyBy('key');
+    //     $storeName = $settings['store_name']->value ?? 'Toko Roti Mruyung';
+    //     $storeAddress = $settings['store_address']->value ?? '';
 
-        return Excel::download(new SalesReportExport($filteredData['orders'], $startDate, $endDate, $storeName, $storeAddress), 'laporan-penjualan.xlsx');
-    }
+    //     return Excel::download(new SalesReportExport($filteredData['orders'], $startDate, $endDate, $storeName, $storeAddress), 'laporan-penjualan.xlsx');
+    // }
 
     public function getFilteredOrders(Request $request, bool $paginate = false): array
     {
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
         $paymentMethod = $request->input('payment_method');
+        $status = $request->input('status');
         // $period = $request->input('period');
 
         if (($startDate && !$endDate) || (!$startDate && $endDate)) {
@@ -94,7 +96,7 @@ class ReportController extends Controller
         //     }
         // }
 
-        $query = Order::query()->with('user')->where('status', 'completed');
+        $query = Order::query()->with('user');
 
         if ($startDate && $endDate) {
             $query->whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59']);
@@ -108,6 +110,10 @@ class ReportController extends Controller
             $query->where('payment_method', $paymentMethod);
         }
 
+        if ($status) {
+            $query->where('status', $status);
+        }
+
         $orders = $paginate
             ? $query->latest()->paginate(10)->withQueryString()
             : $query->latest()->get();
@@ -116,6 +122,7 @@ class ReportController extends Controller
             'orders' => $orders,
             'startDate' => $startDate,
             'endDate' => $endDate,
+            'status' => $status,
         ];
     }
 }

@@ -45,6 +45,7 @@ class SalesReportExport implements FromCollection, WithHeadings, WithMapping, Wi
             'Kode Pesanan',
             'Nama Pelanggan',
             'Metode Pembayaran',
+            'Status',
             'Grand Total',
         ];
     }
@@ -56,6 +57,7 @@ class SalesReportExport implements FromCollection, WithHeadings, WithMapping, Wi
             $order->order_code,
             $order->user->name,
             $order->payment_method,
+            ucfirst($order->status),
             $order->grand_total,
         ];
     }
@@ -74,10 +76,10 @@ class SalesReportExport implements FromCollection, WithHeadings, WithMapping, Wi
                 $sheet = $event->sheet->getDelegate();
 
                 $event->sheet->insertNewRowBefore(1, 5);
-                $event->sheet->mergeCells('A1:E1');
-                $event->sheet->mergeCells('A2:E2');
-                $event->sheet->mergeCells('A4:E4');
-                $event->sheet->mergeCells('A5:E5');
+                $event->sheet->mergeCells('A1:F1');
+                $event->sheet->mergeCells('A2:F2');
+                $event->sheet->mergeCells('A4:F4');
+                $event->sheet->mergeCells('A5:F5');
 
                 $event->sheet->setCellValue('A1', $this->storeName);
                 $event->sheet->setCellValue('A2', $this->storeAddress);
@@ -89,16 +91,16 @@ class SalesReportExport implements FromCollection, WithHeadings, WithMapping, Wi
                 $event->sheet->getStyle('A1:A6')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
                 $totalRow = $this->orders->count() + 7;
-                $event->sheet->mergeCells("A{$totalRow}:D{$totalRow}");
-                $event->sheet->setCellValue("A{$totalRow}", 'Total Pendapatan');
-                $event->sheet->setCellValue("E{$totalRow}", $this->totalRevenue);
+                $event->sheet->mergeCells("A{$totalRow}:E{$totalRow}");
+                $event->sheet->setCellValue("A{$totalRow}", 'Total');
+                $event->sheet->setCellValue("F{$totalRow}", $this->totalRevenue);
 
-                $event->sheet->getStyle("A{$totalRow}:E{$totalRow}")->getFont()->setBold(true);
+                $event->sheet->getStyle("A{$totalRow}:F{$totalRow}")->getFont()->setBold(true);
                 $event->sheet->getStyle("A{$totalRow}")->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT);
 
-                $event->sheet->getStyle('E7:E' . ($totalRow))->getNumberFormat()->setFormatCode('#,##0');
+                $event->sheet->getStyle('F7:F' . ($totalRow))->getNumberFormat()->setFormatCode('#,##0');
 
-                $tableRange = 'A6:E' . $totalRow;
+                $tableRange = 'A6:F' . $totalRow;
                 $sheet->getStyle($tableRange)->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
             },
         ];
