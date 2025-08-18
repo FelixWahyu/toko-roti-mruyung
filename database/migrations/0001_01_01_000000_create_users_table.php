@@ -15,12 +15,12 @@ return new class extends Migration
             $table->string('email')->unique()->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['pelanggan', 'superadmin', 'owner'])->default('pelanggan');
+            $table->enum('role', ['pelanggan', 'admin', 'owner'])->default('pelanggan');
             $table->string('phone_number')->nullable();
             $table->text('address')->nullable();
             $table->string('profile_picture')->nullable();
             $table->rememberToken();
-            $table->timestamps()->index();
+            $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

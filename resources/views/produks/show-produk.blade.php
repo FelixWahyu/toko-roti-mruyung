@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="bg-white py-8">
-        <div class="mb-6 ml-6 md:ml-12">
-            <a href="{{ route('products.index') }}"
-                class="font-medium bg-gray-100 text-gray-600 hover:text-gray-500 hover:bg-gray-50 px-4 py-1 rounded-md"><span
-                    aria-hidden="true">
-                    &larr;</span> Kembali</a>
+        <div class="mb-6 max-w-6xl mx-auto px-4 py-2">
+            <h1 class="text-2xl font-bold text-gray-800">Detail Produk</h1>
         </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row py-3 md:py-3 shadow-md rounded-md border border-gray-200">

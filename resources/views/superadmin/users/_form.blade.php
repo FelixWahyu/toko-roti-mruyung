@@ -30,9 +30,7 @@
             required>
             <option value="pelanggan" {{ old('role', $user->role ?? '') == 'pelanggan' ? 'selected' : '' }}>Pelanggan
             </option>
-            <option value="superadmin" {{ old('role', $user->role ?? '') == 'superadmin' ? 'selected' : '' }}>Super
-                Admin
-            </option>
+            <option value="admin" {{ old('role', $user->role ?? '') == 'admin' ? 'selected' : '' }}>Admin</option>
             <option value="owner" {{ old('role', $user->role ?? '') == 'owner' ? 'selected' : '' }}>Owner</option>
         </select>
         @error('role')

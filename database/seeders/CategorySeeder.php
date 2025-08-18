@@ -11,7 +11,7 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        $categories = ['Roti Tawar', 'Roti Manis', 'Kue Kering', 'Kue Basah'];
+        $categories = ['Roti Tawar', 'Roti Manis', 'Kue Kering', 'Kue Basah', 'Kue Bolu', 'Roti Gurih'];
         foreach ($categories as $category) {
             Category::create([
                 'name' => $category,

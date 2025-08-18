@@ -76,7 +76,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'role:admin,owner'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -85,7 +85,7 @@ Route::middleware(['auth', 'role:superadmin,owner'])->prefix('admin')->name('adm
     Route::delete('profile/photo', [AdminProfileController::class, 'destroyPhoto'])->name('profile.photo.destroy');
 
 
-    Route::middleware('role:superadmin')->group(function () {
+    Route::middleware('role:admin')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('units', UnitController::class);
         Route::resource('products', ProduksController::class);

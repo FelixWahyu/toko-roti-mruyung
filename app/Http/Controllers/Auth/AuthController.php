@@ -33,8 +33,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Auth::login($user);
-
         return redirect()->route('login')->with('success', 'Pendaftaran berhasil! Silakan login dengan akun Anda.');
     }
 
@@ -53,16 +51,14 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            $request->session()->regenerate();
 
+            $request->session()->regenerate();
             $user = Auth::user();
 
-            if ($user->role === 'superadmin') {
-                return redirect()->route('admin.dashboard.index')->with('success', 'Login Berhasil, selamat datang!');
-            } elseif ($user->role === 'owner') {
+            if ($user->role === 'admin' || $user->role === 'owner') {
                 return redirect()->route('admin.dashboard.index')->with('success', 'Login Berhasil, selamat datang!');
             } else {
-                return redirect()->intended('/')->with('success', 'Login Berhasil, selamat datang!'); // Redirect ke halaman yang dituju sebelumnya atau ke home
+                return redirect()->intended('/')->with('success', 'Login Berhasil, selamat datang!');
             }
         }
 

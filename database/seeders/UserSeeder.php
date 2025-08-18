@@ -12,11 +12,11 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Super Admin',
-            'username' => 'superadmin',
-            'email' => 'superadmin@tokoroti.com',
+            'name' => 'Admin Toko',
+            'username' => 'admin',
+            'email' => 'admin@tokoroti.com',
             'password' => Hash::make('password'),
-            'role' => 'superadmin',
+            'role' => 'admin',
             'phone_number' => '081234567890',
         ]);
 

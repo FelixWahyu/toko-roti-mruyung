@@ -16,7 +16,7 @@ class RedirectSuperadminOwnerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && in_array(Auth::user()->role, ['superadmin', 'owner'])) {
+        if (Auth::check() && in_array(Auth::user()->role, ['admin', 'owner'])) {
             return redirect()->route('admin.dashboard.index');
         }
 

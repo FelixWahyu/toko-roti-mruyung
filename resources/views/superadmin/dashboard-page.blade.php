@@ -97,7 +97,7 @@
                 @else
                     <p class="text-sm text-center text-slate-500 py-8">Belum ada data penjualan yang cukup.</p>
                 @endif
-            @elseif(auth()->user()->role == 'superadmin')
+            @elseif(auth()->user()->role == 'admin')
                 <h3 class="text-xl font-semibold text-slate-800 mb-4">Aktivitas Terbaru</h3>
                 <div class="space-y-4">
                     @forelse($recentOrders as $order)
@@ -179,7 +179,7 @@
                                     {{ $product->stock }}</td>
                                 <td class="px-4 py-2 whitespace-nowrap text-right font-semibold text-slate-700">
                                     <a href="{{ route('admin.products.edit', $product) }}"
-                                        class="text-xs font-semibold text-indigo-600 hover:underline">
+                                        class="text-sm font-semibold text-indigo-600 hover:underline">
                                         Update
                                     </a>
                                 </td>

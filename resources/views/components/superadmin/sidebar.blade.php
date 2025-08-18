@@ -57,7 +57,7 @@
                     </a>
                 </li>
             @endif --}}
-            @if (auth()->user()->role == 'superadmin')
+            @if (auth()->user()->role == 'admin')
                 <li><span class="px-4 py-2 text-xs font-semibold text-slate-400 uppercase">Manajemen</span></li>
 
                 <li>
@@ -133,7 +133,7 @@
                 </a>
             </li>
 
-            @if (auth()->user()->role == 'superadmin')
+            @if (auth()->user()->role == 'admin')
                 <li>
                     <a href="{{ route('admin.store-accounts.index') }}"
                         class="flex items-center space-x-3 px-4 py-2.5 rounded-lg transition-colors {{ request()->routeIs('admin.store-accounts.*') ? 'bg-indigo-50 text-indigo-600 font-semibold' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900' }}">

@@ -1,6 +1,6 @@
 @extends('layouts.superadmin-app')
 @section('content')
-    @if (auth()->user()->role == 'owner')
+    @if (auth()->user()->role == 'admin')
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-gray-800">Manajemen Pengguna</h1>
         </div>
@@ -9,7 +9,7 @@
     @endif
 
     <div class="items-center justify-between mb-4 lg:flex">
-        @if (auth()->user()->role == 'superadmin')
+        @if (auth()->user()->role == 'admin')
             <a href="{{ route('admin.users.create') }}"
                 class="inline-flex items-center space-x-2 bg-indigo-600 mb-4 lg:mb-0 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
