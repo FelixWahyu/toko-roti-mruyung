@@ -54,7 +54,7 @@
         </div>
     @empty
         <div class="col-span-full text-center py-12">
-            <p class="text-gray-500 text-lg">Oops! Produk yang anda cari tidak ditemui.</p>
+            <p class="text-gray-500 text-lg">Produk yang anda cari tidak ditemukan!</p>
             <a href="{{ route('products.index') }}"
                 class="mt-4 inline-block text-brown-500 hover:text-brown-600 font-semibold">Lihat semua produk</a>
         </div>

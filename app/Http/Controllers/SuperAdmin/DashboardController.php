@@ -24,7 +24,7 @@ class DashboardController extends Controller
 
         $filter = $request->input('filter');
         if (!$filter) {
-            $filter = auth()->user()->role === 'superadmin' ? 'daily' : 'monthly';
+            $filter = auth()->user()->role === 'admin' ? 'daily' : 'monthly';
         }
 
         $query = Order::query()->where('status', 'completed');

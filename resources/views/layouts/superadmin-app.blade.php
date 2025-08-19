@@ -11,7 +11,7 @@
         @if (auth()->user()->role == 'owner')
             Owner Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}
         @else
-            Super Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}
+            Admin Panel - {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}
         @endif
     </title>
     <link rel="preconnect" href="https://fonts.bunny.net">

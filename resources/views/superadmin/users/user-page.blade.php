@@ -40,7 +40,6 @@
     </div>
 
     <script>
-        // Fungsi debounce untuk menunda eksekusi agar tidak memanggil AJAX pada setiap ketikan
         function debounce(func, delay) {
             let timeout;
             return function(...args) {
@@ -54,7 +53,6 @@
             const form = document.getElementById('search-form');
             const container = document.getElementById('user-data-container');
 
-            // Mencegah form submit default (yang me-reload halaman)
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
             });
@@ -63,7 +61,6 @@
                 const query = event.target.value;
                 const url = `{{ route('admin.users.index') }}?search=${query}`;
 
-                // Tambahkan indikator loading jika perlu (opsional)
                 container.style.opacity = '0.5';
 
                 fetch(url, {
@@ -74,9 +71,7 @@
                     .then(response => response.text())
                     .then(html => {
                         container.innerHTML = html;
-                        // Hapus indikator loading
                         container.style.opacity = '1';
-                        // Update URL di browser tanpa reload halaman (opsional)
                         window.history.pushState({
                             path: url
                         }, '', url);
@@ -87,8 +82,7 @@
                     });
             };
 
-            // Gunakan debounce pada event 'keyup'
-            searchInput.addEventListener('keyup', debounce(handleSearch, 300)); // Delay 300ms
+            searchInput.addEventListener('keyup', debounce(handleSearch, 300));
         });
     </script>
 @endsection

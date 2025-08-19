@@ -26,9 +26,16 @@
                         </p>
                     </div>
                 </div>
-                <div class="mt-10 lg:mt-0" aria-hidden="true">
-                    <img class="rounded-lg shadow-xl" src="{{ asset('images/galery/toko-mruyung.webp') }}"
-                        alt="[Gambar bagian depan Toko Roti Mruyung yang nyaman dan mengundang]">
+                <div class="mt-10 lg:mt-0 gap-4 grid-cols-2 grid w-full md:w-[85%]" aria-hidden="true">
+                    <img class="h-auto max-w-full rounded-lg shadow-xl"
+                        src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
+                        alt="[Gambar secangkir kopi latte art]">
+                    <div class="grid grid-cols-1 gap-4 items-center">
+                        <img class="rounded-lg shadow-xl w-full" src="{{ asset('images/galery/toko-mruyung.webp') }}"
+                            alt="[Gambar bagian depan Toko Roti Mruyung yang nyaman dan mengundang]">
+                        <img class="rounded-lg shadow-xl w-full" src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
+                            alt="[Gambar bagian depan Toko Roti Mruyung yang nyaman dan mengundang]">
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +110,7 @@
                                             class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
                                     </div>
                                     <div class="p-4 flex flex-col flex-1">
-                                        <h3 class="text-base font-semibold text-gray-800">
+                                        <h3 class="text-lg font-semibold text-gray-800">
                                             <a href="{{ route('products.show', $product->slug) }}">
                                                 <span aria-hidden="true" class="absolute inset-0"></span>
                                                 {{ $product->name }}
@@ -111,8 +118,9 @@
                                         </h3>
                                         <p class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</p>
                                         <div class="flex-1 flex items-end mt-2">
-                                            <p class="text-lg font-bold text-indigo-600">
-                                                Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                                            <span
+                                                class="text-brown-500 font-bold text-lg">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
+                                                class="text-gray-500 text-md">/{{ $product->unit->name }}</span>
                                         </div>
                                     </div>
                                 </div>

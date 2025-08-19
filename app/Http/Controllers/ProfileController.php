@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
+use App\Services\WhatsAppService;
 
 class ProfileController extends Controller
 {
@@ -127,6 +128,8 @@ class ProfileController extends Controller
 
         $order->update(['status' => 'completed']);
 
+        $this->notifyAdmin($order, 'receipt_confirmed');
+
         return back()->with('success', 'Terima kasih telah mengonfirmasi pesanan Anda!');
     }
 
@@ -146,6 +149,8 @@ class ProfileController extends Controller
 
         $order->update(['status' => 'cancelled']);
 
+        $this->notifyAdmin($order, 'order_cancelled');
+
         return back()->with('success', 'Pesanan Anda berhasil dibatalkan.');
     }
 
@@ -160,5 +165,27 @@ class ProfileController extends Controller
         }
 
         return back()->with('success', 'Foto profil berhasil dihapus.');
+    }
+
+    private function notifyAdmin(Order $order, string $type)
+    {
+        $adminNumber = config('services.admin.whatsapp_number');
+        if (!$adminNumber) {
+            return;
+        }
+
+        $customerName = $order->user->name;
+        $message = '';
+
+        if ($type === 'receipt_confirmed') {
+            $message = "*Pesanan telah dikonfirmasi oleh Pelanggan*\n\nPesanan *{$order->order_code}* dari pelanggan *{$customerName}* telah ditandai sebagai *Selesai*.";
+        } elseif ($type === 'order_cancelled') {
+            $message = "*Pesanan telah dibatalkan oleh Pelanggan*\n\nPesanan *{$order->order_code}* dari pelanggan *{$customerName}* telah *Dibatalkan*. Stok produk telah dikembalikan secara otomatis.";
+        }
+
+        if ($message) {
+            $whatsappService = new WhatsAppService();
+            $whatsappService->sendMessage($adminNumber, $message);
+        }
     }
 }

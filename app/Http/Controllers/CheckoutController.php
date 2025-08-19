@@ -105,7 +105,7 @@ class CheckoutController extends Controller
                     . "*Total:* Rp " . number_format($order->grand_total, 0, ',', '.') . "\n"
                     . "*Metode Pengiriman:* {$order->shipping_method}\n"
                     . "*Metode Pembayaran:* {$order->payment_method}\n\n"
-                    . "Periksa dashboard super admin untuk memproses.";
+                    . "Periksa dashboard admin untuk memproses.";
 
                 $whatsappService = new WhatsAppService();
                 $whatsappService->sendMessage($adminNumber, $message);

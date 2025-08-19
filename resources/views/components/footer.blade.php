@@ -27,20 +27,24 @@
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Roti Tawar</a></li>
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Roti Manis</a></li>
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Kue Kering</a></li>
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Kue Basah</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Roti
+                            Tawar</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Roti
+                            Manis</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Kue
+                            Kering</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Kue
+                            Basah</a></li>
                 </ul>
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Perusahaan</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Toko</h3>
                 <ul class="mt-4 space-y-2">
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
                     </li>
                     <li><a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-white">Kontak</a></li>
-                    <li><a href="#" class="text-sm text-gray-400 hover:text-white">Cara Pesan</a></li>
+                    <li><a href="{{ route('home') }}" class="text-sm text-gray-400 hover:text-white">Cara Pesan</a></li>
                 </ul>
             </div>
 
