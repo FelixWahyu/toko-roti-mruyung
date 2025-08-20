@@ -93,7 +93,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Pelanggan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Metode Pembayaran</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Status</th>
-                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th>
+                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Jumlah</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">

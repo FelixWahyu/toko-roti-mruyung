@@ -3,8 +3,7 @@
     <div>
         <label for="district" class="block text-sm font-medium text-slate-700">Nama Kecamatan/Daerah</label>
         <input type="text" name="district" id="district" value="{{ old('district', $shippingZone->district ?? '') }}"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-            required placeholder="Contoh: Sokaraja">
+            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
         @error('district')
             <span class="text-sm text-red-600">{{ $message }}</span>
         @enderror

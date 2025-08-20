@@ -26,15 +26,25 @@
                         </p>
                     </div>
                 </div>
-                <div class="mt-10 lg:mt-0 gap-4 grid-cols-2 grid w-full md:w-[85%]" aria-hidden="true">
-                    <img class="h-auto max-w-full rounded-lg shadow-xl"
-                        src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
-                        alt="[Gambar secangkir kopi latte art]">
-                    <div class="grid grid-cols-1 gap-4 items-center">
-                        <img class="rounded-lg shadow-xl w-full" src="{{ asset('images/galery/toko-mruyung.webp') }}"
-                            alt="[Gambar bagian depan Toko Roti Mruyung yang nyaman dan mengundang]">
-                        <img class="rounded-lg shadow-xl w-full" src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
-                            alt="[Gambar bagian depan Toko Roti Mruyung yang nyaman dan mengundang]">
+                <div class="mt-10 lg:mt-0">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex flex-col space-y-4 flex-shrink-0">
+                            <div class="w-48 h-48 overflow-hidden rounded-lg shadow-xl group">
+                                <img src="{{ asset('images/galery/toko-mruyung.webp') }}"
+                                    alt="Suasana interior Toko Roti Mruyung"
+                                    class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                            </div>
+                            <div class="w-48 h-48 overflow-hidden rounded-lg shadow-xl group">
+                                <img src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
+                                    alt="Kamar Guesthouse Mruyung"
+                                    class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                            </div>
+                        </div>
+                        <div class="flex-1 w-full h-96 overflow-hidden rounded-lg shadow-xl group">
+                            <img class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
+                                src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
+                                alt="Tampilan Toko Roti Mruyung di malam hari">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -92,8 +102,9 @@
     <div class="bg-white py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Terbaru Kami</h2>
-                <p class="mt-4 text-lg text-gray-500">Jangan lewatkan produk roti terbaru yang kami buat.
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Unggulan Kami</h2>
+                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti unggulan yang kami buat sendiri
+                    langsung dari oven.
                 </p>
             </div>
 
@@ -108,6 +119,12 @@
                                         <img src="{{ Storage::url($product->image_url ?? $product->image) }}"
                                             alt="{{ $product->name }}"
                                             class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
+                                        @if ($product->created_at->diffInDays(now()) <= 5)
+                                            <div
+                                                class="absolute top-3 left-3 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
+                                                BARU
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="p-4 flex flex-col flex-1">
                                         <h3 class="text-lg font-semibold text-gray-800">
