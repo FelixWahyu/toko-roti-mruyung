@@ -74,7 +74,7 @@ class DashboardController extends Controller
                 break;
 
             case 'monthly':
-                $chartTitle = 'Penjualan Tahun Ini (Bulanan)';
+                $chartTitle = 'Penjualan Bulanan';
                 $salesData = $query->select(
                     DB::raw('MONTH(created_at) as month'),
                     DB::raw('SUM(grand_total) as total')

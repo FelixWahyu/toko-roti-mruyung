@@ -6,12 +6,8 @@
             return {
                 subtotal: {{ $cartItems->sum(fn($item) => $item->product->price * $item->quantity) }},
                 shippingZones: @json($shippingZones),
-                minPurchaseFreeShipping: {{ (float) ($settings['min_purchase_free_shipping']->value ?? 0) }},
-                freeShippingDistricts: '{{ $settings['free_shipping_districts']->value ?? '' }}'.split(',').map(d => d
-                    .trim()),
 
                 selectedZoneId: '{{ auth()->user()->shipping_zone_id ?? '' }}',
-                shippingMethod: 'Kurir Toko',
                 paymentMethod: 'Transfer Bank',
                 shippingCost: 0,
                 grandTotal: 0,
@@ -20,31 +16,17 @@
                     this.grandTotal = this.subtotal;
                     this.calculateShipping();
                     this.$watch('selectedZoneId', () => this.calculateShipping());
-                    this.$watch('shippingMethod', () => this.calculateShipping());
                 },
 
                 calculateShipping() {
-                    this.isShippingSet = true;
-
-                    if (this.shippingMethod === 'Ambil di Toko') {
-                        this.shippingCost = 0;
-                        this.updateGrandTotal();
-                        return;
-                    }
                     if (!this.selectedZoneId) {
                         this.shippingCost = 0;
-                        this.isShippingSet = false;
-                        this.updateGrandTotal();
-                        return;
+                    } else {
+                        const zone = this.shippingZones.find(z => z.id == this.selectedZoneId);
+                        if (zone) {
+                            this.shippingCost = parseFloat(zone.cost);
+                        }
                     }
-                    const zone = this.shippingZones.find(z => z.id == this.selectedZoneId);
-                    if (!zone) return;
-
-                    const isEligibleForFreeShipping = this.minPurchaseFreeShipping > 0 && this.subtotal >= this
-                        .minPurchaseFreeShipping;
-                    const isInFreeShippingArea = this.freeShippingDistricts.includes(zone.district);
-
-                    this.shippingCost = (isEligibleForFreeShipping && isInFreeShippingArea) ? 0 : parseFloat(zone.cost);
                     this.updateGrandTotal();
                 },
                 updateGrandTotal() {
@@ -55,6 +37,60 @@
                 }
             }
         }
+
+        // function checkoutForm() {
+        //     return {
+        //         subtotal: {{ $cartItems->sum(fn($item) => $item->product->price * $item->quantity) }},
+        //         shippingZones: @json($shippingZones),
+        //         minPurchaseFreeShipping: {{ (float) ($settings['min_purchase_free_shipping']->value ?? 0) }},
+        //         freeShippingDistricts: '{{ $settings['free_shipping_districts']->value ?? '' }}'.split(',').map(d => d
+        //             .trim()),
+
+        //         selectedZoneId: '{{ auth()->user()->shipping_zone_id ?? '' }}',
+        //         shippingMethod: 'Kurir Toko',
+        //         paymentMethod: 'Transfer Bank',
+        //         shippingCost: 0,
+        //         grandTotal: 0,
+
+        //         init() {
+        //             this.grandTotal = this.subtotal;
+        //             this.calculateShipping();
+        //             this.$watch('selectedZoneId', () => this.calculateShipping());
+        //             this.$watch('shippingMethod', () => this.calculateShipping());
+        //         },
+
+        //         calculateShipping() {
+        //             this.isShippingSet = true;
+
+        //             if (this.shippingMethod === 'Ambil di Toko') {
+        //                 this.shippingCost = 0;
+        //                 this.updateGrandTotal();
+        //                 return;
+        //             }
+        //             if (!this.selectedZoneId) {
+        //                 this.shippingCost = 0;
+        //                 this.isShippingSet = false;
+        //                 this.updateGrandTotal();
+        //                 return;
+        //             }
+        //             const zone = this.shippingZones.find(z => z.id == this.selectedZoneId);
+        //             if (!zone) return;
+
+        //             const isEligibleForFreeShipping = this.minPurchaseFreeShipping > 0 && this.subtotal >= this
+        //                 .minPurchaseFreeShipping;
+        //             const isInFreeShippingArea = this.freeShippingDistricts.includes(zone.district);
+
+        //             this.shippingCost = (isEligibleForFreeShipping && isInFreeShippingArea) ? 0 : parseFloat(zone.cost);
+        //             this.updateGrandTotal();
+        //         },
+        //         updateGrandTotal() {
+        //             this.grandTotal = this.subtotal + this.shippingCost;
+        //         },
+        //         formatCurrency(value) {
+        //             return new Intl.NumberFormat('id-ID').format(value);
+        //         }
+        //     }
+        // }
     </script>
 
     <div class="bg-gray-50" x-data="checkoutForm()">
@@ -62,6 +98,7 @@
             <h1 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">Checkout</h1>
             <form action="{{ route('checkout.store') }}" method="POST">
                 @csrf
+                <input type="hidden" name="shipping_method" value="Kurir Toko">
                 <div class="grid grid-cols-1 lg:grid-cols-6 gap-8">
                     <div class="lg:col-span-3 space-y-6">
                         <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
@@ -106,7 +143,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                        {{-- <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Metode Pengiriman</h3>
                             <div class="space-y-3">
                                 <label class="flex items-center p-4 border rounded-lg cursor-pointer"
@@ -122,7 +159,7 @@
                                     <span class="ml-3 text-sm font-medium text-gray-800">Ambil di Toko (Gratis)</span>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                             <h3 class="text-lg font-semibold border-b pb-2 mb-4">Metode Pembayaran</h3>
                             <div class="space-y-3">
@@ -169,7 +206,8 @@
                                 </div>
                                 <div class="flex justify-between text-sm text-gray-600">
                                     <p>Ongkos Kirim</p>
-                                    <p>
+                                    <p>Rp<span x-text="formatCurrency(shippingCost)"></span></p>
+                                    {{-- <p>
                                         <template x-if="!isShippingSet">
                                             <span>Rp0</span>
                                         </template>
@@ -180,7 +218,7 @@
                                                     x-text="shippingCost > 0 ? formatCurrency(shippingCost) : 'Gratis'"></span>
                                             </span>
                                         </template>
-                                    </p>
+                                    </p> --}}
                                 </div>
                                 <div class="flex justify-between text-lg font-bold text-gray-900">
                                     <p>Grand Total</p>
