@@ -102,8 +102,8 @@
     <div class="bg-white py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Unggulan Kami</h2>
-                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti unggulan yang kami buat sendiri
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Terbaru Kami</h2>
+                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti terbaru yang kami buat sendiri
                     langsung dari oven.
                 </p>
             </div>
