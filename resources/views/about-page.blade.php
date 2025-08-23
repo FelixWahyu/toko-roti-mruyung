@@ -99,44 +99,43 @@
         </div>
     </div>
 
-    <div class="bg-white py-16 sm:py-20">
+    <div class="bg-slate-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Terbaru Kami</h2>
-                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti terbaru yang kami buat sendiri
-                    langsung dari oven.
-                </p>
+                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti terbaru yang kami buat sendiri langsung
+                    dari oven.</p>
             </div>
 
             <div class="relative mt-12">
                 <div class="swiper promo-slider overflow-hidden">
                     <div class="swiper-wrapper">
                         @foreach ($newProducts as $product)
-                            <div class="swiper-slide p-2">
+                            <div class="swiper-slide h-auto p-1 rounded-lg">
                                 <div
-                                    class="group relative flex flex-col border border-gray-200 bg-white rounded-lg shadow-md overflow-hidden h-full">
-                                    <div class="aspect-w-4 aspect-h-3 bg-gray-200 overflow-hidden">
+                                    class="group relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden h-full border border-gray-300">
+                                    <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden relative">
                                         <img src="{{ Storage::url($product->image_url ?? $product->image) }}"
                                             alt="{{ $product->name }}"
                                             class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
-                                        @if ($product->created_at->diffInDays(now()) <= 5)
+                                        @if ($product->created_at->diffInDays(now()) <= 7)
                                             <div
-                                                class="absolute top-3 left-3 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
+                                                class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
                                                 BARU
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="p-4 flex flex-col flex-1">
+                                    <div class="p-3 flex flex-col flex-1">
                                         <h3 class="text-lg font-semibold text-gray-800">
                                             <a href="{{ route('products.show', $product->slug) }}">
-                                                <span aria-hidden="true" class="absolute inset-0"></span>
-                                                {{ $product->name }}
+                                                <span class="absolute inset-0 z-10"></span>
+                                                {{ Str::limit($product->name, 30) }}
                                             </a>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</p>
+                                        <p class="mt-1 text-xs text-gray-500">{{ $product->category->name }}</p>
                                         <div class="flex-1 flex items-end mt-2">
                                             <span
-                                                class="text-brown-500 font-bold text-lg">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
+                                                class="text-brown-500 font-bold text-md">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
                                                 class="text-gray-500 text-md">/{{ $product->unit->name }}</span>
                                         </div>
                                     </div>
@@ -146,13 +145,13 @@
                     </div>
                 </div>
                 <div
-                    class="promo-prev absolute top-1/2 left-2 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    class="promo-prev absolute top-1/2 left-1 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
                     <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </div>
                 <div
-                    class="promo-next absolute top-1/2 right-2 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    class="promo-next absolute top-1/2 right-1 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
                     <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -218,8 +217,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const swiper = new Swiper('.promo-slider', {
                 loop: true,
-                slidesPerView: 1,
-                spaceBetween: 16,
+                slidesPerView: 2.2,
+                spaceBetween: 12,
+                centeredSlides: true,
                 autoplay: {
                     delay: 10000,
                     disableOnInteraction: false,
@@ -230,12 +230,14 @@
                 },
                 breakpoints: {
                     640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                        centeredSlides: false,
                     },
                     1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
+                        slidesPerView: 4,
+                        spaceBetween: 24,
+                        centeredSlides: false,
                     },
                 },
             });

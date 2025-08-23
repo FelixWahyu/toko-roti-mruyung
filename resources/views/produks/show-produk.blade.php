@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <span class="font-bold text-gray-700">Ketersediaan Stok:</span>
+                        <span class="font-bold text-gray-700">Tersedia:</span>
                         @if ($product->stock > 0)
                             <span class="text-green-600 font-semibold ml-2">{{ $product->stock }}</span>
                         @else

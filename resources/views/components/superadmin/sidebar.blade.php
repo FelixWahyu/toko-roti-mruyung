@@ -5,7 +5,7 @@
     <div class="flex items-center justify-center px-4 pt-2 pb-4">
         <a href="{{ route('admin.dashboard.index') }}" class="text-center space-x-2">
             @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
-                <img class="h-16 w-auto mx-auto" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
+                <img class="h-16 w-auto mx-auto rounded-sm" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
                     alt="Logo Toko">
             @else
                 <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

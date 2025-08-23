@@ -5,7 +5,7 @@
                 class="w-full min-h-64 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-64 lg:aspect-none">
                 <img src="{{ Storage::url($product->image) }}" alt="[Gambar {{ $product->name }}]"
                     class="w-full h-full object-center object-cover lg:w-full lg:h-full">
-                @if ($product->created_at->diffInDays(now()) <= 5)
+                @if ($product->created_at->diffInDays(now()) <= 7)
                     <div
                         class="absolute top-3 left-3 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
                         BARU
@@ -22,7 +22,7 @@
                     <a class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</a>
                     <div class="mt-3">
                         @if ($product->stock > 0)
-                            <span class="font-medium text-sm text-gray-800">Stok: {{ $product->stock }}</span>
+                            <span class="font-medium text-sm text-gray-800">Tersedia: {{ $product->stock }}</span>
                         @else
                             <span class="font-medium text-sm text-gray-500">Stok Habis</span>
                         @endif
