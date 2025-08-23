@@ -5,7 +5,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-sm mb-6">
                 <a href="{{ route('products.index') }}" class="text-gray-500 hover:text-indigo-600">Produk</a>
-                <span class="mx-2 text-gray-400">>></span>
+                <span class="mx-2 text-gray-400">></span>
                 <span class="text-gray-800 font-semibold">{{ $product->name }}</span>
             </div>
 
