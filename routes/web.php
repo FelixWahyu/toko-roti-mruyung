@@ -11,6 +11,7 @@ use League\Uri\Contracts\UserInfoInterface;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SuperAdmin\UnitController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\OrderController;
@@ -25,9 +26,7 @@ use App\Http\Controllers\SuperAdmin\AdminProfileController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
 
 Route::middleware('prevent.admin.access')->group(function () {
-    Route::get('/', function () {
-        return view('landing-page');
-    })->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/produk', [ProductController::class, 'index'])->name('products.index');
     Route::get('/produk/filter', [ProductController::class, 'filterProducts'])->name('products.filter');
     Route::get('/produk/{product:slug}', [ProductController::class, 'show'])->name('products.show');

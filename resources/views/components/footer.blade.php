@@ -27,14 +27,14 @@
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Roti
-                            Tawar</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Roti
-                            Manis</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Kue
-                            Kering</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Kue
-                            Basah</a></li>
+                    <li><a href="{{ route('products.index') }}"
+                            class="text-sm text-gray-400 hover:text-white">Breads</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Cakes</a>
+                    </li>
+                    <li><a href="{{ route('products.index') }}"
+                            class="text-sm text-gray-400 hover:text-white">Pastry</a></li>
+                    <li><a href="{{ route('products.index') }}"
+                            class="text-sm text-gray-400 hover:text-white">Muffin</a></li>
                 </ul>
             </div>
 

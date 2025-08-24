@@ -39,7 +39,111 @@
         </div>
     </div>
 
-    <div class="bg-gray-50 py-16 sm:py-24">
+    <div class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative">
+                <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
+                    <div class="swiper-wrapper">
+                        @foreach ($promoSlides as $slide)
+                            <div class="swiper-slide bg-gray-100">
+                                <a href="{{ $slide['link'] }}">
+                                    <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
+                                        class="w-full h-full max-h-[450px] object-contain">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-50 py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Jelajahi Kategori Kami</h2>
+                <p class="mt-4 text-lg text-gray-500">Temukan kelezatan yang sesuai dengan selera Anda.</p>
+            </div>
+            <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                @foreach ($categories as $category)
+                    <a href="{{ route('products.index', ['category' => $category->id]) }}" class="group block relative">
+                        <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200">
+                            <img src="{{ $category->image ? Storage::url($category->image) : 'https://placehold.co/400x400/e2e8f0/333?text=' . urlencode($category->name) }}"
+                                alt="{{ $category->name }}"
+                                class="w-full h-full object-cover object-center transform transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
+                            <h3 class="text-white text-lg font-bold tracking-wider uppercase">{{ $category->name }}</h3>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Baru Kami</h2>
+                <p class="mt-4 text-lg text-gray-500">Berikut adalah produk roti terbaru yang kami buat sendiri langsung
+                    dari oven.</p>
+            </div>
+
+            <div class="relative mt-12">
+                <div class="swiper promo-slider overflow-hidden">
+                    <div class="swiper-wrapper">
+                        @foreach ($newProducts as $product)
+                            <div class="swiper-slide h-auto p-1 rounded-lg">
+                                <div
+                                    class="group relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden h-full border border-gray-300">
+                                    <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden relative">
+                                        <img src="{{ Storage::url($product->image_url ?? $product->image) }}"
+                                            alt="{{ $product->name }}"
+                                            class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
+                                        @if ($product->created_at->diffInDays(now()) <= 7)
+                                            <div
+                                                class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
+                                                BARU
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="p-3 flex flex-col flex-1">
+                                        <h3 class="text-lg font-semibold text-gray-800">
+                                            <a href="{{ route('products.show', $product->slug) }}">
+                                                <span class="absolute inset-0 z-10"></span>
+                                                {{ Str::limit($product->name, 30) }}
+                                            </a>
+                                        </h3>
+                                        <p class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</p>
+                                        <div class="flex-1 flex items-end mt-2">
+                                            <span
+                                                class="text-brown-500 font-bold text-md">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
+                                                class="text-gray-500 text-md">/{{ $product->unit->name }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div
+                    class="promo-prev absolute top-1/2 left-1 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                <div
+                    class="promo-next absolute top-1/2 right-1 transform -translate-y-1/2 z-10 p-2 bg-white/50 rounded-full shadow-lg cursor-pointer hover:bg-white">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Cara Pesan Mudah</h2>
@@ -56,14 +160,16 @@
                         </svg>
                     </div>
                     <h3 class="mt-5 text-lg font-semibold text-gray-900">1. Pilih Produk & Checkout</h3>
-                    <p class="mt-2 text-base text-gray-500">Jelajahi katalog kami, masukkan produk favorit ke keranjang, dan
+                    <p class="mt-2 text-base text-gray-500">Jelajahi katalog kami, masukkan produk favorit ke keranjang,
+                        dan
                         lanjutkan ke halaman checkout.</p>
                 </div>
 
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3">
                         </path>
                     </svg>
                 </div>
@@ -85,7 +191,8 @@
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3">
                         </path>
                     </svg>
                 </div>
@@ -106,4 +213,46 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const promoBannerSwiper = new Swiper('.promo-banner-slider', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+            const swiper = new Swiper('.promo-slider', {
+                loop: true,
+                slidesPerView: 2.2,
+                spaceBetween: 12,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 10000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.promo-next',
+                    prevEl: '.promo-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 3,
+                        spaceBetween: 16,
+                        centeredSlides: false,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 24,
+                        centeredSlides: false,
+                    },
+                },
+            });
+        });
+    </script>
 @endsection

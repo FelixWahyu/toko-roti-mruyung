@@ -14,6 +14,7 @@
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gambar</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug</th>
                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
@@ -22,6 +23,10 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @forelse($categories as $category)
                     <tr>
+                        <td class="px-6 py-4">
+                            <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}"
+                                class="h-12 w-12 object-cover rounded-md">
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $category->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $category->slug }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
