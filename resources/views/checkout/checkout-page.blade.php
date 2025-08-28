@@ -123,11 +123,11 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="shipping_zone" class="block text-sm font-medium text-gray-700">Kecamatan
+                                <label for="shipping_zone" class="block text-sm font-medium text-gray-700">Daerah
                                     Pengiriman</label>
                                 <select x-model="selectedZoneId" id="shipping_zone" name="shipping_zone_id" required
                                     class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
-                                    <option value="">-- Pilih Kecamatan --</option>
+                                    <option value="">-- Pilih Daerah --</option>
                                     @foreach ($shippingZones as $zone)
                                         <option value="{{ $zone->id }}">{{ $zone->district }}</option>
                                     @endforeach

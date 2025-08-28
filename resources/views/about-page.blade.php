@@ -6,7 +6,10 @@
                 <div>
                     <h2 class="text-base font-semibold text-brown-500 tracking-wider uppercase">Tentang Kami</h2>
                     <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                        Toko Roti Mruyung Guest House & Cafe Banyumas
+                        Roti Mruyung
+                    </p>
+                    <p class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+                        Guesthouse & Cafe Banyumas
                     </p>
                     <div class="mt-6 text-lg text-gray-500 space-y-4">
                         <p>

@@ -1,5 +1,10 @@
 @extends('layouts.superadmin-app')
 @section('content')
+    <div class="text-sm mb-4">
+        <a href="{{ route('admin.dashboard.index') }}" class="text-gray-500 hover:text-indigo-600">Dashboard</a>
+        <span class="mx-2 text-gray-400">></span>
+        <span class="text-gray-800 font-semibold">{{ auth()->user()->name }}</span>
+    </div>
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Profil Saya</h1>
     <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl border border-gray-200">
         @if (auth()->user()->profile_picture)

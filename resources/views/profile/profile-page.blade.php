@@ -231,10 +231,10 @@
                             </div>
                             <div>
                                 <label for="shipping_zone_id"
-                                    class="block text-sm font-medium text-gray-700">Kecamatan</label>
+                                    class="block text-sm font-medium text-gray-700">Daerah</label>
                                 <select name="shipping_zone_id" id="shipping_zone_id"
                                     class="mt-1 block w-full p-1 border border-gray-300 rounded-md shadow-sm">
-                                    <option value="">-- Pilih Kecamatan --</option>
+                                    <option value="">-- Pilih Daerah --</option>
                                     @foreach ($shippingZones as $zone)
                                         <option value="{{ $zone->id }}"
                                             {{ old('shipping_zone_id', $user->shipping_zone_id) == $zone->id ? 'selected' : '' }}>
