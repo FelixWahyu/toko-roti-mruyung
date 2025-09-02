@@ -3,9 +3,17 @@
 @section('content')
     <div class="flex items-center justify-center min-h-screen py-12">
         <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md border border-gray-200">
-            <h1 class="text-3xl font-bold text-center text-gray-800">
-                {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</h1>
-            <h2 class="text-xl font-bold text-center text-gray-800">Registrasi Akun Baru</h2>
+            @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
+                <img class="h-24 w-auto mx-auto rounded-sm" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
+                    alt="Logo Toko">
+            @else
+                <svg class="h-16 w-16 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
+                </svg>
+            @endif
+            <h2 class="text-xl font-bold mt-2 text-center text-gray-800">Registrasi Akun Baru</h2>
             <form method="POST" action="{{ route('register') }}" class="space-y-4">
                 @csrf
                 <div>

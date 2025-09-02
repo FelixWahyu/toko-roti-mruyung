@@ -6,10 +6,10 @@
             <div class="text-center">
                 <h2 class="text-base font-semibold text-brown-500 tracking-wider uppercase">Hubungi Kami</h2>
                 <p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-                    Kami Senang Mendengar dari Anda
+                    Hubungi Kami melalui Informasi Kontak
                 </p>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
-                    Punya pertanyaan, kritik atau saran, Jangan ragu untuk menghubungi kami
+                    Punya pertanyaan Jangan ragu untuk menghubungi kami
                     melalui detail di bawah atau isi formulir kontak.
                 </p>
             </div>
