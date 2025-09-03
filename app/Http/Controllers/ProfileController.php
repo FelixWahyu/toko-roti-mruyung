@@ -76,7 +76,25 @@ class ProfileController extends Controller
 
         $order->load('items.product');
 
-        return view('profile.show-order', compact('order'));
+        $statusLevels = [
+            'pending' => 1,
+            'paid' => 2,
+            'processing' => 3,
+            'shipped' => 4,
+            'completed' => 5,
+        ];
+        $currentStatusLevel = $statusLevels[$order->status] ?? 0;
+
+        $steps = [
+            'pending' => 'Pending',
+            'paid' => 'Dibayar',
+            'processing' => 'Diproses',
+            'shipped' => 'Dikirim',
+            'completed' => 'Selesai',
+        ];
+        $currentStatus = array_search($order->status, array_keys($steps));
+
+        return view('profile.show-order', compact('order', 'currentStatusLevel', 'currentStatus', 'steps'));
     }
 
     public function showPaymentForm(Order $order)

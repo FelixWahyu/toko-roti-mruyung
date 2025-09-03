@@ -7,7 +7,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-6">
                 <div class="lg:col-span-3 space-y-6">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <h3 class="text-lg font-semibold border-b pb-2">Item yang Dipesan</h3>
                         <table class="min-w-full mt-4">
                             <tbody>
@@ -32,17 +32,207 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <h3 class="text-lg font-semibold border-b pb-2">Alamat Pengiriman</h3>
                         @if ($order->shippingZone)
                             <p class="mt-4 text-gray-800">Daerah: {{ $order->shippingZone->district }}</p>
                         @endif
                         <p class="mt-4 text-gray-800">Alamat Lengkap: {{ $order->shipping_address }}</p>
                     </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                        <h3 class="text-lg font-semibold border-b pb-4 mb-4">Status Pemesanan</h3>
+                        <div class="{{ $order->status == 'cancelled' ? 'hidden' : 'flex' }} items-center justify-between">
+                            @foreach ($steps as $key => $label)
+                                @php
+                                    $index = array_search($key, array_keys($steps));
+                                    $isActive = $index <= $currentStatus;
+                                @endphp
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="relative flex items-center justify-center">
+                                        <div
+                                            class="w-8 h-8 rounded-full flex items-center justify-center 
+                                            {{ $isActive ? 'bg-green-600 text-white' : 'bg-gray-300 text-gray-600' }}">
+                                            @if ($isActive)
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M5 13l4 4L19 7" />
+                                                </svg>
+                                            @else
+                                                <span class="text-xs">{{ $index + 1 }}</span>
+                                            @endif
+                                        </div>
+                                        @if ($index < count($steps) - 1)
+                                            <div
+                                                class="absolute top-1/2 left-full w-full border-t-2 
+                                                {{ $isActive ? 'border-green-600' : 'border-gray-300' }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <span
+                                        class="mt-2 text-xs text-center {{ $isActive ? 'text-green-600 font-semibold' : 'text-gray-500' }}">
+                                        {{ $label }}
+                                    </span>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="m-6">
+                            @if ($order->status == 'cancelled')
+                                <div class="flex items-center p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                                    <div class="flex-shrink-0">
+                                        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg font-bold text-red-800">Pesanan Dibatalkan</h3>
+                                        <p class="text-sm text-red-700 mt-1">Pesanan ini telah dibatalkan. Jika Anda
+                                            memiliki
+                                            pertanyaan, silakan hubungi kami.</p>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="flex flex-col space-y-8">
+                                    @php $stepLevel = 1; @endphp
+                                    <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center mr-4 {{ $currentStatusLevel >= $stepLevel ? 'text-indigo-600' : 'text-slate-400' }}">
+                                            <div
+                                                class="flex items-center justify-center w-10 h-10 border-2 rounded-full {{ $currentStatusLevel >= $stepLevel ? 'border-indigo-600 bg-indigo-50' : 'border-slate-300' }}">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div
+                                                class="w-px h-full mt-2 {{ $currentStatusLevel > $stepLevel ? 'bg-indigo-600' : 'bg-slate-300' }}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
+                                                Pesanan Dibuat</h3>
+                                            <p class="text-sm text-slate-500 mt-1">
+                                                Pesanan Anda telah kami terima dan menunggu pembayaran.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    @php $stepLevel = 2; @endphp
+                                    <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center mr-4 {{ $currentStatusLevel >= $stepLevel ? 'text-indigo-600' : 'text-slate-400' }}">
+                                            <div
+                                                class="flex items-center justify-center w-10 h-10 border-2 rounded-full {{ $currentStatusLevel >= $stepLevel ? 'border-indigo-600 bg-indigo-50' : 'border-slate-300' }}">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div
+                                                class="w-px h-full mt-2 {{ $currentStatusLevel > $stepLevel ? 'bg-indigo-600' : 'bg-slate-300' }}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
+                                                Pembayaran Diterima</h3>
+                                            <p class="text-sm text-slate-500 mt-1">
+                                                Pembayaran Anda telah kami konfirmasi. Pesanan akan segera diproses.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    @php $stepLevel = 3; @endphp
+                                    <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center mr-4 {{ $currentStatusLevel >= $stepLevel ? 'text-indigo-600' : 'text-slate-400' }}">
+                                            <div
+                                                class="flex items-center justify-center w-10 h-10 border-2 rounded-full {{ $currentStatusLevel >= $stepLevel ? 'border-indigo-600 bg-indigo-50' : 'border-slate-300' }}">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                                </svg>
+                                            </div>
+                                            <div
+                                                class="w-px h-full mt-2 {{ $currentStatusLevel > $stepLevel ? 'bg-indigo-600' : 'bg-slate-300' }}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
+                                                Pesanan Diproses</h3>
+                                            <p class="text-sm text-slate-500 mt-1">
+                                                Kami sedang menyiapkan pesanan Anda. Mohon tunggu sebentar.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    @php $stepLevel = 4; @endphp
+                                    <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center mr-4 {{ $currentStatusLevel >= $stepLevel ? 'text-indigo-600' : 'text-slate-400' }}">
+                                            <div
+                                                class="flex items-center justify-center w-10 h-10 border-2 rounded-full {{ $currentStatusLevel >= $stepLevel ? 'border-indigo-600 bg-indigo-50' : 'border-slate-300' }}">
+                                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                                </svg>
+                                            </div>
+                                            <div
+                                                class="w-px h-full mt-2 {{ $currentStatusLevel > $stepLevel ? 'bg-indigo-600' : 'bg-slate-300' }}">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
+                                                Pesanan Dikirim</h3>
+                                            <p class="text-sm text-slate-500 mt-1">
+                                                Pesanan Anda sedang dalam perjalanan. Mohon konfirmasi setelah pesanan tiba.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    @php $stepLevel = 5; @endphp
+                                    <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center mr-4 {{ $currentStatusLevel >= $stepLevel ? 'text-indigo-600' : 'text-slate-400' }}">
+                                            <div
+                                                class="flex items-center justify-center w-10 h-10 border-2 rounded-full {{ $currentStatusLevel >= $stepLevel ? 'border-indigo-600 bg-indigo-50' : 'border-slate-300' }}">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3
+                                                class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
+                                                Selesai</h3>
+                                            <p class="text-sm text-slate-500 mt-1">
+                                                Pesanan Anda telah berhasil diselesaikan. Terima kasih!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
 
                 <div class="space-y-6 lg:col-span-2">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
                         <h3 class="text-lg font-semibold border-b pb-2">Ringkasan Pesanan</h3>
                         <div class="mt-4 space-y-2 text-sm">
                             <p class="flex justify-between"><strong>Kode:</strong> <span
@@ -131,7 +321,8 @@
                                 @if ($order->status == 'paid')
                                     <a href="{{ route('order.payment', $order) }}"
                                         class="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.536L16.732 3.732z">
                                             </path>
@@ -150,7 +341,8 @@
                                 </a>
                             @endif
                             @if ($order->status == 'shipped')
-                                <form action="{{ route('order.confirm_receipt', $order) }}" method="POST" class="w-full"
+                                <form action="{{ route('order.confirm_receipt', $order) }}" method="POST"
+                                    class="w-full"
                                     onsubmit="showConfirmation(event, 'Konfirmasi Pesanan?', 'Apakah Anda yakin sudah menerima pesanan ini?', 'Sudah Diterima')">
                                     @csrf
                                     <button type="submit"
