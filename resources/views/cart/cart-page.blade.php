@@ -44,8 +44,10 @@
                                                                 clip-rule="evenodd" />
                                                         </svg>
                                                     </button>
-                                                    <span id="quantity-{{ $item->id }}"
-                                                        class="px-4 text-center font-medium w-10 py-1 border border-gray-300">{{ $item->quantity }}</span>
+                                                    <input id="quantity-{{ $item->id }}" type="number" min="1"
+                                                        value="{{ $item->quantity }}"
+                                                        class="w-16 text-center border border-gray-300 rounded-md mx-2"
+                                                        onchange="updateQuantityDirect('{{ $item->id }}')">
                                                     <button onclick="updateQuantity('{{ $item->id }}', 1)"
                                                         class="p-1 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -116,8 +118,10 @@
     <script>
         function updateQuantity(itemId, change) {
             const quantityElement = document.getElementById(`quantity-${itemId}`);
-            const currentQuantity = parseInt(quantityElement.innerText);
-            const newQuantity = currentQuantity + change;
+            let currentQuantity = parseInt(quantityElement.value);
+            let newQuantity = currentQuantity + change;
+
+            if (newQuantity < 1) newQuantity = 1;
 
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -132,43 +136,62 @@
                         quantity: newQuantity
                     })
                 })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
+                .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        if (newQuantity <= 0) {
-                            document.getElementById(`cart-item-${itemId}`).remove();
-                        } else {
-                            quantityElement.innerText = data.newQuantity;
-                            const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
-                            itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
-                        }
+                        quantityElement.value = data.newQuantity;
 
+                        // update subtotal produk
+                        const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
+                        itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
+
+                        // update total cart
                         updateCartTotal();
-
-                        if (document.querySelectorAll('#cart-list li').length === 0) {
-                            window.location.reload();
-                        }
                     } else {
                         alert(data.message || 'Gagal memperbarui kuantitas.');
                     }
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan. Silakan coba lagi.');
-                });
+                .catch(err => console.error('Error:', err));
+        }
+
+        function updateQuantityDirect(itemId) {
+            const quantityInput = document.getElementById(`quantity-${itemId}`);
+            let newQuantity = parseInt(quantityInput.value);
+
+            if (isNaN(newQuantity) || newQuantity < 1) {
+                newQuantity = 1;
+                quantityInput.value = 1;
+            }
+
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch(`/keranjang/update-quantity/${itemId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        quantity: newQuantity
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
+                        itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
+                        updateCartTotal();
+                    }
+                })
+                .catch(err => console.error('Error:', err));
         }
 
         function updateCartTotal() {
             let total = 0;
             document.querySelectorAll('#cart-list li').forEach(item => {
-                const quantity = parseInt(item.querySelector('[id^="quantity-"]').innerText);
-                const price = parseFloat(item.querySelector('.item-subtotal').getAttribute('data-price'));
-                total += quantity * price;
+                const subtotalText = item.querySelector('.item-subtotal').innerText.replace(/[^\d]/g, '');
+                total += parseInt(subtotalText) || 0;
             });
 
             document.getElementById('cart-total').innerText = 'Rp' + total.toLocaleString('id-ID');
