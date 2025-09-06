@@ -21,10 +21,38 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit"
-                        class="w-full mt-3 px-4 py-2 font-semibold text-white bg-brown-500 hover:bg-brown-600 rounded-md">Kirim</button>
+                    <button id="submitBtn" type="submit"
+                        class="w-full mt-3 px-4 py-2 font-semibold text-white bg-brown-500 hover:bg-brown-600 rounded-md">
+                        Kirim
+                    </button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const submitBtn = document.getElementById("submitBtn");
+
+            @if (session('success'))
+                let countdown = 15;
+                submitBtn.disabled = true;
+                submitBtn.innerText = `Tunggu ${countdown} detik`;
+                submitBtn.classList.add("opacity-70", "cursor-not-allowed");
+
+                let timer = setInterval(() => {
+                    countdown--;
+                    submitBtn.innerText = countdown > 0 ?
+                        `Tunggu ${countdown} detik` :
+                        "Kirim";
+
+                    if (countdown <= 0) {
+                        clearInterval(timer);
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+                    }
+                }, 1000);
+            @endif
+        });
+    </script>
 @endsection

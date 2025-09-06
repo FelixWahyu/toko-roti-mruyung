@@ -42,6 +42,22 @@ class ForgotPasswordController extends Controller
 
     public function showResetForm(Request $request, $token)
     {
+        $resetRecord = DB::table('password_reset_tokens')
+            ->where('email', $request->email)
+            ->first();
+
+        if (!$resetRecord) {
+            return redirect()->route('password.request')
+                ->withErrors(['email' => 'Form reset password sudah tidak valid atau kadaluarsa.']);
+        }
+
+        $expireMinutes = config('auth.passwords.users.expire', 15);
+
+        if (Carbon::parse($resetRecord->created_at)->addMinutes($expireMinutes)->isPast()) {
+            return redirect()->route('password.request')
+                ->withErrors(['email' => 'Link reset password sudah kadaluarsa.']);
+        }
+
         return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
     }
 
@@ -57,6 +73,12 @@ class ForgotPasswordController extends Controller
 
         if (!$resetRecord || !Hash::check($request->token, $resetRecord->token)) {
             return back()->withErrors(['email' => 'Token reset ulang tidak valid atau sudah kadaluarsa.'])->withInput();
+        }
+
+        $expireMinutes = config('auth.passwords.users.expire', 15);
+        if (Carbon::parse($resetRecord->created_at)->addMinutes($expireMinutes)->isPast()) {
+            return redirect()->route('password.request')
+                ->withErrors(['email' => 'Link reset password sudah kadaluarsa.']);
         }
 
         $user = User::where('email', $request->email)->first();
