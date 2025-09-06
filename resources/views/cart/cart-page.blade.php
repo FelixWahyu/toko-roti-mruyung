@@ -45,8 +45,8 @@
                                                         </svg>
                                                     </button>
                                                     <input id="quantity-{{ $item->id }}" type="number" min="1"
-                                                        value="{{ $item->quantity }}"
-                                                        class="w-16 text-center border border-gray-300 rounded-md mx-2"
+                                                        max="{{ $item->product->stock }}" value="{{ $item->quantity }}"
+                                                        class="w-16 text-center p-1 border border-gray-300 rounded-md mx-2"
                                                         onchange="updateQuantityDirect('{{ $item->id }}')">
                                                     <button onclick="updateQuantity('{{ $item->id }}', 1)"
                                                         class="p-1 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100">
@@ -116,85 +116,130 @@
     </div>
 
     <script>
-        function updateQuantity(itemId, change) {
-            const quantityElement = document.getElementById(`quantity-${itemId}`);
-            let currentQuantity = parseInt(quantityElement.value);
-            let newQuantity = currentQuantity + change;
-
-            if (newQuantity < 1) newQuantity = 1;
-
+        async function postQty(itemId, newQuantity) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            fetch(`/keranjang/update-quantity/${itemId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        quantity: newQuantity
-                    })
+            const res = await fetch(`/keranjang/update-quantity/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    quantity: newQuantity
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        quantityElement.value = data.newQuantity;
+            });
 
-                        // update subtotal produk
-                        const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
-                        itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
+            let data = {};
+            try {
+                data = await res.json();
+            } catch (_) {}
 
-                        // update total cart
-                        updateCartTotal();
-                    } else {
-                        alert(data.message || 'Gagal memperbarui kuantitas.');
-                    }
-                })
-                .catch(err => console.error('Error:', err));
+            return {
+                ok: res.ok && data.success,
+                status: res.status,
+                data
+            };
         }
 
-        function updateQuantityDirect(itemId) {
-            const quantityInput = document.getElementById(`quantity-${itemId}`);
-            let newQuantity = parseInt(quantityInput.value);
+        function rupiah(n) {
+            return 'Rp' + (n || 0).toLocaleString('id-ID');
+        }
 
-            if (isNaN(newQuantity) || newQuantity < 1) {
-                newQuantity = 1;
-                quantityInput.value = 1;
+        async function updateQuantity(itemId, change) {
+            const qtyInput = document.getElementById(`quantity-${itemId}`);
+            let newQty = parseInt(qtyInput.value || '1', 10) + change;
+            if (newQty < 1) newQty = 1;
+
+            const {
+                ok,
+                status,
+                data
+            } = await postQty(itemId, newQty);
+            const itemRow = document.getElementById(`cart-item-${itemId}`);
+            const itemSubtotalEl = itemRow.querySelector('.item-subtotal');
+            const price = parseFloat(itemSubtotalEl.getAttribute('data-price'));
+
+            if (!ok) {
+                if (status === 422 && typeof data.allowedQuantity !== 'undefined') {
+                    qtyInput.value = data.allowedQuantity;
+                    itemSubtotalEl.innerText = rupiah(price * data.allowedQuantity);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Stok tidak cukup",
+                        text: data.message || "Jumlah melebihi stok tersedia.",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    updateCartTotal();
+                    return;
+                }
+                Swal.fire({
+                    icon: "error",
+                    title: "Gagal",
+                    text: data?.message || "Gagal memperbarui kuantitas."
+                });
+                return;
             }
 
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            qtyInput.value = data.newQuantity;
+            itemSubtotalEl.innerText = rupiah(data.newSubtotal);
+            updateCartTotal();
+        }
 
-            fetch(`/keranjang/update-quantity/${itemId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        quantity: newQuantity
-                    })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        const itemSubtotalElement = document.querySelector(`#cart-item-${itemId} .item-subtotal`);
-                        itemSubtotalElement.innerText = 'Rp' + data.newSubtotal.toLocaleString('id-ID');
-                        updateCartTotal();
-                    }
-                })
-                .catch(err => console.error('Error:', err));
+        async function updateQuantityDirect(itemId) {
+            const qtyInput = document.getElementById(`quantity-${itemId}`);
+            let newQty = parseInt(qtyInput.value || '1', 10);
+            if (isNaN(newQty) || newQty < 1) newQty = 1;
+
+            const maxAttr = parseInt(qtyInput.getAttribute('max') || '0', 10);
+            if (maxAttr > 0 && newQty > maxAttr) newQty = maxAttr;
+
+            const {
+                ok,
+                status,
+                data
+            } = await postQty(itemId, newQty);
+            const itemRow = document.getElementById(`cart-item-${itemId}`);
+            const itemSubtotalEl = itemRow.querySelector('.item-subtotal');
+            const price = parseFloat(itemSubtotalEl.getAttribute('data-price'));
+
+            if (!ok) {
+                if (status === 422 && typeof data.allowedQuantity !== 'undefined') {
+                    qtyInput.value = data.allowedQuantity;
+                    itemSubtotalEl.innerText = rupiah(price * data.allowedQuantity);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Stok tidak cukup",
+                        text: data.message || "Jumlah melebihi stok tersedia.",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    updateCartTotal();
+                    return;
+                }
+                Swal.fire({
+                    icon: "error",
+                    title: "Gagal",
+                    text: data?.message || "Gagal memperbarui kuantitas."
+                });
+                return;
+            }
+
+            qtyInput.value = data.newQuantity;
+            itemSubtotalEl.innerText = rupiah(data.newSubtotal);
+            updateCartTotal();
         }
 
         function updateCartTotal() {
             let total = 0;
             document.querySelectorAll('#cart-list li').forEach(item => {
-                const subtotalText = item.querySelector('.item-subtotal').innerText.replace(/[^\d]/g, '');
-                total += parseInt(subtotalText) || 0;
+                const subtotalText = item.querySelector('.item-subtotal')?.innerText || '0';
+                const raw = subtotalText.replace(/[^\d]/g, '');
+                total += parseInt(raw || '0', 10);
             });
-
-            document.getElementById('cart-total').innerText = 'Rp' + total.toLocaleString('id-ID');
+            document.getElementById('cart-total').innerText = rupiah(total);
         }
     </script>
 @endsection

@@ -207,8 +207,11 @@
                         </svg>
                     </div>
                     <h3 class="mt-5 text-lg font-semibold text-gray-900">3. Pesanan Diantar</h3>
-                    <p class="mt-2 text-base text-gray-500">Tim kami akan segera memproses pesanan Anda. Duduk santai dan
-                        tunggu kelezatan tiba di depan pintu Anda.</p>
+                    <p class="mt-2 text-base text-gray-500">
+                        Pesanan Anda akan diproses oleh tim kami dan diantar langsung ke rumah.
+                        Saat ini layanan pengiriman <span class="font-semibold text-brown-600">
+                            hanya tersedia di wilayah Kecamatan Banyumas dan sekitarnya</span>.
+                    </p>
                 </div>
             </div>
         </div>

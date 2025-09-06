@@ -24,6 +24,9 @@ class CartController extends Controller
         $cartItem = Cart::where('user_id', Auth::id())->where('product_id', $product->id)->first();
 
         if ($cartItem) {
+            if ($cartItem->quantity + 1 > $product->stock) {
+                return back()->with('error', 'Stok tidak mencukupi.');
+            }
             $cartItem->increment('quantity');
         } else {
             Cart::create([
@@ -44,6 +47,16 @@ class CartController extends Controller
 
         $request->validate(['quantity' => 'required|integer']);
         $newQuantity = $request->input('quantity');
+        $product = $item->product;
+
+        if ($newQuantity > $product->stock) {
+            return response()->json([
+                'success' => false,
+                'message' => "Stok tidak mencukupi. Tersedia {$product->stock}.",
+                'allowedQuantity' => $product->stock,
+                'newSubtotal' => $product->price * $item->quantity,
+            ], 422);
+        }
 
         if ($newQuantity <= 0) {
             $item->delete();

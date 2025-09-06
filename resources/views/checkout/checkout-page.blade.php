@@ -236,5 +236,14 @@
                 </div>
             </form>
         </div>
+        {{-- <div class="bg-gray-100 py-12">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Area Layanan Pengiriman</h3>
+                <p class="text-gray-600">
+                    Saat ini kami hanya melayani pengiriman di wilayah <span class="font-semibold">Kecamatan Banyumas</span>
+                    dan desa/kelurahan sekitarnya.
+                </p>
+            </div>
+        </div> --}}
     </div>
 @endsection
