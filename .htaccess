@@ -1,13 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # === Handle public Laravel ===
-    RewriteCond %{REQUEST_URI} !^/storage
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-
-    # === Handle storage tanpa artisan storage:link ===
-    RewriteRule ^storage/(.*)$ ../storage/app/public/$1 [L]
+    # Kalau akses bukan ke folder public, redirect ke public
+    RewriteCond %{REQUEST_URI} !^/public
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
 
 </IfModule>
