@@ -313,8 +313,8 @@
                         @if ($order->payment_proof)
                             <div class="p-2 rounded-lg shadow-md">
                                 <h3 class="text-lg font-semibold border-b pb-2 mb-4">Bukti Pembayaran Anda</h3>
-                                <a href="{{ Storage::url($order->payment_proof) }}" target="_blank">
-                                    <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
+                                <a href="{{ asset('storage/' . $order->payment_proof) }}" target="_blank">
+                                    <img src="{{ asset('storage/' . $order->payment_proof) }}" alt="Bukti Pembayaran"
                                         class="w-full rounded-md hover:opacity-80 transition-opacity">
                                 </a>
 

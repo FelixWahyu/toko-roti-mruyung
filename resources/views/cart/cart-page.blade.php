@@ -15,7 +15,7 @@
                                     <div class="flex items-center sm:items-start">
                                         <div
                                             class="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-md overflow-hidden bg-gray-200">
-                                            <img src="{{ Storage::url($item->product->image) }}"
+                                            <img src="{{ asset('storage/' . $item->product->image) }}"
                                                 alt="[Gambar {{ $item->product->name }}]"
                                                 class="w-full h-full object-cover object-center">
                                         </div>

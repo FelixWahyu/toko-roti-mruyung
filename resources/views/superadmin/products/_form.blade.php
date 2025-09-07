@@ -76,7 +76,7 @@
         @enderror
         @if (isset($product) && $product->image)
             <div class="mt-4">
-                <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                     class="h-32 w-32 object-cover rounded-lg">
             </div>
         @endif

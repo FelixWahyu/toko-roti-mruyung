@@ -11,7 +11,7 @@
 
             <div class="flex flex-col md:flex-row -mx-4">
                 <div class="md:flex-1 px-4">
-                    <div x-data="{ mainImage: '{{ Storage::url($product->image) }}' }">
+                    <div x-data="{ mainImage: '{{ asset('storage/' . $product->image) }}' }">
                         <div class="h-80 md:h-full rounded-lg bg-gray-100 mb-4 relative overflow-hidden shadow-sm">
                             <img class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
                                 :src="mainImage" alt="Gambar Utama Produk">

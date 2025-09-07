@@ -24,7 +24,7 @@
                 @forelse($categories as $category)
                     <tr>
                         <td class="px-6 py-4">
-                            <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}"
+                            <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
                                 class="h-12 w-12 object-cover rounded-md">
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $category->name }}</td>

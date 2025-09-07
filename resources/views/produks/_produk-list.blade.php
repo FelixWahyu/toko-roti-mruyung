@@ -3,7 +3,7 @@
         <div class="group relative flex flex-col rounded-md p-1 border border-gray-300 hover:shadow-md">
             <a href="{{ route('products.show', $product->slug) }}"
                 class="w-full min-h-64 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-64 lg:aspect-none">
-                <img src="{{ Storage::url($product->image) }}" alt="[Gambar {{ $product->name }}]"
+                <img src="{{ asset('storage/' . $product->image) }}" alt="[Gambar {{ $product->name }}]"
                     class="w-full h-full object-center object-cover lg:w-full lg:h-full">
                 @if ($product->created_at->diffInDays(now()) <= 7)
                     <div

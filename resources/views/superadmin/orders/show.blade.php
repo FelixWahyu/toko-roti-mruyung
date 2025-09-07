@@ -17,7 +17,7 @@
                             <tr class="border-b">
                                 <td class="py-4">
                                     <div class="flex items-center">
-                                        <img src="{{ Storage::url($item->product->image) }}"
+                                        <img src="{{ asset('storage/' . $item->product->image) }}"
                                             alt="{{ $item->product->name }}" class="h-16 w-16 object-cover rounded-md mr-4">
                                         <div>
                                             <p class="font-medium">{{ $item->product->name }}</p>
@@ -64,8 +64,8 @@
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <h3 class="text-lg font-semibold border-b pb-2">Bukti Pembayaran</h3>
                         <div class="mt-4">
-                            <a href="{{ Storage::url($order->payment_proof) }}" target="_blank">
-                                <img src="{{ Storage::url($order->payment_proof) }}" alt="Bukti Pembayaran"
+                            <a href="{{ asset('storage/' . $order->payment_proof) }}" target="_blank">
+                                <img src="{{ asset('storage/' . $order->payment_proof) }}" alt="Bukti Pembayaran"
                                     class="w-full rounded-md shadow-md hover:opacity-80 transition-opacity">
                             </a>
                             <a href="{{ Storage::url($order->payment_proof) }}" target="_blank"

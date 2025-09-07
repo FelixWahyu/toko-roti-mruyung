@@ -59,7 +59,7 @@
                     @if (isset($settings['store_logo']) && $settings['store_logo']->value)
                         <div class="mt-4">
                             <p class="text-sm text-gray-500">Logo saat ini:</p>
-                            <img src="{{ Storage::url($settings['store_logo']->value) }}" alt="Logo Toko"
+                            <img src="{{ asset('storage/' . $settings['store_logo']->value) }}" alt="Logo Toko"
                                 class="h-16 w-auto bg-gray-100 p-2 rounded-md mt-2">
                         </div>
                     @endif
@@ -76,7 +76,7 @@
                     @if (isset($settings['store_qris_image']) && $settings['store_qris_image']->value)
                         <div class="mt-4">
                             <p class="text-sm text-gray-500">Kode QRIS saat ini:</p>
-                            <img src="{{ Storage::url($settings['store_qris_image']->value) }}" alt="Kode QRIS"
+                            <img src="{{ asset('storage/' . $settings['store_qris_image']->value) }}" alt="Kode QRIS"
                                 class="h-40 w-40 object-cover rounded-lg mt-2">
                         </div>
                     @endif

@@ -174,8 +174,8 @@
                                 <label class="block text-sm font-medium text-gray-700">Foto Profil</label>
                                 <div class="mt-2 flex items-center space-x-4">
                                     @if (auth()->user()->profile_picture)
-                                        <img src="{{ Storage::url(auth()->user()->profile_picture) }}" alt="Foto Profil"
-                                            class="h-16 w-16 rounded-full object-cover">
+                                        <img src="{{ asset('storage/' . auth()->user()->profile_picture) }}"
+                                            alt="Foto Profil" class="h-16 w-16 rounded-full object-cover">
                                     @else
                                         <span class="inline-block h-16 w-16 rounded-full overflow-hidden bg-gray-100">
                                             <svg class="h-full w-full text-gray-300" fill="currentColor"

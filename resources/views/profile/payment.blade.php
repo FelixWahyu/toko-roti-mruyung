@@ -61,9 +61,9 @@
                         <p class="font-semibold text-gray-700 text-center">Silakan pindai atau download kode QRIS di bawah
                             ini:</p>
                         @if ($qrisImage)
-                            <img src="{{ Storage::url($qrisImage) }}" alt="[Kode QRIS]"
+                            <img src="{{ asset('storage/' . $qrisImage) }}" alt="[Kode QRIS]"
                                 class="mx-auto mt-4 rounded-lg border p-2">
-                            <a href="{{ Storage::url($qrisImage) }}" download="QRIS-{{ $order->order_code }}.png"
+                            <a href="{{ asset('storage/' . $qrisImage) }}" download="QRIS-{{ $order->order_code }}.png"
                                 class="mt-4 w-full inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -100,7 +100,7 @@
                         </div>
                         @if (isset($order) && $order->payment_proof)
                             <div class="mt-4">
-                                <img src="{{ Storage::url($order->payment_proof) }}" alt="{{ $order->user->name }}"
+                                <img src="{{ asset('storage/' . $order->payment_proof) }}" alt="{{ $order->user->name }}"
                                     class="h-auto w-32 object-cover rounded-lg">
                             </div>
                         @endif

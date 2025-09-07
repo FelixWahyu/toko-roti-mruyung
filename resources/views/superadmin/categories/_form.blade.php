@@ -17,7 +17,7 @@
     @enderror
     @if (isset($category) && $category->image)
         <div class="mt-4">
-            <img src="{{ Storage::url($category->image) }}" alt="{{ $category->name }}"
+            <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}"
                 class="h-24 w-24 object-cover rounded-lg">
         </div>
     @endif
