@@ -3,6 +3,11 @@
 @section('content')
     <div class="bg-gray-100 py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="text-sm mb-4">
+                <a href="{{ route('home') }}" class="text-gray-500 hover:text-indigo-600">Beranda</a>
+                <span class="mx-2 text-gray-400">></span>
+                <span class="text-gray-800 font-semibold">{{ Auth::user()->name }}</span>
+            </div>
             <h1 class="text-3xl font-extrabold text-gray-900 mb-8 px-4 sm:px-0">Profil Saya</h1>
 
             <div x-data="{ tab: 'history' }" class="grid grid-cols-1 md:grid-cols-3 gap-8">

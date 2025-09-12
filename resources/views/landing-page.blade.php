@@ -98,7 +98,7 @@
                                 <div
                                     class="group relative flex flex-col bg-white rounded-lg shadow-md overflow-hidden h-full border border-gray-300">
                                     <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden relative">
-                                        <img src="{{ asset('storage/' . $product->image_url ?? $product->image) }}"
+                                        <img src="{{ asset('storage/' . $product->image ?? $product->image) }}"
                                             alt="{{ $product->name }}"
                                             class="w-full h-full object-cover object-center group-hover:opacity-75 transition-opacity">
                                         @if ($product->created_at->diffInDays(now()) <= 7)
