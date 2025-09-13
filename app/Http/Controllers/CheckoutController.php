@@ -63,11 +63,11 @@ class CheckoutController extends Controller
 
             $grand_total = $subtotal + $shipping_cost;
 
-            $status = 'pending';
+            // $status = 'pending';
 
-            if ($request->payment_method === 'COD') {
-                $status = ''
-            }
+            // if ($request->payment_method === 'COD') {
+            //     $status = 'cod-tunggu';
+            // }
 
             $order = Order::create([
                 'user_id' => Auth::id(),
