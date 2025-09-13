@@ -119,29 +119,17 @@
         async function postQty(itemId, newQuantity) {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            // const res = await fetch(`/keranjang/update-quantity/${itemId}`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'X-CSRF-TOKEN': csrfToken,
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({
-            //         quantity: newQuantity
-            //     })
-            // });
-            fetch("{{ url('/keranjang/update-quantity') }}/" + itemId, {
+            const res = await fetch("{{ url('/keranjang/update-quantity') }}/" + itemId, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'X-CSRF-TOKEN': csrfToken,
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                     quantity: newQuantity
                 })
             });
-
 
             let data = {};
             try {
