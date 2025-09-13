@@ -128,7 +128,7 @@ class ProfileController extends Controller
 
         $order->update([
             'payment_proof' => $path,
-            'status' => 'Menunggu verifikasi',
+            'status' => 'paid',
         ]);
 
         return redirect()->route('profile.index')->with('success', 'Bukti pembayaran berhasil diunggah. Pesanan Anda akan segera kami proses.');
@@ -161,14 +161,8 @@ class ProfileController extends Controller
             return back()->with('error', 'Pesanan yang sudah diproses tidak dapat dibatalkan.');
         }
 
-        // foreach ($order->items as $item) {
-        //     $item->product->increment('stock', $item->quantity);
-        // }
-
         foreach ($order->items as $item) {
-            $product = $item->product;
-            $product->stock += $item->quantity;
-            $product->save();
+            $item->product->increment('stock', $item->quantity);
         }
 
         $order->update(['status' => 'cancelled']);
