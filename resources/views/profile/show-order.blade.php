@@ -4,7 +4,7 @@
     <div class="bg-gray-100 py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-sm mb-4">
-                <a href="{{ route('home') }}" class="text-gray-500 hover:text-indigo-600">Profil</a>
+                <a href="{{ route('profile.index') }}" class="text-gray-500 hover:text-indigo-600">Profil</a>
                 <span class="mx-2 text-gray-400">></span>
                 <span class="text-gray-800 font-semibold">{{ $order->order_code }}</span>
             </div>

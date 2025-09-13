@@ -128,7 +128,7 @@ class ProfileController extends Controller
 
         $order->update([
             'payment_proof' => $path,
-            'status' => 'paid',
+            'status' => 'Menunggu verifikasi',
         ]);
 
         return redirect()->route('profile.index')->with('success', 'Bukti pembayaran berhasil diunggah. Pesanan Anda akan segera kami proses.');

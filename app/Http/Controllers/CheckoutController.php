@@ -63,6 +63,12 @@ class CheckoutController extends Controller
 
             $grand_total = $subtotal + $shipping_cost;
 
+            $status = 'pending';
+
+            if ($request->payment_method === 'COD') {
+                $status = ''
+            }
+
             $order = Order::create([
                 'user_id' => Auth::id(),
                 'order_code' => 'TRM-' . strtoupper(Str::random(8)),
@@ -125,12 +131,14 @@ class CheckoutController extends Controller
         }
 
         $storeAccounts = collect();
+        $qrisImage = null;
+
         if ($order->payment_method === 'Transfer Bank') {
             $storeAccounts = BankAccount::all();
+        } elseif ($order->payment_method === 'QRIS') {
+            $settings = Setting::all()->keyBy('key');
+            $qrisImage = $settings['store_qris_image']->value ?? null;
         }
-
-        $settings = Setting::all()->keyBy('key');
-        $qrisImage = $settings['store_qris_image']->value ?? null;
 
         return view('checkout.payment-page', compact('order', 'storeAccounts', 'qrisImage'));
     }

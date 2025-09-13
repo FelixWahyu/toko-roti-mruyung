@@ -4,7 +4,7 @@
     <div class="flex items-center justify-center min-h-screen">
         <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md border border-gray-200">
             @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
-                <img class="h-24 w-auto mx-auto rounded-sm" src="{{ Storage::url($globalSettings['store_logo']->value) }}"
+                <img class="h-24 w-auto mx-auto rounded-sm" src="{{ asset('storage/' . $globalSettings['store_logo']->value) }}"
                     alt="Logo Toko">
             @else
                 <svg class="h-16 w-16 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
