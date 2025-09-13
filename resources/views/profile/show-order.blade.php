@@ -124,7 +124,8 @@
                                                 class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
                                                 Pesanan Dibuat</h3>
                                             <p class="text-sm text-slate-500 mt-1">
-                                                Pesanan Anda telah kami terima dan menunggu pembayaran.
+                                                Pesanan Anda telah kami terima silahkan lakukan pembayaran dan upload bukti
+                                                pembayaran.
                                             </p>
                                         </div>
                                     </div>
@@ -151,7 +152,8 @@
                                                 class="font-bold {{ $currentStatusLevel >= $stepLevel ? 'text-slate-800' : 'text-slate-500' }}">
                                                 Pembayaran Diterima</h3>
                                             <p class="text-sm text-slate-500 mt-1">
-                                                Pembayaran Anda telah kami konfirmasi. Pesanan akan segera diproses.
+                                                Bukti Pembayaran telah diterima mohon tunggu untuk verifikasi dari kami.
+                                                Pesanan akan segera diproses.
                                             </p>
                                         </div>
                                     </div>
