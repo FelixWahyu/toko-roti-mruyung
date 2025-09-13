@@ -15,7 +15,7 @@
                                     <tr class="border-b last:border-b-0">
                                         <td class="py-4">
                                             <div class="flex items-center">
-                                                <img src="{{ Storage::url($item->product->image) }}"
+                                                <img src="{{ asset('storage/' . $item->product->image) }}"
                                                     alt="{{ $item->product->name }}"
                                                     class="h-16 w-16 object-cover rounded-md mr-4">
                                                 <div>
