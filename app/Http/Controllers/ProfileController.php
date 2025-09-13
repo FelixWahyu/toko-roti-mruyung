@@ -161,8 +161,14 @@ class ProfileController extends Controller
             return back()->with('error', 'Pesanan yang sudah diproses tidak dapat dibatalkan.');
         }
 
+        // foreach ($order->items as $item) {
+        //     $item->product->increment('stock', $item->quantity);
+        // }
+
         foreach ($order->items as $item) {
-            $item->product->increment('stock', $item->quantity);
+            $product = $item->product;
+            $product->stock += $item->quantity;
+            $product->save();
         }
 
         $order->update(['status' => 'cancelled']);
