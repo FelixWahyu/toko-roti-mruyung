@@ -24,7 +24,7 @@ class AdminProfileController extends Controller
             'username' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
             'password' => ['nullable', 'confirmed', Password::defaults()],
-            'phone_number' => 'required|regex:/^(?:\+62|62|0)[0-9]{9,13}$/',
+            'phone_number' => ['required', 'regex:/^(?:\\+62|62|0)[0-9]{9,13}$/'],
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
         ]);
 

@@ -32,7 +32,7 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'phone_number' => 'required|regex:/^(?:\+62|62|0)[0-9]{9,13}$/',
+            'phone_number' => ['required', 'regex:/^(?:\\+62|62|0)[0-9]{9,13}$/'],
             'address' => 'nullable|string',
             'profile_picture' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
             'shipping_zone_id' => 'nullable|exists:shipping_zones,id',

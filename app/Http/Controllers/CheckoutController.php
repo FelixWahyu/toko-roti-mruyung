@@ -33,7 +33,7 @@ class CheckoutController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|regex:/^(?:\+62|62|0)[0-9]{9,13}$/',
+            'phone_number' => ['required', 'regex:/^(?:\\+62|62|0)[0-9]{9,13}$/'],
             'shipping_address' => 'required|string',
             'shipping_zone_id' => 'required|exists:shipping_zones,id',
             'payment_method' => 'required|in:Transfer Bank,QRIS,COD',
