@@ -120,7 +120,7 @@
                             </div>
                             <div class="flex-1">
                                 <p class="text-sm font-semibold text-slate-700">
-                                    Pesanan baru dari <span class="font-bold">{{ $order->user->name }}</span>
+                                    Pesanan baru masuk <span class="font-bold">{{ $order->order_code }}</span>
                                 </p>
                                 <p class="text-xs text-slate-500">
                                     {{ $order->created_at->diffForHumans() }}

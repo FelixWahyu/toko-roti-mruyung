@@ -23,7 +23,7 @@ class BankAccountController extends Controller
     {
         $request->validate([
             'bank_name' => 'required|string|max:255',
-            'account_number' => 'required|string|max:255',
+            'account_number' => 'required|numeric|min:0',
             'account_holder_name' => 'required|string|max:255',
         ]);
         BankAccount::create($request->all());
@@ -39,7 +39,7 @@ class BankAccountController extends Controller
     {
         $request->validate([
             'bank_name' => 'required|string|max:255',
-            'account_number' => 'required|string|max:255',
+            'account_number' => 'required|numeric|min:0',
             'account_holder_name' => 'required|string|max:255',
         ]);
         $storeAccount->update($request->all());

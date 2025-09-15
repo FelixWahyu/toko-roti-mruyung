@@ -23,6 +23,10 @@ class WhatsAppService
 
         $targetNumber = preg_replace('/\D/', '', $to);
 
+        if (substr($targetNumber, 0, 1) === '0') {
+            $targetNumber = '62' . substr($targetNumber, 1);
+        }
+
         try {
             $response = Http::withHeaders([
                 'Authorization' => $this->token,

@@ -20,7 +20,7 @@ class SettingController extends Controller
         $request->validate([
             'store_name' => 'required|string|max:255',
             'store_address' => 'nullable|string',
-            'store_contact' => 'nullable|string|max:50',
+            'store_contact' => 'nullable|regex:/^(?:\+62|62|0)[0-9]{9,13}$/',
             'store_email' => 'nullable|string|email|max:255',
             'store_logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'min_purchase_free_shipping' => 'nullable|numeric|min:0',

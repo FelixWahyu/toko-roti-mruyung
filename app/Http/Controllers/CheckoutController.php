@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Setting;
 use App\Models\OrderItem;
@@ -32,7 +33,7 @@ class CheckoutController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:20',
+            'phone_number' => 'required|regex:/^(?:\+62|62|0)[0-9]{9,13}$/',
             'shipping_address' => 'required|string',
             'shipping_zone_id' => 'required|exists:shipping_zones,id',
             'payment_method' => 'required|in:Transfer Bank,QRIS,COD',
@@ -101,20 +102,32 @@ class CheckoutController extends Controller
             Cart::where('user_id', Auth::id())->delete();
             DB::commit();
 
-            $adminNumber = config('services.admin.whatsapp_number');
+            $fonteNumber = config('services.admin.whatsapp_number');
+            $adminNumber = User::where('role', 'admin')->whereNotNull('phone_number')
+                ->value('phone_number');
+            $customerName = $order->user->name;
+            $whatsappService = new WhatsAppService();
             if ($adminNumber) {
-                $customerName = $order->user->name;
                 $message = "*Tanggal:* {$order->created_at->format('d F Y')}\n\n"
                     . "*Pesanan Baru Masuk!*\n"
-                    . "*Nama:* {$customerName}\n"
                     . "*Kode Pesanan:* {$order->order_code}\n"
                     . "*Total:* Rp " . number_format($order->grand_total, 0, ',', '.') . "\n"
                     . "*Metode Pengiriman:* {$order->shipping_method}\n"
                     . "*Metode Pembayaran:* {$order->payment_method}\n\n"
-                    . "Periksa dashboard admin untuk memproses.";
+                    . "Periksa dashboard admin untuk melakukan verifikasi bukti pembayaran\ndan segera memproses pesanan.";
 
-                $whatsappService = new WhatsAppService();
                 $whatsappService->sendMessage($adminNumber, $message);
+            }
+
+            if (!empty($order->user->phone_number)) {
+                $customerMessage = "Halo *{$order->user->name}*\n"
+                    . "Tanggal: {$order->created_at->format('d F Y')}\n"
+                    . "Pesanan Anda dengan kode *{$order->order_code}* berhasil dibuat.\n\n"
+                    . "Total: Rp " . number_format($order->grand_total, 0, ',', '.') . "\n"
+                    . "Metode Pembayaran: {$order->payment_method}\n"
+                    . "Metode Pengiriman: {$order->shipping_method}\n\n"
+                    . "Silahkan melakukan pembayaran sesuai dengan metode pembayaran yang dipilih\nTerima kasih telah berbelanja.";
+                $whatsappService->sendMessage($order->user->phone_number, $customerMessage);
             }
 
             return redirect()->route('order.payment.instruction', $order);

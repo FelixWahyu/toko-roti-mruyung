@@ -3,9 +3,9 @@
     <div class="text-sm mb-4">
         <a href="{{ route('admin.orders.index') }}" class="text-gray-500 hover:text-indigo-600">Daftar Pesanan</a>
         <span class="mx-2 text-gray-400">></span>
-        <span class="text-gray-800 font-semibold">{{ $order->user->name }}</span>
+        <span class="text-gray-800 font-semibold">{{ $order->order_code }}</span>
     </div>
-    <h1 class="text-2xl font-bold text-gray-800">Detail Pesanan: {{ $order->order_code }}</h1>
+    <h1 class="text-2xl font-bold text-gray-800">Detail Pesanan {{ $order->order_code }}</h1>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6">
         <div class="lg:col-span-2 space-y-6">
