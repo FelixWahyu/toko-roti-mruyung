@@ -211,7 +211,7 @@
                     <p class="mt-2 text-base text-gray-500">
                         Pesanan Anda akan diproses oleh tim kami dan diantar langsung ke rumah.
                         Saat ini layanan pengiriman <span class="font-semibold text-brown-600">
-                            hanya tersedia di wilayah Kecamatan Banyumas dan sekitarnya</span>.
+                            hanya tersedia di wilayah area Kecamatan Banyumas</span>.
                     </p>
                 </div>
             </div>
