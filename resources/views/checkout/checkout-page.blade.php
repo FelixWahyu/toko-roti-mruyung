@@ -167,7 +167,7 @@
                                     :class="{ 'border-indigo-600 bg-indigo-50': paymentMethod === 'Transfer Bank' }">
                                     <input type="radio" name="payment_method" value="Transfer Bank"
                                         x-model="paymentMethod" class="h-4 w-4 text-indigo-600 border-gray-300">
-                                    <span class="ml-3 text-sm font-medium text-gray-800">Transfer Bank</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-800">Transfer Bank BCA</span>
                                 </label>
                                 <label class="flex items-center p-4 border rounded-lg cursor-pointer"
                                     :class="{ 'border-indigo-600 bg-indigo-50': paymentMethod === 'QRIS' }">

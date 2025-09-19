@@ -31,6 +31,7 @@
                         </div>
                     </div>
                 </main>
+                <img class="w-40" src="{{ asset('images/logo-halal.jpg') }}" alt="logo-halal">
             </div>
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
