@@ -8,9 +8,9 @@
                 <p class="mt-4 text-base text-gray-500">Temukan roti dan kue favorit Anda di sini. Dibuat dengan cinta setiap
                     hari.</p>
                 <div
-                    class="mt-6 inline-block bg-yellow-50 border border-yellow-200 text-yellow-800 
+                    class="mt-6 inline-block bg-blue-100 border border-blue-200 text-gray-800 
                 text-sm px-4 py-2 rounded-lg shadow-sm">
-                    Batas pengiriman setiap hari pukul <b>21:00 WIB</b>.
+                    Batas pengiriman setiap hari pukul <b>20:00 WIB</b>.
                     Pesanan setelah itu akan diproses pada hari berikutnya.
                 </div>
             </div>

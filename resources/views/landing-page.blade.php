@@ -209,7 +209,7 @@
                     </div>
                     <h3 class="mt-5 text-lg font-semibold text-gray-900">3. Pesanan Diantar</h3>
                     <p class="mt-2 text-base text-gray-500">
-                        Pesanan Anda akan diproses oleh tim kami dan diantar langsung ke rumah.
+                        Pesanan Anda akan diproses oleh tim kami dan dapat diantar langsung ke tempat Anda.
                         Saat ini layanan pengiriman <span class="font-semibold text-brown-600">
                             hanya tersedia di wilayah area Kecamatan Banyumas</span>.
                     </p>
