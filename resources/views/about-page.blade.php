@@ -102,10 +102,23 @@
         </div>
     </div>
 
+    <div class="bg-white py-16 sm:py-20">
+        <div class="max-w-2xl px-8 mb-6">
+            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Intip Suasana Kami</h2>
+            <p class="mt-4 max-w-2xl text-lg text-gray-500">Intip sekilas dari suasana di tempat kami dengan nuansa klasik
+                dan nyaman</p>
+        </div>
+        <div class="w-full bg-gray-800 max-w-7xl mx-auto rounded-md">
+            <video class="w-full aspect-video rounded-lg shadow-lg" autoplay muted loop playsinline controls>
+                <source src="{{ asset('videos/review-video-2025.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
     <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Intip Suasana Kami</h2>
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Galeri Kami</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500">Sekilas tentang sudut-sudut favorit di tempat kami.
                 </p>
             </div>
