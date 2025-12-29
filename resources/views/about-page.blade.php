@@ -28,6 +28,11 @@
                             dari keluarga besar kami.
                         </p>
                     </div>
+                    <div class="flex items-center">
+                        <div class="mt-8 p-3 border border-gray-300 rounded-md">
+                            <h2 class="text-2xl font-bold text-gray-800">27+ Karyawan</h2>
+                        </div>
+                    </div>
                 </div>
                 <div class="mt-10 lg:mt-0">
                     <div class="flex items-center space-x-4">
