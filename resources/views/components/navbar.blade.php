@@ -51,7 +51,7 @@
                                 </svg>
                                 Bakery & Roti
                             </a>
-                            <a href="#"
+                            <a href="{{ route('guesthouse.index') }}"
                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
                                 <svg class="mr-2 h-4 w-4 text-brown-400" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -61,7 +61,7 @@
                                 </svg>
                                 Guest House
                             </a>
-                            <a href="#"
+                            <a href="{{ route('cafe.index') }}"
                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
                                 <svg class="mr-2 h-4 w-4 text-brown-400" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -177,8 +177,9 @@
                 <button @click="expanded = !expanded"
                     class="w-full flex justify-between items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300">
                     <span>Layanan</span>
-                    <svg :class="{ 'rotate-180': expanded }" class="h-5 w-5 transform transition-transform duration-200"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <svg :class="{ 'rotate-180': expanded }"
+                        class="h-5 w-5 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
@@ -198,7 +199,7 @@
                         </svg>
                         Bakery & Roti
                     </a>
-                    <a href="#"
+                    <a href="{{ route('guesthouse.index') }}"
                         class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">
                         <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-brown-500" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -208,7 +209,7 @@
                         </svg>
                         Guest House
                     </a>
-                    <a href="#"
+                    <a href="{{ route('cafe.index') }}"
                         class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">
                         <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-brown-500" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">

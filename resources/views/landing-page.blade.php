@@ -46,6 +46,120 @@
         </div>
     </div>
 
+    <div class="bg-white py-16 lg:py-24 relative z-10 -mt-4 lg:-mt-8 rounded-t-3xl shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-base font-semibold text-amber-600 tracking-wide uppercase">Layanan & Fasilitas Kami</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Satu Tempat, Tiga Pengalaman
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Kami menghadirkan kualitas terbaik dalam setiap layanan untuk kepuasan Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div
+                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    <div class="h-56 w-full relative overflow-hidden group">
+                        <img src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}" alt="Toko Roti"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Legendary
+                        </div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Bakery & Roti</h3>
+                            <p class="mt-3 text-base text-gray-500 line-clamp-3">
+                                Nikmati aneka roti manis, kue, dan pastry yang dibuat segar setiap hari dengan resep
+                                legendaris. Cocok untuk oleh-oleh atau camilan harian.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center gap-3">
+                            <a href="{{ route('products.index') }}"
+                                class="flex-1 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 py-2 rounded-lg text-center text-sm font-semibold transition">
+                                Katalog Menu
+                            </a>
+                            <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo%20Roti%20Mruyung,%20saya%20mau%20pesan%20roti"
+                                target="_blank"
+                                class="flex-1 bg-amber-600 text-white hover:bg-amber-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                Pesan WA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    <div class="h-56 w-full relative overflow-hidden group">
+                        <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}" alt="Guest House"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            24 Jam
+                        </div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Guest House</h3>
+                            <p class="mt-3 text-base text-gray-500 line-clamp-3">
+                                Penginapan nyaman serasa di rumah sendiri dengan fasilitas lengkap (AC, Wifi, Parkir).
+                                Lokasi strategis dan suasana tenang untuk istirahat Anda.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center gap-3">
+                            <a href="{{ route('guesthouse.index') }}"
+                                class="flex-1 bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200 py-2 rounded-lg text-center text-sm font-semibold transition">
+                                Cek Fasilitas
+                            </a>
+                            <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20booking%20kamar%20Guest%20House"
+                                target="_blank"
+                                class="flex-1 bg-blue-600 text-white hover:bg-blue-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                Booking
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    <div class="h-56 w-full relative overflow-hidden group">
+                        <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe & Resto"
+                            class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div
+                            class="absolute top-4 right-4 bg-brown-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Cozy
+                        </div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Cafe & Resto</h3>
+                            <p class="mt-3 text-base text-gray-500 line-clamp-3">
+                                Tempat nongkrong asik dengan pilihan kopi terbaik dan makanan lezat. Suasana cozy, cocok
+                                untuk kerja (WFC) atau kumpul bareng teman.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center gap-3">
+                            <a href="{{ route('cafe.index') }}"
+                                class="flex-1 bg-gray-50 text-gray-700 hover:bg-gray-100 border border-gray-200 py-2 rounded-lg text-center text-sm font-semibold transition">
+                                Lihat Menu
+                            </a>
+                            <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20reservasi%20meja%20di%20Cafe"
+                                target="_blank"
+                                class="flex-1 bg-brown-600 text-white hover:bg-brown-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                Reservasi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -71,7 +185,8 @@
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3">
                         </path>
                     </svg>
                 </div>
@@ -93,7 +208,8 @@
                 <div class="hidden md:block text-gray-300">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3">
                         </path>
                     </svg>
                 </div>
@@ -118,7 +234,7 @@
         </div>
     </div>
 
-    <div class="bg-gray-50 py-16 sm:py-20">
+    <div class="bg-white py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Jelajahi Kategori Kami</h2>
@@ -141,7 +257,7 @@
         </div>
     </div>
 
-    <div class="bg-white py-12">
+    <div class="bg-white pb-12 pt-6">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative">
                 <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
@@ -161,7 +277,7 @@
         </div>
     </div>
 
-    <div class="bg-white py-16 sm:py-20">
+    <div class="bg-gray-50 py-16 sm:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Produk Baru Kami</h2>

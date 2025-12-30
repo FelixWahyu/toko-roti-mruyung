@@ -10,7 +10,9 @@ use App\Http\Controllers\ProfileController;
 use League\Uri\Contracts\UserInfoInterface;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CafeController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\GuestHouseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SuperAdmin\UnitController;
 use App\Http\Controllers\SuperAdmin\UserController;
@@ -31,6 +33,8 @@ Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/produk/filter', [ProductController::class, 'filterProducts'])->name('products.filter');
     Route::get('/produk/{product:slug}', [ProductController::class, 'show'])->name('products.show');
     Route::get('/tentang-kami', [AboutController::class, 'index'])->name('about');
+    Route::get("/cafe", [CafeController::class, 'index'])->name("cafe.index");
+    Route::get("/guest-house", [GuestHouseController::class, 'index'])->name("guesthouse.index");
     Route::get('/kontak', function () {
         return view('kontak-page');
     })->name('contact');
