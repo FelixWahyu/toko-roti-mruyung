@@ -11,6 +11,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $rekomendasiProducts = Product::latest()->take(8)->get();
         $categories = Category::all();
 
         if (!$request->hasAny(['search', 'category', 'sort_by', 'page'])) {
@@ -26,8 +27,8 @@ class ProductController extends Controller
             'categories' => $categories,
             'selectedCategory' => $request->input('category'),
             'selectedSort' => $request->input('sort_by'),
-            'searchTerm' => $request->input('search'),
-        ]);
+            'searchTerm' => $request->input('search')
+        ], compact('rekomendasiProducts'));
     }
 
     public function filterProducts(Request $request)

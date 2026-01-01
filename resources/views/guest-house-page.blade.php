@@ -250,9 +250,9 @@
         </div>
     </div>
 
-    <div class="relative bg-gray-600">
+    <div class="relative bg-amber-900">
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute inset-0 bg-gray-600"></div>
+            <div class="absolute inset-0 bg-amber-900"></div>
         </div>
         <div class="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -265,11 +265,11 @@
                 <div class="mt-8 flex justify-center gap-4">
                     <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20tertarik%20menginap%20di%20Guest%20House"
                         target="_blank"
-                        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md bg-[#25D366] text-white hover:bg-[#20ba5a]">
+                        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-semibold rounded-md bg-[#25D366] text-white hover:bg-[#20ba5a]">
                         Chat WhatsApp
                     </a>
                     <a href="https://maps.google.com/?q=Toko+Roti+Mruyung" target="_blank"
-                        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700">
+                        class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-semibold rounded-md text-gray-800 bg-white hover:bg-gray-100">
                         Lihat Lokasi di Peta
                     </a>
                 </div>

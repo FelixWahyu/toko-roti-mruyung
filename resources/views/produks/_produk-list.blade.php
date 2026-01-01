@@ -12,7 +12,7 @@
                     </div>
                 @endif
             </a>
-            <div class="mt-4 flex justify-between">
+            <div class="mt-4">
                 <div>
                     <h3 class="text-md font-medium text-gray-800">
                         <a href="{{ route('products.show', $product->slug) }}">
@@ -20,19 +20,21 @@
                         </a>
                     </h3>
                     <a class="mt-1 text-sm text-gray-500">{{ $product->category->name }}</a>
-                    <div class="mt-3">
+                </div>
+                <div class="mt-3 flex items-center justify-between">
+                    <div>
                         @if ($product->stock > 0)
                             <span class="font-medium text-sm text-gray-800">Tersedia: {{ $product->stock }}</span>
                         @else
                             <span class="font-medium text-sm text-gray-500">Stok Habis</span>
                         @endif
                     </div>
-                </div>
-                <div class="flex mb-4">
-                    <div class="mr-4">
-                        <span
-                            class="text-gray-900 font-medium text-sm">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
-                            class="text-gray-500 text-sm">/{{ $product->unit->name }}</span>
+                    <div class="flex">
+                        <div class="mr-4">
+                            <span
+                                class="text-amber-700 font-medium text-md">Rp{{ number_format($product->price, 0, ',', '.') }}</span><span
+                                class="text-gray-500 text-sm">/{{ $product->unit->name }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
