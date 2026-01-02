@@ -284,6 +284,26 @@
         </div>
     </div>
 
+    <div class="bg-white py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative">
+                <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
+                    <div class="swiper-wrapper">
+                        @foreach ($menuSlides as $slide)
+                            <div class="swiper-slide bg-gray-100">
+                                <a href="{{ $slide['link'] }}">
+                                    <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
+                                        class="w-full h-full max-h-[450px] object-contain">
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-amber-900 rounded-3xl overflow-hidden shadow-2xl relative">
@@ -332,7 +352,7 @@
                             </div>
                             <div
                                 class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                                <svg class="w-8 h-8 text-amber-300" fill="none" stroke="currentColor"
+                                <svg class="w-8 h-8 text-amber-300 flex-shrink-0" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -399,13 +419,12 @@
                 },
                 breakpoints: {
                     640: {
-                        slidesPerView: 2.2,
+                        slidesPerView: 3,
                         spaceBetween: 20
                     },
                     1024: {
                         slidesPerView: 4,
                         spaceBetween: 24,
-                        autoplay: false
                     },
                 },
             });
@@ -419,6 +438,19 @@
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true
+                },
+            });
+
+            const promoBannerSwiper = new Swiper('.promo-banner-slider', {
+                loop: true,
+                effect: 'fade',
+                autoplay: {
+                    delay: 10000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
                 },
             });
         });

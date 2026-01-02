@@ -92,7 +92,44 @@
 
     <div class="relative bg-white pb-16">
         <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
+            <div class="relative order-1 lg:order-2 px-4 sm:px-6 lg:px-0 py-12 lg:py-0">
+                <div class="swiper room-gallery rounded-2xl shadow-2xl overflow-hidden border-4 border-white">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}"
+                                class="w-full h-full object-cover" alt="Kamar Tidur Utama">
+                        </div>
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/kamar-mandi.webp') }}" class="w-full h-full object-cover"
+                                alt="Kamar Mandi Bersih">
+                        </div>
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/latar-depan-tempat.webp') }}"
+                                class="w-full h-full object-cover" alt="Halaman Depan">
+                        </div>
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}"
+                                class="w-full h-full object-cover" alt="Kasur Nyaman">
+                        </div>
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/loby-resepsionis.webp') }}"
+                                class="w-full h-full object-cover" alt="Kasur Nyaman">
+                        </div>
+                        <div class="swiper-slide h-[300px] sm:h-[400px]">
+                            <img src="{{ asset('images/guest-house/mushola-belakang.webp') }}"
+                                class="w-full h-full object-cover" alt="Kasur Nyaman">
+                        </div>
+                    </div>
 
+                    <div class="swiper-button-next text-white drop-shadow-md"></div>
+                    <div class="swiper-button-prev text-white drop-shadow-md"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <p class="text-center text-sm text-gray-500 mt-3 italic">
+                    *Geser gambar untuk melihat sisi lain ruangan
+                </p>
+            </div>
             <div class="relative sm:py-16 lg:py-0 px-4 sm:px-6 lg:px-0 order-2 lg:order-1">
                 <div class="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20">
                     <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -161,46 +198,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="relative order-1 lg:order-2 px-4 sm:px-6 lg:px-0 py-12 lg:py-0">
-                <div class="swiper room-gallery rounded-2xl shadow-2xl overflow-hidden border-4 border-white">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}"
-                                class="w-full h-full object-cover" alt="Kamar Tidur Utama">
-                        </div>
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/kamar-mandi.webp') }}"
-                                class="w-full h-full object-cover" alt="Kamar Mandi Bersih">
-                        </div>
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/latar-depan-tempat.webp') }}"
-                                class="w-full h-full object-cover" alt="Halaman Depan">
-                        </div>
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}"
-                                class="w-full h-full object-cover" alt="Kasur Nyaman">
-                        </div>
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/loby-resepsionis.webp') }}"
-                                class="w-full h-full object-cover" alt="Kasur Nyaman">
-                        </div>
-                        <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/mushola-belakang.webp') }}"
-                                class="w-full h-full object-cover" alt="Kasur Nyaman">
-                        </div>
-                    </div>
-
-                    <div class="swiper-button-next text-white drop-shadow-md"></div>
-                    <div class="swiper-button-prev text-white drop-shadow-md"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-                <p class="text-center text-sm text-gray-500 mt-3 italic">
-                    *Geser gambar untuk melihat sisi lain ruangan
-                </p>
-            </div>
-
         </div>
     </div>
 
@@ -259,7 +256,7 @@
                 <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
                     Siap untuk Menginap?
                 </h2>
-                <p class="mt-4 text-lg text-gray-300">
+                <p class="mt-4 text-lg text-white">
                     Hubungi kami sekarang untuk mendapatkan penawaran terbaik. Kamar terbatas!
                 </p>
                 <div class="mt-8 flex justify-center gap-4">
