@@ -2,23 +2,15 @@
 
 @section('content')
     <div class="relative bg-gray-900 h-[80vh] flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0">
+        <div class="absolute inset-0 z-0">
             <img src="{{ asset('images/galery/toko-roti-mruyung.webp') }}" alt="Artisan Bakery Background"
                 class="w-full h-full object-cover opacity-60 transform scale-105 animate-slow-zoom">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/40 to-gray-900/90"></div>
         </div>
 
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mt-8">
-
-            <div class="flex justify-center gap-3 mb-6 animate-fade-in-up">
-                <span
-                    class="inline-flex items-center px-3 py-1 rounded-full border border-amber-500/50 bg-amber-900/30 text-amber-300 text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
-                    Premium Bakery
-                </span>
-            </div>
-
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto mt-6">
             <h1
-                class="text-5xl md:text-7xl font-extrabold text-white tracking-tight drop-shadow-2xl mb-6 font-serif leading-tight">
+                class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-2xl mb-6 font-serif leading-tight">
                 Kelezatan Roti Hangat <br />
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">
                     Langsung dari Oven
@@ -32,17 +24,13 @@
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#daftar-menu-lengkap"
-                    class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 hover:bg-amber-700 shadow-lg hover:shadow-amber-500/50 transform hover:-translate-y-1">
+                    class="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 hover:bg-amber-700 shadow-lg hover:shadow-amber-500/50 transform hover:-translate-y-1">
                     Lihat Katalog Roti
-                    <svg class="w-5 h-5 ml-2 -mr-1 transition-transform group-hover:translate-x-1" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
                 </a>
 
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20ingin%20tanya%20tentang%20roti..."
                     target="_blank"
-                    class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-white/10 border-2 border-white/30 backdrop-blur-md rounded-full hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg">
+                    class="inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-white/10 border border-white/30 backdrop-blur-md rounded-full hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg">
                     Pesan via Whatsapp
                 </a>
             </div>
@@ -122,8 +110,6 @@
     </div>
 
     <div class="bg-white py-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-white"></div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row justify-center items-center lg:justify-between mb-12">
                 <div>

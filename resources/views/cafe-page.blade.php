@@ -207,7 +207,6 @@
             </div>
 
             <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
                 <div
                     class="menu-item coffee bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
@@ -216,11 +215,11 @@
                     </div>
                     <div class="flex flex-col justify-between flex-1">
                         <div>
-                            <h4 class="font-bold text-gray-900">Cappucino</h4>
-                            <p class="text-xs text-gray-500 mt-1">Espresso dengan steam milk dan foam tebal.</p>
+                            <h4 class="font-bold text-gray-900">Creamy Milk Coffee</h4>
+                            <p class="text-xs text-gray-500 mt-1">Kopi dengan milk yang tebal dan creamy.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
-                            <span class="text-amber-600 font-bold">Rp 24.000</span>
+                            <span class="text-amber-600 font-bold">Rp 15.000</span>
                         </div>
                     </div>
                 </div>
@@ -233,28 +232,11 @@
                     </div>
                     <div class="flex flex-col justify-between flex-1">
                         <div>
-                            <h4 class="font-bold text-gray-900">Nasi Goreng Spesial</h4>
-                            <p class="text-xs text-gray-500 mt-1">Lengkap dengan telur mata sapi dan sate.</p>
+                            <h4 class="font-bold text-gray-900">Nasi Goreng Magelangan</h4>
+                            <p class="text-xs text-gray-500 mt-1">Lengkap dengan telur mata sapi, acar dan kerupuk.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
-                            <span class="text-amber-600 font-bold">Rp 30.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="menu-item non-coffee bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
-                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-                        <img src="{{ asset('images/menus/ayam-tepung-pedas-2.webp') }}" alt="Ice Lychee Tea"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex flex-col justify-between flex-1">
-                        <div>
-                            <h4 class="font-bold text-gray-900">Ayam Goreng Tepung Pedas</h4>
-                            <p class="text-xs text-gray-500 mt-1">Teh manis dingin dengan buah leci asli.</p>
-                        </div>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="text-amber-600 font-bold">Rp 18.000</span>
+                            <span class="text-amber-600 font-bold">Rp 24.000</span>
                         </div>
                     </div>
                 </div>
@@ -262,20 +244,118 @@
                 <div
                     class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/ayam-tepung-pedas-2.webp') }}" alt="Ice Lychee Tea"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Udang Tepung</h4>
+                            <p class="text-xs text-gray-500 mt-1">Udang tepung rasa gurih dan renyah dimulut.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 35.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="French Fries"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
                         <div>
                             <h4 class="font-bold text-gray-900">Iga Bakar</h4>
-                            <p class="text-xs text-gray-500 mt-1">Kentang goreng renyah dengan saus sambal.</p>
+                            <p class="text-xs text-gray-500 mt-1">Daging meltique super empuk dengan kentang dan toping
+                                lengkap.</p>
                         </div>
                         <div class="flex justify-between items-center mt-2">
-                            <span class="text-amber-600 font-bold">Rp 15.000</span>
+                            <span class="text-amber-600 font-bold">Rp 57.000</span>
                         </div>
                     </div>
                 </div>
-
+                <div
+                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/menu-ayam-asam-pedas.webp') }}" alt="French Fries"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Krengsengan</h4>
+                            <p class="text-xs text-gray-500 mt-1">Krengsengan toping ayam melimpah dan kuah nyemek.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 20.000</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="French Fries"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Paket Nasi Ayam Goreng</h4>
+                            <p class="text-xs text-gray-500 mt-1">Paket nasi ayam goreng dengan komplit dengan sambal.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 22.000</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/menu-ayam-kecap.webp') }}" alt="French Fries"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Ayam Saus Tiram</h4>
+                            <p class="text-xs text-gray-500 mt-1">Paket ayam saus tiram rasa asam manis dan gurih.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 18.000</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/menu-hamburger.webp') }}" alt="French Fries"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Beef Burger</h4>
+                            <p class="text-xs text-gray-500 mt-1">Hamburger dengan daging sapi yang tebal dan sayuran.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 17.500</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+                        <img src="{{ asset('images/menus/menu-roti-bakar.jpeg') }}" alt="French Fries"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between flex-1">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Loaf with Smoke Beef & Melted Cheese</h4>
+                            <p class="text-xs text-gray-500 mt-1">Roti dengan toping keju yang meleleh dan daging sapi
+                                asap.</p>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-amber-600 font-bold">Rp 25.000</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="no-menu-found" class="hidden text-center py-10">

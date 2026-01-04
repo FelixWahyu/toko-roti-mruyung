@@ -19,27 +19,26 @@
                     </span>
                 </div>
                 <p class="mt-4 text-gray-400 text-sm max-w-xs">
-                    Menyajikan roti dan kue berkualitas premium yang dibuat setiap hari dengan bahan-bahan terbaik dan
-                    penuh cinta.
+                    Menyediakan roti bakery, penginapan dan cafe dengan nuansa klasik bergaya China Belanda yang nyaman
+                    dan terbaik di kecamatan Banyumas.
                 </p>
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk & Layanan</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Breads</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Cakes</a>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Bakery &
+                            Roti</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Guest
+                            House</a>
                     </li>
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Pastry</a></li>
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Muffin</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Cafe &
+                            Resto</a></li>
                 </ul>
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Toko</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bisnis</h3>
                 <ul class="mt-4 space-y-2">
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
                     </li>

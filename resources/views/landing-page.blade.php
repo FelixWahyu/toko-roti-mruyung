@@ -37,7 +37,7 @@
 
                     <div class="mt-3 sm:mt-0">
                         <a href="{{ route('about') }}"
-                            class="w-full flex items-center justify-center px-8 py-3 border-2 border-white text-base font-bold rounded-full text-white hover:bg-white hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300 backdrop-blur-sm">
+                            class="w-full flex items-center justify-center px-8 py-3 border border-white text-base font-bold rounded-full text-white hover:bg-white hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300 backdrop-blur-sm">
                             Tentang Kami
                         </a>
                     </div>
@@ -81,7 +81,7 @@
                         <div class="mt-6 flex items-center gap-3">
                             <a href="{{ route('products.index') }}"
                                 class="flex-1 bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 py-2 rounded-lg text-center text-sm font-semibold transition">
-                                Katalog Menu
+                                Katalog Roti
                             </a>
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo%20Roti%20Mruyung,%20saya%20mau%20pesan%20roti"
                                 target="_blank"
@@ -278,7 +278,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <a href="{{ route('cafe.index') }}"
                         class="group relative block h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                        <img src="{{ asset('images/menus/kopi-mruyung.jpeg') }}" alt="Coffee"
+                        <img src="{{ asset('images/menus/kopi-mruyung.webp') }}" alt="Coffee"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-5">
