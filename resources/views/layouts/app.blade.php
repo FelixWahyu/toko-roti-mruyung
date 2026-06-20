@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
-        <link rel="icon" href="{{ Storage::url($globalSettings['store_logo']->value) }}" type="image/png">
+        <link rel="icon" href="{{ Storage::url($globalSettings['store_logo']->value) }}">
+    @else
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     @endif
     <title>{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
