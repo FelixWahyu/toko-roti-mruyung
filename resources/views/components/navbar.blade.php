@@ -10,7 +10,7 @@
                         <svg class="h-8 w-8 text-brown-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
+                                d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25c-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
                         </svg>
                     @endif
                     <span
@@ -20,14 +20,64 @@
 
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <a href="{{ route('home') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Beranda</a>
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    Beranda
+                </a>
                 <a href="{{ route('about') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Tentang
-                    Kami</a>
-                <a href="{{ route('products.index') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('products.index') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Produk</a>
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    Tentang Kami
+                </a>
+
+                <div class="relative group">
+                    <button
+                        class="flex items-center rounded-md text-sm font-medium text-gray-600 hover:text-brown-500 group-hover:text-brown-500 focus:outline-none">
+                        <span>Layanan</span>
+                        <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform duration-200"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="absolute left-0 mt-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 invisible opacity-0 group-hover:visible group-hover:opacity-100 transform transition-all duration-200 ease-out z-50">
+                        <div class="py-1">
+                            <a href="{{ route('products.index') }}"
+                                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
+                                <svg class="mr-2 h-4 w-4 text-brown-400" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                                Bakery & Roti
+                            </a>
+                            <a href="{{ route('guesthouse.index') }}"
+                                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
+                                <svg class="mr-2 h-4 w-4 text-brown-400" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                    </path>
+                                </svg>
+                                Guest House
+                            </a>
+                            <a href="{{ route('cafe.index') }}"
+                                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
+                                <svg class="mr-2 w-4 h-4 text-brown-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
+                                </svg>
+                                Cafe & Resto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="{{ route('contact') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">Kontak</a>
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    Kontak
+                </a>
             </div>
 
             <div class="flex items-center space-x-5">
@@ -44,15 +94,12 @@
                             class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{ $cartItemCount }}</span>
                     @endif
                 </a>
+
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="h-6 border-l border-gray-300"></div>
                     @guest
                         <a href="{{ route('login') }}"
                             class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
-                        <a href="{{ route('register') }}"
-                            class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">
-                            Daftar
-                        </a>
                     @else
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
@@ -113,15 +160,68 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <a href="{{ route('home') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Beranda</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('home') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">
+                Beranda
+            </a>
             <a href="{{ route('about') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Tentang
-                Kami</a>
-            <a href="{{ route('products.index') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('products.index') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Produk</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('about') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">
+                Tentang Kami
+            </a>
+
+            <div x-data="{ expanded: false }">
+                <button @click="expanded = !expanded"
+                    class="w-full flex justify-between items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300">
+                    <span>Layanan</span>
+                    <svg :class="{ 'rotate-180': expanded }"
+                        class="h-5 w-5 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+
+                <div x-show="expanded" class="space-y-1 pl-4" x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="opacity-0 transform scale-95"
+                    x-transition:enter-end="opacity-100 transform scale-100">
+                    <a href="{{ route('products.index') }}"
+                        class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">
+                        <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-brown-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        Bakery & Roti
+                    </a>
+                    <a href="{{ route('guesthouse.index') }}"
+                        class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">
+                        <svg class="mr-3 h-5 w-5 text-gray-400 group-hover:text-brown-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                            </path>
+                        </svg>
+                        Guest House
+                    </a>
+                    <a href="{{ route('cafe.index') }}"
+                        class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">
+                        <svg class="mr-3 w-5 h-5 text-gray-400 group-hover:text-brown-500" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
+                        </svg>
+                        Cafe & Resto
+                    </a>
+                </div>
+            </div>
+
             <a href="{{ route('contact') }}"
-                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">Kontak</a>
+                class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium {{ request()->routeIs('contact') ? 'bg-indigo-50 border-brown-400 text-brown-500' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300' }}">
+                Kontak
+            </a>
         </div>
+
         <div class="pt-4 pb-3 border-t border-gray-200">
             @guest
                 <div class="flex items-center px-4">

@@ -11,7 +11,7 @@
                         <svg class="h-8 w-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25pc-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
+                                d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.25c-1.5 0-1.5-.75-1.5-1.5V8.25A2.25 2.25 0 014.5 6h15a2.25 2.25 0 012.25 2.25v11.25c0 .828-.672 1.5-1.5 1.5H13.5z" />
                         </svg>
                     @endif
                     <span class="font-bold text-xl">
@@ -19,27 +19,26 @@
                     </span>
                 </div>
                 <p class="mt-4 text-gray-400 text-sm max-w-xs">
-                    Menyajikan roti dan kue berkualitas premium yang dibuat setiap hari dengan bahan-bahan terbaik dan
-                    penuh cinta.
+                    Menyediakan roti bakery, penginapan dan cafe dengan nuansa klasik bergaya China Belanda yang nyaman
+                    dan terbaik di kecamatan Banyumas.
                 </p>
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk & Layanan</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Breads</a></li>
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Cakes</a>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Bakery &
+                            Roti</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Guest
+                            House</a>
                     </li>
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Pastry</a></li>
-                    <li><a href="{{ route('products.index') }}"
-                            class="text-sm text-gray-400 hover:text-white">Muffin</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Cafe &
+                            Resto</a></li>
                 </ul>
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Toko</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bisnis</h3>
                 <ul class="mt-4 space-y-2">
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
                     </li>
