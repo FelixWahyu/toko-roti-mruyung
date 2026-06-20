@@ -20,17 +20,17 @@
 
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <a href="{{ route('home') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('home') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
                     Beranda
                 </a>
                 <a href="{{ route('about') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('about') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
                     Tentang Kami
                 </a>
 
                 <div class="relative group">
                     <button
-                        class="flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-brown-500 group-hover:text-brown-500 focus:outline-none">
+                        class="flex items-center rounded-md text-sm font-medium text-gray-600 hover:text-brown-500 group-hover:text-brown-500 focus:outline-none">
                         <span>Layanan</span>
                         <svg class="ml-1 h-4 w-4 transform group-hover:rotate-180 transition-transform duration-200"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,7 +75,7 @@
                 </div>
 
                 <a href="{{ route('contact') }}"
-                    class="px-3 py-2 rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
+                    class="rounded-md text-sm font-medium {{ request()->routeIs('contact') ? 'text-brown-500 font-bold' : 'text-gray-600' }} hover:text-brown-500">
                     Kontak
                 </a>
             </div>
@@ -100,10 +100,6 @@
                     @guest
                         <a href="{{ route('login') }}"
                             class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
-                        <a href="{{ route('register') }}"
-                            class="text-sm font-medium {{ request()->routeIs('register') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">
-                            Daftar
-                        </a>
                     @else
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">

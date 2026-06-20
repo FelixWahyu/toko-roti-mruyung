@@ -161,12 +161,13 @@
     </div>
 
     <div class="bg-white pb-16 pt-4">
+        <h2 class="text-center text-2xl font-bold mb-8">Promo Harga</h2>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative">
                 <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
                     <div class="swiper-wrapper">
                         @foreach ($promoSlides as $slide)
-                            <div class="swiper-slide bg-gray-100">
+                            <div class="swiper-slide">
                                 <a href="{{ $slide['link'] }}">
                                     <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
                                         class="w-full h-full max-h-[450px] object-contain">
