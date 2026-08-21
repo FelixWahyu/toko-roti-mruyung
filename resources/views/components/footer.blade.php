@@ -134,7 +134,7 @@
             </div>
             <p class="mt-8 text-center text-sm text-gray-400 md:mt-0 md:order-1">
                 Created by Felix Wahyu S. &copy; {{ date('Y') }}
-                {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}. Hak Cipta Dilindungi.
+                {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}. All rights reserved.
             </p>
         </div>
     </div>

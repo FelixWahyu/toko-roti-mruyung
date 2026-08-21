@@ -99,7 +99,7 @@
                     <div class="h-6 border-l border-gray-300"></div>
                     @guest
                         <a href="{{ route('login') }}"
-                            class="text-sm font-medium {{ request()->routeIs('login') ? 'px-4 py-2 text-white bg-brown-500 border border-transparent rounded-md hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
+                            class="text-sm font-medium px-4 py-2 rounded-md {{ request()->routeIs('login') ? 'text-white bg-brown-500 border border-transparent hover:bg-brown-600' : 'text-gray-600 hover:bg-brown-500 hover:text-white' }}">Login</a>
                     @else
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">

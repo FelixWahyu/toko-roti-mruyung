@@ -7,7 +7,6 @@
 
             <video id="heroVideo" class="w-full h-full object-cover" muted loop autoplay playsinline
                 poster="{{ asset('images/hero-background.webp') }}">
-                {{-- <source src="{{ asset('videos/review-video-2025.mp4') }}" type="video/mp4"> --}}
                 <img src="{{ asset('images/hero-background.webp') }}" alt="Roti Mruyung Hero"
                     class="w-full h-full object-cover">
             </video>
