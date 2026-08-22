@@ -226,13 +226,7 @@
             @guest
                 <div class="flex items-center px-4">
                     <a href="{{ route('login') }}"
-                        class="w-full text-center px-4 py-2 text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">Login</a>
-                </div>
-                <div class="mt-3 space-y-1">
-                    <a href="{{ route('register') }}"
-                        class="block px-4 py-2 text-base font-medium text-center {{ request()->routeIs('register') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-gray-600 hover:text-brown-500' }}">
-                        Daftar
-                    </a>
+                        class="w-full text-center px-4 py-2 rounded-md text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-white bg-brown-500' }}">Login</a>
                 </div>
             @else
                 <div class="flex items-center px-4">

@@ -57,10 +57,10 @@
                             class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                         <label for="remember" class="ml-2 block text-sm text-gray-900">Ingat saya</label>
                     </div>
-                    <div class="text-sm">
+                    <!-- <div class="text-sm">
                         <a href="{{ route('password.request') }}"
                             class="font-medium text-indigo-600 hover:text-indigo-500">Lupa Password?</a>
-                    </div>
+                    </div> -->
                 </div>
                 <div>
                     <button type="submit"

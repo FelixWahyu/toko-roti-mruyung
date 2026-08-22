@@ -114,7 +114,7 @@
                 dan nyaman</p>
         </div>
         <div class="w-full bg-gray-800 max-w-7xl mx-auto rounded-md">
-            <video class="w-full aspect-video rounded-lg shadow-lg" autoplay muted loop playsinline controls>
+            <video class="w-full aspect-video rounded-lg shadow-lg" loop playsinline controls>
                 <source src="{{ asset('videos/review-video-2025.mp4') }}" type="video/mp4">
             </video>
         </div>
