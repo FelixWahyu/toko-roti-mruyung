@@ -58,9 +58,8 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
                 <div
-                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}" alt="Toko Roti"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
@@ -80,7 +79,7 @@
                             </a>
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo%20Roti%20Mruyung,%20saya%20mau%20pesan%20roti"
                                 target="_blank"
-                                class="flex-1 bg-amber-600 text-white hover:bg-amber-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                class="flex-1 bg-amber-600 text-white hover:bg-amber-700 py-2 rounded-lg text-center text-sm font-semibold transition">
                                 Pesan
                             </a>
                         </div>
@@ -88,7 +87,7 @@
                 </div>
 
                 <div
-                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}" alt="Guest House"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
@@ -108,7 +107,7 @@
                             </a>
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20booking%20kamar%20Guest%20House"
                                 target="_blank"
-                                class="flex-1 bg-blue-600 text-white hover:bg-blue-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                class="flex-1 bg-blue-600 text-white hover:bg-blue-700 py-2 rounded-lg text-center text-sm font-semibold transition">
                                 Booking
                             </a>
                         </div>
@@ -116,7 +115,7 @@
                 </div>
 
                 <div
-                    class="flex flex-col bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100">
+                    class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe & Resto"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
@@ -136,19 +135,18 @@
                             </a>
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20reservasi%20meja%20di%20Cafe"
                                 target="_blank"
-                                class="flex-1 bg-brown-600 text-white hover:bg-brown-700 py-2 rounded-lg text-center text-sm font-semibold transition shadow-md">
+                                class="flex-1 bg-brown-600 text-white hover:bg-brown-700 py-2 rounded-lg text-center text-sm font-semibold transition">
                                 Reservasi
                             </a>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="bg-white pb-16 pt-4">
-        <h2 class="text-center text-2xl font-bold mb-8">Promo Harga</h2>
+        <h2 class="text-center text-2xl font-bold mb-12">Harga Spesial Untuk Anda</h2>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative">
                 <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
@@ -171,7 +169,6 @@
     <div class="bg-gray-50 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-amber-600 font-semibold tracking-wider uppercase text-sm">Our Collections</span>
                 <h2 class="mt-2 text-4xl font-extrabold text-gray-900 font-serif sm:text-5xl">
                     Jelajahi Dunia Rasa Kami
                 </h2>
@@ -235,13 +232,13 @@
                     <div class="w-full border-t border-gray-300"></div>
                 </div>
                 <div class="relative flex justify-center">
-                    <span class="px-3 bg-white text-lg font-medium text-gray-500 italic">
+                    <span class="px-3 bg-gray-50 text-lg font-medium text-gray-500 italic">
                         &mdash; Cafe & Resto Experience &mdash;
                     </span>
                 </div>
             </div>
 
-            <div class="mt-12">
+            <div class="mb-20 mt-8">
                 <div class="flex md:flex-row flex-col md:items-center md:justify-between mb-8 gap-4">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
@@ -324,7 +321,6 @@
                 </div>
             </div>
 
-            {{-- Guest House Section Divider --}}
             <div class="relative py-8">
                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                     <div class="w-full border-t border-gray-300"></div>
@@ -336,8 +332,7 @@
                 </div>
             </div>
 
-            {{-- Guest House Section Content --}}
-            <div class="mt-12">
+            <div class="mt-8">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 flex items-center gap-2">
@@ -360,9 +355,7 @@
                     </div>
                 </div>
 
-                {{-- Guest House Showcase Banner + Feature Cards --}}
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                    {{-- Big Featured Card --}}
                     <div class="lg:col-span-7 bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 flex flex-col group">
                         <div class="relative h-64 sm:h-80 overflow-hidden">
                             <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}" alt="Kamar Roti Mruyung Guest House"
@@ -392,7 +385,6 @@
                         </div>
                     </div>
 
-                    {{-- Right Column Gallery Grid --}}
                     <div class="lg:col-span-5 grid grid-cols-2 gap-4">
                         <div class="group relative rounded-2xl overflow-hidden shadow-md h-44 sm:h-52">
                             <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}" alt="Kamar Tamu Nyaman"
@@ -439,22 +431,18 @@
         </div>
     </div>
 
-    {{-- Call To Action (CTA) Section --}}
     <div class="relative bg-white py-12 lg:py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-2xl border border-amber-900/30">
-                {{-- Background Image Overlay with Blend Mode --}}
+            <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-2xl border border-amber-900/30">
                 <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
                     <img src="{{ asset('images/galery/depan-toko-mruyung.webp') }}" alt="Toko Roti Mruyung" class="w-full h-full object-cover">
                 </div>
 
-                {{-- Ambient Radial Glow Effects --}}
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-700/20 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="relative z-10 px-6 py-12 sm:px-12 sm:py-16 lg:py-20 lg:px-16">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                        {{-- Left Column: Copywriting & Badges --}}
                         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-serif leading-tight">
                                 Siap Menikmati Kelezatan <br class="hidden sm:inline">
@@ -465,7 +453,6 @@
                                 Pesan roti hangat favorit Anda secara online, nikmati kopi di kafe kami, atau rencanakan liburan tenang di Guest House bernuansa Kota Lama Banyumas.
                             </p>
 
-                            {{-- Feature highlights chips --}}
                             <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-gray-200">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-amber-400"></div>
@@ -482,7 +469,6 @@
                             </div>
                         </div>
 
-                        {{-- Right Column: Action Buttons & Quick Contact Card --}}
                         <div class="lg:col-span-5 flex flex-col items-center lg:items-end">
                             <div class="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/15 p-6 sm:p-8 rounded-2xl shadow-xl space-y-4">
                                 <h3 class="text-lg font-bold text-white text-center lg:text-left flex items-center justify-center lg:justify-start gap-2">
@@ -516,7 +502,6 @@
                                         Lihat Lokasi & Jam Operasional Toko &rarr;
                                     </a>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

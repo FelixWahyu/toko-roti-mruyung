@@ -31,26 +31,9 @@
 
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-end mb-10">
-                <div>
-                    <h2 class="text-base font-semibold text-amber-600 uppercase tracking-wide">Rekomendasi Untuk Anda</h2>
-                    <p class="mt-2 text-3xl font-extrabold text-gray-900">Best Seller dari Kami</p>
-                </div>
-                <div class="flex gap-2">
-                    <button
-                        class="menu-prev bg-white p-3 rounded-full shadow hover:bg-amber-500 hover:text-white transition">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <button
-                        class="menu-next bg-white p-3 rounded-full shadow hover:bg-amber-500 hover:text-white transition">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                </div>
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-base font-semibold text-amber-600 uppercase tracking-wide">Rekomendasi Untuk Anda</h2>
+                <p class="mt-2 text-3xl font-extrabold text-gray-900">Best Seller dari Kami</p>
             </div>
 
             <div class="swiper menu-slider overflow-hidden">
@@ -170,6 +153,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="flex justify-center items-center gap-4 mt-8">
+                <button
+                    aria-label="Previous Slide"
+                    class="menu-prev w-11 h-11 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 shadow-sm hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Next Slide"
+                    class="menu-next w-11 h-11 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 shadow-sm hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
@@ -386,7 +386,7 @@
 
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-amber-900 rounded-3xl overflow-hidden shadow-2xl relative">
+            <div class="bg-amber-900 rounded-lg overflow-hidden shadow-2xl relative">
                 <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-amber-800 rounded-full opacity-50"></div>
                 <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-amber-800 rounded-full opacity-50"></div>
 
@@ -466,22 +466,18 @@
         </div>
     </div>
 
-    {{-- Remade Modern Cafe CTA Section --}}
     <div class="relative bg-white py-12 lg:py-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-2xl border border-amber-900/30">
-                {{-- Background Image Overlay with Blend Mode --}}
+            <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-2xl border border-amber-900/30">
                 <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
                     <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe Mruyung Atmosphere" class="w-full h-full object-cover">
                 </div>
 
-                {{-- Ambient Radial Glow Effects --}}
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-700/20 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="relative z-10 px-6 py-12 sm:px-12 sm:py-16 lg:py-20 lg:px-16">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-                        {{-- Left Column: Copywriting & Value Highlights --}}
                         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-serif leading-tight">
                                 Lapar atau Haus? <br class="hidden sm:inline">
@@ -492,7 +488,6 @@
                                 Nikmati hidangan lezat dan minuman favorit Anda langsung di tempat (Dine-in), bawa pulang (Takeaway), atau pesan antar secara praktis.
                             </p>
 
-                            {{-- Highlight Pills --}}
                             <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-gray-200">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-amber-400"></div>
@@ -509,7 +504,6 @@
                             </div>
                         </div>
 
-                        {{-- Right Column: Action Buttons Card --}}
                         <div class="lg:col-span-5 flex flex-col items-center lg:items-end">
                             <div class="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/15 p-6 sm:p-8 rounded-2xl shadow-xl space-y-4">
                                 <h3 class="text-lg font-bold text-white text-center lg:text-left">

@@ -23,7 +23,6 @@
                                 </div>
                             @endif
                         </div>
-                        {{-- Tambah imej kecil di sini jika anda mempunyai galeri --}}
                         {{-- <div class="flex -mx-2 mb-4">
                             <div class="flex-1 px-2">
                                 <button @click="mainImage = 'URL_GAMBAR_1'"

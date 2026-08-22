@@ -28,9 +28,21 @@
                             dari keluarga besar kami.
                         </p>
                     </div>
-                    <div class="flex items-center">
-                        <div class="mt-8 p-3 border border-gray-300 rounded-md">
-                            <h2 class="text-2xl font-bold text-gray-800">27+ Karyawan</h2>
+                    <div class="mt-8 grid grid-cols-2 gap-4 sm:gap-6">
+                        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-200/80 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-3xl sm:text-4xl font-extrabold text-amber-600 font-serif">4+</span>
+                                <span class="text-base sm:text-lg font-bold text-gray-900">Tahun</span>
+                            </div>
+                            <p class="mt-1 text-xs text-gray-500">Menjaga resep legendaris sejak 2022 di Banyumas</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-200/80 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-3xl sm:text-4xl font-extrabold text-amber-600 font-serif">27+</span>
+                                <span class="text-base sm:text-lg font-bold text-gray-900">Karyawan</span>
+                            </div>
+                            <p class="mt-1 text-xs text-gray-500">Siap melayani kebutuhan Anda dengan keramahan tulus</p>
                         </div>
                     </div>
                 </div>
@@ -107,66 +119,137 @@
         </div>
     </div>
 
-    <div class="bg-white py-16 sm:py-20">
-        <div class="max-w-2xl px-8 mb-6">
-            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Intip Suasana Kami</h2>
-            <p class="mt-4 max-w-2xl text-lg text-gray-500">Intip sekilas dari suasana di tempat kami dengan nuansa klasik
-                dan nyaman</p>
-        </div>
-        <div class="w-full bg-gray-800 max-w-7xl mx-auto rounded-md">
-            <video class="w-full aspect-video rounded-lg shadow-lg" loop playsinline controls>
-                <source src="{{ asset('videos/review-video-2025.mp4') }}" type="video/mp4">
-            </video>
+    <div class="bg-white py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-left max-w-3xl mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-serif">Intip Suasana & Kreasi Kami</h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-500 font-light">
+                    Saksikan sekilas kehangatan suasana Toko Roti Mruyung serta dedikasi kami dalam menghadirkan sajian berkualitas terbaik.
+                </p>
+            </div>
+
+            <div class="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
+                <div class="bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 sm:p-5 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div class="overflow-hidden rounded-lg bg-black aspect-[9/16] relative shadow-inner">
+                        <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
+                            <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382308/review-video-2025.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                    </div>
+                    <div class="pt-5 px-2 pb-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">Suasana & Cafe</span>
+                            <span class="text-xs text-gray-400">&bull; Tour Suasana</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kehangatan Toko & Suasana Klasik</h3>
+                        <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
+                            Melihat lebih dekat kenyamanan ruang kafe, bakery, dan atmosfer bernuansa klasik khas Kota Lama Banyumas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 sm:p-5 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div class="overflow-hidden rounded-lg bg-black aspect-[9/16] relative shadow-inner">
+                        <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
+                            <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382242/video-kue-nanas-2026-08-21.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung tag video.
+                        </video>
+                    </div>
+                    <div class="pt-5 px-2 pb-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 rounded-md bg-orange-100 text-orange-800 text-xs font-bold">Dapur Kreasi</span>
+                            <span class="text-xs text-gray-400">&bull; Proses Pembuatan</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kreasi Spesial Kue Nanas Mruyung</h3>
+                        <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
+                            Intip ketelitian dan keahlian baker kami dalam mengolah bahan pilihan hingga menjadi sajian favorit keluarga.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="bg-gray-50 py-16 sm:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gray-50 py-16 sm:py-24">
+        <div class="w-full px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Galeri Kami</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500">Sekilas tentang sudut-sudut favorit di tempat kami.
+                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight font-serif">Galeri Kami</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-500 font-light">
+                    Sekilas tentang sudut-sudut favorit di tempat kami.
                 </p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="grid gap-4">
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
-                            alt="[Gambar secangkir kopi latte art]"></div>
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/guesthouse-mruyung.webp') }}" alt="[Gambar aneka kue warna-warni]">
+
+            <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] sm:auto-rows-[200px] md:auto-rows-[220px] lg:auto-rows-[250px] gap-0 overflow-hidden border-2 border-white">
+                <div class="col-span-2 row-span-2 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
+                        alt="Toko Roti Mruyung Malam Hari">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Mruyung Night</span>
                     </div>
                 </div>
-                <div class="grid gap-4">
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/foto-kue-mruyung.webp') }}"
-                            alt="[Gambar kamar guesthouse yang rapi dan nyaman]"></div>
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/depan-toko-mruyung.webp') }}"
-                            alt="[Gambar suasana kafe yang hangat dan ramai]"></div>
+
+                <div class="col-span-1 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
+                        alt="Guest House Mruyung">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Guest House</span>
+                    </div>
                 </div>
-                <div class="grid gap-4">
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/roti-tawar-coklat.webp') }}"
-                            alt="[Gambar roti croissant segar di atas nampan]"></div>
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/guest-house.webp') }}"
-                            alt="[Gambar teras luar guesthouse dengan tanaman hijau]"></div>
+
+                <div class="col-span-1 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/foto-kue-mruyung.webp') }}"
+                        alt="Aneka Kue Mruyung">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Aneka Kue</span>
+                    </div>
                 </div>
-                <div class="grid gap-4">
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/cofe-minuman.webp') }}"
-                            alt="[Gambar seorang barista sedang membuat kopi]"></div>
-                    <div><img
-                            class="h-auto max-w-full rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                            src="{{ asset('images/galery/toko-roti-mruyung.webp') }}"
-                            alt="[Gambar roti gandum utuh yang baru dipanggang]"></div>
+
+                <div class="col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/depan-toko-mruyung.webp') }}"
+                        alt="Depan Toko Roti Mruyung">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Depan Toko</span>
+                    </div>
+                </div>
+
+                <div class="col-span-1 row-span-2 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/roti-tawar-coklat.webp') }}"
+                        alt="Roti Tawar Coklat">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Roti Tawar</span>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/guest-house.webp') }}"
+                        alt="Kamar & Area Guest House">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Area Inap</span>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:row-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/cofe-minuman.webp') }}"
+                        alt="Minuman & Cafe">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Cafe & Kopi</span>
+                    </div>
+                </div>
+
+                <div class="col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        src="{{ asset('images/galery/toko-roti-mruyung.webp') }}"
+                        alt="Suasana Toko Roti Mruyung">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Toko Roti</span>
+                    </div>
                 </div>
             </div>
         </div>

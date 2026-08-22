@@ -40,10 +40,10 @@
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bisnis</h3>
                 <ul class="mt-4 space-y-2">
+                    <li><a href="{{ route('home') }}" class="text-sm text-gray-400 hover:text-white">Beranda</a></li>
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
                     </li>
                     <li><a href="{{ route('contact') }}" class="text-sm text-gray-400 hover:text-white">Kontak</a></li>
-                    <li><a href="{{ route('home') }}" class="text-sm text-gray-400 hover:text-white">Cara Pesan</a></li>
                 </ul>
             </div>
 

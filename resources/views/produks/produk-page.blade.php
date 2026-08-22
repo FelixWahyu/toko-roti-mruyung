@@ -37,99 +37,11 @@
         </div>
     </div>
 
-    <div class="bg-gray-50 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Cara Pesan Mudah</h2>
-                <p class="mt-4 text-lg text-gray-500">Hanya dengan beberapa langkah mudah, pesanan Anda siap diantar.</p>
-            </div>
-
-            <div class="mt-16 flex flex-col md:flex-row items-center justify-center gap-y-12 gap-x-8">
-                <div class="text-center max-w-xs">
-                    <div
-                        class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mt-5 text-lg font-semibold text-gray-900">1. Pilih Produk & Checkout</h3>
-                    <p class="mt-2 text-base text-gray-500">Jelajahi katalog kami, masukkan produk favorit ke keranjang,
-                        dan
-                        lanjutkan ke halaman checkout.</p>
-                </div>
-
-                <div class="hidden md:block text-gray-300">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                        </path>
-                    </svg>
-                </div>
-
-                <div class="text-center max-w-xs">
-                    <div
-                        class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="mt-5 text-lg font-semibold text-gray-900">2. Lakukan Pembayaran</h3>
-                    <p class="mt-2 text-base text-gray-500">Pilih metode pengiriman dan pembayaran yang paling sesuai untuk
-                        Anda, lalu selesaikan transaksi serta upload bukti pembayaran.</p>
-                </div>
-
-                <div class="hidden md:block text-gray-300">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
-                        </path>
-                    </svg>
-                </div>
-
-                <div class="text-center max-w-xs">
-                    <div
-                        class="mx-auto h-16 w-16 flex items-center justify-center bg-brown-100 rounded-full text-brown-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                            stroke="currentColor" class="size-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-                        </svg>
-                    </div>
-                    <h3 class="mt-5 text-lg font-semibold text-gray-900">3. Pesanan Diantar</h3>
-                    <p class="mt-2 text-base text-gray-500">
-                        Pesanan Anda akan diproses oleh tim kami dan dapat diantar langsung ke tempat Anda.
-                        Saat ini layanan pengiriman <span class="font-semibold text-brown-600">
-                            hanya tersedia di wilayah area Kecamatan Banyumas</span>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="bg-white py-16 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row justify-center items-center lg:justify-between mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 font-serif">Favorit Pelanggan</h2>
-                    <p class="mt-2 text-gray-500">Paling banyak dicari minggu ini</p>
-                </div>
-                <div class="flex gap-3 mt-4 md:mt-0">
-                    <button
-                        class="promo-prev w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                    <button
-                        class="promo-next w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-3xl font-bold text-gray-900 font-serif">Favorit Pelanggan</h2>
+                <p class="mt-2 text-gray-500">Paling banyak dicari minggu ini</p>
             </div>
 
             <div class="swiper promo-slider overflow-hidden">
@@ -178,6 +90,23 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+
+            <div class="flex justify-center items-center gap-4 mt-8">
+                <button
+                    aria-label="Previous Slide"
+                    class="promo-prev w-11 h-11 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 shadow-sm hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button
+                    aria-label="Next Slide"
+                    class="promo-next w-11 h-11 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 shadow-sm hover:bg-amber-600 hover:border-amber-600 hover:text-white transition duration-300 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
