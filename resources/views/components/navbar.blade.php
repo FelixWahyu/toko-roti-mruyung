@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }" class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-4">
         <div class="flex justify-between items-center h-16">
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2">
@@ -49,7 +49,7 @@
                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                                     </path>
                                 </svg>
-                                Bakery & Roti
+                                Bakery
                             </a>
                             <a href="{{ route('guesthouse.index') }}"
                                 class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-brown-50 hover:text-brown-600">
@@ -192,7 +192,7 @@
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                             </path>
                         </svg>
-                        Bakery & Roti
+                        Bakery
                     </a>
                     <a href="{{ route('guesthouse.index') }}"
                         class="group flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-sm font-medium text-gray-600 hover:text-brown-500 hover:bg-gray-50 hover:border-brown-300">

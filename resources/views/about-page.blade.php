@@ -29,38 +29,52 @@
                         </p>
                     </div>
                     <div class="mt-8 grid grid-cols-2 gap-4 sm:gap-6">
-                        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-200/80 shadow-sm hover:shadow-md transition-all duration-300">
-                            <div class="flex items-baseline gap-1.5">
-                                <span class="text-3xl sm:text-4xl font-extrabold text-amber-600 font-serif">4+</span>
-                                <span class="text-base sm:text-lg font-bold text-gray-900">Tahun</span>
+                        <div class="px-4 py-3 rounded-sm bg-gradient-to-br from-brown-50 to-brown-50/40 border border-brown-200/80 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-3xl sm:text-4xl font-extrabold text-brown-600 font-serif">4+</span>
+                                    <span class="text-base sm:text-lg font-bold text-gray-900">Tahun</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-md bg-brown-100 text-brown-700 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
                             </div>
-                            <p class="mt-1 text-xs text-gray-500">Menjaga resep legendaris sejak 2022 di Banyumas</p>
+                            <p class="mt-1.5 text-sm text-gray-500">Menjaga resep legendaris sejak 2022 di Banyumas</p>
                         </div>
 
-                        <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-200/80 shadow-sm hover:shadow-md transition-all duration-300">
-                            <div class="flex items-baseline gap-1.5">
-                                <span class="text-3xl sm:text-4xl font-extrabold text-amber-600 font-serif">27+</span>
-                                <span class="text-base sm:text-lg font-bold text-gray-900">Karyawan</span>
+                        <div class="px-4 py-3 rounded-sm bg-gradient-to-br from-brown-50 to-brown-50/40 border border-brown-200/80 shadow-sm hover:shadow-md transition-all duration-300">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-3xl sm:text-4xl font-extrabold text-brown-600 font-serif">27</span>
+                                    <span class="text-base sm:text-lg font-bold text-gray-900">Karyawan</span>
+                                </div>
+                                <div class="w-8 h-8 rounded-md bg-brown-100 text-brown-700 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
                             </div>
-                            <p class="mt-1 text-xs text-gray-500">Siap melayani kebutuhan Anda dengan keramahan tulus</p>
+                            <p class="mt-1.5 text-sm text-gray-500">Siap melayani kebutuhan Anda dengan keramahan tulus</p>
                         </div>
                     </div>
                 </div>
                 <div class="mt-10 lg:mt-0">
                     <div class="flex items-center space-x-4">
                         <div class="flex flex-col space-y-4 flex-shrink-0">
-                            <div class="w-48 h-48 overflow-hidden rounded-lg shadow-xl group">
+                            <div class="w-48 h-48 overflow-hidden rounded-sm shadow-lg group">
                                 <img src="{{ asset('images/galery/toko-mruyung.webp') }}"
                                     alt="Suasana interior Toko Roti Mruyung"
                                     class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
                             </div>
-                            <div class="w-48 h-48 overflow-hidden rounded-lg shadow-xl group">
+                            <div class="w-48 h-48 overflow-hidden rounded-sm shadow-lg group">
                                 <img src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
                                     alt="Kamar Guesthouse Mruyung"
                                     class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
                             </div>
                         </div>
-                        <div class="flex-1 w-full h-96 overflow-hidden rounded-lg shadow-xl group">
+                        <div class="flex-1 w-full h-96 overflow-hidden rounded-sm shadow-lg group">
                             <img class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                                 src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
                                 alt="Tampilan Toko Roti Mruyung di malam hari">
@@ -129,18 +143,14 @@
             </div>
 
             <div class="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
-                <div class="bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 sm:p-5 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                    <div class="overflow-hidden rounded-lg bg-black aspect-[9/16] relative shadow-inner">
+                <div class="bg-gradient-to-b from-gray-50 to-white rounded-md p-2 sm:p-3 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div class="overflow-hidden rounded-sm bg-black aspect-[9/16] relative shadow-inner">
                         <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
                             <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382308/review-video-2025.mp4" type="video/mp4">
                             Browser Anda tidak mendukung tag video.
                         </video>
                     </div>
                     <div class="pt-5 px-2 pb-2">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold">Suasana & Cafe</span>
-                            <span class="text-xs text-gray-400">&bull; Tour Suasana</span>
-                        </div>
                         <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kehangatan Toko & Suasana Klasik</h3>
                         <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
                             Melihat lebih dekat kenyamanan ruang kafe, bakery, dan atmosfer bernuansa klasik khas Kota Lama Banyumas.
@@ -148,18 +158,14 @@
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-b from-gray-50 to-white rounded-lg p-4 sm:p-5 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                    <div class="overflow-hidden rounded-lg bg-black aspect-[9/16] relative shadow-inner">
+                <div class="bg-gradient-to-b from-gray-50 to-white rounded-md p-2 sm:p-3 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div class="overflow-hidden rounded-sm bg-black aspect-[9/16] relative shadow-inner">
                         <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
                             <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382242/video-kue-nanas-2026-08-21.mp4" type="video/mp4">
                             Browser Anda tidak mendukung tag video.
                         </video>
                     </div>
                     <div class="pt-5 px-2 pb-2">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 rounded-md bg-orange-100 text-orange-800 text-xs font-bold">Dapur Kreasi</span>
-                            <span class="text-xs text-gray-400">&bull; Proses Pembuatan</span>
-                        </div>
                         <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kreasi Spesial Kue Nanas Mruyung</h3>
                         <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
                             Intip ketelitian dan keahlian baker kami dalam mengolah bahan pilihan hingga menjadi sajian favorit keluarga.

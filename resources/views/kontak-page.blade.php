@@ -10,7 +10,7 @@
         <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-700/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-serif leading-tight">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white font-serif leading-tight">
                 Hubungi Kami, Kami Siap <br class="hidden sm:inline">
                 <span class="text-amber-400">Mendengar & Melayani</span> Anda
             </h1>
@@ -24,7 +24,7 @@
     <div class="bg-gray-50 py-10 relative z-20 -mt-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                <div class="bg-white p-6 rounded-md border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition duration-300">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -38,14 +38,14 @@
                     <div class="mt-6">
                         <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo%20Roti%20Mruyung,%20saya%20ingin%20bertanya"
                             target="_blank"
-                            class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-green-50 text-green-700 font-semibold text-sm hover:bg-green-600 hover:text-white transition duration-300">
+                            class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-sm bg-green-50 text-green-700 font-semibold text-sm hover:bg-green-600 hover:text-white transition duration-300">
                             <span>Chat Sekarang</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                <div class="bg-white p-6 rounded-md border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:bg-amber-600 group-hover:text-white transition duration-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,14 +62,14 @@
                     <div class="mt-6">
                         <a href="https://maps.google.com/?q=Roti+Mruyung+Guest+House+%26+Cafe"
                             target="_blank"
-                            class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-amber-50 text-amber-800 font-semibold text-sm hover:bg-amber-600 hover:text-white transition duration-300">
+                            class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-sm bg-amber-50 text-amber-800 font-semibold text-sm hover:bg-amber-600 hover:text-white transition duration-300">
                             <span>Petunjuk Arah</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between group">
+                <div class="bg-white p-6 rounded-md border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition duration-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,12 +88,12 @@
                             </div>
                             <div class="flex justify-between items-center py-0.5">
                                 <span>Guest House</span>
-                                <span class="font-bold text-green-600">Buka 24 Jam</span>
+                                <span class="font-bold text-gray-900">Buka 24 Jam</span>
                             </div>
                         </div>
                     </div>
                     <div class="mt-6">
-                        <div class="py-2 px-3 bg-gray-50 rounded-xl text-center text-xs text-gray-500 font-medium">
+                        <div class="py-2 px-3 bg-gray-50 rounded-sm text-center text-sm text-gray-500 font-medium">
                             Siap Melayani Setiap Hari
                         </div>
                     </div>
@@ -117,7 +117,7 @@
             @endif
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl shadow-lg border border-gray-100">
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-md border h-full border-gray-100">
                     <div class="mb-8">
                         <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Formulir Pesan</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-serif mt-1">Kirimkan Pesan Anda</h2>
@@ -181,7 +181,7 @@
 
                         <div>
                             <button type="submit"
-                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm transition-all duration-300 shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-0.5">
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-sm bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm transition-all duration-300 hover:shadow-amber-500/30">
                                 <span>Kirim Pesan</span>
                             </button>
                         </div>
@@ -189,55 +189,55 @@
                 </div>
 
                 <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white p-8 rounded-3xl shadow-xl border border-amber-900/40 relative overflow-hidden">
+                    <div class="bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white p-8 rounded-md border border-amber-900/40 relative overflow-hidden">
                         <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
                         <span class="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">Pemesanan Langsung</span>
                         <h3 class="text-xl font-bold font-serif mb-4">Butuh Pelayanan Cepat?</h3>
-                        <p class="text-xs text-gray-300 mb-6 leading-relaxed">
+                        <p class="text-sm text-gray-300 mb-6 leading-relaxed">
                             Hubungi kanal layanan khusus kami untuk kebutuhan mendesak atau reservasi hari ini:
                         </p>
 
                         <div class="space-y-3">
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo%20Roti%20Mruyung,%20saya%20mau%20pesan%20roti"
                                 target="_blank"
-                                class="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition group">
+                                class="flex items-center justify-between p-3.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition group">
                                 <div class="flex items-center gap-3">
                                     <div>
-                                        <p class="text-xs font-bold">Pemesanan Bakery & Roti</p>
-                                        <p class="text-[11px] text-gray-300">Kue, hampers & oleh-oleh</p>
+                                        <p class="text-sm font-bold">Pemesanan Bakery & Roti</p>
+                                        <p class="text-[13px] text-gray-300">Kue, hampers & oleh-oleh</p>
                                     </div>
                                 </div>
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transform group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </a>
 
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20booking%20kamar%20Guest%20House"
                                 target="_blank"
-                                class="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition group">
+                                class="flex items-center justify-between p-3.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition group">
                                 <div class="flex items-center gap-3">
                                     <div>
-                                        <p class="text-xs font-bold">Booking Kamar Guest House</p>
-                                        <p class="text-[11px] text-gray-300">Cek ketersediaan kamar</p>
+                                        <p class="text-sm font-bold">Booking Kamar Guest House</p>
+                                        <p class="text-[13px] text-gray-300">Cek ketersediaan kamar</p>
                                     </div>
                                 </div>
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transform group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </a>
 
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20reservasi%20meja%20di%20Cafe"
                                 target="_blank"
-                                class="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition group">
+                                class="flex items-center justify-between p-3.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/10 transition group">
                                 <div class="flex items-center gap-3">
                                     <div>
-                                        <p class="text-xs font-bold">Reservasi Meja Cafe & Resto</p>
-                                        <p class="text-[11px] text-gray-300">Nongkrong & kumpul keluarga</p>
+                                        <p class="text-sm font-bold">Reservasi Meja Cafe & Resto</p>
+                                        <p class="text-[13px] text-gray-300">Nongkrong & kumpul keluarga</p>
                                     </div>
                                 </div>
-                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transform group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                <svg class="w-4 h-4 text-gray-400 group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </a>
                         </div>
                     </div>
 
-                    <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100">
+                    <div class="bg-white p-8 rounded-md border border-gray-100">
                         <h4 class="text-base font-bold text-gray-900 mb-4">Informasi Kontak Lainnya</h4>
                         <div class="space-y-4 text-sm text-gray-600">
                             <div class="flex items-start gap-3">
@@ -269,12 +269,11 @@
     <div class="bg-white py-16">
         <div class="w-full px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Lokasi Kami</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 font-serif mt-1">Kunjungi Toko Roti Mruyung</h2>
                 <p class="text-sm text-gray-500 mt-2">Berada di kawasan bersejarah Komplek Kota Lama Banyumas. Akses mudah dan area parkir luas.</p>
             </div>
 
-            <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-gray-100 relative">
+            <div class="rounded-md overflow-hidden border-2 border-gray-100 relative">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.5693799913684!2d109.2937846!3d-7.512695700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655be837ac6d85%3A0x60a6bc885567f28!2sRoti%20Mruyung%20Guest%20House%20%26%20Cafe!5e0!3m2!1sid!2sid!4v1752346494051!5m2!1sid!2sid"
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"

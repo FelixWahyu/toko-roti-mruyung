@@ -27,8 +27,7 @@
             <div>
                 <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Produk & Layanan</h3>
                 <ul class="mt-4 space-y-2">
-                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Bakery &
-                            Roti</a></li>
+                    <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Bakery</a></li>
                     <li><a href="{{ route('products.index') }}" class="text-sm text-gray-400 hover:text-white">Guest
                             House</a>
                     </li>
@@ -38,7 +37,7 @@
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bisnis</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Navigasi</h3>
                 <ul class="mt-4 space-y-2">
                     <li><a href="{{ route('home') }}" class="text-sm text-gray-400 hover:text-white">Beranda</a></li>
                     <li><a href="{{ route('about') }}" class="text-sm text-gray-400 hover:text-white">Tentang Kami</a>
@@ -48,7 +47,7 @@
             </div>
 
             <div>
-                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Bantuan</h3>
+                <h3 class="text-sm font-semibold tracking-wider uppercase text-gray-300">Informasi</h3>
                 <ul class="mt-4 space-y-2">
                     <li><a href="#" class="text-sm text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
                     <li><a href="#" class="text-sm text-gray-400 hover:text-white">Syarat & Ketentuan</a></li>
@@ -133,7 +132,7 @@
                 </a>
             </div>
             <p class="mt-8 text-center text-sm text-gray-400 md:mt-0 md:order-1">
-                Created by Felix Wahyu S. &copy; {{ date('Y') }}
+                &copy;{{ date('Y') }}
                 {{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}. All rights reserved.
             </p>
         </div>
