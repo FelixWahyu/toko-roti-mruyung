@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Beranda')
+@section('meta_description', 'Nikmati kelezatan aneka roti legendaris resep otentik, nongkrong santai di cafe bernuansa klasik, dan menginap nyaman di Guest House Toko Roti Mruyung Banyumas.')
+
 @section('content')
     <div class="relative bg-gray-50 overflow-hidden h-[600px] lg:h-[100vh]">
         <div class="absolute inset-0 w-full h-full">
@@ -8,6 +11,7 @@
             <video id="heroVideo" class="w-full h-full object-cover" muted loop autoplay playsinline
                 poster="{{ asset('images/hero-background.webp') }}">
                 <img src="{{ asset('images/hero-background.webp') }}" alt="Roti Mruyung Hero"
+                    fetchpriority="high"
                     class="w-full h-full object-cover">
             </video>
         </div>
@@ -62,6 +66,7 @@
                     class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}" alt="Toko Roti"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex-1 p-6 flex flex-col justify-between">
@@ -90,6 +95,7 @@
                     class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}" alt="Guest House"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex-1 p-6 flex flex-col justify-between">
@@ -118,6 +124,7 @@
                     class="flex flex-col bg-white overflow-hidden hover:shadow-md transition duration-300 border border-gray-100">
                     <div class="h-56 w-full relative overflow-hidden group">
                         <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe & Resto"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="flex-1 p-6 flex flex-col justify-between">
@@ -155,6 +162,7 @@
                             <div class="swiper-slide">
                                 <a href="{{ $slide['link'] }}">
                                     <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full max-h-[450px] object-contain">
                                 </a>
                             </div>
@@ -204,6 +212,7 @@
                             class="group relative block h-64 sm:h-80 rounded-md overflow-hidden hover:shadow-lg transition-all duration-300">
                             <img src="{{ $category->image ? asset('storage/' . $category->image) : 'https://placehold.co/400x400/e2e8f0/333?text=' . urlencode($category->name) }}"
                                 alt="{{ $category->name }}"
+                                loading="lazy" decoding="async"
                                 class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
 
                             <div
@@ -264,6 +273,7 @@
                     <a href="{{ route('cafe.index') }}"
                         class="group relative block h-64 rounded-md overflow-hidden hover:shadow-lg transition-all duration-300">
                         <img src="{{ asset('images/menus/kopi-mruyung.webp') }}" alt="Coffee"
+                            loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-5">
@@ -279,6 +289,7 @@
                         class="group relative block h-64 rounded-md overflow-hidden hover:shadow-lg transition-all duration-300">
                         <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
                             alt="Non Coffee"
+                            loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-5">
@@ -293,6 +304,7 @@
                     <a href="{{ route('cafe.index') }}"
                         class="group relative block h-64 rounded-md overflow-hidden hover:shadow-lg transition-all duration-300">
                         <img src="{{ asset('images/menus/paket-nasi-uduk-ayam.jpeg') }}" alt="Food"
+                            loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-5">
@@ -307,6 +319,7 @@
                     <a href="{{ route('cafe.index') }}"
                         class="group relative block h-64 rounded-md overflow-hidden hover:shadow-lg transition-all duration-300">
                         <img src="{{ asset('images/galery/roti-tawar-coklat.webp') }}" alt="Snack"
+                            loading="lazy" decoding="async"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-5">
@@ -359,6 +372,7 @@
                     <div class="lg:col-span-7 bg-white rounded-md overflow-hidden border border-gray-100 flex flex-col group">
                         <div class="relative h-64 sm:h-80 overflow-hidden">
                             <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}" alt="Kamar Roti Mruyung Guest House"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -388,6 +402,7 @@
                     <div class="lg:col-span-5 grid grid-cols-2 gap-4">
                         <div class="group relative rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 h-44 sm:h-52">
                             <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}" alt="Kamar Tamu Nyaman"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -398,6 +413,7 @@
 
                         <div class="group relative rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 h-44 sm:h-52">
                             <img src="{{ asset('images/guest-house/loby-resepsionis.webp') }}" alt="Lobi & Resepsionis"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -408,6 +424,7 @@
 
                         <div class="group relative rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 h-44 sm:h-52">
                             <img src="{{ asset('images/guest-house/kamar-mandi.webp') }}" alt="Kamar Mandi Bersih"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -418,6 +435,7 @@
 
                         <div class="group relative rounded-md overflow-hidden hover:shadow-lg transition-all duration-300 h-44 sm:h-52">
                             <img src="{{ asset('images/guest-house/mushola-belakang.webp') }}" alt="Fasilitas Mushola"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -435,7 +453,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative rounded-md overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-md border border-amber-900/30">
                 <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
-                    <img src="{{ asset('images/galery/depan-toko-mruyung.webp') }}" alt="Toko Roti Mruyung" class="w-full h-full object-cover">
+                    <img src="{{ asset('images/galery/depan-toko-mruyung.webp') }}" alt="Toko Roti Mruyung"
+                        loading="lazy" decoding="async"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>

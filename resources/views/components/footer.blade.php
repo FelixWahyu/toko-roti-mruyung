@@ -6,6 +6,7 @@
                 <div class="flex items-center space-x-2">
                     @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
                         <img class="h-10 w-auto rounded-sm"
+                            loading="lazy" decoding="async"
                             src="{{ asset('storage/' . $globalSettings['store_logo']->value) }}" alt="Logo Toko">
                     @else
                         <svg class="h-8 w-8 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none"

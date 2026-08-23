@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Bakery')
+@section('meta_description', 'Pilihan lengkap roti manis, kue basah, pastry, dan paket oleh-oleh khas Toko Roti Mruyung Banyumas yang dipanggang segar setiap hari.')
+
 @section('content')
     <div class="relative bg-gray-900 h-[80vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="{{ asset('images/galery/toko-roti-mruyung.webp') }}" alt="Artisan Bakery Background"
+                fetchpriority="high"
                 class="w-full h-full object-cover opacity-60 transform scale-105 animate-slow-zoom">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/40 to-gray-900/90"></div>
         </div>
@@ -53,6 +57,7 @@
                                 <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
                                     <img src="{{ asset('storage/' . $product->image ?? $product->image) }}"
                                         alt="{{ $product->name }}"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
 
                                     <div class="absolute top-3 left-3 flex flex-col gap-2">
@@ -209,7 +214,9 @@
     <div class="relative bg-amber-900 py-20 overflow-hidden">
         <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
-                alt="Baker working" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
+                alt="Baker working"
+                loading="lazy" decoding="async"
+                class="w-full h-full object-cover opacity-20 mix-blend-overlay">
             <div class="absolute inset-0 bg-gradient-to-r from-amber-900/90 to-amber-900/40"></div>
         </div>
 

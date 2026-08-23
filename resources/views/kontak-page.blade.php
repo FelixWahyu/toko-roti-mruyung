@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Kontak')
+@section('meta_description', 'Hubungi Toko Roti Mruyung Banyumas untuk pemesanan roti, catering, reservasi meja cafe, atau booking kamar guest house via WhatsApp dan formulir pesan.')
+
 @section('content')
     <div class="relative bg-stone-900 text-white overflow-hidden py-16 sm:py-24">
         <div class="absolute inset-0 z-0 opacity-25 mix-blend-overlay">

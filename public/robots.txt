@@ -1,2 +1,13 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /superadmin/
+Disallow: /login
+Disallow: /register
+Disallow: /keranjang/
+Disallow: /checkout
+Disallow: /profil/
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://rotimruyungcafe-guesthouse.com/sitemap.xml

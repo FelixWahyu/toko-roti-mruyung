@@ -25,7 +25,10 @@ use App\Http\Controllers\SuperAdmin\DashboardController;
 use App\Http\Controllers\SuperAdmin\BankAccountController;
 use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::middleware('prevent.admin.access')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');

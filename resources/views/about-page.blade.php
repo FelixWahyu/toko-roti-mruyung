@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+@section('title', 'Tentang Kami')
+@section('meta_description', 'Mengenal perjalanan Toko Roti Mruyung Banyumas sejak 2022, resep legendaris, keramahan 27+ karyawan, serta fasilitas cafe dan guest house.')
+
 @section('content')
     <div class="bg-white">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
@@ -66,18 +70,21 @@
                             <div class="w-48 h-48 overflow-hidden rounded-sm shadow-lg group">
                                 <img src="{{ asset('images/galery/toko-mruyung.webp') }}"
                                     alt="Suasana interior Toko Roti Mruyung"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
                             </div>
                             <div class="w-48 h-48 overflow-hidden rounded-sm shadow-lg group">
                                 <img src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
                                     alt="Kamar Guesthouse Mruyung"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
                             </div>
                         </div>
                         <div class="flex-1 w-full h-96 overflow-hidden rounded-sm shadow-lg group">
                             <img class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                                 src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
-                                alt="Tampilan Toko Roti Mruyung di malam hari">
+                                alt="Tampilan Toko Roti Mruyung di malam hari"
+                                loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -189,7 +196,8 @@
                 <div class="col-span-2 row-span-2 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/toko-roti-mruyung-night.webp') }}"
-                        alt="Toko Roti Mruyung Malam Hari">
+                        alt="Toko Roti Mruyung Malam Hari"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Mruyung Night</span>
                     </div>
@@ -198,7 +206,8 @@
                 <div class="col-span-1 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/guesthouse-mruyung.webp') }}"
-                        alt="Guest House Mruyung">
+                        alt="Guest House Mruyung"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Guest House</span>
                     </div>
@@ -207,7 +216,8 @@
                 <div class="col-span-1 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/foto-kue-mruyung.webp') }}"
-                        alt="Aneka Kue Mruyung">
+                        alt="Aneka Kue Mruyung"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Aneka Kue</span>
                     </div>
@@ -216,7 +226,8 @@
                 <div class="col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/depan-toko-mruyung.webp') }}"
-                        alt="Depan Toko Roti Mruyung">
+                        alt="Depan Toko Roti Mruyung"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Depan Toko</span>
                     </div>
@@ -225,7 +236,8 @@
                 <div class="col-span-1 row-span-2 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/roti-tawar-coklat.webp') }}"
-                        alt="Roti Tawar Coklat">
+                        alt="Roti Tawar Coklat"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Roti Tawar</span>
                     </div>
@@ -234,7 +246,8 @@
                 <div class="col-span-1 md:col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/guest-house.webp') }}"
-                        alt="Kamar & Area Guest House">
+                        alt="Kamar & Area Guest House"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Area Inap</span>
                     </div>
@@ -243,7 +256,8 @@
                 <div class="col-span-1 md:row-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/cofe-minuman.webp') }}"
-                        alt="Minuman & Cafe">
+                        alt="Minuman & Cafe"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Cafe & Kopi</span>
                     </div>
@@ -252,7 +266,8 @@
                 <div class="col-span-2 row-span-1 group relative overflow-hidden bg-gray-100 border border-white">
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src="{{ asset('images/galery/toko-roti-mruyung.webp') }}"
-                        alt="Suasana Toko Roti Mruyung">
+                        alt="Suasana Toko Roti Mruyung"
+                        loading="lazy" decoding="async">
                     <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span class="text-white text-xs sm:text-sm font-semibold px-4 py-1.5 bg-black/50 rounded-full backdrop-blur-sm">Toko Roti</span>
                     </div>

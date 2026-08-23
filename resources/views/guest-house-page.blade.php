@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
+@section('title', 'Guest House')
+@section('meta_description', 'Menginap nyaman di Guest House Roti Mruyung Banyumas dengan fasilitas lengkap, kamar bersih ber-AC, WiFi kencang, dan lokasi strategis.')
+
 @section('content')
     <div class="relative bg-gray-900 h-[80vh] flex items-center justify-center overflow-hidden">
         <div class="bg-black/30 absolute z-10 inset-0"></div>
         <div class="absolute inset-0">
             <img src="{{ asset('images/guest-house/kasur-pribadi.webp') }}" alt="Roti Mruyung Guest House"
+                fetchpriority="high"
                 class="w-full h-full object-cover">
         </div>
 
@@ -97,26 +101,33 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover" alt="Kamar Tidur Utama">
                         </div>
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
-                            <img src="{{ asset('images/guest-house/kamar-mandi.webp') }}" class="w-full h-full object-cover"
+                            <img src="{{ asset('images/guest-house/kamar-mandi.webp') }}"
+                                loading="lazy" decoding="async"
+                                class="w-full h-full object-cover"
                                 alt="Kamar Mandi Bersih">
                         </div>
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/latar-depan-tempat.webp') }}"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover" alt="Halaman Depan">
                         </div>
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/tempat-tidur.webp') }}"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover" alt="Kasur Nyaman">
                         </div>
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/loby-resepsionis.webp') }}"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover" alt="Kasur Nyaman">
                         </div>
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/mushola-belakang.webp') }}"
+                                loading="lazy" decoding="async"
                                 class="w-full h-full object-cover" alt="Kasur Nyaman">
                         </div>
                     </div>

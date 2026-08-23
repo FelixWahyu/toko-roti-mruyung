@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title', $product->name)
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($product->description ?? 'Beli ' . $product->name . ' lezat dan berkualitas di Toko Roti Mruyung Banyumas.'), 155))
+@section('og_image', asset('storage/' . $product->image))
+@section('og_type', 'product')
+
 @section('content')
     <div class="bg-white py-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +19,8 @@
                     <div x-data="{ mainImage: '{{ asset('storage/' . $product->image) }}' }">
                         <div class="h-80 md:h-full rounded-lg bg-gray-100 mb-4 relative overflow-hidden shadow-sm">
                             <img class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
-                                :src="mainImage" alt="Gambar Utama Produk">
+                                :src="mainImage" alt="{{ $product->name }}"
+                                fetchpriority="high">
 
                             @if ($product->created_at->diffInDays(now()) <= 5)
                                 <div

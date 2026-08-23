@@ -5,18 +5,68 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    @php
+        $siteName = $globalSettings['store_name']->value ?? 'Toko Roti Mruyung';
+        $fullTitle = $__env->hasSection('title') ? trim($__env->yieldContent('title')) . ' — ' . $siteName : $siteName . ' — Bakery, Cafe & Guest House Banyumas';
+        $metaDescription = $__env->hasSection('meta_description') ? trim($__env->yieldContent('meta_description')) : 'Toko Roti Mruyung Banyumas menyajikan kelezatan aneka roti legendaris segar setiap hari, kenyamanan cafe bernuansa klasik, dan penginapan guest house hangat.';
+        $ogImage = $__env->hasSection('og_image') ? trim($__env->yieldContent('og_image')) : (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value ? asset('storage/' . $globalSettings['store_logo']->value) : asset('images/galery/depan-toko-mruyung.webp'));
+        $ogType = $__env->hasSection('og_type') ? trim($__env->yieldContent('og_type')) : 'website';
+    @endphp
+
+    <title>{{ $fullTitle }}</title>
+    <meta name="description" content="{{ $metaDescription }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <meta property="og:type" content="{{ $ogType }}">
+    <meta property="og:site_name" content="{{ $siteName }}">
+    <meta property="og:title" content="{{ $fullTitle }}">
+    <meta property="og:description" content="{{ $metaDescription }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ $ogImage }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $fullTitle }}">
+    <meta name="twitter:description" content="{{ $metaDescription }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
+
     @if (isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value)
         <link rel="icon" href="{{ Storage::url($globalSettings['store_logo']->value) }}">
     @else
         <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     @endif
-    <title>{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}",
+        "image": "{{ isset($globalSettings['store_logo']) && $globalSettings['store_logo']->value ? asset('storage/' . $globalSettings['store_logo']->value) : asset('images/galery/depan-toko-mruyung.webp') }}",
+        "telephone": "{{ $globalSettings['store_contact']->value ?? '' }}",
+        "email": "{{ $globalSettings['store_email']->value ?? '' }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $globalSettings['store_address']->value ?? 'Jl. Mruyung, Sudagaran' }}",
+            "addressLocality": "Banyumas",
+            "addressRegion": "Jawa Tengah",
+            "postalCode": "53192",
+            "addressCountry": "ID"
+        },
+        "url": "{{ url('/') }}"
+    }
+    </script>
 </head>
 
 <body class="font-serif antialiased bg-gray-50 text-gray-800 pt-16">

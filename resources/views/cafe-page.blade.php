@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@section('title', 'Cafe')
+@section('meta_description', 'Jelajahi menu kopi spesial, minuman segar, dan hidangan lezat di Cafe Toko Roti Mruyung Banyumas dengan suasana klasik yang hangat dan nyaman.')
+
 @section('content')
     <div class="relative bg-gray-900 h-[80vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
             <img src="{{ asset('images/galery/toko-mruyung.webp') }}" alt="Suasana Cafe Roti Mruyung"
+                fetchpriority="high"
                 class="w-full h-full object-cover opacity-50">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-black/30"></div>
         </div>
@@ -43,6 +47,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/menu-bakmi.webp') }}" alt="Hazelnut Latte"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                                 <div
                                     class="absolute top-2 right-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded">
@@ -66,6 +71,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/menu-bakaran.webp') }}" alt="Burger"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
@@ -85,6 +91,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/menu-nasi-goreng.jpeg') }}" alt="Mojito"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
@@ -103,6 +110,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="Steak"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
@@ -121,6 +129,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="Steak"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
@@ -139,6 +148,7 @@
                             class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
                                 <img src="{{ asset('images/menus/menu-chiken-katsu.webp') }}" alt="Steak"
+                                    loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
@@ -211,6 +221,7 @@
                     class="menu-item coffee bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/kopi-mruyung.webp') }}" alt="Cappucino"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -228,6 +239,7 @@
                     class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-nasi-goreng.jpeg') }}" alt="Nasi Goreng"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -245,6 +257,7 @@
                     class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/ayam-tepung-pedas-2.webp') }}" alt="Ice Lychee Tea"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -262,6 +275,7 @@
                     class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -279,6 +293,7 @@
                     class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-asam-pedas.webp') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -295,6 +310,7 @@
                     class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -311,6 +327,7 @@
                     class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-kecap.webp') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -327,6 +344,7 @@
                     class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-hamburger.webp') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -343,6 +361,7 @@
                     class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-roti-bakar.jpeg') }}" alt="French Fries"
+                            loading="lazy" decoding="async"
                             class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between flex-1">
@@ -373,6 +392,7 @@
                             <div class="swiper-slide bg-gray-100">
                                 <a href="{{ $slide['link'] }}">
                                     <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full max-h-[450px] object-contain">
                                 </a>
                             </div>
@@ -397,14 +417,17 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img src="{{ asset('images/galery/toko-mruyung.webp') }}" alt="Interior Cafe"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="swiper-slide">
                                     <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Outdoor Cafe"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full object-cover">
                                 </div>
                                 <div class="swiper-slide">
                                     <img src="{{ asset('images/galery/toko-roti-mruyung.webp') }}" alt="Barista"
+                                        loading="lazy" decoding="async"
                                         class="w-full h-full object-cover">
                                 </div>
                             </div>
@@ -470,7 +493,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative rounded-lg overflow-hidden bg-gradient-to-br from-stone-900 via-brown-900 to-amber-950 text-white shadow-2xl border border-amber-900/30">
                 <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
-                    <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe Mruyung Atmosphere" class="w-full h-full object-cover">
+                    <img src="{{ asset('images/galery/cofe-minuman.webp') }}" alt="Cafe Mruyung Atmosphere"
+                        loading="lazy" decoding="async"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
