@@ -28,13 +28,13 @@
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#daftar-menu-lengkap"
-                    class="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 hover:bg-amber-700 shadow-lg hover:shadow-amber-500/50 transform hover:-translate-y-1">
+                    class="group relative inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-amber-600 font-pj rounded-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 hover:bg-amber-700">
                     Lihat Katalog Roti
                 </a>
 
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20ingin%20tanya%20tentang%20roti..."
                     target="_blank"
-                    class="inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-white/10 border border-white/30 backdrop-blur-md rounded-full hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg">
+                    class="inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-white/10 border border-white/30 backdrop-blur-md rounded-sm hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                     Pesan via Whatsapp
                 </a>
             </div>
@@ -53,7 +53,7 @@
                     @foreach ($rekomendasiProducts as $product)
                         <div class="swiper-slide h-auto">
                             <div
-                                class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-300 transition-all duration-300 h-full flex flex-col overflow-hidden">
+                                class="group relative bg-white rounded-md border border-gray-300 transition-all duration-300 h-full flex flex-col overflow-hidden">
                                 <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
                                     <img src="{{ asset('storage/' . $product->image ?? $product->image) }}"
                                         alt="{{ $product->name }}"
@@ -133,7 +133,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 mb-10">
+            <div class="bg-white border border-gray-100 p-6 md:p-8 mb-10">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
 
                     <div class="md:col-span-6">
@@ -149,7 +149,7 @@
                                 </svg>
                             </div>
                             <input type="text" id="search" x-model.debounce.500ms="search"
-                                class="block w-full pl-11 pr-4 py-3 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-xl transition duration-200 placeholder-gray-500 font-medium"
+                                class="block w-full pl-11 pr-4 py-1.5 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-md transition duration-200 placeholder-gray-500 font-medium"
                                 placeholder="Cth: Roti Tawar, Croissant...">
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                             class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Kategori</label>
                         <div class="relative">
                             <select id="category" x-model="category"
-                                class="block w-full pl-4 pr-10 py-3 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-xl appearance-none cursor-pointer font-medium transition duration-200">
+                                class="block w-full pl-4 pr-10 py-1.5 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-md appearance-none cursor-pointer font-medium transition duration-200">
                                 <option value="">Semua Kategori</option>
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -180,7 +180,7 @@
                             class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Urutkan</label>
                         <div class="relative">
                             <select id="sort_by" x-model="sort"
-                                class="block w-full pl-4 pr-10 py-3 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-xl appearance-none cursor-pointer font-medium transition duration-200">
+                                class="block w-full pl-4 pr-10 py-1.5 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-md appearance-none cursor-pointer font-medium transition duration-200">
                                 <option value="">Paling Sesuai</option>
                                 <option value="price_asc">Harga Terendah</option>
                                 <option value="price_desc">Harga Tertinggi</option>
@@ -262,7 +262,7 @@
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20ingin%20konsultasi%20pesanan%20kue%20custom"
                     target="_blank"
-                    class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-900 font-bold rounded-full hover:bg-amber-50 transition transform hover:scale-105 shadow-xl border-2 border-white">
+                    class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-900 font-bold rounded-md hover:bg-amber-50 transition-all duration-300 border-2 border-white">
                     <svg class="w-5 h-5 mr-2 text-green-600" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />

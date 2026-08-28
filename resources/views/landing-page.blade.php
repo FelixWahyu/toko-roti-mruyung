@@ -500,7 +500,7 @@
 
                                 <div class="space-y-3 pt-2">
                                     <a href="https://shopee.co.id/" target="_blank"
-                                        class="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-base transition-all duration-300 shadow-lg hover:shadow-amber-500/40 transform hover:-translate-y-0.5">
+                                        class="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-md bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-base transition-all duration-300">
                                         <svg class="w-5 h-5 text-stone-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                         </svg>
