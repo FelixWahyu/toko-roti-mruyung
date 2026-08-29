@@ -21,12 +21,12 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#daftar-menu-lengkap"
-                    class="inline-block bg-amber-600 border border-transparent rounded-full py-3 px-8 text-base font-bold text-white hover:bg-amber-700 transition shadow-lg hover:scale-105 transform duration-200">
+                    class="inline-block bg-amber-600 border border-transparent rounded-sm py-2 px-6 text-base font-bold text-white hover:bg-amber-700 transition-all duration-200">
                     Lihat Daftar Menu
                 </a>
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20mau%20reservasi%20meja"
                     target="_blank"
-                    class="inline-block bg-white/10 backdrop-blur-md border border-white rounded-full py-3 px-8 text-base font-bold text-white hover:bg-white hover:text-gray-900 transition shadow-lg">
+                    class="inline-block bg-white/10 backdrop-blur-md border border-white rounded-sm py-2 px-6 text-base font-bold text-white hover:bg-white hover:text-gray-900 transition-all duration-200">
                     Reservasi Meja
                 </a>
             </div>
@@ -44,9 +44,9 @@
                 <div class="swiper-wrapper py-4 items-stretch">
                     <div class="swiper-slide h-auto">
                         <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/menu-bakmi.webp') }}" alt="Hazelnut Latte"
+                                <img src="{{ asset('images/menus/menu-bakmi.webp') }}" alt="Bakmi Nyemek"
                                     loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                                 <div
@@ -54,51 +54,12 @@
                                     BEST SELLER</div>
                             </div>
                             <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Hazelnut Latte Cream
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Bakmi Nyemek
                                 </h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Kopi susu dengan syrup hazelnut premium.
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Bakmi gurih berkuah kental dengan telur, sayuran segar, dan suwiran ayam.
                                 </p>
 
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
-                                    <span class="text-amber-600 font-bold text-lg">Rp 28.000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide h-auto">
-                        <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
-                            <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/menu-bakaran.webp') }}" alt="Burger"
-                                    loading="lazy" decoding="async"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Beef Burger Supreme
-                                </h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Patty daging sapi asli 150gr dengan keju
-                                    lumer dan saus spesial.</p>
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
-                                    <span class="text-amber-600 font-bold text-lg">Rp 45.000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide h-auto">
-                        <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
-                            <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/menu-nasi-goreng.jpeg') }}" alt="Mojito"
-                                    loading="lazy" decoding="async"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Mojito Strawberry
-                                </h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Minuman segar dengan soda dan mint.</p>
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
                                     <span class="text-amber-600 font-bold text-lg">Rp 22.000</span>
                                 </div>
                             </div>
@@ -107,57 +68,89 @@
 
                     <div class="swiper-slide h-auto">
                         <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="Steak"
+                                <img src="{{ asset('images/menus/menu-bakaran.webp') }}" alt="Barbeque Paket 1"
                                     loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Steak Sirloin
-                                    Meltique</h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Daging meltique super empuk dengan
-                                    kentang.</p>
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
-                                    <span class="text-amber-600 font-bold text-lg">Rp 85.000</span>
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Barbeque Paket 1 (2 Org)
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Paket bakar-bakaran lengkap untuk 2 orang dengan aneka daging lezat dan saus barbekyu spesial.</p>
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
+                                    <span class="text-amber-600 font-bold text-lg">Rp 55.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide h-auto">
+                        <div
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
+                            <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
+                                <img src="{{ asset('images/menus/menu-nasi-goreng.jpeg') }}" alt="Nasi Goreng Magelangan"
+                                    loading="lazy" decoding="async"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-5 flex flex-col flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Nasi Goreng Magelangan
+                                </h3>
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Nasi goreng campur mie khas Magelangan bumbu sedap, lengkap dengan telur dan kerupuk.</p>
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
+                                    <span class="text-amber-600 font-bold text-lg">Rp 24.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide h-auto">
+                        <div
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
+                            <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
+                                <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="Iga Bakar"
+                                    loading="lazy" decoding="async"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-5 flex flex-col flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Iga Bakar</h3>
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Iga sapi pilihan yang empuk dengan olesan bumbu bakar manis gurih meresap sempurna.</p>
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
+                                    <span class="text-amber-600 font-bold text-lg">Rp 57.000</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide h-auto">
                         <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="Steak"
+                                <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="Nasi Ayam Goreng"
                                     loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Steak Sirloin
-                                    Meltique</h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Daging meltique super empuk dengan
-                                    kentang.</p>
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
-                                    <span class="text-amber-600 font-bold text-lg">Rp 85.000</span>
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Nasi Ayam Goreng</h3>
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Paket nasi dengan ayam goreng gurih berempah, disajikan bersama lalapan dan sambal mantap.</p>
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
+                                    <span class="text-amber-600 font-bold text-lg">Rp 22.000</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide h-auto">
                         <div
-                            class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100 h-full flex flex-col">
+                            class="bg-white rounded-md overflow-hidden hover:shadow-md transition duration-300 border border-gray-300 h-full flex flex-col">
                             <div class="h-48 w-full overflow-hidden relative flex-shrink-0">
-                                <img src="{{ asset('images/menus/menu-chiken-katsu.webp') }}" alt="Steak"
+                                <img src="{{ asset('images/menus/menu-chiken-katsu.webp') }}" alt="Chiken Katsu"
                                     loading="lazy" decoding="async"
                                     class="w-full h-full object-cover">
                             </div>
                             <div class="p-5 flex flex-col flex-1">
-                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Steak Sirloin
-                                    Meltique</h3>
-                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Daging meltique super empuk dengan
-                                    kentang.</p>
-                                <div class="mt-auto pt-4 flex justify-between items-center border-t border-gray-100 mt-4">
-                                    <span class="text-amber-600 font-bold text-lg">Rp 85.000</span>
+                                <h3 class="text-lg font-bold text-gray-900 min-h-[3.5rem] line-clamp-2">Chiken Katsu</h3>
+                                <p class="text-gray-500 text-sm mt-2 line-clamp-2">Fillet dada ayam renyah berbalut tepung krispi dengan saus gurih pendamping.</p>
+                                <div class="mt-auto pt-4 flex justify-between items-center mt-4">
+                                    <span class="text-amber-600 font-bold text-lg">Rp 22.000</span>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +200,7 @@
 
                 <div class="relative w-full md:w-64">
                     <input type="text" id="menu-search" onkeyup="searchMenu()" placeholder="Cari menu..."
-                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent">
                     <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -218,7 +211,7 @@
 
             <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div
-                    class="menu-item coffee bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item coffee bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/kopi-mruyung.webp') }}" alt="Cappucino"
                             loading="lazy" decoding="async"
@@ -236,7 +229,7 @@
                 </div>
 
                 <div
-                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item food bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-nasi-goreng.jpeg') }}" alt="Nasi Goreng"
                             loading="lazy" decoding="async"
@@ -254,7 +247,7 @@
                 </div>
 
                 <div
-                    class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item snack bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/ayam-tepung-pedas-2.webp') }}" alt="Ice Lychee Tea"
                             loading="lazy" decoding="async"
@@ -272,7 +265,7 @@
                 </div>
 
                 <div
-                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item food bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/iga-bakar.webp') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -290,7 +283,7 @@
                     </div>
                 </div>
                 <div
-                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item food bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-asam-pedas.webp') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -307,7 +300,7 @@
                     </div>
                 </div>
                 <div
-                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item food bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-goreng.webp') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -324,7 +317,7 @@
                     </div>
                 </div>
                 <div
-                    class="menu-item food bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item food bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-ayam-kecap.webp') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -341,7 +334,7 @@
                     </div>
                 </div>
                 <div
-                    class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item snack bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-hamburger.webp') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -358,7 +351,7 @@
                     </div>
                 </div>
                 <div
-                    class="menu-item snack bg-white rounded-xl border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
+                    class="menu-item snack bg-white rounded-md border border-gray-200 p-4 flex gap-4 hover:shadow-md transition">
                     <div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
                         <img src="{{ asset('images/menus/menu-roti-bakar.jpeg') }}" alt="French Fries"
                             loading="lazy" decoding="async"
@@ -386,10 +379,10 @@
     <div class="bg-white py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative">
-                <div class="swiper promo-banner-slider rounded-lg overflow-hidden">
+                <div class="swiper promo-banner-slider overflow-hidden">
                     <div class="swiper-wrapper">
                         @foreach ($menuSlides as $slide)
-                            <div class="swiper-slide bg-gray-100">
+                            <div class="swiper-slide">
                                 <a href="{{ $slide['link'] }}">
                                     <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
                                         loading="lazy" decoding="async"
@@ -444,7 +437,7 @@
 
                         <div class="grid grid-cols-2 gap-6">
                             <div
-                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-md border border-white/20">
                                 <svg class="w-8 h-8 text-amber-300" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -454,7 +447,7 @@
                                 <span class="font-medium">Free WiFi</span>
                             </div>
                             <div
-                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-md border border-white/20">
                                 <svg class="w-8 h-8 text-amber-300 flex-shrink-0" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -463,7 +456,7 @@
                                 <span class="font-medium">Stopkontak</span>
                             </div>
                             <div
-                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-md border border-white/20">
                                 <svg class="w-8 h-8 text-amber-300" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -473,7 +466,7 @@
                                 <span class="font-medium">Toilet Bersih</span>
                             </div>
                             <div
-                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
+                                class="flex items-center space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-md border border-white/20">
                                 <svg class="w-8 h-8 text-amber-300" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

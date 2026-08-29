@@ -53,7 +53,7 @@
                     @foreach ($rekomendasiProducts as $product)
                         <div class="swiper-slide h-auto">
                             <div
-                                class="group relative bg-white rounded-md border border-gray-300 transition-all duration-300 h-full flex flex-col overflow-hidden">
+                                class="group relative bg-white rounded-md border border-gray-300 transition-all duration-300 hover:shadow-md h-full flex flex-col overflow-hidden">
                                 <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
                                     <img src="{{ asset('storage/' . $product->image ?? $product->image) }}"
                                         alt="{{ $product->name }}"

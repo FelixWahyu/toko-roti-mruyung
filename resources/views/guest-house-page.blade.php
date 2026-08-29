@@ -22,7 +22,7 @@
             <div class="mt-8">
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20ingin%20booking%20kamar%20Guest%20House"
                     target="_blank"
-                    class="inline-block bg-amber-600 border border-transparent rounded-full py-3 px-8 text-base font-bold text-white hover:bg-amber-700 md:text-lg transition shadow-xl hover:scale-105 transform duration-200">
+                    class="inline-block bg-amber-600 border border-transparent rounded-sm py-2 px-6 text-base font-bold text-white hover:bg-amber-700 md:text-lg transition duration-200">
                     Cek Ketersediaan Kamar
                 </a>
             </div>
@@ -38,7 +38,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div
-                    class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
+                    class="bg-gray-50 rounded-md p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
                     <div
                         class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 text-amber-600 mb-4">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@
                         Anda.</p>
                 </div>
                 <div
-                    class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
+                    class="bg-gray-50 rounded-md p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
                     <div
                         class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 text-amber-600 mb-4">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
                     </p>
                 </div>
                 <div
-                    class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
+                    class="bg-gray-50 rounded-md p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
                     <div
                         class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 text-amber-600 mb-4">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@
                     <p class="mt-2 text-gray-500 text-sm">Fasilitas pendingin ruangan di setiap kamar.</p>
                 </div>
                 <div
-                    class="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
+                    class="bg-gray-50 rounded-md p-6 text-center hover:shadow-lg transition duration-300 border border-gray-100">
                     <div
                         class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-amber-100 text-amber-600 mb-4">
                         <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@
     <div class="relative bg-white pb-16">
         <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
             <div class="relative order-1 lg:order-2 px-4 sm:px-6 lg:px-0 py-12 lg:py-0">
-                <div class="swiper room-gallery rounded-2xl shadow-2xl overflow-hidden border-4 border-white">
+                <div class="swiper room-gallery rounded-md overflow-hidden border-4 border-white">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide h-[300px] sm:h-[400px]">
                             <img src="{{ asset('images/guest-house/tempat-tidur-2.webp') }}"
@@ -160,7 +160,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                <span class="ml-3 text-gray-600">Queen Size Bed (Springbed Nyaman)</span>
+                                <span class="ml-3 text-gray-600">5 Kamar Delux</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="flex-shrink-0 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
@@ -168,7 +168,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                <span class="ml-3 text-gray-600">Kamar Mandi Dalam (Shower & Toilet Duduk)</span>
+                                <span class="ml-3 text-gray-600">5 Kamar Standar</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="flex-shrink-0 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
@@ -176,7 +176,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                <span class="ml-3 text-gray-600">Lemari Pakaian & Meja Kerja Kecil</span>
+                                <span class="ml-3 text-gray-600">Kamar AC</span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="flex-shrink-0 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
@@ -184,7 +184,23 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                <span class="ml-3 text-gray-600">Air Mineral Gratis & Perlengkapan Mandi</span>
+                                <span class="ml-3 text-gray-600">Smart TV</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">Air Panas dan Dingin</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="ml-3 text-gray-600">Harga Kamar Termasuk Breakfast</span>
                             </li>
                         </ul>
                     </div>
@@ -192,17 +208,17 @@
                     <div class="mt-10 pt-6 border-t border-gray-200">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Harga Spesial</p>
+                                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider">Harga Mulai</p>
 
                                 <p class="text-3xl font-bold text-amber-600">
-                                    Rp 150.000
-                                    <span class="text-base font-normal text-gray-500">/malam</span>
+                                    Rp 225.000
+                                    <span class="text-3xl font-bold">,-</span>
                                 </p>
                             </div>
 
                             <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20apakah%20ada%20kamar%20tersedia%20untuk%20menginap"
                                 target="_blank"
-                                class="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow-lg transform hover:-translate-y-0.5">
+                                class="bg-gray-900 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-800 transition">
                                 Pesan Sekarang
                             </a>
                         </div>
@@ -214,7 +230,7 @@
 
     <div class="bg-amber-50 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-xl font-bold text-gray-900 mb-6">Informasi Penting</h3>
+            <h3 class="text-xl font-bold text-gray-900 mb-6">Informasi Lainya</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="flex items-start">
                     <div class="flex-shrink-0">
