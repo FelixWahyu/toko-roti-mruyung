@@ -14,7 +14,7 @@
                         </svg>
                     @endif
                     <span
-                        class="font-bold text-xl hidden md:block text-gray-800">{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</span>
+                        class="font-bold text-sm md:text-xl text-gray-800">{{ $globalSettings['store_name']->value ?? 'Toko Roti Mruyung' }}</span>
                 </a>
             </div>
 
@@ -81,7 +81,7 @@
             </div>
 
             <div class="flex items-center space-x-5">
-                <a href="{{ route('cart.index') }}"
+                <!-- <a href="{{ route('cart.index') }}"
                     class="relative p-2 hover:text-brown-500 {{ request()->routeIs('cart.index') ? 'text-brown-500 font-bold' : 'text-gray-600' }}">
                     <svg class="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -93,13 +93,13 @@
                         <span
                             class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">{{ $cartItemCount }}</span>
                     @endif
-                </a>
+                </a> -->
 
                 <div class="hidden md:flex items-center space-x-4">
-                    <div class="h-6 border-l border-gray-300"></div>
+                    <!-- <div class="h-6 border-l border-gray-300"></div> -->
                     @guest
                         <a href="{{ route('login') }}"
-                            class="text-sm font-medium px-4 py-2 rounded-md {{ request()->routeIs('login') ? 'text-white bg-brown-500 border border-transparent hover:bg-brown-600' : 'text-gray-600 hover:bg-brown-500 hover:text-white' }}">Login</a>
+                            class="text-sm font-medium px-4 py-2 rounded-md {{ request()->routeIs('login') ? 'text-white bg-brown-500 border border-transparent hover:bg-brown-600' : 'bg-brown-500 text-white hover:bg-brown-600' }}">Login</a>
                     @else
                         <div x-data="{ dropdownOpen: false }" class="relative">
                             <button @click="dropdownOpen = !dropdownOpen" class="flex items-center space-x-2">
@@ -226,7 +226,7 @@
             @guest
                 <div class="flex items-center px-4">
                     <a href="{{ route('login') }}"
-                        class="w-full text-center px-4 py-2 rounded-md text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-brown-500 rounded-md mx-4 hover:bg-brown-600' : 'text-white bg-brown-500' }}">Login</a>
+                        class="w-full text-center px-4 py-2 rounded-md text-base font-medium {{ request()->routeIs('login') ? 'text-white bg-brown-500 border border-transparent mx-4 hover:bg-brown-600' : 'text-white bg-brown-500 hover:bg-brown-600' }}">Login</a>
                 </div>
             @else
                 <div class="flex items-center px-4">

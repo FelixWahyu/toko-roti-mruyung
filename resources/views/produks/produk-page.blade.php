@@ -85,9 +85,8 @@
 
                                     <div class="mt-auto flex items-center justify-between">
                                         <div>
-                                            <p class="text-xs text-gray-400">Harga</p>
                                             <p class="text-lg font-bold text-amber-600">
-                                                Rp{{ number_format($product->price, 0, ',', '.') }}</p>
+                                                Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +123,7 @@
                 <p class="mt-3 text-gray-500">Temukan roti favorit Anda melalui fitur pencarian di bawah ini.</p>
 
                 <div
-                    class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full text-blue-700 text-sm">
+                    class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-100 rounded-full text-amber-700 text-sm">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -150,7 +149,7 @@
                             </div>
                             <input type="text" id="search" x-model.debounce.500ms="search"
                                 class="block w-full pl-11 pr-4 py-1.5 bg-gray-50 border-gray-300 focus:bg-white border focus:border-amber-500 focus:ring-0 rounded-md transition duration-200 placeholder-gray-500 font-medium"
-                                placeholder="Cth: Roti Tawar, Croissant...">
+                                placeholder="Cari roti...">
                         </div>
                     </div>
 
@@ -261,7 +260,7 @@
 
             <div class="flex flex-col sm:flex-row gap-4">
                 <a href="https://wa.me/{{ $globalSettings['store_contact']->value ?? '' }}?text=Halo,%20saya%20ingin%20konsultasi%20pesanan%20kue%20custom"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                     class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-900 font-bold rounded-md hover:bg-amber-50 transition-all duration-300 border-2 border-white">
                     <svg class="w-5 h-5 mr-2 text-green-600" fill="currentColor" viewBox="0 0 24 24">
                         <path
