@@ -15,6 +15,7 @@ class HomeController extends Controller
         $categories = Category::all();
 
         $promoSlides = [
+            ['image' => asset('images/promo/promo-layanan.jpeg'), 'link' => '#', 'alt' => 'Promo Layanan Kamar'],
             ['image' => asset('images/promo/promo1.jpg'), 'link' => '#', 'alt' => 'Promo Diskon Lebaran'],
             ['image' => asset('images/promo/promo2.jpg'), 'link' => '#', 'alt' => 'Promo Gratis Ongkir'],
             ['image' => asset('images/promo/promo3.jpg'), 'link' => '#', 'alt' => 'Promo Beli 1 Gratis 1'],

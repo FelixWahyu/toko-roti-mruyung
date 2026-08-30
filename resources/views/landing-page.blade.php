@@ -160,10 +160,11 @@
                     <div class="swiper-wrapper">
                         @foreach ($promoSlides as $slide)
                             <div class="swiper-slide h-auto">
-                                <a href="{{ $slide['link'] }}" class="block w-full aspect-[6/9] overflow-hidden rounded-sm">
+                                <a href="{{ $slide['link'] }}"
+                                    class="group flex items-center justify-center w-full aspect-[4/5] overflow-hidden bg-white transition-all duration-300">
                                     <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
                                         loading="lazy" decoding="async"
-                                        class="w-full h-full object-cover">
+                                        class="max-w-full max-h-full w-auto h-auto object-contain rounded-sm transition-transform duration-300 group-hover:scale-105">
                                 </a>
                             </div>
                         @endforeach
