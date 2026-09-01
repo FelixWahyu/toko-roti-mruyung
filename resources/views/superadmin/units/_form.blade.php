@@ -1,18 +1,18 @@
 @csrf
 <div>
-    <label for="name" class="block text-sm font-medium text-slate-700">Nama Unit</label>
+    <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Nama Unit</label>
     <input type="text" name="name" id="name" value="{{ old('name', $unit->name ?? '') }}"
-        class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+        class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
         required>
     @error('name')
-        <span class="text-sm text-red-600">{{ $message }}</span>
+        <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
     @enderror
 </div>
-<div class="flex justify-end mt-6 pt-6 border-t border-slate-200">
+<div class="flex justify-end mt-6 pt-5 border-t border-gray-200">
     <a href="{{ route('admin.units.index') }}"
-        class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg shadow-sm mr-2">Batal</a>
+        class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 font-semibold py-2 px-4 rounded-sm text-sm mr-2 transition">Batal</a>
     <button type="submit"
-        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
+        class="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-sm text-sm transition">
         {{ $submitButtonText ?? 'Simpan' }}
     </button>
 </div>

@@ -24,19 +24,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="bg-gray-100 antialiased font-sans">
-    <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex">
+<body class="bg-gray-50 antialiased font-sans text-gray-900">
+    <div x-data="{ sidebarOpen: false }" @keydown.escape.window="sidebarOpen = false" class="flex min-h-screen">
 
         <x-superadmin.sidebar />
 
-        <div x-show="sidebarOpen" class="fixed inset-0 z-20 bg-black bg-opacity-50 transition-opacity md:hidden"
+        <div x-show="sidebarOpen" class="fixed inset-0 z-20 bg-black/60 transition-opacity md:hidden"
             @click="sidebarOpen = false"></div>
 
-        <div class="flex-1 flex flex-col overflow-hidden h-screen">
+        <div class="flex-1 flex flex-col overflow-hidden h-screen bg-gray-50">
             <x-superadmin.header />
 
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
-                <div class="mx-auto px-4 py-6">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50">
+                <div class="mx-auto px-6 py-6 max-w-7xl">
                     @yield('content')
                 </div>
             </main>
@@ -74,8 +74,8 @@
                 icon: 'warning',
                 width: '400px',
                 showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#64748b',
+                confirmButtonColor: '#111827',
+                cancelButtonColor: '#6b7280',
                 confirmButtonText: confirmButtonText,
                 cancelButtonText: 'Batal'
             }).then((result) => {

@@ -1,18 +1,18 @@
 @csrf
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="md:col-span-2">
-        <label for="name" class="block text-sm font-medium text-slate-700">Nama Produk</label>
+        <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Nama Produk</label>
         <input type="text" name="name" id="name" value="{{ old('name', $product->name ?? '') }}"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
             required>
         @error('name')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div>
-        <label for="category_id" class="block text-sm font-medium text-slate-700">Kategori</label>
+        <label for="category_id" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Kategori</label>
         <select name="category_id" id="category_id"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
             required>
             @foreach ($categories as $category)
                 <option value="{{ $category->id }}"
@@ -22,13 +22,13 @@
             @endforeach
         </select>
         @error('category_id')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div>
-        <label for="unit_id" class="block text-sm font-medium text-slate-700">Unit (Satuan)</label>
+        <label for="unit_id" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Unit (Satuan)</label>
         <select name="unit_id" id="unit_id"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
             required>
             @foreach ($units as $unit)
                 <option value="{{ $unit->id }}"
@@ -38,55 +38,55 @@
             @endforeach
         </select>
         @error('unit_id')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div>
-        <label for="price" class="block text-sm font-medium text-slate-700">Harga</label>
+        <label for="price" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Harga (Rp)</label>
         <input type="number" name="price" id="price" value="{{ old('price', $product->price ?? '') }}"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
             required>
         @error('price')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div>
-        <label for="stock" class="block text-sm font-medium text-slate-700">Stok</label>
+        <label for="stock" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Stok</label>
         <input type="number" name="stock" id="stock" value="{{ old('stock', $product->stock ?? '') }}"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none"
             required>
         @error('stock')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div class="md:col-span-2">
-        <label for="description" class="block text-sm font-medium text-slate-700">Deskripsi</label>
+        <label for="description" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Deskripsi</label>
         <textarea name="description" id="description" rows="4"
-            class="mt-1 block w-full p-1 border border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description', $product->description ?? '') }}</textarea>
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none">{{ old('description', $product->description ?? '') }}</textarea>
         @error('description')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
     </div>
     <div class="md:col-span-2">
-        <label for="image" class="block text-sm font-medium text-slate-700">Gambar Produk</label>
+        <label for="image" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Gambar Produk</label>
         <input type="file" name="image" id="image"
-            class="mt-1 block w-full p-1 border text-sm text-slate-500 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            class="block w-full p-2 border border-gray-300 text-xs text-gray-500 rounded-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-sm file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-800 hover:file:bg-gray-200">
         @error('image')
-            <span class="text-sm text-red-600">{{ $message }}</span>
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
         @if (isset($product) && $product->image)
-            <div class="mt-4">
+            <div class="mt-3">
                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                    class="h-32 w-32 object-cover rounded-lg">
+                    class="h-28 w-28 object-cover rounded-sm border border-gray-200">
             </div>
         @endif
     </div>
 </div>
-<div class="flex justify-end mt-6 pt-6 border-t border-slate-200">
+<div class="flex justify-end mt-6 pt-5 border-t border-gray-200">
     <a href="{{ route('admin.products.index') }}"
-        class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-2 px-4 rounded-lg shadow-sm mr-2">Batal</a>
+        class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 font-semibold py-2 px-4 rounded-sm text-sm mr-2 transition">Batal</a>
     <button type="submit"
-        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm">
+        class="bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-sm text-sm transition">
         {{ $submitButtonText ?? 'Simpan' }}
     </button>
 </div>
