@@ -39,11 +39,13 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $allowedRoles = auth()->user()->role === 'owner' ? ['pelanggan', 'admin', 'owner'] : ['pelanggan', 'admin'];
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'role' => ['required', Rule::in(['pelanggan', 'superadmin', 'owner'])],
+            'role' => ['required', Rule::in($allowedRoles)],
             'password' => ['required', 'confirmed', Password::defaults()],
         ]);
 
@@ -60,16 +62,26 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        if (auth()->user()->role === 'admin' && $user->role === 'owner') {
+            return redirect()->route('admin.users.index')->with('error', 'Admin tidak memiliki hak akses untuk mengedit akun Owner.');
+        }
+
         return view('superadmin.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
+        if (auth()->user()->role === 'admin' && $user->role === 'owner') {
+            return redirect()->route('admin.users.index')->with('error', 'Admin tidak memiliki hak akses untuk mengedit akun Owner.');
+        }
+
+        $allowedRoles = auth()->user()->role === 'owner' ? ['pelanggan', 'admin', 'owner'] : ['pelanggan', 'admin'];
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'role' => ['required', Rule::in(['pelanggan', 'superadmin', 'owner'])],
+            'role' => ['required', Rule::in($allowedRoles)],
             'password' => ['nullable', 'confirmed', Password::defaults()],
         ]);
 
@@ -87,6 +99,10 @@ class UserController extends Controller
     {
         if ($user->id === auth()->id()) {
             return back()->with('error', 'Anda tidak dapat menghapus akun Anda sendiri.');
+        }
+
+        if (auth()->user()->role === 'admin' && $user->role === 'owner') {
+            return back()->with('error', 'Admin tidak memiliki hak akses untuk menghapus akun Owner.');
         }
 
         $user->delete();

@@ -104,11 +104,9 @@ Route::middleware(['auth', 'role:admin,owner'])->prefix('admin')->name('admin.')
         Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
         Route::resource('store-accounts', BankAccountController::class);
         Route::resource('shipping-zones', ShippingZoneController::class);
-
-        Route::resource('users', UserController::class)->except('index');
     });
 
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('users', UserController::class);
 
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::get('reports/pdf', [ReportController::class, 'exportPDF'])->name('reports.pdf');

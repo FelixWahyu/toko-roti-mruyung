@@ -6,9 +6,7 @@
                 <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Email</th>
                 <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Telepon</th>
                 <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Role</th>
-                @if (auth()->user()->role == 'admin')
-                    <th class="px-5 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">Aksi</th>
-                @endif
+                <th class="px-5 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">Aksi</th>
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -25,9 +23,14 @@
                                 @if ($user->role == 'pelanggan') bg-emerald-100 text-emerald-800 @endif
                             ">{{ $user->role }}</span>
                     </td>
-                    @if (auth()->user()->role == 'admin')
-                        <td class="px-5 py-3 whitespace-nowrap text-right text-sm font-medium">
-                            <div class="flex items-center justify-end space-x-1.5">
+                    <td class="px-5 py-3 whitespace-nowrap text-right text-sm font-medium">
+                        <div class="flex items-center justify-end space-x-1.5">
+                            @php
+                                $canEdit = auth()->user()->role === 'owner' || (auth()->user()->role === 'admin' && $user->role !== 'owner');
+                                $canDelete = (auth()->user()->role === 'owner' || (auth()->user()->role === 'admin' && $user->role !== 'owner')) && auth()->id() !== $user->id;
+                            @endphp
+
+                            @if ($canEdit)
                                 <a href="{{ route('admin.users.edit', $user) }}"
                                     class="px-2.5 py-1.5 flex items-center space-x-1 bg-gray-100 text-gray-800 rounded-sm hover:bg-gray-200 text-xs font-medium transition"
                                     title="Edit">
@@ -38,32 +41,37 @@
                                     </svg>
                                     <span>Edit</span>
                                 </a>
-                                @if (auth()->id() !== $user->id)
-                                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
-                                        class="inline-block"
-                                        onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $user->name }}?', 'Ya, Hapus!')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="px-2.5 py-1.5 bg-white border border-gray-200 text-red-600 rounded-sm flex items-center space-x-1 hover:bg-red-50 text-xs font-medium transition"
-                                            title="Hapus">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                                                </path>
-                                            </svg>
-                                            <span>Hapus</span>
-                                        </button>
-                                    </form>
-                                @endif
-                            </div>
-                        </td>
-                    @endif
+                            @endif
+
+                            @if ($canDelete)
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
+                                    class="inline-block"
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $user->name }}?', 'Ya, Hapus!')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="px-2.5 py-1.5 bg-white border border-gray-200 text-red-600 rounded-sm flex items-center space-x-1 hover:bg-red-50 text-xs font-medium transition"
+                                        title="Hapus">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                            </path>
+                                        </svg>
+                                        <span>Hapus</span>
+                                    </button>
+                                </form>
+                            @endif
+
+                            @if (!$canEdit && !$canDelete)
+                                <span class="text-xs text-gray-400 italic">Tidak ada aksi</span>
+                            @endif
+                        </div>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="{{ auth()->user()->role == 'admin' ? 5 : 4 }}" class="px-6 py-6 text-center text-xs text-gray-500">Tidak ada data pengguna.</td>
+                    <td colspan="5" class="px-6 py-6 text-center text-xs text-gray-500">Tidak ada data pengguna.</td>
                 </tr>
             @endforelse
         </tbody>

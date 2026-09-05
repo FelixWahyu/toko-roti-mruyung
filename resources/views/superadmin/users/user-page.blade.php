@@ -1,25 +1,19 @@
 @extends('layouts.superadmin-app')
 @section('content')
-    @if (auth()->user()->role == 'admin')
-        <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Manajemen Pengguna</h1>
-        </div>
-    @else
-        <h1 class="text-2xl font-bold text-gray-900 tracking-tight mb-6">Daftar Pengguna</h1>
-    @endif
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Manajemen Pengguna</h1>
+    </div>
 
     <div class="items-center justify-between mb-4 lg:flex">
-        @if (auth()->user()->role == 'admin')
-            <a href="{{ route('admin.users.create') }}"
-                class="inline-flex items-center space-x-2 bg-gray-900 mb-4 lg:mb-0 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-sm text-sm transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                    </path>
-                </svg>
-                <span>Tambah Pengguna</span>
-            </a>
-        @endif
+        <a href="{{ route('admin.users.create') }}"
+            class="inline-flex items-center space-x-2 bg-gray-900 mb-4 lg:mb-0 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-sm text-sm transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                </path>
+            </svg>
+            <span>Tambah Pengguna</span>
+        </a>
         <form action="{{ route('admin.users.index') }}" method="GET" id="search-form">
             <div class="relative">
                 <input type="text" name="search" id="search-input" placeholder="Cari pengguna..."

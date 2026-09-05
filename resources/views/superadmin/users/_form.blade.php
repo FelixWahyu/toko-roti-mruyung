@@ -32,7 +32,9 @@
                 Pelanggan
             </option>
             <option value="admin" {{ old('role', $user->role ?? '') == 'admin' ? 'selected' : '' }}>Admin</option>
-            <option value="owner" {{ old('role', $user->role ?? '') == 'owner' ? 'selected' : '' }}>Owner</option>
+            @if (auth()->user()->role === 'owner')
+                <option value="owner" {{ old('role', $user->role ?? '') == 'owner' ? 'selected' : '' }}>Owner</option>
+            @endif
         </select>
         @error('role')
             <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
