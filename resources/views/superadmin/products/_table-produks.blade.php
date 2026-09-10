@@ -17,7 +17,20 @@
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                             class="h-10 w-10 object-cover rounded-sm border border-gray-200">
                     </td>
-                    <td class="px-5 py-3 whitespace-nowrap font-medium text-gray-900">{{ $product->name }}</td>
+                    <td class="px-5 py-3 whitespace-nowrap font-medium text-gray-900">
+                        <div class="flex items-center space-x-2">
+                            <span>{{ $product->name }}</span>
+                            @if ($product->shopee_link)
+                                <a href="{{ $product->shopee_link }}" target="_blank" rel="noopener noreferrer"
+                                    title="Buka Link Shopee" class="text-orange-500 hover:text-orange-600 transition inline-flex items-center">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                    </svg>
+                                </a>
+                            @endif
+                        </div>
+                    </td>
                     <td class="px-5 py-3 whitespace-nowrap text-gray-600">{{ $product->category->name }}</td>
                     <td class="px-5 py-3 whitespace-nowrap font-medium text-gray-900">Rp{{ number_format($product->price, 0, ',', '.') }}</td>
                     <td class="px-5 py-3 whitespace-nowrap text-gray-600">{{ $product->stock }} {{ $product->unit->name }}</td>

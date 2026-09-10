@@ -63,7 +63,7 @@
                                     <div class="absolute top-3 left-3 flex flex-col gap-2">
                                         @if ($product->created_at->diffInDays(now()) <= 7)
                                             <span
-                                                class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">BARU</span>
+                                                class="bg-amber-600 text-white text-center text-xs font-bold px-3 py-1 rounded-full shadow-sm">BARU</span>
                                         @endif
                                         <span
                                             class="bg-white/90 backdrop-blur text-gray-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
@@ -81,7 +81,8 @@
                                         </a>
                                     </h3>
                                     <p class="text-sm text-gray-500 line-clamp-2 mb-4">
-                                        {{ $product->description ?? 'Roti lembut dengan bahan berkualitas.' }}</p>
+                                        {{ strip_tags($product->description) ?: 'Roti lembut dengan bahan berkualitas.' }}
+                                    </p>
 
                                     <div class="mt-auto flex items-center justify-between">
                                         <div>

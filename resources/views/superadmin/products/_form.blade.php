@@ -1,3 +1,28 @@
+<!-- Quill Rich Text Editor Assets & Style -->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+<style>
+    .ql-toolbar.ql-snow {
+        border-color: #d1d5db !important;
+        border-top-left-radius: 0.125rem;
+        border-top-right-radius: 0.125rem;
+        background-color: #f9fafb;
+    }
+    .ql-container.ql-snow {
+        border-color: #d1d5db !important;
+        border-bottom-left-radius: 0.125rem;
+        border-bottom-right-radius: 0.125rem;
+        font-family: inherit;
+        font-size: 0.875rem;
+        height: auto !important;
+        position: relative;
+    }
+    .ql-editor {
+        min-height: 160px;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+</style>
+
 @csrf
 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="md:col-span-2">
@@ -60,9 +85,23 @@
         @enderror
     </div>
     <div class="md:col-span-2">
-        <label for="description" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Deskripsi</label>
-        <textarea name="description" id="description" rows="4"
-            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none">{{ old('description', $product->description ?? '') }}</textarea>
+        <label for="shopee_link" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Link Shopee (Opsional)</label>
+        <input type="url" name="shopee_link" id="shopee_link" value="{{ old('shopee_link', $product->shopee_link ?? '') }}"
+            placeholder="https://shopee.co.id/..."
+            class="block w-full px-3 py-2 bg-white border border-gray-300 rounded-sm text-sm text-gray-900 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 focus:outline-none">
+        <p class="text-xs text-gray-500 mt-1">Kosongkan jika produk tidak dijual di Shopee. Jika diisi, tombol 'Beli di Shopee' akan tampil di halaman produk.</p>
+        @error('shopee_link')
+            <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="md:col-span-2">
+        <label for="description" class="block text-xs font-semibold uppercase tracking-wider text-gray-700 mb-1">Deskripsi Produk</label>
+        <div class="block w-full">
+            <div id="quill-editor" class="bg-white">
+                {!! old('description', $product->description ?? '') !!}
+            </div>
+        </div>
+        <input type="hidden" name="description" id="description" value="{{ old('description', $product->description ?? '') }}">
         @error('description')
             <span class="text-xs text-red-600 mt-1 block">{{ $message }}</span>
         @enderror
@@ -90,3 +129,52 @@
         {{ $submitButtonText ?? 'Simpan' }}
     </button>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script>
+    function initQuillEditor() {
+        const editorElem = document.getElementById('quill-editor');
+        if (!editorElem || editorElem.dataset.quillInitialized === 'true') return;
+        editorElem.dataset.quillInitialized = 'true';
+
+        const quill = new Quill('#quill-editor', {
+            theme: 'snow',
+            placeholder: 'Tulis deskripsi produk lengkap di sini...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    ['clean']
+                ]
+            }
+        });
+
+        const hiddenInput = document.getElementById('description');
+
+        quill.on('text-change', function() {
+            if (quill.getText().trim().length === 0 && quill.root.innerHTML === '<p><br></p>') {
+                hiddenInput.value = '';
+            } else {
+                hiddenInput.value = quill.root.innerHTML;
+            }
+        });
+
+        const form = hiddenInput ? hiddenInput.closest('form') : null;
+        if (form) {
+            form.addEventListener('submit', function() {
+                if (quill.getText().trim().length === 0 && quill.root.innerHTML === '<p><br></p>') {
+                    hiddenInput.value = '';
+                } else {
+                    hiddenInput.value = quill.root.innerHTML;
+                }
+            });
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initQuillEditor);
+    } else {
+        initQuillEditor();
+    }
+</script>

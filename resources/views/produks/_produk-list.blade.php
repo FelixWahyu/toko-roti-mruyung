@@ -7,7 +7,7 @@
                     class="w-full h-full object-center object-cover lg:w-full lg:h-full">
                 @if ($product->created_at->diffInDays(now()) <= 7)
                     <div
-                        class="absolute top-3 left-3 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
+                        class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
                         BARU
                     </div>
                 @endif

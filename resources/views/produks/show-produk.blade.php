@@ -24,7 +24,7 @@
 
                             @if ($product->created_at->diffInDays(now()) <= 5)
                                 <div
-                                    class="absolute top-3 left-3 bg-indigo-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
+                                    class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">
                                     BARU
                                 </div>
                             @endif
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <span class="font-bold text-gray-700">Tersedia</span>
+                        <span class="font-bold text-gray-700">Stok Siap</span>
                         @if ($product->stock > 0)
                             <span class="text-amber-600 font-semibold ml-2">{{ $product->stock }}</span>
                         @else
@@ -68,7 +68,9 @@
 
                     <div class="prose max-w-none text-gray-800 mb-12">
                         <h3 class="text-lg font-semibold text-gray-800 border-t pt-2">Deskripsi Produk</h3>
-                        <p class="mt-4">{{ $product->description }}</p>
+                        <div class="product-description mt-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                            {!! $product->description !!}
+                        </div>
                     </div>
 
                     @php
@@ -97,14 +99,16 @@
                                 </svg>
                                 <span>Pesan WhatsApp</span>
                             </a>
-                            <a href="https://shopee.co.id/" target="_blank" rel="noopener noreferrer"
-                                class="flex-1 bg-brown-500 border border-transparent rounded-md py-2.5 px-6 flex items-center justify-center gap-2 text-base font-semibold text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400 transition-colors">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                </svg>
-                                <span>Beli di Shopee</span>
-                            </a>
+                            @if ($product->shopee_link)
+                                <a href="{{ $product->shopee_link }}" target="_blank" rel="noopener noreferrer"
+                                    class="flex-1 bg-brown-500 border border-transparent rounded-md py-2.5 px-6 flex items-center justify-center gap-2 text-base font-semibold text-white hover:bg-brown-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brown-400 transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                    </svg>
+                                    <span>Beli di Shopee</span>
+                                </a>
+                            @endif
                         </div>
                     @else
                         <div class="flex flex-col sm:flex-row gap-3">
@@ -125,4 +129,18 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .product-description p { margin-bottom: 0.75rem; }
+        .product-description p:last-child { margin-bottom: 0; }
+        .product-description strong, .product-description b { font-weight: 700; color: #1f2937; }
+        .product-description em, .product-description i { font-style: italic; }
+        .product-description u { text-decoration: underline; }
+        .product-description s, .product-description strike { text-decoration: line-through; }
+        .product-description ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+        .product-description ol { list-style-type: decimal; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+        .product-description li { margin-bottom: 0.25rem; }
+        .product-description h2 { font-size: 1.25rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; color: #111827; }
+        .product-description h3 { font-size: 1.1rem; font-weight: 600; margin-top: 0.75rem; margin-bottom: 0.5rem; color: #1f2937; }
+    </style>
 @endsection
