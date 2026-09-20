@@ -46,7 +46,7 @@
                             @if ($canDelete)
                                 <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
                                     class="inline-block"
-                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $user->name }}?', 'Ya, Hapus!')">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $user->name }}?', 'Hapus')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

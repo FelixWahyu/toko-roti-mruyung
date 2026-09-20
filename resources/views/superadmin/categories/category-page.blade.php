@@ -43,7 +43,7 @@
                                 </a>
                                 <form action="{{ route('admin.categories.destroy', $category) }}" method="POST"
                                     class="inline-block"
-                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $category->name }}?', 'Ya, Hapus!')">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $category->name }}?', 'Hapus')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

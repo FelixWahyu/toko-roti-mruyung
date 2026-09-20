@@ -39,7 +39,7 @@
                                 </a>
                                 <form action="{{ route('admin.shipping-zones.destroy', $zone) }}" method="POST"
                                     class="inline-block"
-                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $zone->district }}?', 'Ya, Hapus!')">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $zone->district }}?', 'Hapus')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"

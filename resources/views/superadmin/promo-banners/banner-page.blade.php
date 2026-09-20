@@ -65,7 +65,7 @@
                                 </a>
                                 <form action="{{ route('admin.promo-banners.destroy', $banner) }}" method="POST"
                                     class="inline-block"
-                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus banner promo {{ $banner->title }}?', 'Ya, Hapus!')">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus banner promo {{ $banner->title }}?', 'Hapus')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
