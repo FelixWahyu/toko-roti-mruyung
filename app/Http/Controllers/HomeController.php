@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\PromoBanner;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,14 +15,11 @@ class HomeController extends Controller
 
         $categories = Category::all();
 
-        $promoSlides = [
-            ['image' => asset('images/promo/promo-layanan.jpeg'), 'link' => '#', 'alt' => 'Promo Layanan Kamar'],
-            ['image' => asset('images/promo/promo1.jpg'), 'link' => '#', 'alt' => 'Promo Diskon Lebaran'],
-            ['image' => asset('images/promo/promo2.jpg'), 'link' => '#', 'alt' => 'Promo Gratis Ongkir'],
-            ['image' => asset('images/promo/promo3.jpg'), 'link' => '#', 'alt' => 'Promo Beli 1 Gratis 1'],
-            ['image' => asset('images/promo/promo4.jpg'), 'link' => '#', 'alt' => 'Promo Potongan Harga']
-        ];
+        $promoBanners = PromoBanner::where('is_active', true)
+            ->orderBy('order', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
 
-        return view('landing-page', compact('newProducts', 'categories', 'promoSlides'));
+        return view('landing-page', compact('newProducts', 'categories', 'promoBanners'));
     }
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\CafeController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GuestHouseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SuperAdmin\UnitController;
 use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdmin\OrderController;
@@ -25,8 +26,8 @@ use App\Http\Controllers\SuperAdmin\DashboardController;
 use App\Http\Controllers\SuperAdmin\BankAccountController;
 use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
-use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
+use App\Http\Controllers\SuperAdmin\PromoBannerController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
@@ -104,6 +105,7 @@ Route::middleware(['auth', 'role:admin,owner'])->prefix('admin')->name('admin.')
         Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
         Route::resource('store-accounts', BankAccountController::class);
         Route::resource('shipping-zones', ShippingZoneController::class);
+        Route::resource('promo-banners', PromoBannerController::class);
     });
 
     Route::resource('users', UserController::class);

@@ -152,28 +152,30 @@
         </div>
     </div>
 
-    <div class="bg-white pb-16 pt-4">
-        <h2 class="text-center text-2xl font-bold mb-12">Harga Spesial Untuk Anda</h2>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative">
-                <div class="swiper promo-banner-slider overflow-hidden pb-12">
-                    <div class="swiper-wrapper">
-                        @foreach ($promoSlides as $slide)
-                            <div class="swiper-slide h-auto">
-                                <a href="{{ $slide['link'] }}"
-                                    class="group flex items-center justify-center w-full aspect-[4/5] overflow-hidden bg-white transition-all duration-300">
-                                    <img src="{{ $slide['image'] }}" alt="{{ $slide['alt'] }}"
-                                        loading="lazy" decoding="async"
-                                        class="max-w-full max-h-full w-auto h-auto object-contain rounded-sm transition-transform duration-300 group-hover:scale-105">
-                                </a>
-                            </div>
-                        @endforeach
+    @if(isset($promoBanners) && $promoBanners->count() > 0)
+        <div class="bg-white pb-16 pt-4">
+            <h2 class="text-center text-2xl font-bold mb-12">Harga Spesial Untuk Anda</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative">
+                    <div class="swiper promo-banner-slider overflow-hidden pb-12">
+                        <div class="swiper-wrapper">
+                            @foreach ($promoBanners as $slide)
+                                <div class="swiper-slide h-auto">
+                                    <a href="{{ $slide->link ?: '#' }}"
+                                        class="group flex items-center justify-center w-full aspect-[4/5] overflow-hidden bg-white transition-all duration-300">
+                                        <img src="{{ $slide->image_url }}" alt="{{ $slide->title }}"
+                                            loading="lazy" decoding="async"
+                                            class="max-w-full max-h-full w-auto h-auto object-contain rounded-sm transition-transform duration-300 group-hover:scale-105">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <div class="bg-gray-50 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -546,29 +548,31 @@
                 }, delayTime);
             }
 
-            const promoBannerSwiper = new Swiper('.promo-banner-slider', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 16,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.promo-banner-slider .swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+            if (document.querySelector('.promo-banner-slider')) {
+                const promoBannerSwiper = new Swiper('.promo-banner-slider', {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 16,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
                     },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 24,
+                    pagination: {
+                        el: '.promo-banner-slider .swiper-pagination',
+                        clickable: true,
                     },
-                },
-            });
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 24,
+                        },
+                    },
+                });
+            }
             const swiper = new Swiper('.promo-slider', {
                 loop: true,
                 slidesPerView: 2.2,

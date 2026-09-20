@@ -1,34 +1,59 @@
 @extends('layouts.superadmin-app')
 @section('content')
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Manajemen Rekening Toko</h1>
-        <a href="{{ route('admin.store-accounts.create') }}"
+        <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Manajemen Banner Promo</h1>
+        <a href="{{ route('admin.promo-banners.create') }}"
             class="inline-flex items-center space-x-2 bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-sm text-sm transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
-            <span>Tambah Rekening</span>
+            <span>Tambah Banner</span>
         </a>
     </div>
+
     <div class="bg-white rounded-sm overflow-x-auto border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
             <thead class="bg-gray-100">
                 <tr>
-                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Nama Bank</th>
-                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Nomor Rekening</th>
-                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Atas Nama</th>
+                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-16">Urutan</th>
+                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-24">Gambar</th>
+                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Judul</th>
+                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Link / URL</th>
+                    <th class="px-5 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
                     <th class="px-5 py-3 text-right text-xs font-semibold text-gray-700 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @forelse($accounts as $account)
+                @forelse($banners as $banner)
                     <tr class="hover:bg-gray-50/70 transition-colors">
-                        <td class="px-5 py-3 whitespace-nowrap font-medium text-gray-900">{{ $account->bank_name }}</td>
-                        <td class="px-5 py-3 whitespace-nowrap text-gray-700 font-mono text-xs">{{ $account->account_number }}</td>
-                        <td class="px-5 py-3 whitespace-nowrap text-gray-600">{{ $account->account_holder_name }}</td>
+                        <td class="px-5 py-3 whitespace-nowrap font-mono text-xs font-semibold text-gray-700">{{ $banner->order }}</td>
+                        <td class="px-5 py-3 whitespace-nowrap">
+                            <div class="h-14 w-20 overflow-hidden bg-gray-50 border border-gray-200 rounded-sm flex items-center justify-center">
+                                <img src="{{ $banner->image_url }}" alt="{{ $banner->title }}"
+                                    class="h-full w-full object-cover">
+                            </div>
+                        </td>
+                        <td class="px-5 py-3 whitespace-nowrap font-medium text-gray-900">{{ $banner->title }}</td>
+                        <td class="px-5 py-3 whitespace-nowrap text-gray-600 font-mono text-xs">
+                            <a href="{{ $banner->link }}" target="_blank" class="hover:underline hover:text-gray-900 flex items-center gap-1">
+                                <span>{{ Str::limit($banner->link, 35) }}</span>
+                                @if ($banner->link !== '#')
+                                    <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                @endif
+                            </a>
+                        </td>
+                        <td class="px-5 py-3 whitespace-nowrap">
+                            @if ($banner->is_active)
+                                <span class="px-2 py-0.5 text-xs font-semibold rounded-sm bg-emerald-100 text-emerald-800">Aktif</span>
+                            @else
+                                <span class="px-2 py-0.5 text-xs font-semibold rounded-sm bg-gray-100 text-gray-600">Nonaktif</span>
+                            @endif
+                        </td>
                         <td class="px-5 py-3 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex items-center justify-end space-x-1.5">
-                                <a href="{{ route('admin.store-accounts.edit', $account) }}"
+                                <a href="{{ route('admin.promo-banners.edit', $banner) }}"
                                     class="px-2.5 py-1.5 flex items-center space-x-1 bg-gray-100 text-gray-800 rounded-sm hover:bg-gray-200 text-xs font-medium transition"
                                     title="Edit">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -38,9 +63,9 @@
                                     </svg>
                                     <span>Edit</span>
                                 </a>
-                                <form action="{{ route('admin.store-accounts.destroy', $account) }}" method="POST"
+                                <form action="{{ route('admin.promo-banners.destroy', $banner) }}" method="POST"
                                     class="inline-block"
-                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus data {{ $account->bank_name }}?', 'Hapus')">
+                                    onsubmit="showConfirmation(event,'Hapus data?','Anda yakin ingin menghapus banner promo {{ $banner->title }}?', 'Ya, Hapus!')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -60,13 +85,14 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="px-6 py-6 text-center text-xs text-gray-500">Tidak ada data rekening.</td>
+                        <td colspan="6" class="px-6 py-6 text-center text-xs text-gray-500">Tidak ada data banner promo.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
+
     <div class="mt-4">
-        {{ $accounts->links() }}
+        {{ $banners->links() }}
     </div>
 @endsection
