@@ -28,6 +28,7 @@ use App\Http\Controllers\SuperAdmin\StockReportController;
 use App\Http\Controllers\SuperAdmin\AdminProfileController;
 use App\Http\Controllers\SuperAdmin\ShippingZoneController;
 use App\Http\Controllers\SuperAdmin\PromoBannerController;
+use App\Http\Controllers\SuperAdmin\AboutVideoController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
@@ -106,6 +107,7 @@ Route::middleware(['auth', 'role:admin,owner'])->prefix('admin')->name('admin.')
         Route::resource('store-accounts', BankAccountController::class);
         Route::resource('shipping-zones', ShippingZoneController::class);
         Route::resource('promo-banners', PromoBannerController::class);
+        Route::resource('about-videos', AboutVideoController::class);
     });
 
     Route::resource('users', UserController::class);

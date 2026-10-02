@@ -60,6 +60,15 @@ return [
             'report' => false,
         ],
 
+        'cloudinary' => array_filter([
+            'driver' => 'cloudinary',
+            'cloud' => env('CLOUDINARY_CLOUD_NAME'),
+            'key' => env('CLOUDINARY_KEY'),
+            'secret' => env('CLOUDINARY_SECRET'),
+            'url' => env('CLOUDINARY_URL') ?: null,
+            'secure' => true,
+        ], fn($value) => !is_null($value) && $value !== ''),
+
     ],
 
     /*

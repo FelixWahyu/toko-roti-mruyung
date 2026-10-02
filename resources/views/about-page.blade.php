@@ -140,48 +140,39 @@
         </div>
     </div>
 
-    <div class="bg-white py-16 sm:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-left max-w-3xl mb-12">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-serif">Intip Suasana & Kreasi Kami</h2>
-                <p class="mt-4 text-base sm:text-lg text-gray-500 font-light">
-                    Saksikan sekilas kehangatan suasana Toko Roti Mruyung serta dedikasi kami dalam menghadirkan sajian berkualitas terbaik.
-                </p>
-            </div>
-
-            <div class="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
-                <div class="bg-gradient-to-b from-gray-50 to-white rounded-md p-2 sm:p-3 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                    <div class="overflow-hidden rounded-sm bg-black aspect-[9/16] relative shadow-inner">
-                        <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
-                            <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382308/review-video-2025.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    </div>
-                    <div class="pt-5 px-2 pb-2">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kehangatan Toko & Suasana Klasik</h3>
-                        <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
-                            Melihat lebih dekat kenyamanan ruang kafe, bakery, dan atmosfer bernuansa klasik khas Kota Lama Banyumas.
-                        </p>
-                    </div>
+    @if (isset($aboutVideos) && $aboutVideos->count() > 0)
+        <div class="bg-white py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-left max-w-3xl mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-serif">Intip Suasana & Kreasi Kami</h2>
+                    <p class="mt-4 text-base sm:text-lg text-gray-500 font-light">
+                        Saksikan sekilas kehangatan suasana Toko Roti Mruyung serta dedikasi kami dalam menghadirkan sajian berkualitas terbaik.
+                    </p>
                 </div>
 
-                <div class="bg-gradient-to-b from-gray-50 to-white rounded-md p-2 sm:p-3 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
-                    <div class="overflow-hidden rounded-sm bg-black aspect-[9/16] relative shadow-inner">
-                        <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
-                            <source src="https://res.cloudinary.com/j9s1puj0/video/upload/v1787382242/video-kue-nanas-2026-08-21.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung tag video.
-                        </video>
-                    </div>
-                    <div class="pt-5 px-2 pb-2">
-                        <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">Kreasi Spesial Kue Nanas Mruyung</h3>
-                        <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
-                            Intip ketelitian dan keahlian baker kami dalam mengolah bahan pilihan hingga menjadi sajian favorit keluarga.
-                        </p>
-                    </div>
+                <div class="max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                    @foreach ($aboutVideos as $video)
+                        <div class="bg-gradient-to-b from-gray-50 to-white rounded-md p-2 sm:p-3 border border-gray-200/90 hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                            <div class="overflow-hidden rounded-sm bg-black aspect-[9/16] relative shadow-inner">
+                                <video class="w-full h-full object-cover" loop playsinline controls preload="metadata">
+                                    <source src="{{ $video->video_url }}" type="video/mp4">
+                                    Browser Anda tidak mendukung tag video.
+                                </video>
+                            </div>
+                            <div class="pt-5 px-2 pb-2">
+                                <h3 class="text-lg sm:text-xl font-bold text-gray-900 font-serif">{{ $video->title }}</h3>
+                                @if ($video->description)
+                                    <p class="mt-1.5 text-sm text-gray-500 leading-relaxed">
+                                        {{ $video->description }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <div class="bg-gray-50 py-16 sm:py-24">
         <div class="w-full px-4 sm:px-6 lg:px-8">
